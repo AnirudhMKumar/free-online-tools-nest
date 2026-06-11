@@ -1,0 +1,86 @@
+---
+/**
+ * Footer — 4-column footer with links to all site sections.
+ * Matches DESIGN.md footer component: body-sm text, caption-mono eyebrows.
+ */
+import { CATEGORIES, TOOLS, SITE } from "../data/tools";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-canvas border-t border-hairline mt-24">
+  <div class="container-page py-16">
+    <!-- Footer columns -->
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
+      <!-- Tools column -->
+      <div>
+        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">Tools</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/tools/" class="footer-link">All Tools</a>
+          </li>
+          {TOOLS.slice(0, 6).map((tool) => (
+            <li>
+              <a href={`/tools/${tool.slug}/`} class="footer-link">{tool.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Categories column -->
+      <div>
+        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">Categories</h3>
+        <ul class="space-y-2">
+          {CATEGORIES.map((cat) => (
+            <li>
+              <a href={`/categories/${cat.slug}/`} class="footer-link">{cat.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Company column -->
+      <div>
+        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">Company</h3>
+        <ul class="space-y-2">
+          <li><a href="/about/" class="footer-link">About</a></li>
+          <li><a href="/contact/" class="footer-link">Contact</a></li>
+          <li><a href="/faq/" class="footer-link">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal column -->
+      <div>
+        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">Legal</h3>
+        <ul class="space-y-2">
+          <li><a href="/privacy-policy/" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/terms-and-conditions/" class="footer-link">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-mute">
+        &copy; {currentYear} {SITE.name}. All rights reserved.
+      </p>
+      <p class="text-xs text-mute">
+        Free, fast, and private. No sign-up required.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.28px;
+    color: var(--color-body);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-ink);
+  }
+</style>

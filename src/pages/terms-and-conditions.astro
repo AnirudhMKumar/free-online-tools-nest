@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../data/tools";
+---
+
+<Layout
+  title="Terms and Conditions"
+  description={`Terms and Conditions for ${SITE.name}. Read our terms of service.`}
+  canonicalPath="/terms-and-conditions/"
+>
+  <div class="container-narrow py-12 md:py-20">
+    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
+      Terms and Conditions
+    </h1>
+    <p class="text-sm text-mute mb-10">Last updated: June 2026</p>
+
+    <article class="space-y-6 text-body leading-relaxed">
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Acceptance of Terms</h2>
+        <p>
+          By accessing and using {SITE.name} ("{SITE.domain}"), you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please do not use the website.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Use of Service</h2>
+        <p>
+          All tools on this website are provided free of charge for personal and commercial use. You may use the tools for any lawful purpose. You agree not to:
+        </p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>Attempt to reverse-engineer, copy, or replicate the website or its tools</li>
+          <li>Use automated scripts to overload or disrupt the service</li>
+          <li>Use the tools for any illegal or unauthorized purpose</li>
+          <li>Interfere with other users' access to the service</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Disclaimer of Warranties</h2>
+        <p>
+          The tools and content on this website are provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the tools will be error-free, accurate, or available at all times. Use the tools at your own risk.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Limitation of Liability</h2>
+        <p>
+          {SITE.name} shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use the website or its tools. This includes, but is not limited to, damages for loss of data, profits, or business opportunities.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Intellectual Property</h2>
+        <p>
+          The website design, code, and content are the intellectual property of {SITE.name}. You may not reproduce, distribute, or create derivative works without prior written permission. Tool outputs generated from your own input data belong to you.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these terms at any time. Changes will be posted on this page with an updated revision date. Continued use of the website after changes constitutes acceptance of the new terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">Contact</h2>
+        <p>
+          If you have questions about these terms, please <a href="/contact/" class="text-link hover:text-link-deep underline">contact us</a>.
+        </p>
+      </section>
+    </article>
+  </div>
+</Layout>

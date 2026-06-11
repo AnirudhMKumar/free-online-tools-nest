@@ -1,11 +1,202 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+/**
+ * Homepage — hero, categories, featured tools, why choose us, FAQ, SEO content.
+ */
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import CategoryCard from "../components/CategoryCard.astro";
+import ToolCard from "../components/ToolCard.astro";
+import FAQSection from "../components/FAQSection.astro";
+import { CATEGORIES, TOOLS, getFeaturedTools, getToolsByCategory, SITE } from "../data/tools";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const featured = getFeaturedTools();
+
+const homeFaqs = [
+  {
+    question: "Are all tools on this site completely free?",
+    answer: "Yes, every tool on Free Online Tools Nest is 100% free to use with no sign-up, no credit card, and no hidden fees. We believe essential online tools should be accessible to everyone.",
+  },
+  {
+    question: "Is my data safe when I use these tools?",
+    answer: "Absolutely. All processing happens directly in your browser — your data never leaves your device or gets sent to any server. We do not store, log, or share any input you provide.",
+  },
+  {
+    question: "Do I need to create an account to use the tools?",
+    answer: "No. Every tool works instantly without registration, login, or any personal information. Just open a tool and start using it.",
+  },
+  {
+    question: "Can I use these tools on my phone or tablet?",
+    answer: "Yes, all tools are fully responsive and work on mobile phones, tablets, and desktop computers. The interface adapts to your screen size automatically.",
+  },
+  {
+    question: "How often do you add new tools?",
+    answer: "We regularly add new tools based on user feedback and demand. If you have a suggestion for a tool you would like to see, please reach out through our contact page.",
+  },
+];
+
+// WebSite JSON-LD
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE.url}/tools/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title={`${SITE.name} — Free Online Tools for Text, Code & Math`}
+  description={SITE.description}
+  canonicalPath="/"
+  jsonLd={websiteJsonLd}
+>
+  <!-- Hero -->
+  <Hero />
+
+  <!-- Categories -->
+  <section class="py-16 md:py-24" id="categories">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          Browse by category
+        </h2>
+        <p class="mt-3 text-body max-w-lg mx-auto">
+          Find the right tool for your task across four curated categories.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {CATEGORIES.map((cat) => (
+          <CategoryCard
+            slug={cat.slug}
+            name={cat.name}
+            description={cat.description}
+            icon={cat.icon}
+            color={cat.color}
+            toolCount={getToolsByCategory(cat.slug).length}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tools -->
+  <section class="py-16 md:py-24 bg-canvas" id="featured-tools">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          Popular tools
+        </h2>
+        <p class="mt-3 text-body max-w-lg mx-auto">
+          Jump straight into our most-used tools — no setup needed.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {featured.map((tool) => (
+          <ToolCard
+            slug={tool.slug}
+            name={tool.name}
+            description={tool.description}
+            icon={tool.icon}
+            categorySlug={tool.categorySlug}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href="/tools/" class="btn-secondary">
+          View all tools
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline ml-1">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-24" id="why-us">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          Why choose Free Online Tools Nest?
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: "⚡",
+            title: "Instant results",
+            desc: "Every tool runs directly in your browser — no uploads, no waiting. Results appear as you type.",
+          },
+          {
+            icon: "🔒",
+            title: "Privacy first",
+            desc: "Your data never leaves your device. All processing happens locally with zero server calls.",
+          },
+          {
+            icon: "📱",
+            title: "Works everywhere",
+            desc: "Fully responsive across phones, tablets, and desktops. Use any tool on any device, any browser.",
+          },
+        ].map((item) => (
+          <div class="card p-6 text-center">
+            <span class="text-3xl mb-4 block" aria-hidden="true">{item.icon}</span>
+            <h3 class="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+            <p class="text-sm text-body leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQSection items={homeFaqs} />
+
+  <!-- SEO Content -->
+  <section class="py-16 md:py-24 bg-canvas" id="about-section">
+    <div class="container-narrow">
+      <article class="prose-like">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink mb-6" style="letter-spacing: -0.96px;">
+          Free Online Tools Nest — your all-in-one toolkit
+        </h2>
+
+        <p class="text-body leading-relaxed mb-4">
+          Free Online Tools Nest is a comprehensive collection of free online tools designed for writers, developers, students, marketers, and anyone who works with text, code, or data. Every tool on this site is built to be fast, private, and easy to use — with no registration, no downloads, and no hidden costs.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          Our text tools help you count words and characters, convert text between different cases, and generate placeholder text for your designs and mockups. Whether you are writing a blog post, preparing a meta description for SEO, or formatting a document, these tools give you instant results as you type.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          For developers, we offer a suite of formatting and encoding utilities. The JSON Formatter validates and beautifies messy JSON data with syntax highlighting. The URL Encoder and Decoder handles percent-encoding for safe URL transmission. The Base64 Encoder converts text and data for use in APIs, email attachments, and data URIs. Each tool is designed to fit naturally into your development workflow.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          Our calculators provide quick answers to common math problems. The Percentage Calculator supports three modes: finding a percentage of a number, determining what percentage one number is of another, and calculating percentage change between two values. More calculators are planned based on user requests.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          The converter category includes tools for everyday transformations. Generate QR codes from any URL or text and download them as PNG images for marketing materials and business cards. Convert colors between HEX, RGB, and HSL formats with a live preview — essential for designers working across different design tools and codebases.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          Privacy is built into the foundation of every tool. All processing happens in your browser using client-side JavaScript. Your data never touches our servers, is never logged, and is never shared with third parties. This is a fundamental design principle, not just a policy statement.
+        </p>
+
+        <p class="text-body leading-relaxed mb-4">
+          The site is built with performance as a priority. Tools load instantly on any connection speed, work offline once loaded, and are fully accessible with keyboard navigation and screen reader support. The responsive design ensures every tool works equally well on a 5-inch phone screen or a 32-inch desktop monitor.
+        </p>
+
+        <p class="text-body leading-relaxed">
+          We are continuously adding new tools based on user feedback. If you need a tool that does not exist here yet, let us know through the <a href="/contact/" class="text-link hover:text-link-deep underline">contact page</a>. Our goal is to become the most useful, fastest, and most private tools website on the internet.
+        </p>
+      </article>
+    </div>
+  </section>
 </Layout>

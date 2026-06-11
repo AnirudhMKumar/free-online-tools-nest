@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import FAQSection from "../components/FAQSection.astro";
+import { SITE } from "../data/tools";
+
+const faqItems = [
+  {
+    question: "What is Free Online Tools Nest?",
+    answer: `${SITE.name} is a free collection of online tools for text processing, developer utilities, calculators, and converters. All tools run in your browser with no sign-up required.`,
+  },
+  {
+    question: "Are all tools really free?",
+    answer: "Yes, every tool is 100% free with no hidden costs, premium tiers, or paywalls. We do not charge for any feature.",
+  },
+  {
+    question: "Do I need to create an account?",
+    answer: "No. All tools work instantly without any registration, login, or personal information.",
+  },
+  {
+    question: "Is my data private and secure?",
+    answer: "Absolutely. All processing happens in your browser using JavaScript. Your data never leaves your device — we never see, store, or transmit it.",
+  },
+  {
+    question: "Do the tools work on mobile devices?",
+    answer: "Yes. Every tool is fully responsive and tested on phones, tablets, and desktops across all modern browsers.",
+  },
+  {
+    question: "Do the tools work offline?",
+    answer: "Once a tool page is loaded, most tools will continue to work without an internet connection since they run entirely in your browser.",
+  },
+  {
+    question: "Which browsers are supported?",
+    answer: "We support all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version for the best experience.",
+  },
+  {
+    question: "Can I use these tools for commercial purposes?",
+    answer: "Yes. You are free to use any tool for personal or commercial work. Tool outputs generated from your input data belong to you.",
+  },
+  {
+    question: "How do I suggest a new tool?",
+    answer: "We love hearing from users. Visit our contact page and select \"Tool suggestion\" as the subject to send your idea directly to our team.",
+  },
+  {
+    question: "How often are new tools added?",
+    answer: "We regularly add new tools based on user demand and feedback. Check back often or follow us for updates.",
+  },
+  {
+    question: "Do you have an API?",
+    answer: "Not currently. All tools are designed to be used through the web interface. If you need API access for a specific tool, let us know through the contact page.",
+  },
+  {
+    question: "Are there any usage limits?",
+    answer: "No. Since all processing happens in your browser, there are no rate limits or usage quotas. Use the tools as much as you need.",
+  },
+  {
+    question: "Do you run ads?",
+    answer: "No. We do not display any advertisements. The site is ad-free for a clean, distraction-free experience.",
+  },
+  {
+    question: "Can I embed a tool on my website?",
+    answer: "We do not currently offer embeddable widgets. You are welcome to link to any tool page from your website.",
+  },
+  {
+    question: "How do I report a bug?",
+    answer: "Visit the contact page, select \"Report a bug\" as the subject, and describe the issue. Include the tool name, your browser, and device type to help us fix it quickly.",
+  },
+];
+---
+
+<Layout
+  title="Frequently Asked Questions"
+  description={`Common questions about ${SITE.name}. Learn about our tools, privacy, browser support, and more.`}
+  canonicalPath="/faq/"
+>
+  <div class="py-4 md:py-8">
+    <div class="container-page mb-8">
+      <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
+        Frequently asked questions
+      </h1>
+      <p class="mt-3 text-body text-lg max-w-xl">
+        Everything you need to know about {SITE.name}.
+      </p>
+    </div>
+
+    <FAQSection items={faqItems} title="" />
+
+    <div class="container-page mt-8">
+      <div class="card p-6 text-center">
+        <p class="text-body mb-3">
+          Still have questions?
+        </p>
+        <a href="/contact/" class="btn-primary inline-flex" style="background-color: var(--color-primary); color: var(--color-on-primary);">
+          Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

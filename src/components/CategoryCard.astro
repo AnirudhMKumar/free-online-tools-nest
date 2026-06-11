@@ -1,0 +1,40 @@
+---
+/**
+ * CategoryCard — card linking to a category page.
+ * Used on the homepage in a 4-up grid.
+ */
+interface Props {
+  slug: string;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  toolCount: number;
+}
+
+const { slug, name, description, icon, color, toolCount } = Astro.props;
+---
+
+<a
+  href={`/categories/${slug}/`}
+  class="block card p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 no-underline group relative overflow-hidden"
+  id={`category-${slug}`}
+>
+  <!-- Subtle accent line at top -->
+  <div class="absolute top-0 left-0 right-0 h-0.5" style={`background: ${color};`} aria-hidden="true"></div>
+
+  <div class="flex items-start gap-4">
+    <span class="text-3xl shrink-0" aria-hidden="true">{icon}</span>
+    <div class="min-w-0">
+      <h3 class="text-base font-semibold text-ink group-hover:text-link transition-colors duration-150">
+        {name}
+      </h3>
+      <p class="mt-1 text-sm text-body leading-relaxed line-clamp-2">
+        {description}
+      </p>
+      <span class="inline-block mt-3 text-xs text-mute">
+        {toolCount} {toolCount === 1 ? "tool" : "tools"}
+      </span>
+    </div>
+  </div>
+</a>

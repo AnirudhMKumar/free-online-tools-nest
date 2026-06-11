@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getFeaturedTools } from "../data/tools";
+
+const popularTools = getFeaturedTools().slice(0, 4);
+---
+
+<Layout
+  title="Page not found"
+  description="The page you're looking for doesn't exist or has been moved."
+  noindex={true}
+>
+  <div class="container-page py-20 md:py-32 text-center">
+    <p class="text-6xl font-semibold text-hairline mb-4" style="letter-spacing: -2.4px;">404</p>
+    <h1 class="text-2xl md:text-3xl font-semibold text-ink mb-3" style="letter-spacing: -0.96px;">
+      Page not found
+    </h1>
+    <p class="text-body max-w-md mx-auto mb-8">
+      The page you are looking for does not exist or has been moved. Try searching for a tool or browse our directory.
+    </p>
+    <div class="flex items-center justify-center gap-3 flex-wrap mb-12">
+      <a href="/" class="btn-primary" style="background-color: var(--color-primary); color: var(--color-on-primary);">
+        Go home
+      </a>
+      <a href="/tools/" class="btn-secondary" style="border-color: var(--color-hairline); color: var(--color-ink); background-color: var(--color-canvas);">
+        Browse tools
+      </a>
+    </div>
+
+    <!-- Popular tools -->
+    <div class="max-w-md mx-auto text-left">
+      <h2 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-3">
+        Popular tools
+      </h2>
+      <div class="space-y-2">
+        {popularTools.map((tool) => (
+          <a
+            href={`/tools/${tool.slug}/`}
+            class="flex items-center gap-3 p-3 card hover:shadow-card-hover transition-all duration-200 no-underline"
+          >
+            <span class="text-lg" aria-hidden="true">{tool.icon}</span>
+            <span class="text-sm font-medium text-ink">{tool.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
