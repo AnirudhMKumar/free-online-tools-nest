@@ -103,7 +103,7 @@ export default function QrCodeGenerator() {
       <div className="flex flex-col items-center gap-4">
         <canvas
           ref={canvasRef}
-          className="rounded-lg"
+          className="rounded-lg max-w-full h-auto"
           style={{
             display: generated ? "block" : "none",
             border: "1px solid var(--color-hairline)",

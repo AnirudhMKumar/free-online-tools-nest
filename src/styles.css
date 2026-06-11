@@ -139,16 +139,24 @@
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 @utility container-narrow {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (min-width: 640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 @utility btn-primary {

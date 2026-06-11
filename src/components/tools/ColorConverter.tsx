@@ -257,20 +257,20 @@ export default function ColorConverter() {
         ].map((item) => (
           <div
             key={item.label}
-            className="flex items-center justify-between p-3 rounded-lg"
+            className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg gap-2"
             style={{ backgroundColor: "var(--color-canvas-soft-2)" }}
           >
             <span className="text-xs uppercase tracking-wider" style={{ color: "var(--color-mute)", fontFamily: "var(--font-mono)" }}>
               {item.label}
             </span>
-            <div className="flex items-center gap-2">
-              <code className="text-sm" style={{ color: "var(--color-ink)", fontFamily: "var(--font-mono)" }}>
+            <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+              <code className="text-sm break-all" style={{ color: "var(--color-ink)", fontFamily: "var(--font-mono)" }}>
                 {item.value}
               </code>
               <button
                 type="button"
                 onClick={() => handleCopy(item.value, item.label)}
-                className="text-xs px-2 py-1 rounded transition-colors duration-150"
+                className="text-xs px-2 py-1 rounded transition-colors duration-150 shrink-0"
                 style={{
                   color: copied === item.label ? "var(--color-success)" : "var(--color-link)",
                 }}
