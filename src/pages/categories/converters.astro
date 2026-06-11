@@ -10,9 +10,9 @@ const otherCategories = CATEGORIES.filter((c) => c.slug !== "converters");
 ---
 
 <Layout
-  title={`${category.name} — Free Online ${category.name}`}
-  description={category.description}
-  canonicalPath="/categories/converters/"
+  title={category.metaTitle || `${category.name} — Free Online ${category.name}`}
+  description={category.metaDescription || category.description}
+  canonicalPath={`/categories/${category.slug}/`}
 >
   <div class="container-page py-8 md:py-12">
     <Breadcrumbs items={[{ label: "Categories", href: "/tools/" }, { label: category.name }]} />
@@ -21,7 +21,7 @@ const otherCategories = CATEGORIES.filter((c) => c.slug !== "converters");
       <div class="flex items-center gap-3 mb-2">
         <span class="text-3xl" aria-hidden="true">{category.icon}</span>
         <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
-          {category.name}
+          Online Converter Tools
         </h1>
       </div>
       <p class="mt-3 text-body text-lg max-w-2xl">{category.description}</p>
@@ -33,7 +33,7 @@ const otherCategories = CATEGORIES.filter((c) => c.slug !== "converters");
       ))}
     </div>
 
-    <section>
+    <section class="mb-16">
       <h2 class="text-xl font-semibold text-ink mb-6" style="letter-spacing: -0.6px;">Explore other categories</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {otherCategories.map((cat) => (
@@ -47,5 +47,16 @@ const otherCategories = CATEGORIES.filter((c) => c.slug !== "converters");
         ))}
       </div>
     </section>
+
+    {category.seoContent && (
+      <section class="mt-16 border-t border-hairline pt-12">
+        <div class="prose-like max-w-3xl">
+          <h2 class="text-xl font-semibold text-ink mb-4" style="letter-spacing: -0.6px;">
+            About our {category.name}
+          </h2>
+          <p class="text-body leading-relaxed">{category.seoContent}</p>
+        </div>
+      </section>
+    )}
   </div>
 </Layout>

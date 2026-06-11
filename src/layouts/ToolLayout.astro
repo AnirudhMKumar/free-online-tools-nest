@@ -17,7 +17,7 @@ import Layout from "./Layout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import ToolCard from "../components/ToolCard.astro";
 import FAQSection from "../components/FAQSection.astro";
-import { getRelatedTools, getCategoryBySlug, SITE } from "../data/tools";
+import { getRelatedTools, getCategoryBySlug, getToolBySlug, SITE } from "../data/tools";
 
 const {
   title,
@@ -31,6 +31,10 @@ const {
 
 const relatedTools = getRelatedTools(toolSlug, 4);
 const category = getCategoryBySlug(categorySlug);
+const tool = getToolBySlug(toolSlug);
+
+const finalMetaTitle = tool?.metaTitle || `${title} Online — Free ${categoryName} Tool`;
+const finalMetaDescription = tool?.metaDescription || description;
 
 const breadcrumbs = [
   { label: "Tools", href: "/tools/" },
@@ -43,7 +47,7 @@ const toolJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: title,
-  description: description,
+  description: finalMetaDescription,
   url: `${SITE.url}/tools/${toolSlug}/`,
   applicationCategory: "UtilityApplication",
   operatingSystem: "Any",
@@ -53,13 +57,47 @@ const toolJsonLd = {
     priceCurrency: "USD",
   },
 };
+
+// BreadcrumbList JSON-LD
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: SITE.url,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tools",
+      item: `${SITE.url}/tools/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: categoryName,
+      item: `${SITE.url}/categories/${categorySlug}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: title,
+      item: `${SITE.url}/tools/${toolSlug}/`,
+    },
+  ],
+};
+
+const combinedJsonLd = [toolJsonLd, breadcrumbJsonLd];
 ---
 
 <Layout
-  title={title}
-  description={description}
+  title={finalMetaTitle}
+  description={finalMetaDescription}
   canonicalPath={`/tools/${toolSlug}/`}
-  jsonLd={toolJsonLd}
+  jsonLd={combinedJsonLd}
 >
   <div class="container-page py-8 md:py-12">
     <Breadcrumbs items={breadcrumbs} />
@@ -94,7 +132,7 @@ const toolJsonLd = {
       </div>
 
       <!-- Sidebar -->
-      <aside class="hidden lg:block">
+      <aside class="mt-12 lg:mt-0 lg:block">
         <div class="sticky top-20">
           <h2 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">
             Related tools
@@ -127,3 +165,4 @@ const toolJsonLd = {
     </div>
   </div>
 </Layout>
+
