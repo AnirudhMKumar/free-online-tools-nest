@@ -16,90 +16,28 @@ import { SITE } from "../data/tools";
       Have feedback, a tool suggestion, or found a bug? We would love to hear from you.
     </p>
 
-    <form
-      action="https://formspree.io/f/placeholder"
-      method="POST"
-      class="space-y-6 card p-4 sm:p-6 md:p-8"
-      id="contact-form"
-    >
-      <div>
-        <label for="contact-name" class="block text-sm font-medium text-ink mb-2">
-          Name
-        </label>
-        <input
-          id="contact-name"
-          name="name"
-          type="text"
-          required
-          autocomplete="name"
-          placeholder="Your name…"
-          class="w-full h-11 px-4 border rounded-md text-sm outline-none transition-colors duration-150"
-          style="background-color: var(--color-canvas-soft); border-color: var(--color-hairline); color: var(--color-ink);"
-        />
-      </div>
-
-      <div>
-        <label for="contact-email" class="block text-sm font-medium text-ink mb-2">
-          Email
-        </label>
-        <input
-          id="contact-email"
-          name="email"
-          type="email"
-          required
-          autocomplete="email"
-          placeholder="you@example.com…"
-          spellcheck="false"
-          class="w-full h-11 px-4 border rounded-md text-sm outline-none transition-colors duration-150"
-          style="background-color: var(--color-canvas-soft); border-color: var(--color-hairline); color: var(--color-ink);"
-        />
-      </div>
-
-      <div>
-        <label for="contact-subject" class="block text-sm font-medium text-ink mb-2">
-          Subject
-        </label>
-        <select
-          id="contact-subject"
-          name="subject"
-          required
-          class="w-full h-11 px-4 border rounded-md text-sm outline-none transition-colors duration-150"
-          style="background-color: var(--color-canvas-soft); border-color: var(--color-hairline); color: var(--color-ink);"
-        >
-          <option value="">Select a subject…</option>
-          <option value="feedback">General feedback</option>
-          <option value="suggestion">Tool suggestion</option>
-          <option value="bug">Report a bug</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="contact-message" class="block text-sm font-medium text-ink mb-2">
-          Message
-        </label>
-        <textarea
-          id="contact-message"
-          name="message"
-          required
-          rows="5"
-          placeholder="Tell us what you think…"
-          class="w-full p-4 border rounded-md text-sm resize-y outline-none transition-colors duration-150"
-          style="background-color: var(--color-canvas-soft); border-color: var(--color-hairline); color: var(--color-ink);"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        class="btn-primary"
-        style="background-color: var(--color-primary); color: var(--color-on-primary);"
-      >
-        Send message
-      </button>
-
-      <p class="text-xs text-mute">
-        We typically respond within 1–2 business days. Your email will only be used to reply to your message.
+    <div class="card p-4 sm:p-6 md:p-8 space-y-6">
+      <p class="text-body text-sm leading-relaxed">
+        Send us an email at{" "}
+        <a href="mailto:hello@freeonlinetoolsnest.com" class="text-link hover:text-link-deep underline transition-colors duration-150">
+          hello@freeonlinetoolsnest.com
+        </a>
+        {" "}and we will get back to you within 1–2 business days.
       </p>
-    </form>
+      <p class="text-body text-sm leading-relaxed">
+        Please include your name, a brief subject, and a description of your feedback, suggestion, or bug report.
+      </p>
+      <a
+        href="mailto:hello@freeonlinetoolsnest.com?subject=Feedback%20for%20Free%20Online%20Tools%20Nest"
+        class="btn-primary inline-flex"
+        style="background-color: var(--color-primary); color: var(--color-on-primary); text-decoration: none;"
+      >
+        Send us an email
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </Layout>

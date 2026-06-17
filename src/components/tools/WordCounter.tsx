@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useMemo } from "react";
 
 /**
  * WordCounter — counts words, characters, sentences, paragraphs, and reading time.
@@ -6,7 +6,7 @@ import { useState, useCallback } from "react";
 export default function WordCounter() {
   const [text, setText] = useState("");
 
-  const stats = useCallback(() => {
+  const s = useMemo(() => {
     const trimmed = text.trim();
     if (!trimmed) return { words: 0, characters: 0, charsNoSpaces: 0, sentences: 0, paragraphs: 0, readingTime: "0 min" };
 
@@ -20,8 +20,6 @@ export default function WordCounter() {
 
     return { words, characters, charsNoSpaces, sentences, paragraphs, readingTime };
   }, [text]);
-
-  const s = stats();
 
   return (
     <div className="space-y-6">

@@ -1,11 +1,13 @@
 import { useState, useCallback } from "react";
+import ErrorBanner from "../ErrorBanner";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 
 export default function HtmlFormatter() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [indentSize, setIndentSize] = useState("2");
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const formatHtmlString = useCallback((htmlStr: string, indentVal: string) => {
     if (!htmlStr.trim()) {
@@ -89,8 +91,8 @@ export default function HtmlFormatter() {
 
       setOutput(formatted.trim());
       setError("");
-    } catch (err: any) {
-      setError(err?.message || "Failed to format HTML.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to format HTML.");
       setOutput("");
     }
   }, []);
@@ -111,12 +113,7 @@ export default function HtmlFormatter() {
     setError("");
   }, []);
 
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
+
 
   const handleClear = () => {
     setInput("");
@@ -186,11 +183,7 @@ export default function HtmlFormatter() {
         </div>
       </div>
 
-      {error && (
-        <div className="px-4 py-3 rounded-lg text-sm" style={{ backgroundColor: "var(--color-error)", color: "#fff" }} role="alert">
-          {error}
-        </div>
-      )}
+      <ErrorBanner message={error} />
 
       {/* Controls */}
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg border" style={{ borderColor: "var(--color-hairline)", backgroundColor: "var(--color-canvas)" }}>

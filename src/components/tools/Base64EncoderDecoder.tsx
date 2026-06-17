@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+import ErrorBanner from "../ErrorBanner";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 
 /**
  * Base64EncoderDecoder — encode text to Base64 or decode Base64 back to text.
@@ -9,7 +11,7 @@ export default function Base64EncoderDecoder() {
   const [output, setOutput] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const process = useCallback(() => {
     if (!input.trim()) {
@@ -42,13 +44,6 @@ export default function Base64EncoderDecoder() {
     }
   }, [input, mode]);
 
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
-
   return (
     <div className="space-y-6">
       <div>
@@ -72,11 +67,7 @@ export default function Base64EncoderDecoder() {
         />
       </div>
 
-      {error && (
-        <div className="px-4 py-3 rounded-lg text-sm" style={{ backgroundColor: "var(--color-error)", color: "#fff" }} role="alert">
-          {error}
-        </div>
-      )}
+      <ErrorBanner message={error} />
 
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex rounded-lg overflow-hidden border" style={{ borderColor: "var(--color-hairline)" }}>

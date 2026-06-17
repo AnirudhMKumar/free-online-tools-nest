@@ -1,4 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import ErrorBanner from "../ErrorBanner";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
+import type { Tool } from "../types";
 
 export default function CsvToJson() {
   const [input, setInput] = useState(
@@ -9,7 +12,7 @@ export default function CsvToJson() {
   const [hasHeader, setHasHeader] = useState(true);
   const [minify, setMinify] = useState(false);
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopyToClipboard] = useCopyToClipboard();
 
   // Parse CSV function
   const parseCSV = useCallback((csvText: string, separator: string): string[][] => {
@@ -69,7 +72,7 @@ export default function CsvToJson() {
       }
 
       setError("");
-      let resultData: any = null;
+      let resultData: Record<string, string>[] | string[][] | null = null;
 
       if (hasHeader) {
         const headers = parsed[0].map((h) => h.trim());
@@ -92,8 +95,8 @@ export default function CsvToJson() {
         : JSON.stringify(resultData, null, 2);
 
       setOutput(formatted);
-    } catch (err: any) {
-      setError(err?.message || "Failed to parse CSV data.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to parse CSV data.");
       setOutput("");
     }
   }, [input, delimiter, hasHeader, minify, parseCSV]);
@@ -109,12 +112,9 @@ export default function CsvToJson() {
     }
   }, [input, delimiter, error, parseCSV]);
 
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
+  const handleCopy = useCallback(() => {
+    handleCopyToClipboard(output);
+  }, [output, handleCopyToClipboard]);
 
   const handleDownload = useCallback(() => {
     if (!output) return;
@@ -209,11 +209,7 @@ export default function CsvToJson() {
         </div>
       </div>
 
-      {error && (
-        <div className="px-4 py-3 rounded-lg text-sm" style={{ backgroundColor: "var(--color-error)", color: "#fff" }} role="alert">
-          {error}
-        </div>
-      )}
+      <ErrorBanner message={error} />
 
       {/* Configurations panel */}
       <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-lg border" style={{ borderColor: "var(--color-hairline)", backgroundColor: "var(--color-canvas)" }}>
@@ -244,7 +240,8 @@ export default function CsvToJson() {
               type="checkbox"
               checked={hasHeader}
               onChange={(e) => setHasHeader(e.target.checked)}
-              className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+              className="rounded"
+              style={{ accentColor: "var(--color-violet)" }}
             />
             <span>First Row is Header</span>
           </label>
@@ -254,7 +251,8 @@ export default function CsvToJson() {
               type="checkbox"
               checked={minify}
               onChange={(e) => setMinify(e.target.checked)}
-              className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+              className="rounded"
+              style={{ accentColor: "var(--color-violet)" }}
             />
             <span>Minify JSON</span>
           </label>
@@ -285,11 +283,11 @@ export default function CsvToJson() {
                 <tr style={{ backgroundColor: "var(--color-canvas-soft-2)", borderBottom: "1px solid var(--color-hairline)" }}>
                   {hasHeader ? (
                     previewData[0].map((header, idx) => (
-                      <th key={idx} className="p-3 font-semibold text-gray-700 dark:text-gray-300">{header || `field_${idx + 1}`}</th>
+                      <th key={idx} className="p-3 font-semibold" style={{ color: "var(--color-ink)" }}>{header || `field_${idx + 1}`}</th>
                     ))
                   ) : (
                     previewData[0].map((_, idx) => (
-                      <th key={idx} className="p-3 font-semibold text-gray-700 dark:text-gray-300">Column {idx + 1}</th>
+                      <th key={idx} className="p-3 font-semibold" style={{ color: "var(--color-ink)" }}>Column {idx + 1}</th>
                     ))
                   )}
                 </tr>
@@ -298,7 +296,7 @@ export default function CsvToJson() {
                 {(hasHeader ? previewData.slice(1) : previewData).map((row, rIdx) => (
                   <tr key={rIdx} style={{ borderBottom: "1px solid var(--color-hairline)", backgroundColor: "var(--color-canvas)" }}>
                     {row.map((cell, cIdx) => (
-                      <td key={cIdx} className="p-3 text-gray-600 dark:text-gray-400 font-mono truncate max-w-[180px]">{cell}</td>
+                      <td key={cIdx} className="p-3 font-mono truncate max-w-[180px]" style={{ color: "var(--color-body)" }}>{cell}</td>
                     ))}
                   </tr>
                 ))}

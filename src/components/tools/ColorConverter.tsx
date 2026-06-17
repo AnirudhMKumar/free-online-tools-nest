@@ -110,9 +110,13 @@ export default function ColorConverter() {
   };
 
   const handleCopy = async (value: string, label: string) => {
-    await navigator.clipboard.writeText(value);
-    setCopied(label);
-    setTimeout(() => setCopied(null), 2000);
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(label);
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      setCopied(null);
+    }
   };
 
   const previewColor = hexVal.match(/^#[0-9a-f]{6}$/i) ? hexVal : rgbToHex(rgbR, rgbG, rgbB);

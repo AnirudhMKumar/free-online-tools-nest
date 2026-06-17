@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 
 /**
  * LoremIpsumGenerator — generate placeholder text by paragraphs, sentences, or words.
@@ -46,7 +47,7 @@ export default function LoremIpsumGenerator() {
   const [mode, setMode] = useState<Mode>("paragraphs");
   const [amount, setAmount] = useState(3);
   const [output, setOutput] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const generate = useCallback(() => {
     let result = "";
@@ -63,13 +64,6 @@ export default function LoremIpsumGenerator() {
     }
     setOutput(result);
   }, [mode, amount]);
-
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
 
   return (
     <div className="space-y-6">
@@ -122,7 +116,6 @@ export default function LoremIpsumGenerator() {
           type="button"
           onClick={generate}
           className="btn-primary btn-sm"
-          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-on-primary)" }}
         >
           Generate
         </button>

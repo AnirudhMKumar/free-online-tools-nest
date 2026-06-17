@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+import ErrorBanner from "../ErrorBanner";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 
 /**
  * JsonFormatter — format, validate, and beautify JSON with error reporting.
@@ -8,7 +10,7 @@ export default function JsonFormatter() {
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [indentSize, setIndentSize] = useState(2);
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const format = useCallback(() => {
     if (!input.trim()) {
@@ -40,13 +42,6 @@ export default function JsonFormatter() {
     }
   }, [input]);
 
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
-
   return (
     <div className="space-y-6">
       <div>
@@ -71,18 +66,7 @@ export default function JsonFormatter() {
       </div>
 
       {/* Error display */}
-      {error && (
-        <div
-          className="px-4 py-3 rounded-lg text-sm"
-          style={{
-            backgroundColor: "var(--color-error)",
-            color: "#fff",
-          }}
-          role="alert"
-        >
-          <strong>Error:</strong> {error}
-        </div>
-      )}
+      <ErrorBanner message={error} />
 
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3">

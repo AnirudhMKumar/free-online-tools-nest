@@ -77,8 +77,8 @@ export default function RegexTester() {
         }
       }
       setMatches(found);
-    } catch (err: any) {
-      setRegexError(err?.message || "Invalid regular expression.");
+    } catch (err: unknown) {
+      setRegexError(err instanceof Error ? err.message : "Invalid regular expression.");
       setMatches([]);
     }
   }, [pattern, testText, flags]);
@@ -170,7 +170,8 @@ export default function RegexTester() {
                   type="checkbox"
                   checked={flagG}
                   onChange={(e) => setFlagG(e.target.checked)}
-                  className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+                  className="rounded"
+                  style={{ accentColor: "var(--color-violet)" }}
                 />
                 <span>Global (g)</span>
               </label>
@@ -179,7 +180,8 @@ export default function RegexTester() {
                   type="checkbox"
                   checked={flagI}
                   onChange={(e) => setFlagI(e.target.checked)}
-                  className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+                  className="rounded"
+                  style={{ accentColor: "var(--color-violet)" }}
                 />
                 <span>Case Insensitive (i)</span>
               </label>
@@ -188,7 +190,8 @@ export default function RegexTester() {
                   type="checkbox"
                   checked={flagM}
                   onChange={(e) => setFlagM(e.target.checked)}
-                  className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+                  className="rounded"
+                  style={{ accentColor: "var(--color-violet)" }}
                 />
                 <span>Multiline (m)</span>
               </label>
@@ -197,7 +200,8 @@ export default function RegexTester() {
                   type="checkbox"
                   checked={flagS}
                   onChange={(e) => setFlagS(e.target.checked)}
-                  className="rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+                  className="rounded"
+                  style={{ accentColor: "var(--color-violet)" }}
                 />
                 <span>Dotall (s)</span>
               </label>
@@ -271,9 +275,9 @@ export default function RegexTester() {
                       matches.map((m, idx) => (
                         <tr key={idx} style={{ borderBottom: "1px solid var(--color-hairline)", backgroundColor: "var(--color-canvas)" }}>
                           <td className="p-2.5 font-mono font-semibold" style={{ color: "var(--color-primary)" }}>{m.text}</td>
-                          <td className="p-2.5 text-gray-500">{m.index}</td>
-                          <td className="p-2.5 text-gray-500">{m.length}</td>
-                          <td className="p-2.5 font-mono text-gray-500">
+                          <td className="p-2.5" style={{ color: "var(--color-body)" }}>{m.index}</td>
+                          <td className="p-2.5" style={{ color: "var(--color-body)" }}>{m.length}</td>
+                          <td className="p-2.5 font-mono" style={{ color: "var(--color-body)" }}>
                             {m.groups.length > 0 ? (
                               <div className="flex flex-col gap-1">
                                 {m.groups.map((group, gIdx) => (

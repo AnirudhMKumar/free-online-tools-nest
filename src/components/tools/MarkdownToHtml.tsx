@@ -1,18 +1,22 @@
 import { useState, useEffect, useCallback } from "react";
 import { marked } from "marked";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
+import ErrorBanner from "../ErrorBanner";
 
 export default function MarkdownToHtml() {
   const [input, setInput] = useState(
     "# Markdown Guide\n\nWrite your **markdown** content here! You can add:\n\n* Bulleted lists\n* Bold and italic styling\n* [Links](https://freeonlinetoolsnest.com)\n\n## Custom Table Example\n\n| Tool Name | Speed | Usefulness |\n| :--- | :--- | :--- |\n| Markdown to HTML | Instant | 10/10 |\n| CSV to JSON | Fast | 10/10 |\n\n```javascript\n// Code highlight blocks\nconst greeting = 'Hello, developer!';\nconsole.log(greeting);\n```"
   );
   const [outputHtml, setOutputHtml] = useState("");
+  const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState<"preview" | "html">("preview");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   // Compile Markdown to HTML
   useEffect(() => {
     if (!input.trim()) {
       setOutputHtml("");
+      setError("");
       return;
     }
     try {
@@ -24,20 +28,20 @@ export default function MarkdownToHtml() {
       // Resolve potential Promise (marked.parse can return string or Promise depending on options/async plugins)
       if (typeof parsed === "string") {
         setOutputHtml(parsed);
+        setError("");
       } else {
-        parsed.then((res) => setOutputHtml(res));
+        parsed.then((res) => { setOutputHtml(res); setError(""); }).catch(() => {
+          setOutputHtml("");
+          setError("Error parsing markdown content.");
+        });
       }
     } catch {
-      setOutputHtml("<p className='text-red-500'>Error parsing markdown.</p>");
+      setOutputHtml("");
+      setError("Error parsing markdown content.");
     }
   }, [input]);
 
-  const handleCopy = useCallback(async () => {
-    if (!outputHtml) return;
-    await navigator.clipboard.writeText(outputHtml);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [outputHtml]);
+
 
   const handleClear = () => {
     setInput("");
@@ -154,6 +158,8 @@ export default function MarkdownToHtml() {
           )}
         </div>
       </div>
+
+      <ErrorBanner message={error} />
 
       {/* Footer controls */}
       <div className="flex justify-end gap-3">

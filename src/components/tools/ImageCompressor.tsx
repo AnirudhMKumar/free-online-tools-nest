@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import ErrorBanner from "../ErrorBanner";
+import { formatBytes } from "../../helpers/utils";
 
 interface ImageStats {
   name: string;
@@ -23,15 +25,6 @@ export default function ImageCompressor() {
   const [error, setError] = useState<string>("");
 
   const originalImgRef = useRef<HTMLImageElement | null>(null);
-
-  // Helper: format bytes
-  const formatBytes = (bytes: number) => {
-    if (bytes === 0) return "0 Bytes";
-    const k = 1024;
-    const sizes = ["Bytes", "KB", "MB"];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
-  };
 
   // Perform compression client-side
   const compressImage = useCallback(() => {
@@ -91,8 +84,8 @@ export default function ImageCompressor() {
         format,
         format === "image/png" ? undefined : quality // PNG does not support quality options in toBlob
       );
-    } catch (err: any) {
-      setError(err?.message || "Failed to compress image.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to compress image.");
       setCompressing(false);
     }
   }, [imageFile, quality, format, scaleWidth, compressedSrc]);
@@ -254,7 +247,8 @@ export default function ImageCompressor() {
                   step="0.05"
                   value={quality}
                   onChange={(e) => setQuality(parseFloat(e.target.value))}
-                  className="w-full h-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer"
+                  style={{ backgroundColor: "var(--color-canvas-soft-2)" }}
                 />
               </div>
             )}
@@ -273,8 +267,9 @@ export default function ImageCompressor() {
                 step="5"
                 value={scaleWidth}
                 onChange={(e) => setScaleWidth(parseInt(e.target.value))}
-                className="w-full h-1.5 bg-gray-200 dark:bg-gray-800 rounded-lg appearance-none cursor-pointer"
-              />
+                  className="w-full h-1.5 rounded-lg appearance-none cursor-pointer"
+                  style={{ backgroundColor: "var(--color-canvas-soft-2)" }}
+                />
             </div>
 
             {/* Hidden image to load dimensions */}
@@ -293,8 +288,6 @@ export default function ImageCompressor() {
                 disabled={compressing || !compressedSrc}
                 className="w-full btn-primary"
                 style={{
-                  backgroundColor: "var(--color-primary)",
-                  color: "var(--color-on-primary)",
                   opacity: compressing || !compressedSrc ? 0.6 : 1,
                 }}
               >
@@ -343,7 +336,7 @@ export default function ImageCompressor() {
               {/* Original Preview */}
               <div className="border rounded-xl p-3 flex flex-col items-center gap-2" style={{ borderColor: "var(--color-hairline)" }}>
                 <span className="text-xs font-semibold" style={{ color: "var(--color-mute)" }}>Original</span>
-                <div className="relative border rounded-lg overflow-hidden w-full flex items-center justify-center h-48 bg-gray-50 dark:bg-neutral-900">
+                <div className="relative border rounded-lg overflow-hidden w-full flex items-center justify-center h-48" style={{ backgroundColor: "var(--color-canvas-soft)" }}>
                   <img src={imageSrc} alt="Original input preview" className="max-w-full max-h-full object-contain" />
                 </div>
               </div>
@@ -351,10 +344,10 @@ export default function ImageCompressor() {
               {/* Compressed Preview */}
               <div className="border rounded-xl p-3 flex flex-col items-center gap-2" style={{ borderColor: "var(--color-hairline)" }}>
                 <span className="text-xs font-semibold" style={{ color: "var(--color-mute)" }}>Optimized Output</span>
-                <div className="relative border rounded-lg overflow-hidden w-full flex items-center justify-center h-48 bg-gray-50 dark:bg-neutral-900">
+                <div className="relative border rounded-lg overflow-hidden w-full flex items-center justify-center h-48" style={{ backgroundColor: "var(--color-canvas-soft)" }}>
                   {compressing ? (
-                    <div className="flex flex-col items-center gap-2 text-sm text-gray-500">
-                      <svg className="animate-spin h-5 w-5 text-violet-500" fill="none" viewBox="0 0 24 24">
+                    <div className="flex flex-col items-center gap-2 text-sm" style={{ color: "var(--color-mute)" }}>
+                      <svg className="animate-spin h-5 w-5" style={{ color: "var(--color-violet)" }} fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                       </svg>
@@ -372,11 +365,7 @@ export default function ImageCompressor() {
         </div>
       )}
 
-      {error && (
-        <div className="px-4 py-3 rounded-lg text-sm" style={{ backgroundColor: "var(--color-error)", color: "#fff" }} role="alert">
-          {error}
-        </div>
-      )}
+      <ErrorBanner message={error} />
     </div>
   );
 }

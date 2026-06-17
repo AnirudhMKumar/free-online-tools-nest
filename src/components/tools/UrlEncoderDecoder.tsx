@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
+import ErrorBanner from "../ErrorBanner";
 
 /**
  * UrlEncoderDecoder — encode/decode URLs and query strings.
@@ -6,12 +8,14 @@ import { useState, useCallback } from "react";
 export default function UrlEncoderDecoder() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
+  const [error, setError] = useState("");
   const [mode, setMode] = useState<"encode" | "decode">("encode");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const process = useCallback(() => {
     if (!input.trim()) {
       setOutput("");
+      setError("");
       return;
     }
     try {
@@ -20,17 +24,12 @@ export default function UrlEncoderDecoder() {
       } else {
         setOutput(decodeURIComponent(input));
       }
+      setError("");
     } catch {
-      setOutput("Error: Invalid input for decoding.");
+      setOutput("");
+      setError("Invalid input for decoding.");
     }
   }, [input, mode]);
-
-  const handleCopy = useCallback(async () => {
-    if (!output) return;
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [output]);
 
   return (
     <div className="space-y-6">
@@ -76,11 +75,12 @@ export default function UrlEncoderDecoder() {
           type="button"
           onClick={process}
           className="btn-primary btn-sm"
-          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-on-primary)" }}
         >
           Convert
         </button>
       </div>
+
+      <ErrorBanner message={error} />
 
       {output && (
         <div>

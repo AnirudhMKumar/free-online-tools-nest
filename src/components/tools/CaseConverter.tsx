@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
+import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
 
 /**
  * CaseConverter — convert text between 5 case modes.
@@ -36,16 +37,9 @@ function convertCase(text: string, mode: CaseMode): string {
 export default function CaseConverter() {
   const [text, setText] = useState("");
   const [mode, setMode] = useState<CaseMode>("upper");
-  const [copied, setCopied] = useState(false);
+  const [copied, handleCopy] = useCopyToClipboard();
 
   const result = convertCase(text, mode);
-
-  const handleCopy = useCallback(async () => {
-    if (!result) return;
-    await navigator.clipboard.writeText(result);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [result]);
 
   return (
     <div className="space-y-6">

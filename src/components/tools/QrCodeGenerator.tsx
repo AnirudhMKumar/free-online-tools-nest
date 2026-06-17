@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from "react";
+import ErrorBanner from "../ErrorBanner";
 
 /**
  * QrCodeGenerator — generate QR codes from text/URLs, download as PNG.
@@ -8,7 +9,8 @@ export default function QrCodeGenerator() {
   const [input, setInput] = useState("");
   const [size, setSize] = useState(256);
   const [generated, setGenerated] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [error, setError] = useState("");
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const generate = useCallback(async () => {
     if (!input.trim() || !canvasRef.current) return;
@@ -25,8 +27,9 @@ export default function QrCodeGenerator() {
         },
       });
       setGenerated(true);
+      setError("");
     } catch (err) {
-      console.error("QR generation failed:", err);
+      setError(err instanceof Error ? err.message : "Failed to generate QR code.");
     }
   }, [input, size]);
 
@@ -98,6 +101,8 @@ export default function QrCodeGenerator() {
           Generate QR Code
         </button>
       </div>
+
+      <ErrorBanner message={error} />
 
       {/* Canvas output */}
       <div className="flex flex-col items-center gap-4">
