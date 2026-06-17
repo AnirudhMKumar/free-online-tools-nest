@@ -1,0 +1,20 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import HashGenerator from "../../components/tools/HashGenerator";
+import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("hash-generator")!;
+const category = getCategoryBySlug(tool.categorySlug)!;
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+>
+  <HashGenerator client:load />
+</ToolLayout>

@@ -7,6 +7,7 @@ import Hero from "../components/Hero.astro";
 import CategoryCard from "../components/CategoryCard.astro";
 import ToolCard from "../components/ToolCard.astro";
 import FAQSection from "../components/FAQSection.astro";
+import AsSeenOn from "../components/AsSeenOn.astro";
 import { CATEGORIES, TOOLS, getFeaturedTools, getToolsByCategory, SITE } from "../data/tools";
 
 const featured = getFeaturedTools();
@@ -118,6 +119,9 @@ const websiteJsonLd = {
     </div>
   </section>
 
+  <!-- As Seen On -->
+  <AsSeenOn />
+
   <!-- Why Choose Us -->
   <section class="py-16 md:py-24" id="why-us">
     <div class="container-page">
@@ -227,17 +231,36 @@ const websiteJsonLd = {
         </ul>
 
         <h4 class="text-lg font-medium text-ink mt-6 mb-3">
-          3. Free Online Calculators for Instant Math
-        </h4>
-        <p class="text-body leading-relaxed mb-4">
-          Complex equations shouldn't require opening a heavy spreadsheet or desktop application. Our <strong>free online calculators</strong> provide:
-        </p>
-        <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
-          <li><strong>Percentage Calculator Online</strong>: A multi-mode calculator to solve three distinct percentage math operations: finding a percentage of a number, determining what percentage one number is of another, and calculating the percentage change (increase or decrease) between two values.</li>
-        </ul>
+           3. Free Online Calculators for Instant Math
+         </h4>
+         <p class="text-body leading-relaxed mb-4">
+           Complex equations shouldn't require opening a heavy spreadsheet or desktop application. Our <strong>free online calculators</strong> provide:
+         </p>
+         <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+           <li><strong>Percentage Calculator Online</strong>: A multi-mode calculator to solve three distinct percentage math operations: finding a percentage of a number, determining what percentage one number is of another, and calculating the percentage change (increase or decrease) between two values.</li>
+           <li><strong>Age Calculator Online</strong>: Calculate exact age from date of birth in years, months, weeks, days, hours, minutes, and seconds with support for any two-date comparison.</li>
+           <li><strong>BMI Calculator Online</strong>: Compute Body Mass Index from height and weight with an interactive BMI scale, color-coded categories, and weight classification.</li>
+           <li><strong>Tip Calculator Online</strong>: Calculate gratuity and split restaurant bills among any number of people with preset and custom tip percentages.</li>
+           <li><strong>Date Difference Calculator</strong>: Find the exact duration between any two dates in years, months, weeks, and days for project planning and countdowns.</li>
+           <li><strong>Number to Words Converter</strong>: Convert any number into its English word representation, perfect for writing checks and invoices.</li>
+         </ul>
 
-        <h4 class="text-lg font-medium text-ink mt-6 mb-3">
-          4. Online Converter Tools for Seamless Formats
+         <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+           4. PDF Tools for Document Processing
+         </h4>
+         <p class="text-body leading-relaxed mb-4">
+           Work with PDF documents without installing desktop software. Our <strong>free online PDF tools</strong> run entirely in your browser:
+         </p>
+         <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+           <li><strong>PDF Merger Online</strong>: Combine multiple PDF files into a single document with page reordering.</li>
+           <li><strong>PDF Splitter Online</strong>: Split large PDFs into individual pages or extract specific page ranges.</li>
+           <li><strong>PDF Compressor Online</strong>: Reduce PDF file sizes by compressing embedded images and removing redundant data.</li>
+           <li><strong>PDF to Text Converter</strong>: Extract and copy text content from PDF documents with preserved formatting.</li>
+           <li><strong>PDF to Image Converter</strong>: Convert PDF pages into high-quality PNG or JPEG images with custom quality settings.</li>
+         </ul>
+
+         <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+           5. Online Converter Tools for Seamless Formats
         </h4>
         <p class="text-body leading-relaxed mb-4">
           Convert files, strings, and values on the fly with our <strong>online converter tools</strong> suite:

@@ -1,0 +1,20 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import PdfSplitter from "../../components/tools/PdfSplitter";
+import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("pdf-splitter")!;
+const category = getCategoryBySlug(tool.categorySlug)!;
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+>
+  <PdfSplitter client:load />
+</ToolLayout>

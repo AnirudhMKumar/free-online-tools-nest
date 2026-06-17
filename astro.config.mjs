@@ -12,6 +12,9 @@ export default defineConfig({
     format: "directory",
   },
   vite: {
+    esbuild: {
+      jsxDev: false,
+    },
     plugins: [tailwindcss()],
   },
   server: {

@@ -17,6 +17,8 @@ import Layout from "./Layout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import ToolCard from "../components/ToolCard.astro";
 import FAQSection from "../components/FAQSection.astro";
+import FavoriteButton from "../components/FavoriteButton";
+import ShareBar from "../components/ShareBar.astro";
 import { getRelatedTools, getCategoryBySlug, getToolBySlug, SITE } from "../data/tools";
 
 const {
@@ -117,6 +119,12 @@ const combinedJsonLd = [toolJsonLd, breadcrumbJsonLd];
         <!-- Tool component slot -->
         <div class="card p-4 sm:p-6 md:p-8">
           <slot />
+        </div>
+
+        <!-- Favorite + Share -->
+        <div class="mt-4 flex items-center gap-3 flex-wrap">
+          <FavoriteButton client:load toolSlug={toolSlug} />
+          <ShareBar title={title} url={`${SITE.url}/tools/${toolSlug}/`} />
         </div>
 
         <!-- Keywords for SEO -->

@@ -1,0 +1,103 @@
+---
+/**
+ * ShareBar — social sharing buttons for tool pages.
+ * Uses Web Share API on mobile, falls back to direct links.
+ */
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+
+const shareLinks = [
+  {
+    name: "Twitter/X",
+    href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+  },
+  {
+    name: "Facebook",
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+  },
+  {
+    name: "LinkedIn",
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+  },
+  {
+    name: "Reddit",
+    href: `https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`,
+    icon: `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.052 1.587.072.333.108.675.108 1.022 0 2.913-3.59 5.278-8.002 5.278-4.413 0-8.002-2.365-8.002-5.278 0-.347.036-.689.108-1.022a1.755 1.755 0 0 1 .657-3.401c.476 0 .898.182 1.207.491 1.195-.856 2.85-1.418 4.674-1.488l.877-4.106.002-.003.001-.002.002-.002a.04.04 0 0 1 .02-.014.04.04 0 0 1 .02-.014c.002 0 .005-.001.007-.002l4.424-.93c.053-.606.563-1.073 1.178-1.073zm-7.63 6.633c-.551 0-1 .449-1 1 0 .552.449 1 1 1 .552 0 1-.448 1-1 0-.551-.448-1-1-1zm5.24 0c-.552 0-1 .449-1 1 0 .552.448 1 1 1 .551 0 1-.448 1-1 0-.551-.449-1-1-1zm-5.383 4.253c-.168.176-.252.426-.14.628.314.571.948.952 1.749 1.058.802.106 1.585-.024 2.08-.354.14-.093.245-.245.245-.42a.468.468 0 0 0-.467-.468.475.475 0 0 0-.272.086c-.343.234-.894.327-1.458.248-.564-.079-1.034-.324-1.225-.57a.476.476 0 0 0-.335-.195.471.471 0 0 0-.177-.013zm.088.769c-.035-.017-.067-.039-.098-.056a.451.451 0 0 0 .132.36c.029.031.064.055.1.076-.03-.07-.072-.19-.134-.38zm4.311-.211c-.003.002-.006.005-.008.008-.003.003-.007.005-.011.008.06.141.148.249.274.336.064.045.135.082.21.122.01.055.041.104.089.137.01.005.02.011.03.015a.404.404 0 0 0-.218-.39c-.154-.089-.278-.153-.366-.236z"/></svg>`,
+  },
+];
+
+const shareUrl = url;
+const shareTitle = title;
+---
+
+<div class="flex items-center gap-2 mt-6 pt-6 border-t" style="border-color: var(--color-hairline);">
+  <span class="text-xs font-mono uppercase tracking-wider mr-1" style="color: var(--color-mute);">
+    Share
+  </span>
+  {shareLinks.map((link) => (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="share-btn"
+      aria-label={`Share on ${link.name}`}
+      title={`Share on ${link.name}`}
+      set:html={link.icon}
+    />
+  ))}
+  <button
+    type="button"
+    id="native-share-btn"
+    class="share-btn"
+    aria-label="Share via system share"
+    title="Share via system"
+    style="display: none;"
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+    </svg>
+  </button>
+</div>
+
+<script is:inline>
+(function() {
+  var nativeBtn = document.getElementById("native-share-btn");
+  if (nativeBtn && typeof navigator !== "undefined" && "share" in navigator) {
+    nativeBtn.style.display = "";
+    nativeBtn.addEventListener("click", function() {
+      navigator.share({
+        title: '${shareTitle}',
+        url: '${shareUrl}',
+      }).catch(function() {});
+    });
+  }
+})();
+</script>
+
+<style>
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: var(--color-mute);
+    transition: color 0.15s, background-color 0.15s;
+    text-decoration: none;
+  }
+  .share-btn:hover {
+    color: var(--color-ink);
+    background-color: var(--color-canvas-soft-2);
+  }
+</style>

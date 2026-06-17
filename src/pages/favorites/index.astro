@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FavoritesPage from "../../components/FavoritesPage";
+import { TOOLS, SITE } from "../../data/tools";
+
+// Serialize tools for client-side use
+const toolsJson = JSON.stringify(
+  TOOLS.map((t) => ({
+    slug: t.slug,
+    name: t.name,
+    description: t.description,
+    icon: t.icon,
+    categorySlug: t.categorySlug,
+  }))
+);
+---
+
+<Layout
+  title="Favorite Tools — Free Online Tools Nest"
+  description="Your saved favorite tools. Quickly access the tools you use most."
+  canonicalPath="/favorites/"
+>
+  <div class="container-page py-8 md:py-12">
+    <Breadcrumbs items={[{ label: "Favorites" }]} />
+
+    <header class="mb-10">
+      <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
+        Your Favorite Tools
+      </h1>
+      <p class="mt-3 text-body text-lg max-w-xl">
+        Tools you have bookmarked for quick access. Click the heart on any tool page to add it here.
+      </p>
+    </header>
+
+    <FavoritesPage client:load data={toolsJson} />
+  </div>
+</Layout>
