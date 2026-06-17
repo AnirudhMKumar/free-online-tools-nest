@@ -25,16 +25,20 @@ export default function ImageCompressor() {
   const [error, setError] = useState<string>("");
 
   const originalImgRef = useRef<HTMLImageElement | null>(null);
+  const compressedSrcRef = useRef<string>("");
 
   // Perform compression client-side
   const compressImage = useCallback(() => {
     if (!originalImgRef.current || !imageFile) return;
 
+    const img = originalImgRef.current;
+    // Guard: image must have loaded dimensions
+    if (!img.naturalWidth || !img.naturalHeight) return;
+
     setCompressing(true);
     setError("");
 
     try {
-      const img = originalImgRef.current;
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
@@ -61,12 +65,13 @@ export default function ImageCompressor() {
             return;
           }
 
-          // Revoke old object URL if any
-          if (compressedSrc) {
-            URL.revokeObjectURL(compressedSrc);
+          // Revoke previous blob URL via ref (avoids stale closure on compressedSrc state)
+          if (compressedSrcRef.current) {
+            URL.revokeObjectURL(compressedSrcRef.current);
           }
 
           const blobUrl = URL.createObjectURL(blob);
+          compressedSrcRef.current = blobUrl;
           setCompressedSrc(blobUrl);
 
           setStats({
@@ -88,7 +93,7 @@ export default function ImageCompressor() {
       setError(err instanceof Error ? err.message : "Failed to compress image.");
       setCompressing(false);
     }
-  }, [imageFile, quality, format, scaleWidth, compressedSrc]);
+  }, [imageFile, quality, format, scaleWidth]);
 
   // Clean up object URLs on unmount
   useEffect(() => {
