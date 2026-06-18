@@ -1,4 +1,19 @@
-/*
+# Pages dev domain — block indexing (prevents duplicate content)
+https://freeonlinetoolsnest.pages.dev/*
+  X-Robots-Tag: noindex
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Live custom domain — allow indexing, security headers only
+https://freeonlinetoolsnest.com/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Preview deployment hashes — block indexing
+https://*.freeonlinetoolsnest.pages.dev/*
+  X-Robots-Tag: noindex
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
