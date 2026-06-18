@@ -1,0 +1,88 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { SITE } from "../../data/tools";
+import { languages } from "../../i18n/ui";
+import type { Lang } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Lang };
+const t = useTranslations(locale);
+const canonicalPath = `/${locale}/terms-and-conditions/`;
+const localePrefix = `/${locale}`;
+---
+
+<Layout
+  title={t("terms.metaTitle")}
+  description={t("terms.metaDesc")}
+  canonicalPath={canonicalPath}
+>
+  <div class="container-narrow py-12 md:py-20">
+    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
+      {t("terms.title")}
+    </h1>
+    <p class="text-sm text-mute mb-10">{t("terms.lastUpdated").replace("{date}", "June 2026")}</p>
+
+    <article class="space-y-6 text-body leading-relaxed">
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.acceptanceTitle")}</h2>
+        <p>
+          {t("terms.acceptanceP1").replace("{name}", SITE.name).replace("{domain}", SITE.domain)}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.useOfServiceTitle")}</h2>
+        <p>
+          {t("terms.useOfServiceP1")}
+        </p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>{t("terms.useOfServiceItem1")}</li>
+          <li>{t("terms.useOfServiceItem2")}</li>
+          <li>{t("terms.useOfServiceItem3")}</li>
+          <li>{t("terms.useOfServiceItem4")}</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.disclaimerTitle")}</h2>
+        <p>
+          {t("terms.disclaimerP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.limitationTitle")}</h2>
+        <p>
+          {t("terms.limitationP1").replace("{name}", SITE.name)}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.ipTitle")}</h2>
+        <p>
+          {t("terms.ipP1").replace("{name}", SITE.name)}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.changesTitle")}</h2>
+        <p>
+          {t("terms.changesP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.contactTitle")}</h2>
+        <p>
+          {t("terms.contactP1")}<a href={`${localePrefix}/contact/`} class="text-link hover:text-link-deep underline">{t("footer.contact")}</a>.
+        </p>
+      </section>
+    </article>
+  </div>
+</Layout>

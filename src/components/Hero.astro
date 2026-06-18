@@ -5,6 +5,9 @@
  * decorative chrome element per DESIGN.md.
  */
 import { SITE } from "../data/tools";
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 ---
 
 <section class="relative overflow-hidden" id="hero">
@@ -15,7 +18,7 @@ import { SITE } from "../data/tools";
     <!-- Eyebrow badge per DESIGN.md badge-secondary -->
     <div class="w-fit mx-auto flex items-center gap-2 mb-8 px-4 py-1.5 bg-canvas-soft rounded-full shadow-card text-xs font-mono text-body">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-success motion-safe:animate-pulse" aria-hidden="true"></span>
-      Free &middot; Fast &middot; Private
+      {t('hero.badge')}
     </div>
 
     <!-- Headline -->
@@ -49,10 +52,10 @@ import { SITE } from "../data/tools";
         <input
           id="hero-search"
           type="search"
-          placeholder="Search tools…"
+          placeholder={t('hero.searchPlaceholder')}
           autocomplete="off"
           class="w-full h-12 pl-12 pr-4 bg-canvas border border-hairline rounded-xl text-base text-ink placeholder:text-mute shadow-card focus:shadow-elevated focus:border-link transition-all duration-200 outline-none"
-          aria-label="Search tools"
+          aria-label={t('hero.searchLabel')}
         />
       </div>
       <!-- Search results dropdown -->
@@ -62,7 +65,7 @@ import { SITE } from "../data/tools";
     <!-- CTA buttons -->
     <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
       <a href="/tools/" class="btn-primary">
-        Browse all tools
+        {t('hero.cta')}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="5" y1="12" x2="19" y2="12"/>
           <polyline points="12 5 19 12 12 19"/>
@@ -116,7 +119,7 @@ import { SITE } from "../data/tools";
     ).slice(0, 5);
 
     if (matches.length === 0) {
-      results.innerHTML = `<div class="px-4 py-3 text-sm text-mute">No tools found for \u201C${q}\u201D</div>`;
+      results.innerHTML = `<div class="px-4 py-3 text-sm text-mute">Search results for \u201C${q}\u201D</div>`;
     } else {
       results.innerHTML = matches
         .map(

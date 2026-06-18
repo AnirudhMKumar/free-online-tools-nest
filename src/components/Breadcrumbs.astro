@@ -12,6 +12,9 @@ interface Props {
 }
 
 import { SITE } from "../data/tools";
+import { useTranslations, getLangFromUrl } from "../i18n/utils";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 
 const { items } = Astro.props;
 
@@ -20,7 +23,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 1, name: t('breadcrumb.home'), item: SITE.url },
     ...items.map((item, i) => ({
       "@type": "ListItem",
       position: i + 2,
@@ -31,10 +34,10 @@ const jsonLd = {
 };
 ---
 
-<nav aria-label="Breadcrumb" class="mb-6">
+<nav aria-label={t('breadcrumb.label')} class="mb-6">
   <ol class="flex items-center gap-1.5 text-sm text-mute flex-wrap">
     <li>
-      <a href="/" class="hover:text-ink transition-colors duration-150">Home</a>
+      <a href="/" class="hover:text-ink transition-colors duration-150">{t('breadcrumb.home')}</a>
     </li>
     {items.map((item, i) => (
       <li class="flex items-center gap-1.5">

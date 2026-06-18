@@ -11,6 +11,13 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es", "pt", "fr", "de", "hi", "ja", "ar"],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
   vite: {
     esbuild: {
       jsxDev: false,

@@ -1,0 +1,315 @@
+---
+/**
+ * Homepage (localized) — hero, categories, featured tools, why choose us, FAQ, SEO content.
+ */
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+import ToolCard from "../../components/ToolCard.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import AsSeenOn from "../../components/AsSeenOn.astro";
+import { CATEGORIES, TOOLS, getFeaturedTools, getToolsByCategory, SITE } from "../../data/tools";
+import { languages } from "../../i18n/ui";
+import type { Lang } from "../../i18n/ui";
+import { useTranslations } from "../../i18n/utils";
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((locale) => ({
+    params: { locale },
+  }));
+}
+
+const { locale } = Astro.params as { locale: Lang };
+const t = useTranslations(locale);
+const canonicalPath = `/${locale}/`;
+const localePrefix = `/${locale}`;
+
+const featured = getFeaturedTools();
+
+const homeFaqs = Array.from({ length: 7 }, (_, i) => {
+  const n = i + 1;
+  const answer = t(`home.faq.a${n}`);
+  return {
+    question: t(`home.faq.q${n}`),
+    answer: answer.includes("{name}") ? answer.replace("{name}", SITE.name) : answer,
+  };
+});
+
+// JSON-LD structured data
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/favicon-96x96.png`,
+  description: SITE.description,
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE.url}/tools/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+---
+
+<Layout
+  title={t("home.metaTitle")}
+  description={t("home.metaDesc")}
+  canonicalPath={canonicalPath}
+  jsonLd={[websiteJsonLd, organizationJsonLd]}
+>
+  <!-- Hero -->
+  <Hero />
+
+  <!-- Categories -->
+  <section class="py-16 md:py-24" id="categories">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          {t("home.browseByCategory")}
+        </h2>
+        <p class="mt-3 text-body max-w-lg mx-auto">
+          {t("home.browseByCategoryDesc").replace("{count}", String(CATEGORIES.length))}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {CATEGORIES.map((cat) => (
+          <CategoryCard
+            slug={cat.slug}
+            name={cat.name}
+            description={cat.description}
+            icon={cat.icon}
+            color={cat.color}
+            toolCount={getToolsByCategory(cat.slug).length}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tools -->
+  <section class="py-16 md:py-24 bg-canvas" id="featured-tools">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          {t("home.popularTools")}
+        </h2>
+        <p class="mt-3 text-body max-w-lg mx-auto">
+          {t("home.popularToolsDesc")}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {featured.map((tool) => (
+          <ToolCard
+            slug={tool.slug}
+            name={tool.name}
+            description={tool.description}
+            icon={tool.icon}
+            categorySlug={tool.categorySlug}
+          />
+        ))}
+      </div>
+      <div class="text-center mt-8">
+        <a href={`${localePrefix}/tools/`} class="btn-secondary">
+          {t("home.viewAllTools")}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline ml-1">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- As Seen On -->
+  <AsSeenOn />
+
+  <!-- Why Choose Us -->
+  <section class="py-16 md:py-24" id="why-us">
+    <div class="container-page">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
+          {t("home.whyChoose")}
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: "⚡",
+            title: t("home.why1Title"),
+            desc: t("home.why1Desc"),
+          },
+          {
+            icon: "🔒",
+            title: t("home.why2Title"),
+            desc: t("home.why2Desc"),
+          },
+          {
+            icon: "📱",
+            title: t("home.why3Title"),
+            desc: t("home.why3Desc"),
+          },
+        ].map((item) => (
+          <div class="card p-6 text-center">
+            <span class="text-3xl mb-4 block" aria-hidden="true">{item.icon}</span>
+            <h3 class="text-lg font-semibold text-ink mb-2">{item.title}</h3>
+            <p class="text-sm text-body leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <FAQSection items={homeFaqs} />
+
+  <!-- SEO Content -->
+  <section class="py-16 md:py-24 bg-canvas" id="about-section">
+    <div class="container-narrow">
+      <article class="prose-like">
+        <h2 class="text-2xl md:text-3xl font-semibold text-ink mb-6" style="letter-spacing: -0.96px;">
+          Free Online Tools Nest — Your All-in-One Browser-Based Utility Hub
+        </h2>
+
+        <p class="text-body leading-relaxed mb-6">
+          In today’s fast-paced digital world, efficiency and convenience are key to maintaining a productive workflow. Whether you are a content writer perfecting a blog post, a developer formatting a complex JSON payload, a designer converting color codes, or a student solving a math problem, having the right utility tools at your fingertips makes all the difference. <strong>Free Online Tools Nest</strong> is designed as a comprehensive, all-in-one web tools collection that addresses these everyday challenges.
+        </p>
+
+        <p class="text-body leading-relaxed mb-6">
+          We provide a diverse suite of <strong>free online tools</strong> built with a single core philosophy: they must be fast, completely free, and 100% private. Unlike many other platforms that require complex registrations, credit cards, or software installations, our tools work instantly, directly inside your web browser. By operating entirely client-side, we ensure that your sensitive data remains yours and yours alone.
+        </p>
+
+        <h3 class="text-xl font-semibold text-ink mt-8 mb-4" style="letter-spacing: -0.6px;">
+          Why Choose Browser-Based Online Tools?
+        </h3>
+
+        <p class="text-body leading-relaxed mb-6">
+          Traditional utility software often comes with high friction: downloading installers, updating applications, managing license keys, or dealing with intrusive advertisements. Many web-based alternatives also require you to upload your files or text to their servers, exposing your data to potential privacy risks or server-side security vulnerabilities.
+        </p>
+
+        <p class="text-body leading-relaxed mb-6">
+          <strong>Free Online Tools Nest</strong> solves this by leveraging modern browser-based technology. When you use our platform, all calculations, formatting, and file processing occur locally on your machine using client-side JavaScript. This offers three critical benefits:
+        </p>
+
+        <ul class="list-disc pl-6 mb-6 space-y-2 text-body">
+          <li><strong>Absolute Privacy</strong>: Since your input data is never sent to a backend server, there is zero risk of data leaks, interception, or unauthorized storage. This is particularly important for developers formatting API keys or payload data, and writers handling proprietary content.</li>
+          <li><strong>Instant Speed</strong>: Without the need to transmit data back and forth across a network, results are processed in real-time. As you type, the tool outputs update instantly.</li>
+          <li><strong>Offline Compatibility</strong>: Once a tool page is loaded in your browser, it can function completely offline. You can continue to count words, convert cases, or generate dummy text even without an active internet connection.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-ink mt-8 mb-4" style="letter-spacing: -0.6px;">
+          A Curated Directory of Essential Tool Categories
+        </h3>
+
+        <p class="text-body leading-relaxed mb-6">
+          Our platform organizes its <strong>web tools collection</strong> into seven intuitive categories, making it easy to find the exact utility you need to optimize your daily productivity.
+        </p>
+
+        <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+          1. Developer Tools for Modern Workflows
+        </h4>
+        <p class="text-body leading-relaxed mb-4">
+          Developers face daily formatting, encoding, and testing challenges. Our <strong>online developer tools</strong> category includes:
+        </p>
+        <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+          <li><strong>JSON Formatter Online</strong>: A utility that beautifies minified JSON payloads, formats nested structures, and validates code by highlighting syntax errors and line numbers in real-time.</li>
+          <li><strong>HTML Formatter Online</strong>: A fast utility to clean up messy HTML markups, customize indentation levels, and minify code for production performance.</li>
+          <li><strong>URL Encoder Decoder Online</strong>: An instant tool to convert special characters in URLs to safe percent-encoded representations, or decode them back to human-readable strings.</li>
+          <li><strong>Base64 Encoder Decoder Online</strong>: A secure encoder and decoder to translate binary or text data to and from Base64 format, ideal for data URIs, API request bodies, and email attachments.</li>
+          <li><strong>Regex Tester Online</strong>: A sandbox to test and validate regular expressions against mock strings with real-time match highlighting and capture-group identification.</li>
+        </ul>
+
+        <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+          2. Text Tools for Writers and Content Creators
+        </h4>
+        <p class="text-body leading-relaxed mb-4">
+          Creating well-formatted content requires precise tools. Our <strong>online text tools</strong> category provides:
+        </p>
+        <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+          <li><strong>Word Counter Online</strong>: A robust analyzer that breaks down word count, sentences, paragraphs, and estimates reading times instantly.</li>
+          <li><strong>Character Counter Online</strong>: A real-time character tracker that displays counts with and without spaces, perfect for writing Twitter posts, SMS, or Google meta descriptions.</li>
+          <li><strong>Case Converter Online</strong>: A text transformer that converts input strings to UPPERCASE, lowercase, Title Case, Sentence case, or camelCase with one click.</li>
+          <li><strong>Lorem Ipsum Generator Online</strong>: A placeholder dummy text creator that outputs custom word, sentence, or paragraph counts for design layouts and UI mockups.</li>
+        </ul>
+
+        <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+           3. Free Online Calculators for Instant Math
+         </h4>
+         <p class="text-body leading-relaxed mb-4">
+           Complex equations shouldn't require opening a heavy spreadsheet or desktop application. Our <strong>free online calculators</strong> provide:
+         </p>
+         <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+           <li><strong>Percentage Calculator Online</strong>: A multi-mode calculator to solve three distinct percentage math operations: finding a percentage of a number, determining what percentage one number is of another, and calculating the percentage change (increase or decrease) between two values.</li>
+           <li><strong>Age Calculator Online</strong>: Calculate exact age from date of birth in years, months, weeks, days, hours, minutes, and seconds with support for any two-date comparison.</li>
+           <li><strong>BMI Calculator Online</strong>: Compute Body Mass Index from height and weight with an interactive BMI scale, color-coded categories, and weight classification.</li>
+           <li><strong>Tip Calculator Online</strong>: Calculate gratuity and split restaurant bills among any number of people with preset and custom tip percentages.</li>
+           <li><strong>Date Difference Calculator</strong>: Find the exact duration between any two dates in years, months, weeks, and days for project planning and countdowns.</li>
+           <li><strong>Number to Words Converter</strong>: Convert any number into its English word representation, perfect for writing checks and invoices.</li>
+         </ul>
+
+         <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+           4. PDF Tools for Document Processing
+         </h4>
+         <p class="text-body leading-relaxed mb-4">
+           Work with PDF documents without installing desktop software. Our <strong>free online PDF tools</strong> run entirely in your browser:
+         </p>
+         <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+           <li><strong>PDF Merger Online</strong>: Combine multiple PDF files into a single document with page reordering.</li>
+           <li><strong>PDF Splitter Online</strong>: Split large PDFs into individual pages or extract specific page ranges.</li>
+           <li><strong>PDF Compressor Online</strong>: Reduce PDF file sizes by compressing embedded images and removing redundant data.</li>
+           <li><strong>PDF to Text Converter</strong>: Extract and copy text content from PDF documents with preserved formatting.</li>
+           <li><strong>PDF to Image Converter</strong>: Convert PDF pages into high-quality PNG or JPEG images with custom quality settings.</li>
+         </ul>
+
+         <h4 class="text-lg font-medium text-ink mt-6 mb-3">
+           5. Online Converter Tools for Seamless Formats
+        </h4>
+        <p class="text-body leading-relaxed mb-4">
+          Convert files, strings, and values on the fly with our <strong>online converter tools</strong> suite:
+        </p>
+        <ul class="list-disc pl-6 mb-6 space-y-1 text-body">
+          <li><strong>Online QR Code Generator</strong>: A tool that converts URLs, phone numbers, or plain text into downloadable, high-quality QR codes in PNG format for marketing campaigns and business cards.</li>
+          <li><strong>Color Converter Online</strong>: A utility for designers and web developers to translate color codes seamlessly between HEX, RGB, and HSL formats with a live color preview box.</li>
+          <li><strong>Markdown to HTML Converter</strong>: A tool that renders markdown syntax into clean, standard HTML code with a real-time side-by-side preview.</li>
+          <li><strong>CSV to JSON Converter</strong>: A parser that transforms spreadsheet tables or raw CSV inputs into structured JSON arrays of objects, complete with delimiter configurations.</li>
+          <li><strong>Image Compressor Online</strong>: A client-side optimizer that reduces file sizes for JPEG, PNG, and WebP images without uploading them to any server.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-ink mt-8 mb-4" style="letter-spacing: -0.6px;">
+          How Our Productivity Tools Streamline Your Work
+        </h3>
+
+        <p class="text-body leading-relaxed mb-6">
+          By bringing all these tools under a single, cohesive interface, <strong>Free Online Tools Nest</strong> acts as your digital Swiss Army knife. Instead of bookmarking dozens of different single-purpose websites — many of which are cluttered with cookie banners and video ads — you can rely on our clean, fast interface.
+        </p>
+
+        <p class="text-body leading-relaxed mb-6">
+          Our <strong>free productivity tools</strong> are designed with responsive layouts, ensuring that they work flawlessly on any screen size. Whether you are on a smartphone, a tablet, or a large desktop monitor, the layout adjusts to optimize screen space and usability. With keyboard navigation and accessible color contrasts, we ensure that every user can work comfortably and efficiently.
+        </p>
+
+        <h3 class="text-xl font-semibold text-ink mt-8 mb-4" style="letter-spacing: -0.6px;">
+          Looking Ahead: Continuous Platform Expansion
+        </h3>
+
+        <p class="text-body leading-relaxed mb-6">
+          We believe that a great utility platform should never stop growing. While our current library covers the most frequent text, code, math, and conversion needs, we have an ambitious roadmap for the future expansion of Free Online Tools Nest.
+        </p>
+
+        <p class="text-body leading-relaxed mb-6">
+          We plan to add more advanced <strong>developer tools</strong>, such as CSS formatters, SQL prettifiers, and JWT decoders. In our <strong>calculators</strong> section, we will introduce financial planning tools, scientific calculators, and unit converters (length, weight, temperature). For content creators, we will release text diff tools to compare documents side-by-side and SEO analyzers.
+        </p>
+
+        <p class="text-body leading-relaxed">
+          We listen closely to our community. If you have a specific tool request or find an area where we can improve, we invite you to contact us. We are dedicated to continuously polishing existing features and rolling out new utilities weekly.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
