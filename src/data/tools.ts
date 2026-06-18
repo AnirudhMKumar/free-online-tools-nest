@@ -1056,6 +1056,6 @@ export const SITE = {
   domain: "freeonlinetoolsnest.com",
   url: "https://freeonlinetoolsnest.com",
   description:
-    "60+ free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
+    "62 free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
   tagline: "Free tools for text, code, and math.",
 };

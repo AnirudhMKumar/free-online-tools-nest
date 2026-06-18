@@ -35,7 +35,16 @@ const homeFaqs = [
   },
 ];
 
-// WebSite JSON-LD
+// JSON-LD structured data
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/favicon-96x96.png`,
+  description: SITE.description,
+};
+
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -51,10 +60,10 @@ const websiteJsonLd = {
 ---
 
 <Layout
-  title="Free Online Tools Nest — All-in-One Browser-Based Utility Tools"
-  description="Explore Free Online Tools Nest, an all-in-one website offering fast, private, and browser-based utility tools for developer code, text formatting, and calculators."
+  title="62 Free Online Tools – Private Browser Utilities, No Signup"
+  description="Access 62 free online tools for text, code, math, SEO, and design — all running 100% in your browser with zero uploads. No signup, no ads, just fast utilities."
   canonicalPath="/"
-  jsonLd={websiteJsonLd}
+  jsonLd={[websiteJsonLd, organizationJsonLd]}
 >
   <!-- Hero -->
   <Hero />
