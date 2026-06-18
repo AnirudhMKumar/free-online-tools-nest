@@ -1,26 +1,19 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { SITE } from "../../data/tools";
-import { languages } from "../../i18n/ui";
-import type { Lang } from "../../i18n/ui";
-import { useTranslations } from "../../i18n/utils";
+/**
+ * Terms & Conditions — root-level English page for SEO.
+ * Canonical version; locale versions link here as the canonical.
+ */
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../data/tools";
+import { useTranslations } from "../i18n/utils";
 
-export function getStaticPaths() {
-  return Object.keys(languages).map((locale) => ({
-    params: { locale },
-  }));
-}
-
-const { locale } = Astro.params as { locale: Lang };
-const t = useTranslations(locale);
-const canonicalPath = `/terms-and-conditions/`;
-const localePrefix = `/${locale}`;
+const t = useTranslations("en");
 ---
 
 <Layout
   title={t("terms.metaTitle")}
   description={t("terms.metaDesc")}
-  canonicalPath={canonicalPath}
+  canonicalPath="/terms-and-conditions/"
 >
   <div class="container-narrow py-12 md:py-20">
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
@@ -80,7 +73,7 @@ const localePrefix = `/${locale}`;
       <section>
         <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("terms.contactTitle")}</h2>
         <p>
-          {t("terms.contactP1")}<a href={`${localePrefix}/contact/`} class="text-link hover:text-link-deep underline">{t("footer.contact")}</a>.
+          {t("terms.contactP1")}<a href="/contact/" class="text-link hover:text-link-deep underline">{t("footer.contact")}</a>.
         </p>
       </section>
     </article>

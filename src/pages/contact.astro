@@ -1,25 +1,18 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { SITE } from "../../data/tools";
-import { languages } from "../../i18n/ui";
-import type { Lang } from "../../i18n/ui";
-import { useTranslations } from "../../i18n/utils";
+/**
+ * Contact — root-level English page for SEO.
+ * Canonical version; locale versions link here as the canonical.
+ */
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../i18n/utils";
 
-export function getStaticPaths() {
-  return Object.keys(languages).map((locale) => ({
-    params: { locale },
-  }));
-}
-
-const { locale } = Astro.params as { locale: Lang };
-const t = useTranslations(locale);
-const canonicalPath = `/contact/`;
+const t = useTranslations("en");
 ---
 
 <Layout
   title={t("contact.metaTitle")}
   description={t("contact.metaDesc")}
-  canonicalPath={canonicalPath}
+  canonicalPath="/contact/"
 >
   <div class="container-narrow py-12 md:py-20">
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
