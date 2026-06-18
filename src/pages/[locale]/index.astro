@@ -11,7 +11,7 @@ import AsSeenOn from "../../components/AsSeenOn.astro";
 import { CATEGORIES, TOOLS, getFeaturedTools, getToolsByCategory, SITE } from "../../data/tools";
 import { languages } from "../../i18n/ui";
 import type { Lang } from "../../i18n/ui";
-import { useTranslations } from "../../i18n/utils";
+import { useTranslations, getLocalePaths } from "../../i18n/utils";
 
 export function getStaticPaths() {
   return Object.keys(languages).map((locale) => ({
@@ -25,6 +25,7 @@ const canonicalPath = `/${locale}/`;
 const localePrefix = `/${locale}`;
 
 const featured = getFeaturedTools();
+const localePaths = getLocalePaths("/");
 
 const homeFaqs = Array.from({ length: 7 }, (_, i) => {
   const n = i + 1;
@@ -64,6 +65,8 @@ const websiteJsonLd = {
   description={t("home.metaDesc")}
   canonicalPath={canonicalPath}
   jsonLd={[websiteJsonLd, organizationJsonLd]}
+  localePaths={localePaths}
+  xDefaultPath="/"
 >
   <!-- Hero -->
   <Hero />

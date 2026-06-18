@@ -46,6 +46,22 @@ export function useTranslations(lang: Lang) {
  *
  * Use this in the language switcher to build the target href.
  */
+/**
+ * Build a locale-to-path map for hreflang tags.
+ * Returns { en: "/en/about/", es: "/es/about/", ... } given a base path.
+ * The x-default variant is the canonical path itself.
+ *
+ * Usage: getLocalePaths("/about/")  → { en: "/en/about/", es: "/es/about/", ... }
+ */
+export function getLocalePaths(canonicalPath: string): Record<string, string> {
+  const clean = canonicalPath.replace(/\/$/, "") || "";
+  const result: Record<string, string> = {};
+  for (const lang of Object.keys(languages)) {
+    result[lang] = `/${lang}${clean}/`;
+  }
+  return result;
+}
+
 export function getLocalePath(
   pathname: string,
   targetLang: Lang,

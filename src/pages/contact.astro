@@ -4,15 +4,19 @@
  * Canonical version; locale versions link here as the canonical.
  */
 import Layout from "../layouts/Layout.astro";
-import { useTranslations } from "../i18n/utils";
+import { useTranslations, getLocalePaths } from "../i18n/utils";
 
 const t = useTranslations("en");
+const localePaths = getLocalePaths("/contact/");
+const xDefaultPath = "/contact/";
 ---
 
 <Layout
   title={t("contact.metaTitle")}
   description={t("contact.metaDesc")}
   canonicalPath="/contact/"
+  localePaths={localePaths}
+  xDefaultPath={xDefaultPath}
 >
   <div class="container-narrow py-12 md:py-20">
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">

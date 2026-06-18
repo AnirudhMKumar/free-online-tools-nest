@@ -93,12 +93,14 @@ const breadcrumbJsonLd = {
 };
 
 const combinedJsonLd = [toolJsonLd, breadcrumbJsonLd];
+const ogImage = `/og/${categorySlug}.png`;
 ---
 
 <Layout
   title={finalMetaTitle}
   description={finalMetaDescription}
   canonicalPath={`/tools/${toolSlug}/`}
+  ogImage={ogImage}
   jsonLd={combinedJsonLd}
 >
   <div class="container-page py-8 md:py-12">

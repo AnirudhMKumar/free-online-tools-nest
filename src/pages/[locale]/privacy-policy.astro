@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { SITE } from "../../data/tools";
 import { languages } from "../../i18n/ui";
 import type { Lang } from "../../i18n/ui";
-import { useTranslations } from "../../i18n/utils";
+import { useTranslations, getLocalePaths } from "../../i18n/utils";
 
 export function getStaticPaths() {
   return Object.keys(languages).map((locale) => ({
@@ -15,12 +15,16 @@ const { locale } = Astro.params as { locale: Lang };
 const t = useTranslations(locale);
 const canonicalPath = `/privacy-policy/`;
 const localePrefix = `/${locale}`;
+const localePaths = getLocalePaths("/privacy-policy/");
+const xDefaultPath = "/privacy-policy/";
 ---
 
 <Layout
   title={t("privacy.metaTitle")}
   description={t("privacy.metaDesc")}
   canonicalPath={canonicalPath}
+  localePaths={localePaths}
+  xDefaultPath={xDefaultPath}
 >
   <div class="container-narrow py-12 md:py-20">
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">

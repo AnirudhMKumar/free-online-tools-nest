@@ -11,6 +11,10 @@ interface Props {
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  /** hreflang alternatives: { en: "/en/about/", es: "/es/about/", ... } */
+  localePaths?: Record<string, string>;
+  /** x-default URL path (usually the root-level canonical) */
+  xDefaultPath?: string;
 }
 
 import { SITE } from "../data/tools";
@@ -31,6 +35,11 @@ const {
 const canonicalURL = `${SITE.url}${canonicalPath}`;
 const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}`;
+
+const {
+  localePaths,
+  xDefaultPath,
+} = Astro.props;
 ---
 
 <title>{fullTitle}</title>
@@ -38,6 +47,14 @@ const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}
 <link rel="canonical" href={canonicalURL} />
 
 {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Hreflang for multi-language pages -->
+{localePaths && Object.entries(localePaths).map(([lang, path]) => (
+  <link rel="alternate" hreflang={lang} href={`${SITE.url}${path}`} />
+))}
+{xDefaultPath && (
+  <link rel="alternate" hreflang="x-default" href={`${SITE.url}${xDefaultPath}`} />
+)}
 
 <!-- Open Graph -->
 <meta property="og:title" content={fullTitle} />
