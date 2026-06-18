@@ -1,0 +1,14 @@
+[    1136ms] [WARNING] AdSense head tag doesn't support data-nscript attribute. @ https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8141731290667759:219
+[    1365ms] ReferenceError: gtag is not defined
+    at <anonymous>:2:11
+    at y (https://www.thefreeaitools.com/_next/static/chunks/4423-2e96c2fd79b5cd39.js:1:6077)
+    at https://www.thefreeaitools.com/_next/static/chunks/4423-2e96c2fd79b5cd39.js:1:6891
+    at ik (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:92679)
+    at e (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:117841)
+    at e (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:117828)
+    at ug (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:118112)
+    at uh (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:116380)
+    at ug (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:116763)
+    at uh (https://www.thefreeaitools.com/_next/static/chunks/4bd1b696-e356ca5ba0218e27.js:1:116380)
+[    9457ms] [WARNING] The resource https://www.thefreeaitools.com/images/password-generator.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.thefreeaitools.com/:0
+[    9458ms] [WARNING] The resource https://www.thefreeaitools.com/images/qr-code-generator.webp was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://www.thefreeaitools.com/:0

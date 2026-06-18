@@ -1,0 +1,20 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import PalindromeChecker from "../../components/tools/PalindromeChecker";
+import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("palindrome-checker")!;
+const category = getCategoryBySlug(tool.categorySlug)!;
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+>
+  <PalindromeChecker client:load />
+</ToolLayout>

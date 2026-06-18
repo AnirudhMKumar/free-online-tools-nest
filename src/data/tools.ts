@@ -86,6 +86,28 @@ export const CATEGORIES: Category[] = [
     metaDescription: "Edit PDF documents online for free. Merge multiple PDFs, split pages, compress files, and extract text and images — all client-side with no uploads.",
     seoContent: "Working with PDF documents often requires desktop software or trusting online services with sensitive files. Our PDF tools category solves both problems: every tool runs entirely in your browser. Merge multiple PDFs into one document, split a PDF into individual pages, reduce file sizes, extract text, and convert pages to images. Your documents never leave your device."
   },
+  {
+    slug: "seo-tools",
+    name: "SEO Tools",
+    description:
+      "Generate meta tags, check keyword density, create sitemaps, and optimize your site for search engines.",
+    icon: "🔍",
+    color: "#0070f3",
+    metaTitle: "Free Online SEO Tools — Meta Tags, Sitemaps & More",
+    metaDescription: "Optimize your website with our free SEO toolset. Generate meta tags, check keyword density, create sitemaps and robots.txt — all client-side.",
+    seoContent: "Search engine optimization is critical for any website's success. Our SEO tools category provides everything you need to optimize your site: from meta tag generators and keyword density analyzers to sitemap and robots.txt generators. Every tool runs in your browser, so your data stays private."
+  },
+  {
+    slug: "design-tools",
+    name: "Design Tools",
+    description:
+      "Check color contrast, convert color formats, and analyze your designs for accessibility.",
+    icon: "🎨",
+    color: "#7928ca",
+    metaTitle: "Free Online Design Tools — Color Contrast Checker & More",
+    metaDescription: "Check WCAG color contrast ratios, preview design elements, and ensure your designs are accessible. Free online design tools.",
+    seoContent: "Good design is accessible design. Our design tools category helps you check color contrast ratios for WCAG compliance, convert between color formats, and preview how your designs will look. All tools run client-side for speed and privacy."
+  },
 ];
 
 // ── Tools ───────────────────────────────────────────────────
@@ -645,6 +667,358 @@ export const TOOLS: Tool[] = [
     metaTitle: "Text Summarizer Online — Summarize Articles and Text Free",
     metaDescription: "Summarize long articles, documents, and paragraphs into concise key points. Free online extractive text summarizer with adjustable summary length."
   },
+
+  // ── Combo Tools (2) ─────────────────────────────────────────
+  {
+    slug: "password-strength-checker",
+    name: "Password Strength Checker",
+    description: "Generate strong passwords and check password strength with detailed analysis.",
+    longDescription:
+      "Two tools in one: generate secure random passwords with full control over length and character types, and check the strength of any password with real-time analysis. The strength meter evaluates length, character variety, and patterns to give a score with actionable improvement tips.",
+    categorySlug: "developer-tools",
+    icon: "🛡️",
+    featured: true,
+    keywords: ["password strength", "password checker", "secure password", "password analyzer", "password test"],
+    metaTitle: "Password Strength Checker & Generator Online — Test & Create Strong Passwords",
+    metaDescription: "Check password strength in real-time and generate secure random passwords. Free online password strength analyzer with detailed feedback."
+  },
+  {
+    slug: "text-analyzer",
+    name: "Text Analyzer",
+    description: "Analyze text with word count, character count, case conversion, and reading stats.",
+    longDescription:
+      "All-in-one text analysis tool. Count words, characters (with and without spaces), sentences, paragraphs, and estimate reading time. Instantly convert between uppercase, lowercase, title case, sentence case, and camelCase. Perfect for writers and content creators who need formatting and stats in one place.",
+    categorySlug: "text-tools",
+    icon: "📊",
+    featured: true,
+    keywords: ["text analyzer", "word counter", "character counter", "case converter", "text statistics"],
+    metaTitle: "Text Analyzer Online — Word Count, Character Count & Case Converter",
+    metaDescription: "Analyze text with instant word count, character count, reading stats, and case conversion. All-in-one text analysis tool for writers."
+  },
+
+  // ── SEO Tools (8) ──────────────────────────────────────────
+  {
+    slug: "meta-tag-generator",
+    name: "Meta Tag Generator",
+    description: "Generate SEO meta tags including title, description, and Open Graph tags.",
+    longDescription:
+      "Create optimized meta tags for your web pages. Enter your title, description, keywords, and OG image URL to generate complete meta tag HTML. Preview how your page will appear in search results and social media shares. Copy the generated code with one click.",
+    categorySlug: "seo-tools",
+    icon: "🏷️",
+    featured: true,
+    keywords: ["meta tag generator", "seo meta tags", "meta description", "meta title", "og tags generator"],
+    metaTitle: "Meta Tag Generator Online — Create SEO Meta Tags Free",
+    metaDescription: "Generate optimized meta title, description, Open Graph, and Twitter Card tags for your web pages. Preview search result snippets and copy code instantly."
+  },
+  {
+    slug: "keyword-density-checker",
+    name: "Keyword Density Checker",
+    description: "Analyze keyword frequency and density in any text content.",
+    longDescription:
+      "Paste your content and instantly see keyword frequency, density percentages, and ranking. The analyzer breaks down single words and phrases, showing how often each appears and what percentage of the total text it represents. Perfect for SEO content optimization.",
+    categorySlug: "seo-tools",
+    icon: "📈",
+    featured: true,
+    keywords: ["keyword density", "keyword frequency", "seo analysis", "content optimization", "keyword analyzer"],
+    metaTitle: "Keyword Density Checker Online — Analyze Content SEO Free",
+    metaDescription: "Check keyword frequency and density in any text. Free online SEO content analyzer to optimize your writing for search engines."
+  },
+  {
+    slug: "sitemap-generator",
+    name: "Sitemap Generator",
+    description: "Generate XML sitemaps for your website from a list of URLs.",
+    longDescription:
+      "Create SEO-friendly XML sitemaps by entering your page URLs. Set priority, change frequency, and last modified dates for each URL. The generator produces valid sitemap XML that you can submit to Google Search Console and other search engines.",
+    categorySlug: "seo-tools",
+    icon: "🗺️",
+    featured: true,
+    keywords: ["sitemap generator", "xml sitemap", "seo sitemap", "sitemap creator", "google sitemap"],
+    metaTitle: "Sitemap Generator Online — Create XML Sitemaps Free",
+    metaDescription: "Generate XML sitemaps for your website. Add URLs with priority, change frequency, and last modified dates. Copy valid sitemap XML for Google Search Console."
+  },
+  {
+    slug: "robots-txt-generator",
+    name: "Robots.txt Generator",
+    description: "Create robots.txt files to control search engine crawling.",
+    longDescription:
+      "Generate a robots.txt file for your website. Add rules to allow or disallow specific user agents (search engine bots) from crawling certain paths. Include sitemap URLs and set crawl delays. Perfect for SEO professionals managing search engine access.",
+    categorySlug: "seo-tools",
+    icon: "🤖",
+    featured: true,
+    keywords: ["robots.txt generator", "robots txt", "search engine crawling", "seo robots", "crawl rules"],
+    metaTitle: "Robots.txt Generator Online — Create Robots.txt Files Free",
+    metaDescription: "Generate robots.txt files to control search engine crawlers. Add allow/disallow rules, sitemap references, and crawl delays. Free online SEO tool."
+  },
+  {
+    slug: "open-graph-preview-generator",
+    name: "Open Graph Preview Generator",
+    description: "Generate and preview Open Graph meta tags for social media sharing.",
+    longDescription:
+      "Create Open Graph (OG) meta tags that control how your page appears when shared on Facebook, X/Twitter, LinkedIn, and other platforms. Set title, description, image URL, and page type. See a live preview of how your link will look in social feeds.",
+    categorySlug: "seo-tools",
+    icon: "🔗",
+    featured: false,
+    keywords: ["open graph", "og tags", "social media preview", "facebook share", "twitter card"],
+    metaTitle: "Open Graph Preview Generator Online — Create Social Share Tags",
+    metaDescription: "Generate Open Graph meta tags and preview how your page looks when shared on social media. Free OG tag generator for Facebook, X/Twitter, and LinkedIn."
+  },
+  {
+    slug: "seo-length-checker",
+    name: "SEO Length Checker",
+    description: "Check if your title tags and meta descriptions meet recommended length limits.",
+    longDescription:
+      "Paste your title and meta description to instantly check if they meet SEO best practice length limits. See the character count, pixel width estimate, and whether your snippet will be truncated in search results. Get recommendations for optimal lengths.",
+    categorySlug: "seo-tools",
+    icon: "📏",
+    featured: false,
+    keywords: ["seo length checker", "title tag length", "meta description length", "seo snippet", "search preview"],
+    metaTitle: "SEO Length Checker Online — Check Title & Meta Description Length",
+    metaDescription: "Check if your title tags and meta descriptions meet recommended SEO length limits. See pixel width, character count, and search result preview."
+  },
+  {
+    slug: "canonical-tag-generator",
+    name: "Canonical Tag Generator",
+    description: "Generate canonical link tags to prevent duplicate content issues.",
+    longDescription:
+      "Create canonical URL tags for your web pages to tell search engines which version is the master copy. Enter your canonical URL and optional hreflang tags for multi-language sites. Copy the generated HTML link tag with one click.",
+    categorySlug: "seo-tools",
+    icon: "🔗",
+    featured: false,
+    keywords: ["canonical tag", "rel canonical", "duplicate content", "canonical url", "seo canonical"],
+    metaTitle: "Canonical Tag Generator Online — Prevent Duplicate Content",
+    metaDescription: "Generate canonical link tags to prevent duplicate content issues. Free online SEO tool for creating rel=canonical tags with hreflang support."
+  },
+  {
+    slug: "alt-text-checker",
+    name: "Alt Text Checker",
+    description: "Analyze HTML content for missing or empty image alt attributes.",
+    longDescription:
+      "Paste your HTML code and instantly find all images that are missing alt text or have empty alt attributes. The checker scans img tags and reports which ones need accessibility improvements. Essential for WCAG compliance and SEO.",
+    categorySlug: "seo-tools",
+    icon: "👁️",
+    featured: false,
+    keywords: ["alt text checker", "image alt text", "accessibility checker", "wcag compliance", "html analyzer"],
+    metaTitle: "Alt Text Checker Online — Find Missing Image Alt Attributes",
+    metaDescription: "Check HTML content for missing or empty image alt attributes. Free accessibility checker for WCAG compliance and SEO optimization."
+  },
+
+  // ── Design Tools (1) ────────────────────────────────────────
+  {
+    slug: "color-contrast-checker",
+    name: "Color Contrast Checker",
+    description: "Check WCAG contrast ratios between foreground and background colors.",
+    longDescription:
+      "Enter two colors (foreground and background) to instantly check their contrast ratio against WCAG 2.1 guidelines. See if your color combination passes AA and AAA requirements for normal text, large text, and UI components. Adjust colors interactively to find accessible combinations.",
+    categorySlug: "design-tools",
+    icon: "👁️",
+    featured: true,
+    keywords: ["color contrast checker", "wcag contrast", "accessibility contrast", "contrast ratio", "aa aaa compliance"],
+    metaTitle: "Color Contrast Checker Online — WCAG Accessibility Checker",
+    metaDescription: "Check color contrast ratios for WCAG 2.1 AA and AAA compliance. Free accessibility checker for foreground and background color combinations."
+  },
+
+  // ── Converter Tools (5) ─────────────────────────────────────
+  {
+    slug: "unit-converter",
+    name: "Unit Converter",
+    description: "Convert between units of length, weight, temperature, speed, and more.",
+    longDescription:
+      "Convert values between different measurement units. Supports length (meters, feet, inches, kilometers, miles), weight (kg, lbs, ounces, tons), temperature (Celsius, Fahrenheit, Kelvin), speed (km/h, mph, knots), and volume (liters, gallons, cups). Fast, accurate conversions with a clean interface.",
+    categorySlug: "converters",
+    icon: "📐",
+    featured: true,
+    keywords: ["unit converter", "length converter", "weight converter", "temperature converter", "metric to imperial"],
+    metaTitle: "Unit Converter Online — Length, Weight, Temperature & More",
+    metaDescription: "Convert between units of length, weight, temperature, speed, and volume. Free online unit converter with multiple measurement categories."
+  },
+  {
+    slug: "json-to-csv",
+    name: "JSON to CSV",
+    description: "Convert JSON arrays and objects to CSV spreadsheet format.",
+    longDescription:
+      "Paste a JSON array or object and convert it to clean CSV format. Supports nested objects (flattened with dot notation), custom delimiters, and header customization. Preview the tabular data before copying the CSV output. Perfect for data migration and analysis.",
+    categorySlug: "converters",
+    icon: "📊",
+    featured: false,
+    keywords: ["json to csv", "json to excel", "convert json to csv", "json parser", "data converter"],
+    metaTitle: "JSON to CSV Converter Online — Convert JSON to Spreadsheet",
+    metaDescription: "Convert JSON arrays and objects to CSV format instantly. Free online JSON to CSV converter with nested object support and table preview."
+  },
+  {
+    slug: "yaml-to-json",
+    name: "YAML to JSON",
+    description: "Convert YAML configuration files to JSON format instantly.",
+    longDescription:
+      "Paste YAML content and convert it to clean JSON format. Supports complex nested YAML structures, arrays, and multi-line strings. Perfect for developers migrating configuration files between formats. Copy the result with one click.",
+    categorySlug: "converters",
+    icon: "⬅️",
+    featured: false,
+    keywords: ["yaml to json", "yaml converter", "yaml to json online", "config converter", "yaml parser"],
+    metaTitle: "YAML to JSON Converter Online — Convert YAML to JSON Free",
+    metaDescription: "Convert YAML configuration files and data to JSON format instantly. Free online YAML to JSON converter for developers."
+  },
+  {
+    slug: "temperature-converter",
+    name: "Temperature Converter",
+    description: "Convert temperatures between Celsius, Fahrenheit, and Kelvin.",
+    longDescription:
+      "Convert temperature values between Celsius, Fahrenheit, and Kelvin scales instantly. Enter a value in any unit and see the equivalent in all others. Perfect for cooking, science, travel, and weather comparisons.",
+    categorySlug: "converters",
+    icon: "🌡️",
+    featured: false,
+    keywords: ["temperature converter", "celsius to fahrenheit", "fahrenheit to celsius", "kelvin converter", "temp converter"],
+    metaTitle: "Temperature Converter Online — Celsius, Fahrenheit, Kelvin",
+    metaDescription: "Convert temperatures between Celsius, Fahrenheit, and Kelvin instantly. Free online temperature converter for cooking, science, and travel."
+  },
+  {
+    slug: "lbs-to-kg-converter",
+    name: "Lbs to Kg Converter",
+    description: "Convert pounds to kilograms and kilograms to pounds instantly.",
+    longDescription:
+      "Convert weight between pounds (lbs) and kilograms (kg) with instant bidirectional conversion. Enter a value in either unit and see the result in both. Perfect for fitness tracking, shipping, cooking, and travel.",
+    categorySlug: "converters",
+    icon: "⚖️",
+    featured: false,
+    keywords: ["lbs to kg", "pounds to kilograms", "weight converter", "kg to lbs", "pound converter"],
+    metaTitle: "Lbs to Kg Converter Online — Pounds to Kilograms Converter",
+    metaDescription: "Convert pounds to kilograms and kilograms to pounds instantly. Free online weight converter for fitness, shipping, and everyday use."
+  },
+
+  // ── Calculators (3) ─────────────────────────────────────────
+  {
+    slug: "loan-calculator",
+    name: "Loan Calculator",
+    description: "Calculate monthly payments, total interest, and amortization for any loan.",
+    longDescription:
+      "Enter loan amount, interest rate, and term to calculate monthly payments, total interest payable, and total cost. View a detailed amortization schedule showing the breakdown of principal vs interest for each payment. Perfect for mortgage, auto, and personal loan planning.",
+    categorySlug: "calculators",
+    icon: "🏦",
+    featured: true,
+    keywords: ["loan calculator", "monthly payment calculator", "amortization calculator", "mortgage calculator", "interest calculator"],
+    metaTitle: "Loan Calculator Online — Monthly Payment & Amortization Schedule",
+    metaDescription: "Calculate monthly loan payments, total interest, and view a full amortization schedule. Free online loan calculator for mortgages, auto loans, and personal loans."
+  },
+  {
+    slug: "discount-calculator",
+    name: "Discount Calculator",
+    description: "Calculate sale prices, savings, and discount percentages instantly.",
+    longDescription:
+      "Calculate the final price after a discount. Enter the original price and discount percentage to see how much you save and the final price. Also calculate the discount percentage when you know the original and sale price. Perfect for shopping and budgeting.",
+    categorySlug: "calculators",
+    icon: "🏷️",
+    featured: false,
+    keywords: ["discount calculator", "sale price calculator", "percent off", "savings calculator", "shopping calculator"],
+    metaTitle: "Discount Calculator Online — Calculate Sale Prices & Savings",
+    metaDescription: "Calculate sale prices, discount amounts, and savings percentages instantly. Free online discount calculator for shopping and budgeting."
+  },
+  {
+    slug: "mortgage-calculator",
+    name: "Mortgage Calculator",
+    description: "Estimate monthly mortgage payments with taxes, insurance, and PMI.",
+    longDescription:
+      "Calculate your monthly mortgage payment including principal, interest, property taxes, homeowners insurance, and PMI. Enter home price, down payment, interest rate, and loan term to get a complete monthly payment breakdown. Perfect for home buying planning.",
+    categorySlug: "calculators",
+    icon: "🏠",
+    featured: false,
+    keywords: ["mortgage calculator", "home loan calculator", "monthly payment", "mortgage estimator", "home buying"],
+    metaTitle: "Mortgage Calculator Online — Estimate Monthly Payments Free",
+    metaDescription: "Estimate monthly mortgage payments including principal, interest, taxes, insurance, and PMI. Free online mortgage calculator for home buyers."
+  },
+
+  // ── Developer Tools (3) ─────────────────────────────────────
+  {
+    slug: "css-minifier",
+    name: "CSS Minifier",
+    description: "Minify and compress CSS code to reduce file size for production.",
+    longDescription:
+      "Paste your CSS code and compress it by removing whitespace, comments, and redundant properties. See the original vs minified size with compression ratio. Copy the minified output with one click. Essential for optimizing website performance.",
+    categorySlug: "developer-tools",
+    icon: "🎨",
+    featured: false,
+    keywords: ["css minifier", "compress css", "css optimizer", "minify css online", "css compressor"],
+    metaTitle: "CSS Minifier Online — Compress and Minify CSS Code Free",
+    metaDescription: "Minify CSS code by removing whitespace and comments. See compression ratio and copy minified output. Free online CSS minifier for web developers."
+  },
+  {
+    slug: "html-entity-converter",
+    name: "HTML Entity Converter",
+    description: "Encode and decode HTML entities like &amp; &lt; &gt; and special characters.",
+    longDescription:
+      "Convert special characters to their HTML entity equivalents and vice versa. Encode text for safe HTML display (e.g., < → &lt;) or decode entities back to readable characters. Perfect for preparing content for web pages and email templates.",
+    categorySlug: "developer-tools",
+    icon: "🔣",
+    featured: false,
+    keywords: ["html entities", "html entity encode", "html entity decode", "special characters", "escape html"],
+    metaTitle: "HTML Entity Converter Online — Encode & Decode HTML Entities",
+    metaDescription: "Convert special characters to HTML entities and decode them back. Free online HTML entity encoder/decoder for web developers."
+  },
+  {
+    slug: "binary-converter",
+    name: "Binary Converter",
+    description: "Convert numbers between binary, decimal, hexadecimal, and octal.",
+    longDescription:
+      "Convert numbers between binary (base-2), decimal (base-10), hexadecimal (base-16), and octal (base-8) formats. Enter a value in any base and see the equivalent in all others instantly. Perfect for programmers, students, and digital electronics enthusiasts.",
+    categorySlug: "developer-tools",
+    icon: "💻",
+    featured: false,
+    keywords: ["binary converter", "decimal to binary", "hex to decimal", "number base converter", "binary to hex"],
+    metaTitle: "Binary Converter Online — Decimal, Hex, Octal Converter",
+    metaDescription: "Convert numbers between binary, decimal, hexadecimal, and octal formats instantly. Free online number base converter for developers and students."
+  },
+
+  // ── Text Tools (4) ──────────────────────────────────────────
+  {
+    slug: "text-humanizer",
+    name: "Text Humanizer",
+    description: "Rewrite AI-generated text to sound more natural and human-like.",
+    longDescription:
+      "Paste AI-generated text and humanize it by adjusting vocabulary, sentence structure, and tone. The tool replaces overused AI phrases, varies sentence length, adds transitional phrases, and removes repetitive patterns. Choose from formal, casual, or professional tone. Make your AI content sound authentically human.",
+    categorySlug: "text-tools",
+    icon: "✍️",
+    featured: true,
+    keywords: ["text humanizer", "ai text humanizer", "humanize ai text", "rewrite text", "ai content humanizer"],
+    metaTitle: "Text Humanizer Online — Make AI Text Sound Human Free",
+    metaDescription: "Rewrite AI-generated text to sound natural and human-like. Free online text humanizer with tone selection. Make your content sound authentically human."
+  },
+  {
+    slug: "grammar-checker",
+    name: "Grammar Checker",
+    description: "Check text for common grammar issues, punctuation, and spelling errors.",
+    longDescription:
+      "Paste your text and check for common grammar mistakes, punctuation errors, capitalization issues, and repeated words. The checker highlights potential issues and suggests corrections. Perfect for writers, students, and professionals who want clean, error-free content.",
+    categorySlug: "text-tools",
+    icon: "✓",
+    featured: true,
+    keywords: ["grammar checker", "spell check", "grammar fix", "writing assistant", "proofreading tool"],
+    metaTitle: "Grammar Checker Online — Check Grammar & Spelling Free",
+    metaDescription: "Check text for grammar mistakes, punctuation errors, and spelling issues. Free online grammar checker for clean, error-free writing."
+  },
+  {
+    slug: "palindrome-checker",
+    name: "Palindrome Checker",
+    description: "Check if a word, phrase, or number reads the same forward and backward.",
+    longDescription:
+      "Enter any text to check if it's a palindrome — reading the same forwards and backwards (ignoring spaces, punctuation, and capitalization). See the reversed version, character-by-character comparison, and a clear pass/fail result. Fun for wordplay enthusiasts and programming practice.",
+    categorySlug: "text-tools",
+    icon: "🔄",
+    featured: false,
+    keywords: ["palindrome checker", "palindrome test", "word palindrome", "reverse text", "symmetrical text"],
+    metaTitle: "Palindrome Checker Online — Test Words & Phrases Free",
+    metaDescription: "Check if any word, phrase, or number is a palindrome. Free online palindrome checker with character-by-character comparison."
+  },
+  {
+    slug: "reverse-text",
+    name: "Reverse Text",
+    description: "Reverse text, words, or individual characters in your text.",
+    longDescription:
+      "Reverse any text in multiple ways: reverse the entire string character by character, reverse the word order while keeping characters intact, or reverse both. Perfect for creating puzzles, testing, and text manipulation experiments.",
+    categorySlug: "text-tools",
+    icon: "↩️",
+    featured: false,
+    keywords: ["reverse text", "text reverser", "reverse string", "backwards text", "text flipper"],
+    metaTitle: "Reverse Text Online — Reverse String, Words & Characters Free",
+    metaDescription: "Reverse text by characters, words, or both. Free online text reverser for creating puzzles and text manipulation."
+  },
 ];
 
 // ── Helper functions ────────────────────────────────────────
@@ -682,6 +1056,6 @@ export const SITE = {
   domain: "freeonlinetoolsnest.com",
   url: "https://freeonlinetoolsnest.com",
   description:
-    "Free online tools for text, code, math, and conversions. Fast, private, and no sign-up required.",
+    "60+ free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
   tagline: "Free tools for text, code, and math.",
 };

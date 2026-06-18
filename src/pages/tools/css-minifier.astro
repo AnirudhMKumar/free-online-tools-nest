@@ -1,0 +1,20 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import CssMinifier from "../../components/tools/CssMinifier";
+import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("css-minifier")!;
+const category = getCategoryBySlug(tool.categorySlug)!;
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+>
+  <CssMinifier client:load />
+</ToolLayout>

@@ -1,0 +1,578 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - navigation "Main navigation" [ref=e4]:
+      - link "Free Online Tools Nest homepage" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: FreeOnlineToolsNest
+      - generic [ref=e7]:
+        - link "All Tools" [ref=e8] [cursor=pointer]:
+          - /url: /tools/
+        - link "Text Tools" [ref=e9] [cursor=pointer]:
+          - /url: /categories/text-tools/
+        - link "Developer Tools" [ref=e10] [cursor=pointer]:
+          - /url: /categories/developer-tools/
+        - link "Calculators" [ref=e11] [cursor=pointer]:
+          - /url: /categories/calculators/
+        - link "Converters" [ref=e12] [cursor=pointer]:
+          - /url: /categories/converters/
+        - link "PDF Tools" [ref=e13] [cursor=pointer]:
+          - /url: /categories/pdf-tools/
+      - generic [ref=e14]:
+        - link "Search tools" [ref=e15] [cursor=pointer]:
+          - /url: /tools/
+          - img [ref=e16]
+        - button "Toggle dark mode" [ref=e19]:
+          - img [ref=e20]
+  - main [ref=e23]:
+    - generic [ref=e25]:
+      - generic [ref=e26]: Free, fast, and private
+      - heading "Free online tools for text, code, and math." [level=1] [ref=e28]
+      - paragraph [ref=e29]: Free online tools for text, code, math, and conversions. Fast, private, and no sign-up required.
+      - generic [ref=e31]:
+        - img
+        - searchbox "Search tools" [ref=e32]
+      - link "Browse all tools" [ref=e34] [cursor=pointer]:
+        - /url: /tools/
+        - text: Browse all tools
+        - img [ref=e35]
+    - generic [ref=e38]:
+      - generic [ref=e39]:
+        - heading "Browse by category" [level=2] [ref=e40]
+        - paragraph [ref=e41]: Find the right tool for your task across four curated categories.
+      - generic [ref=e42]:
+        - link "Text Tools Transform, analyze, and format text with powerful utilities for writers and content creators. 7 tools" [ref=e43] [cursor=pointer]:
+          - /url: /categories/text-tools/
+          - generic [ref=e45]:
+            - generic [ref=e46]: ✏️
+            - generic [ref=e47]:
+              - heading "Text Tools" [level=3] [ref=e48]
+              - paragraph [ref=e49]: Transform, analyze, and format text with powerful utilities for writers and content creators.
+              - generic [ref=e50]: 7 tools
+        - link "Developer Tools Format, encode, and validate code and data for faster development workflows. 8 tools" [ref=e51] [cursor=pointer]:
+          - /url: /categories/developer-tools/
+          - generic [ref=e53]:
+            - generic [ref=e54]: ⚡
+            - generic [ref=e55]:
+              - heading "Developer Tools" [level=3] [ref=e56]
+              - paragraph [ref=e57]: Format, encode, and validate code and data for faster development workflows.
+              - generic [ref=e58]: 8 tools
+        - link "Calculators Solve math problems and compute values with quick, precise calculators. 6 tools" [ref=e59] [cursor=pointer]:
+          - /url: /categories/calculators/
+          - generic [ref=e61]:
+            - generic [ref=e62]: 🔢
+            - generic [ref=e63]:
+              - heading "Calculators" [level=3] [ref=e64]
+              - paragraph [ref=e65]: Solve math problems and compute values with quick, precise calculators.
+              - generic [ref=e66]: 6 tools
+        - link "Converters Convert between formats, units, and encodings instantly. 10 tools" [ref=e67] [cursor=pointer]:
+          - /url: /categories/converters/
+          - generic [ref=e69]:
+            - generic [ref=e70]: 🔄
+            - generic [ref=e71]:
+              - heading "Converters" [level=3] [ref=e72]
+              - paragraph [ref=e73]: Convert between formats, units, and encodings instantly.
+              - generic [ref=e74]: 10 tools
+        - link "PDF Tools Merge, split, compress, and convert PDF documents right in your browser. 5 tools" [ref=e75] [cursor=pointer]:
+          - /url: /categories/pdf-tools/
+          - generic [ref=e77]:
+            - generic [ref=e78]: 📄
+            - generic [ref=e79]:
+              - heading "PDF Tools" [level=3] [ref=e80]
+              - paragraph [ref=e81]: Merge, split, compress, and convert PDF documents right in your browser.
+              - generic [ref=e82]: 5 tools
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - heading "Popular tools" [level=2] [ref=e86]
+        - paragraph [ref=e87]: Jump straight into our most-used tools — no setup needed.
+      - generic [ref=e88]:
+        - link "Word Counter Count words, sentences, and paragraphs in any text instantly. Text Tools" [ref=e89] [cursor=pointer]:
+          - /url: /tools/word-counter/
+          - generic [ref=e90]:
+            - generic [ref=e91]: 📝
+            - generic [ref=e92]:
+              - heading "Word Counter" [level=3] [ref=e93]
+              - paragraph [ref=e94]: Count words, sentences, and paragraphs in any text instantly.
+              - generic [ref=e95]: Text Tools
+        - link "Character Counter Count characters with and without spaces for social media limits. Text Tools" [ref=e96] [cursor=pointer]:
+          - /url: /tools/character-counter/
+          - generic [ref=e97]:
+            - generic [ref=e98]: 🔤
+            - generic [ref=e99]:
+              - heading "Character Counter" [level=3] [ref=e100]
+              - paragraph [ref=e101]: Count characters with and without spaces for social media limits.
+              - generic [ref=e102]: Text Tools
+        - link "JSON Formatter Format, validate, and beautify JSON data with syntax errors. Developer Tools" [ref=e103] [cursor=pointer]:
+          - /url: /tools/json-formatter/
+          - generic [ref=e104]:
+            - generic [ref=e105]: "{ }"
+            - generic [ref=e106]:
+              - heading "JSON Formatter" [level=3] [ref=e107]
+              - paragraph [ref=e108]: Format, validate, and beautify JSON data with syntax errors.
+              - generic [ref=e109]: Developer Tools
+        - link "URL Encoder/Decoder Encode or decode URLs and query strings for safe transmission. Developer Tools" [ref=e110] [cursor=pointer]:
+          - /url: /tools/url-encoder-decoder/
+          - generic [ref=e111]:
+            - generic [ref=e112]: 🔗
+            - generic [ref=e113]:
+              - heading "URL Encoder/Decoder" [level=3] [ref=e114]
+              - paragraph [ref=e115]: Encode or decode URLs and query strings for safe transmission.
+              - generic [ref=e116]: Developer Tools
+        - link "Percentage Calculator Calculate percentages, percentage change, and what percent X is of Y. Calculators" [ref=e117] [cursor=pointer]:
+          - /url: /tools/percentage-calculator/
+          - generic [ref=e118]:
+            - generic [ref=e119]: "%"
+            - generic [ref=e120]:
+              - heading "Percentage Calculator" [level=3] [ref=e121]
+              - paragraph [ref=e122]: Calculate percentages, percentage change, and what percent X is of Y.
+              - generic [ref=e123]: Calculators
+        - link "Age Calculator Calculate your exact age from date of birth in years, months, days, hours, and more. Calculators" [ref=e124] [cursor=pointer]:
+          - /url: /tools/age-calculator/
+          - generic [ref=e125]:
+            - generic [ref=e126]: 🎂
+            - generic [ref=e127]:
+              - heading "Age Calculator" [level=3] [ref=e128]
+              - paragraph [ref=e129]: Calculate your exact age from date of birth in years, months, days, hours, and more.
+              - generic [ref=e130]: Calculators
+        - link "BMI Calculator Calculate your Body Mass Index and see where you fall on the BMI scale. Calculators" [ref=e131] [cursor=pointer]:
+          - /url: /tools/bmi-calculator/
+          - generic [ref=e132]:
+            - generic [ref=e133]: ⚕️
+            - generic [ref=e134]:
+              - heading "BMI Calculator" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Calculate your Body Mass Index and see where you fall on the BMI scale.
+              - generic [ref=e137]: Calculators
+        - link "Tip Calculator Calculate the tip amount and split the bill among any number of people. Calculators" [ref=e138] [cursor=pointer]:
+          - /url: /tools/tip-calculator/
+          - generic [ref=e139]:
+            - generic [ref=e140]: 💵
+            - generic [ref=e141]:
+              - heading "Tip Calculator" [level=3] [ref=e142]
+              - paragraph [ref=e143]: Calculate the tip amount and split the bill among any number of people.
+              - generic [ref=e144]: Calculators
+        - link "Date Difference Calculator Calculate the exact number of days, months, and years between two dates. Calculators" [ref=e145] [cursor=pointer]:
+          - /url: /tools/date-difference-calculator/
+          - generic [ref=e146]:
+            - generic [ref=e147]: 📅
+            - generic [ref=e148]:
+              - heading "Date Difference Calculator" [level=3] [ref=e149]
+              - paragraph [ref=e150]: Calculate the exact number of days, months, and years between two dates.
+              - generic [ref=e151]: Calculators
+        - link "Number to Words Convert any number to its English word representation (e.g., 123 → one hundred twenty-three). Calculators" [ref=e152] [cursor=pointer]:
+          - /url: /tools/number-to-words/
+          - generic [ref=e153]:
+            - generic [ref=e154]: 🔢
+            - generic [ref=e155]:
+              - heading "Number to Words" [level=3] [ref=e156]
+              - paragraph [ref=e157]: Convert any number to its English word representation (e.g., 123 → one hundred twenty-three).
+              - generic [ref=e158]: Calculators
+        - link "QR Code Generator Generate downloadable QR codes from any URL or text. Converters" [ref=e159] [cursor=pointer]:
+          - /url: /tools/qr-code-generator/
+          - generic [ref=e160]:
+            - generic [ref=e161]: 📱
+            - generic [ref=e162]:
+              - heading "QR Code Generator" [level=3] [ref=e163]
+              - paragraph [ref=e164]: Generate downloadable QR codes from any URL or text.
+              - generic [ref=e165]: Converters
+        - link "Color Converter Convert colors between HEX, RGB, and HSL formats instantly. Converters" [ref=e166] [cursor=pointer]:
+          - /url: /tools/color-converter/
+          - generic [ref=e167]:
+            - generic [ref=e168]: 🎨
+            - generic [ref=e169]:
+              - heading "Color Converter" [level=3] [ref=e170]
+              - paragraph [ref=e171]: Convert colors between HEX, RGB, and HSL formats instantly.
+              - generic [ref=e172]: Converters
+        - link "HTML Formatter Format, beautify, and minify your HTML code instantly. Developer Tools" [ref=e173] [cursor=pointer]:
+          - /url: /tools/html-formatter/
+          - generic [ref=e174]:
+            - generic [ref=e175]: 🌐
+            - generic [ref=e176]:
+              - heading "HTML Formatter" [level=3] [ref=e177]
+              - paragraph [ref=e178]: Format, beautify, and minify your HTML code instantly.
+              - generic [ref=e179]: Developer Tools
+        - link "Regex Tester Test your regular expressions in real-time with syntax highlighting. Developer Tools" [ref=e180] [cursor=pointer]:
+          - /url: /tools/regex-tester/
+          - generic [ref=e181]:
+            - generic [ref=e182]: 🧪
+            - generic [ref=e183]:
+              - heading "Regex Tester" [level=3] [ref=e184]
+              - paragraph [ref=e185]: Test your regular expressions in real-time with syntax highlighting.
+              - generic [ref=e186]: Developer Tools
+        - link "Markdown to HTML Convert Markdown syntax to clean, valid HTML markup. Converters" [ref=e187] [cursor=pointer]:
+          - /url: /tools/markdown-to-html/
+          - generic [ref=e188]:
+            - generic [ref=e189]: ⬇️
+            - generic [ref=e190]:
+              - heading "Markdown to HTML" [level=3] [ref=e191]
+              - paragraph [ref=e192]: Convert Markdown syntax to clean, valid HTML markup.
+              - generic [ref=e193]: Converters
+        - link "CSV to JSON Convert CSV spreadsheets or tables to structured JSON data. Converters" [ref=e194] [cursor=pointer]:
+          - /url: /tools/csv-to-json/
+          - generic [ref=e195]:
+            - generic [ref=e196]: 📊
+            - generic [ref=e197]:
+              - heading "CSV to JSON" [level=3] [ref=e198]
+              - paragraph [ref=e199]: Convert CSV spreadsheets or tables to structured JSON data.
+              - generic [ref=e200]: Converters
+        - link "Image Compressor Compress and resize PNG, JPEG, and WebP images client-side. Converters" [ref=e201] [cursor=pointer]:
+          - /url: /tools/image-compressor/
+          - generic [ref=e202]:
+            - generic [ref=e203]: 🖼️
+            - generic [ref=e204]:
+              - heading "Image Compressor" [level=3] [ref=e205]
+              - paragraph [ref=e206]: Compress and resize PNG, JPEG, and WebP images client-side.
+              - generic [ref=e207]: Converters
+        - link "PDF Merger Combine multiple PDF files into a single document instantly. PDF Tools" [ref=e208] [cursor=pointer]:
+          - /url: /tools/pdf-merger/
+          - generic [ref=e209]:
+            - generic [ref=e210]: 📑
+            - generic [ref=e211]:
+              - heading "PDF Merger" [level=3] [ref=e212]
+              - paragraph [ref=e213]: Combine multiple PDF files into a single document instantly.
+              - generic [ref=e214]: PDF Tools
+        - link "PDF Splitter Split a PDF file into individual pages or page ranges. PDF Tools" [ref=e215] [cursor=pointer]:
+          - /url: /tools/pdf-splitter/
+          - generic [ref=e216]:
+            - generic [ref=e217]: ✂️
+            - generic [ref=e218]:
+              - heading "PDF Splitter" [level=3] [ref=e219]
+              - paragraph [ref=e220]: Split a PDF file into individual pages or page ranges.
+              - generic [ref=e221]: PDF Tools
+        - link "PDF Compressor Reduce PDF file size by compressing images and content. PDF Tools" [ref=e222] [cursor=pointer]:
+          - /url: /tools/pdf-compressor/
+          - generic [ref=e223]:
+            - generic [ref=e224]: 🗜️
+            - generic [ref=e225]:
+              - heading "PDF Compressor" [level=3] [ref=e226]
+              - paragraph [ref=e227]: Reduce PDF file size by compressing images and content.
+              - generic [ref=e228]: PDF Tools
+        - link "Image Cropper Crop any image to custom dimensions or preset aspect ratios. Converters" [ref=e229] [cursor=pointer]:
+          - /url: /tools/image-cropper/
+          - generic [ref=e230]:
+            - generic [ref=e231]: ✂️
+            - generic [ref=e232]:
+              - heading "Image Cropper" [level=3] [ref=e233]
+              - paragraph [ref=e234]: Crop any image to custom dimensions or preset aspect ratios.
+              - generic [ref=e235]: Converters
+        - link "Image Resizer Resize images to exact dimensions while maintaining quality. Converters" [ref=e236] [cursor=pointer]:
+          - /url: /tools/image-resizer/
+          - generic [ref=e237]:
+            - generic [ref=e238]: 📏
+            - generic [ref=e239]:
+              - heading "Image Resizer" [level=3] [ref=e240]
+              - paragraph [ref=e241]: Resize images to exact dimensions while maintaining quality.
+              - generic [ref=e242]: Converters
+        - link "Image Format Converter Convert images between PNG, JPEG, WebP, and other formats. Converters" [ref=e243] [cursor=pointer]:
+          - /url: /tools/image-format-converter/
+          - generic [ref=e244]:
+            - generic [ref=e245]: 🔄
+            - generic [ref=e246]:
+              - heading "Image Format Converter" [level=3] [ref=e247]
+              - paragraph [ref=e248]: Convert images between PNG, JPEG, WebP, and other formats.
+              - generic [ref=e249]: Converters
+        - link "Password Generator Generate strong, secure passwords with customizable options. Developer Tools" [ref=e250] [cursor=pointer]:
+          - /url: /tools/password-generator/
+          - generic [ref=e251]:
+            - generic [ref=e252]: 🔑
+            - generic [ref=e253]:
+              - heading "Password Generator" [level=3] [ref=e254]
+              - paragraph [ref=e255]: Generate strong, secure passwords with customizable options.
+              - generic [ref=e256]: Developer Tools
+        - link "Text Diff Checker Compare two texts side-by-side and highlight differences. Text Tools" [ref=e257] [cursor=pointer]:
+          - /url: /tools/text-diff/
+          - generic [ref=e258]:
+            - generic [ref=e259]: 📊
+            - generic [ref=e260]:
+              - heading "Text Diff Checker" [level=3] [ref=e261]
+              - paragraph [ref=e262]: Compare two texts side-by-side and highlight differences.
+              - generic [ref=e263]: Text Tools
+        - link "Text Summarizer Summarize long articles and paragraphs into concise key points. Text Tools" [ref=e264] [cursor=pointer]:
+          - /url: /tools/text-summarizer/
+          - generic [ref=e265]:
+            - generic [ref=e266]: 📋
+            - generic [ref=e267]:
+              - heading "Text Summarizer" [level=3] [ref=e268]
+              - paragraph [ref=e269]: Summarize long articles and paragraphs into concise key points.
+              - generic [ref=e270]: Text Tools
+      - link "View all tools" [ref=e272] [cursor=pointer]:
+        - /url: /tools/
+        - text: View all tools
+        - img [ref=e273]
+    - generic [ref=e276]:
+      - paragraph [ref=e277]: Trusted by users worldwide
+      - generic [ref=e278]:
+        - generic [ref=e279]: Product Hunt
+        - generic [ref=e280]: BetaList
+        - generic [ref=e281]: Hacker News
+        - generic [ref=e282]: GitHub
+    - generic [ref=e284]:
+      - heading "Why choose Free Online Tools Nest?" [level=2] [ref=e286]
+      - generic [ref=e287]:
+        - generic [ref=e288]:
+          - generic [ref=e289]: ⚡
+          - heading "Instant results" [level=3] [ref=e290]
+          - paragraph [ref=e291]: Every tool runs directly in your browser — no uploads, no waiting. Results appear as you type.
+        - generic [ref=e292]:
+          - generic [ref=e293]: 🔒
+          - heading "Privacy first" [level=3] [ref=e294]
+          - paragraph [ref=e295]: Your data never leaves your device. All processing happens locally with zero server calls.
+        - generic [ref=e296]:
+          - generic [ref=e297]: 📱
+          - heading "Works everywhere" [level=3] [ref=e298]
+          - paragraph [ref=e299]: Fully responsive across phones, tablets, and desktops. Use any tool on any device, any browser.
+    - generic [ref=e301]:
+      - heading "Frequently asked questions" [level=2] [ref=e302]
+      - generic [ref=e303]:
+        - group [ref=e304] [cursor=pointer]:
+          - generic "Are all tools on this site completely free?" [ref=e305]:
+            - generic [ref=e306]: Are all tools on this site completely free?
+            - img [ref=e307]
+        - group [ref=e308] [cursor=pointer]:
+          - generic "Is my data safe when I use these tools?" [ref=e309]:
+            - generic [ref=e310]: Is my data safe when I use these tools?
+            - img [ref=e311]
+        - group [ref=e312] [cursor=pointer]:
+          - generic "Do I need to create an account to use the tools?" [ref=e313]:
+            - generic [ref=e314]: Do I need to create an account to use the tools?
+            - img [ref=e315]
+        - group [ref=e316] [cursor=pointer]:
+          - generic "Can I use these tools on my phone or tablet?" [ref=e317]:
+            - generic [ref=e318]: Can I use these tools on my phone or tablet?
+            - img [ref=e319]
+        - group [ref=e320] [cursor=pointer]:
+          - generic "How often do you add new tools?" [ref=e321]:
+            - generic [ref=e322]: How often do you add new tools?
+            - img [ref=e323]
+    - article [ref=e326]:
+      - heading "Free Online Tools Nest — Your All-in-One Browser-Based Utility Hub" [level=2] [ref=e327]
+      - paragraph [ref=e328]:
+        - text: In today’s fast-paced digital world, efficiency and convenience are key to maintaining a productive workflow. Whether you are a content writer perfecting a blog post, a developer formatting a complex JSON payload, a designer converting color codes, or a student solving a math problem, having the right utility tools at your fingertips makes all the difference.
+        - strong [ref=e329]: Free Online Tools Nest
+        - text: is designed as a comprehensive, all-in-one web tools collection that addresses these everyday challenges.
+      - paragraph [ref=e330]:
+        - text: We provide a diverse suite of
+        - strong [ref=e331]: free online tools
+        - text: "built with a single core philosophy: they must be fast, completely free, and 100% private. Unlike many other platforms that require complex registrations, credit cards, or software installations, our tools work instantly, directly inside your web browser. By operating entirely client-side, we ensure that your sensitive data remains yours and yours alone."
+      - heading "Why Choose Browser-Based Online Tools?" [level=3] [ref=e332]
+      - paragraph [ref=e333]: "Traditional utility software often comes with high friction: downloading installers, updating applications, managing license keys, or dealing with intrusive advertisements. Many web-based alternatives also require you to upload your files or text to their servers, exposing your data to potential privacy risks or server-side security vulnerabilities."
+      - paragraph [ref=e334]:
+        - strong [ref=e335]: Free Online Tools Nest
+        - text: "solves this by leveraging modern browser-based technology. When you use our platform, all calculations, formatting, and file processing occur locally on your machine using client-side JavaScript. This offers three critical benefits:"
+      - list [ref=e336]:
+        - listitem [ref=e337]:
+          - strong [ref=e338]: Absolute Privacy
+          - text: ": Since your input data is never sent to a backend server, there is zero risk of data leaks, interception, or unauthorized storage. This is particularly important for developers formatting API keys or payload data, and writers handling proprietary content."
+        - listitem [ref=e339]:
+          - strong [ref=e340]: Instant Speed
+          - text: ": Without the need to transmit data back and forth across a network, results are processed in real-time. As you type, the tool outputs update instantly."
+        - listitem [ref=e341]:
+          - strong [ref=e342]: Offline Compatibility
+          - text: ": Once a tool page is loaded in your browser, it can function completely offline. You can continue to count words, convert cases, or generate dummy text even without an active internet connection."
+      - heading "A Curated Directory of Essential Tool Categories" [level=3] [ref=e343]
+      - paragraph [ref=e344]:
+        - text: Our platform organizes its
+        - strong [ref=e345]: web tools collection
+        - text: into four intuitive categories, making it easy to find the exact utility you need to optimize your daily productivity.
+      - heading "1. Developer Tools for Modern Workflows" [level=4] [ref=e346]
+      - paragraph [ref=e347]:
+        - text: Developers face daily formatting, encoding, and testing challenges. Our
+        - strong [ref=e348]: online developer tools
+        - text: "category includes:"
+      - list [ref=e349]:
+        - listitem [ref=e350]:
+          - strong [ref=e351]: JSON Formatter Online
+          - text: ": A utility that beautifies minified JSON payloads, formats nested structures, and validates code by highlighting syntax errors and line numbers in real-time."
+        - listitem [ref=e352]:
+          - strong [ref=e353]: HTML Formatter Online
+          - text: ": A fast utility to clean up messy HTML markups, customize indentation levels, and minify code for production performance."
+        - listitem [ref=e354]:
+          - strong [ref=e355]: URL Encoder Decoder Online
+          - text: ": An instant tool to convert special characters in URLs to safe percent-encoded representations, or decode them back to human-readable strings."
+        - listitem [ref=e356]:
+          - strong [ref=e357]: Base64 Encoder Decoder Online
+          - text: ": A secure encoder and decoder to translate binary or text data to and from Base64 format, ideal for data URIs, API request bodies, and email attachments."
+        - listitem [ref=e358]:
+          - strong [ref=e359]: Regex Tester Online
+          - text: ": A sandbox to test and validate regular expressions against mock strings with real-time match highlighting and capture-group identification."
+      - heading "2. Text Tools for Writers and Content Creators" [level=4] [ref=e360]
+      - paragraph [ref=e361]:
+        - text: Creating well-formatted content requires precise tools. Our
+        - strong [ref=e362]: online text tools
+        - text: "category provides:"
+      - list [ref=e363]:
+        - listitem [ref=e364]:
+          - strong [ref=e365]: Word Counter Online
+          - text: ": A robust analyzer that breaks down word count, sentences, paragraphs, and estimates reading times instantly."
+        - listitem [ref=e366]:
+          - strong [ref=e367]: Character Counter Online
+          - text: ": A real-time character tracker that displays counts with and without spaces, perfect for writing Twitter posts, SMS, or Google meta descriptions."
+        - listitem [ref=e368]:
+          - strong [ref=e369]: Case Converter Online
+          - text: ": A text transformer that converts input strings to UPPERCASE, lowercase, Title Case, Sentence case, or camelCase with one click."
+        - listitem [ref=e370]:
+          - strong [ref=e371]: Lorem Ipsum Generator Online
+          - text: ": A placeholder dummy text creator that outputs custom word, sentence, or paragraph counts for design layouts and UI mockups."
+      - heading "3. Free Online Calculators for Instant Math" [level=4] [ref=e372]
+      - paragraph [ref=e373]:
+        - text: Complex equations shouldn't require opening a heavy spreadsheet or desktop application. Our
+        - strong [ref=e374]: free online calculators
+        - text: "provide:"
+      - list [ref=e375]:
+        - listitem [ref=e376]:
+          - strong [ref=e377]: Percentage Calculator Online
+          - text: ": A multi-mode calculator to solve three distinct percentage math operations: finding a percentage of a number, determining what percentage one number is of another, and calculating the percentage change (increase or decrease) between two values."
+        - listitem [ref=e378]:
+          - strong [ref=e379]: Age Calculator Online
+          - text: ": Calculate exact age from date of birth in years, months, weeks, days, hours, minutes, and seconds with support for any two-date comparison."
+        - listitem [ref=e380]:
+          - strong [ref=e381]: BMI Calculator Online
+          - text: ": Compute Body Mass Index from height and weight with an interactive BMI scale, color-coded categories, and weight classification."
+        - listitem [ref=e382]:
+          - strong [ref=e383]: Tip Calculator Online
+          - text: ": Calculate gratuity and split restaurant bills among any number of people with preset and custom tip percentages."
+        - listitem [ref=e384]:
+          - strong [ref=e385]: Date Difference Calculator
+          - text: ": Find the exact duration between any two dates in years, months, weeks, and days for project planning and countdowns."
+        - listitem [ref=e386]:
+          - strong [ref=e387]: Number to Words Converter
+          - text: ": Convert any number into its English word representation, perfect for writing checks and invoices."
+      - heading "4. PDF Tools for Document Processing" [level=4] [ref=e388]
+      - paragraph [ref=e389]:
+        - text: Work with PDF documents without installing desktop software. Our
+        - strong [ref=e390]: free online PDF tools
+        - text: "run entirely in your browser:"
+      - list [ref=e391]:
+        - listitem [ref=e392]:
+          - strong [ref=e393]: PDF Merger Online
+          - text: ": Combine multiple PDF files into a single document with page reordering."
+        - listitem [ref=e394]:
+          - strong [ref=e395]: PDF Splitter Online
+          - text: ": Split large PDFs into individual pages or extract specific page ranges."
+        - listitem [ref=e396]:
+          - strong [ref=e397]: PDF Compressor Online
+          - text: ": Reduce PDF file sizes by compressing embedded images and removing redundant data."
+        - listitem [ref=e398]:
+          - strong [ref=e399]: PDF to Text Converter
+          - text: ": Extract and copy text content from PDF documents with preserved formatting."
+        - listitem [ref=e400]:
+          - strong [ref=e401]: PDF to Image Converter
+          - text: ": Convert PDF pages into high-quality PNG or JPEG images with custom quality settings."
+      - heading "5. Online Converter Tools for Seamless Formats" [level=4] [ref=e402]
+      - paragraph [ref=e403]:
+        - text: Convert files, strings, and values on the fly with our
+        - strong [ref=e404]: online converter tools
+        - text: "suite:"
+      - list [ref=e405]:
+        - listitem [ref=e406]:
+          - strong [ref=e407]: Online QR Code Generator
+          - text: ": A tool that converts URLs, phone numbers, or plain text into downloadable, high-quality QR codes in PNG format for marketing campaigns and business cards."
+        - listitem [ref=e408]:
+          - strong [ref=e409]: Color Converter Online
+          - text: ": A utility for designers and web developers to translate color codes seamlessly between HEX, RGB, and HSL formats with a live color preview box."
+        - listitem [ref=e410]:
+          - strong [ref=e411]: Markdown to HTML Converter
+          - text: ": A tool that renders markdown syntax into clean, standard HTML code with a real-time side-by-side preview."
+        - listitem [ref=e412]:
+          - strong [ref=e413]: CSV to JSON Converter
+          - text: ": A parser that transforms spreadsheet tables or raw CSV inputs into structured JSON arrays of objects, complete with delimiter configurations."
+        - listitem [ref=e414]:
+          - strong [ref=e415]: Image Compressor Online
+          - text: ": A client-side optimizer that reduces file sizes for JPEG, PNG, and WebP images without uploading them to any server."
+      - heading "How Our Productivity Tools Streamline Your Work" [level=3] [ref=e416]
+      - paragraph [ref=e417]:
+        - text: By bringing all these tools under a single, cohesive interface,
+        - strong [ref=e418]: Free Online Tools Nest
+        - text: acts as your digital Swiss Army knife. Instead of bookmarking dozens of different single-purpose websites — many of which are cluttered with cookie banners and video ads — you can rely on our clean, fast interface.
+      - paragraph [ref=e419]:
+        - text: Our
+        - strong [ref=e420]: free productivity tools
+        - text: are designed with responsive layouts, ensuring that they work flawlessly on any screen size. Whether you are on a smartphone, a tablet, or a large desktop monitor, the layout adjusts to optimize screen space and usability. With keyboard navigation and accessible color contrasts, we ensure that every user can work comfortably and efficiently.
+      - 'heading "Looking Ahead: Continuous Platform Expansion" [level=3] [ref=e421]'
+      - paragraph [ref=e422]: We believe that a great utility platform should never stop growing. While our current library covers the most frequent text, code, math, and conversion needs, we have an ambitious roadmap for the future expansion of Free Online Tools Nest.
+      - paragraph [ref=e423]:
+        - text: We plan to add more advanced
+        - strong [ref=e424]: developer tools
+        - text: ", such as CSS formatters, SQL prettifiers, and JWT decoders. In our"
+        - strong [ref=e425]: calculators
+        - text: section, we will introduce financial planning tools, scientific calculators, and unit converters (length, weight, temperature). For content creators, we will release text diff tools to compare documents side-by-side and SEO analyzers.
+      - paragraph [ref=e426]: We listen closely to our community. If you have a specific tool request or find an area where we can improve, we invite you to contact us. We are dedicated to continuously polishing existing features and rolling out new utilities weekly.
+  - contentinfo [ref=e427]:
+    - generic [ref=e428]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - heading "Tools" [level=3] [ref=e431]
+          - list [ref=e432]:
+            - listitem [ref=e433]:
+              - link "All Tools" [ref=e434] [cursor=pointer]:
+                - /url: /tools/
+            - listitem [ref=e435]:
+              - link "Word Counter" [ref=e436] [cursor=pointer]:
+                - /url: /tools/word-counter/
+            - listitem [ref=e437]:
+              - link "Character Counter" [ref=e438] [cursor=pointer]:
+                - /url: /tools/character-counter/
+            - listitem [ref=e439]:
+              - link "Case Converter" [ref=e440] [cursor=pointer]:
+                - /url: /tools/case-converter/
+            - listitem [ref=e441]:
+              - link "Lorem Ipsum Generator" [ref=e442] [cursor=pointer]:
+                - /url: /tools/lorem-ipsum-generator/
+            - listitem [ref=e443]:
+              - link "JSON Formatter" [ref=e444] [cursor=pointer]:
+                - /url: /tools/json-formatter/
+            - listitem [ref=e445]:
+              - link "URL Encoder/Decoder" [ref=e446] [cursor=pointer]:
+                - /url: /tools/url-encoder-decoder/
+        - generic [ref=e447]:
+          - heading "Categories" [level=3] [ref=e448]
+          - list [ref=e449]:
+            - listitem [ref=e450]:
+              - link "Text Tools" [ref=e451] [cursor=pointer]:
+                - /url: /categories/text-tools/
+            - listitem [ref=e452]:
+              - link "Developer Tools" [ref=e453] [cursor=pointer]:
+                - /url: /categories/developer-tools/
+            - listitem [ref=e454]:
+              - link "Calculators" [ref=e455] [cursor=pointer]:
+                - /url: /categories/calculators/
+            - listitem [ref=e456]:
+              - link "Converters" [ref=e457] [cursor=pointer]:
+                - /url: /categories/converters/
+            - listitem [ref=e458]:
+              - link "PDF Tools" [ref=e459] [cursor=pointer]:
+                - /url: /categories/pdf-tools/
+        - generic [ref=e460]:
+          - heading "Company" [level=3] [ref=e461]
+          - list [ref=e462]:
+            - listitem [ref=e463]:
+              - link "About" [ref=e464] [cursor=pointer]:
+                - /url: /about/
+            - listitem [ref=e465]:
+              - link "Contact" [ref=e466] [cursor=pointer]:
+                - /url: /contact/
+            - listitem [ref=e467]:
+              - link "FAQ" [ref=e468] [cursor=pointer]:
+                - /url: /faq/
+            - listitem [ref=e469]:
+              - link "Favorites" [ref=e470] [cursor=pointer]:
+                - /url: /favorites/
+        - generic [ref=e471]:
+          - heading "Legal" [level=3] [ref=e472]
+          - list [ref=e473]:
+            - listitem [ref=e474]:
+              - link "Privacy Policy" [ref=e475] [cursor=pointer]:
+                - /url: /privacy-policy/
+            - listitem [ref=e476]:
+              - link "Terms & Conditions" [ref=e477] [cursor=pointer]:
+                - /url: /terms-and-conditions/
+      - generic [ref=e478]:
+        - paragraph [ref=e479]: © 2026 Free Online Tools Nest. All rights reserved.
+        - generic [ref=e480]:
+          - link "GitHub" [ref=e481] [cursor=pointer]:
+            - /url: https://github.com/anirudhmuruganandham/freeonlinetoolsnest
+            - img [ref=e482]
+          - link "X / Twitter" [ref=e484] [cursor=pointer]:
+            - /url: https://x.com/anirudhm_
+            - img [ref=e485]
+          - generic [ref=e487]: Free, fast, and private. No sign-up required.

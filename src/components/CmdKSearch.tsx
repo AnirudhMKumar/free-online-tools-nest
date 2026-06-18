@@ -1,0 +1,189 @@
+import { useState, useEffect, useRef, useCallback } from "react";
+import { TOOLS, CATEGORIES } from "../data/tools";
+
+interface SearchResult {
+  type: "tool" | "category";
+  slug: string;
+  name: string;
+  description: string;
+  icon: string;
+  url: string;
+}
+
+const allResults: SearchResult[] = [
+  ...TOOLS.map((t) => ({
+    type: "tool" as const,
+    slug: t.slug,
+    name: t.name,
+    description: t.description,
+    icon: t.icon,
+    url: `/tools/${t.slug}/`,
+  })),
+  ...CATEGORIES.map((c) => ({
+    type: "category" as const,
+    slug: c.slug,
+    name: c.name,
+    description: c.description,
+    icon: c.icon,
+    url: `/categories/${c.slug}/`,
+  })),
+];
+
+export default function CmdKSearch() {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+
+  // Listen for ⌘K / Ctrl+K
+  useEffect(() => {
+    function handler(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setOpen((prev) => !prev);
+      }
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [open]);
+
+  // Focus input when open
+  useEffect(() => {
+    if (open) {
+      // Small delay so the DOM renders first
+      setTimeout(() => inputRef.current?.focus(), 50);
+      setQuery("");
+      setSelectedIndex(0);
+    }
+  }, [open]);
+
+  // Close on outside click
+  const overlayRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    if (open) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [open]);
+
+  // Prevent body scroll when open
+  useEffect(() => {
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  const q = query.toLowerCase().trim();
+  const matches = q
+    ? allResults.filter(
+        (r) =>
+          r.name.toLowerCase().includes(q) ||
+          r.description.toLowerCase().includes(q)
+      ).slice(0, 10)
+    : allResults.slice(0, 10);
+
+  const navigate = useCallback((url: string) => {
+    setOpen(false);
+    window.location.href = url;
+  }, []);
+
+  function onKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((i) => Math.min(i + 1, matches.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((i) => Math.max(i - 1, 0));
+    } else if (e.key === "Enter" && matches[selectedIndex]) {
+      e.preventDefault();
+      navigate(matches[selectedIndex].url);
+    }
+  }
+
+  // Scroll selected into view
+  useEffect(() => {
+    const el = listRef.current?.children[selectedIndex] as HTMLElement | undefined;
+    el?.scrollIntoView({ block: "nearest" });
+  }, [selectedIndex]);
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh] bg-black/40 backdrop-blur-sm">
+      <div
+        ref={overlayRef}
+        className="w-full max-w-lg mx-4 bg-canvas rounded-xl shadow-modal border border-hairline overflow-hidden animate-[fade-in-up_150ms_ease-out]"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search tools"
+      >
+        {/* Search input */}
+        <div className="relative border-b border-hairline">
+          <svg
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-mute pointer-events-none"
+            width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+            strokeLinejoin="round" aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Search tools…"
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }}
+            onKeyDown={onKeyDown}
+            className="w-full h-12 pl-12 pr-10 bg-transparent text-base text-ink placeholder:text-mute outline-none"
+            aria-label="Search tools"
+            autoComplete="off"
+          />
+          <kbd className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] font-mono text-mute bg-canvas-soft-2 px-1.5 py-0.5 rounded border border-hairline">
+            ESC
+          </kbd>
+        </div>
+
+        {/* Results */}
+        <div ref={listRef} className="max-h-80 overflow-y-auto p-2" role="listbox">
+          {matches.length === 0 ? (
+            <div className="px-3 py-8 text-center text-sm text-mute">
+              No tools found for &ldquo;{query}&rdquo;
+            </div>
+          ) : (
+            matches.map((r, i) => (
+              <button
+                key={`${r.type}-${r.slug}`}
+                role="option"
+                aria-selected={i === selectedIndex}
+                onClick={() => navigate(r.url)}
+                onMouseEnter={() => setSelectedIndex(i)}
+                className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left transition-colors duration-75 cursor-pointer ${
+                  i === selectedIndex
+                    ? "bg-canvas-soft-2"
+                    : "hover:bg-canvas-soft-2"
+                }`}
+              >
+                <span className="text-lg shrink-0" aria-hidden="true">{r.icon}</span>
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-medium text-ink">{r.name}</div>
+                  <div className="text-xs text-mute truncate">{r.description}</div>
+                </div>
+                <span className="text-[10px] font-mono uppercase text-mute shrink-0 px-1.5 py-0.5 rounded bg-canvas-soft border border-hairline">
+                  {r.type === "category" ? "Category" : "Tool"}
+                </span>
+              </button>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
