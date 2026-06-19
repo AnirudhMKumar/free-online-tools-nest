@@ -1,0 +1,314 @@
+{
+  "json-formatter": {
+    "usageSteps": [
+      {
+        "title": "Paste Your Raw JSON Data",
+        "content": "Copy your unformatted or minified JSON string from any source and paste it into the input area. Whether you retrieved the data from an API response or a configuration file, this tool lets you format JSON online free without installing any software."
+      },
+      {
+        "title": "Click the Format Button",
+        "content": "Press the Format or Beautify button to instantly transform your messy JSON into a properly indented, human-readable structure. The ability to beautify JSON code with proper nesting and line breaks makes debugging and editing significantly easier."
+      },
+      {
+        "title": "Copy or Download the Result",
+        "content": "Review the formatted output in the result panel and use the copy button to transfer it to your clipboard. You can also download the beautified JSON as a file for integration into your development workflow."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What does a JSON formatter tool actually do to my data?",
+        "answer": "A JSON formatter takes raw, minified, or poorly indented JSON strings and applies proper spacing, line breaks, and nested indentation so the structure becomes visually clear. When you format JSON online free, the tool also validates your JSON syntax and highlights any parsing errors that need correction."
+      },
+      {
+        "question": "Can I use the JSON beautifier to debug API responses?",
+        "answer": "Absolutely developers commonly paste raw API responses into this tool to beautify JSON code and quickly inspect nested objects, arrays, and values. The formatted view makes it much easier to spot missing commas, mismatched brackets, or unexpected data types in your API payloads."
+      }
+    ]
+  },
+  "html-formatter": {
+    "usageSteps": [
+      {
+        "title": "Insert Your HTML Code",
+        "content": "Paste your raw, minified, or poorly indented HTML markup into the editor area on the left. Whether you copied the source from a webpage or retrieved it from a template file, you can format HTML code online instantly without any setup."
+      },
+      {
+        "title": "Run the Formatter",
+        "content": "Click the format button to re-indent every tag, attribute, and text node with the correct nesting hierarchy. The tool intelligently preserves inline styles and scripts while ensuring every opening and closing tag aligns properly for maximum readability."
+      },
+      {
+        "title": "Export the Cleaned Markup",
+        "content": "Once the formatted HTML appears in the output panel, use the copy icon to grab the entire cleaned code block. You can then paste it directly into your editor or save it as a new file for further development."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why should I format HTML code online instead of using my editor built-in formatter?",
+        "answer": "An online HTML formatter is useful when you are working on a shared or restricted machine, troubleshooting malformed markup from a live page, or need a quick second opinion on your document structure. It also serves as a standalone validation tool that catches unclosed tags and improper nesting that your local editor might miss."
+      },
+      {
+        "question": "Does the HTML formatter handle embedded CSS and JavaScript correctly?",
+        "answer": "Yes the tool is designed to intelligently format HTML code online while preserving the integrity of embedded style blocks and script sections. It indents the content inside style and script tags appropriately without breaking syntax, so your entire document remains valid and fully functional."
+      }
+    ]
+  },
+  "url-encoder-decoder": {
+    "usageSteps": [
+      {
+        "title": "Enter the String You Want to Encode",
+        "content": "Type or paste the text or URL containing special characters like spaces, ampersands, or question marks into the input box. When you encode URL string online, the tool converts unsafe characters into their percent-encoded equivalents that browsers and servers can safely interpret."
+      },
+      {
+        "title": "Choose Encode or Decode Mode",
+        "content": "Toggle between the encode and decode modes depending on your task. Select encode to transform plain text into a URL-safe format, or switch to decode if you need to convert an encoded URL back into its original human-readable form."
+      },
+      {
+        "title": "Copy the Encoded or Decoded Result",
+        "content": "The converted string appears immediately in the output field ready for use. Copy the result and insert it into your application code, query parameters, or API calls to ensure reliable data transmission across the web."
+      }
+    ],
+    "faq": [
+      {
+        "question": "When would I need to encode URL string online in my daily work?",
+        "answer": "You need to encode URL string online whenever your URL contains characters that have special meaning in web addresses, such as spaces, ampersands, percent signs, or non-ASCII characters. This is especially common when building query parameters dynamically, constructing API request URLs, or processing user-submitted form data that includes special symbols."
+      },
+      {
+        "question": "What is the difference between URL encoding and decoding?",
+        "answer": "URL encoding transforms unsafe characters into a percent-sign followed by two hexadecimal digits, making the string safe for transmission over the internet. Decoding reverses this process, converting percent-encoded sequences back into their original characters so you can read the actual value stored in the URL parameter."
+      }
+    ]
+  },
+  "base64-encoder-decoder": {
+    "usageSteps": [
+      {
+        "title": "Input Your Text or File Data",
+        "content": "Type your plain text directly into the input area or paste Base64-encoded strings that you want to decode. The tool accepts standard text input as well as binary data representations, making it easy to encode Base64 online for use in data URIs or API payloads."
+      },
+      {
+        "title": "Select Encode or Decode",
+        "content": "Choose the encode option to convert your plain text into a Base64 string, or select decode if you have a Base64 string that needs to be turned back into readable text. The conversion happens in real time so you can see the result instantly."
+      },
+      {
+        "title": "Use the Output in Your Project",
+        "content": "Copy the generated Base64 string or decoded text with a single click. Developers commonly encode Base64 online to embed small images directly in HTML or CSS and to transmit binary data safely through text-based protocols like JSON and XML."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why is Base64 encoding useful for web developers?",
+        "answer": "Base64 encoding allows binary data such as images, audio files, or document blobs to be represented as plain ASCII text that can travel through systems designed for textual data. When you encode Base64 online, you produce a string that can be safely embedded in JSON responses, HTML attributes, or CSS background-image properties without corruption."
+      },
+      {
+        "question": "Does Base64 encoding make the data larger than the original?",
+        "answer": "Yes Base64 encoding increases the data size by approximately 33 percent because every three bytes of binary data are represented as four ASCII characters. This overhead is a worthwhile trade-off when you need to encode Base64 online for secure text-based transport, but you should avoid using it for very large files if bandwidth is a concern."
+      }
+    ]
+  },
+  "regex-tester": {
+    "usageSteps": [
+      {
+        "title": "Enter Your Regular Expression Pattern",
+        "content": "Type or paste your regex pattern into the pattern field, including any flags like global or case-insensitive. The tool supports common regex flavors so you can test regex pattern online without needing to set up a local development environment."
+      },
+      {
+        "title": "Provide a Test String",
+        "content": "Paste one or more sample strings into the test input area that you want to match against your pattern. The tool highlights every match in real time, showing you exactly which portions of your text the regular expression captures."
+      },
+      {
+        "title": "Review Matches and Refine Your Pattern",
+        "content": "Examine the highlighted matches and the detailed match info panel to understand capture groups and positions. Iterate on your pattern by editing it directly and watching the results update instantly this rapid feedback loop is the best way to test regex pattern online until it behaves exactly as intended."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How can an online regex tester improve my development workflow?",
+        "answer": "When you test regex pattern online, you get immediate visual feedback on every match, capture group, and replacement operation without running your entire application. This dramatically speeds up pattern development because you can experiment with different expressions against realistic sample data until the behavior is exactly right, then copy the final pattern into your code."
+      },
+      {
+        "question": "What regex flavors does the online tester typically support?",
+        "answer": "Most online regex testers support JavaScript-compatible regular expressions with common flags such as global, multiline, case-insensitive, and dot-all. Some tools also provide additional flavor selection so you can test regex pattern online against PCRE, Python, or PHP syntax depending on the language you are using for your project."
+      }
+    ]
+  },
+  "css-minifier": {
+    "usageSteps": [
+      {
+        "title": "Paste Your Full CSS Stylesheet",
+        "content": "Copy your complete CSS code from your project files and paste it into the input area. You can minify CSS online free regardless of whether your stylesheet is a few lines or several thousand lines long."
+      },
+      {
+        "title": "Click the Minify Button",
+        "content": "Press the minify button to strip out all unnecessary whitespace, line breaks, comments, and redundant formatting from your stylesheet. The compression engine reduces the file size significantly while keeping every selector, property, and value fully intact."
+      },
+      {
+        "title": "Copy the Compressed Output",
+        "content": "The minified CSS appears in the result panel ready for production use. Copy the compressed code and replace your original stylesheet reference in your deployment pipeline to benefit from faster page load times and reduced bandwidth consumption."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why should I minify CSS online free instead of using a build tool plugin?",
+        "answer": "An online CSS minifier is the quickest option when you are making a one-off optimization, working on a static site without a build pipeline, or debugging a production stylesheet that was already compressed. You can minify CSS online free in seconds without configuring Webpack, Gulp, or any other build tooling."
+      },
+      {
+        "question": "Does CSS minification change how my styles actually render in the browser?",
+        "answer": "No minification purely removes non-functional characters such as spaces, tabs, newlines, and comments while keeping every selector, property, and value identical to the original. The rendered output in the browser is exactly the same, but the smaller file size helps your pages load faster, especially on slow mobile connections."
+      }
+    ]
+  },
+  "html-entity-converter": {
+    "usageSteps": [
+      {
+        "title": "Paste the Text Containing Special Characters",
+        "content": "Enter your text that includes reserved HTML characters like angle brackets, ampersands, quotation marks, or accented letters. The tool will convert HTML entities automatically so your content displays correctly without breaking the page markup."
+      },
+      {
+        "title": "Choose Encode or Decode Direction",
+        "content": "Select encode to transform special characters into their named or numeric HTML entity equivalents, or choose decode to convert entity codes back into plain readable characters. This bidirectional support makes it easy to prepare content for display or extract clean text from entity-encoded sources."
+      },
+      {
+        "title": "Copy the Converted Text",
+        "content": "The processed text with all HTML entities converted appears instantly in the output panel. Copy the result and insert it into your web pages, email templates, or CMS content to ensure special characters are rendered correctly across all browsers."
+      }
+    ],
+    "faq": [
+      {
+        "question": "When do I need to convert HTML entities in my web content?",
+        "answer": "You need to convert HTML entities every time your content includes characters like the less-than sign, greater-than sign, ampersand, or double quote that would otherwise be interpreted as HTML markup. Blog posts, user-generated comments, and dynamically generated page titles commonly contain these characters, so you must convert HTML entities to prevent broken layouts or cross-site scripting vulnerabilities."
+      },
+      {
+        "question": "What is the difference between named and numeric HTML entities?",
+        "answer": "Named entities use memorable abbreviations such as amp for ampersand or lt for the less-than sign, while numeric entities use the decimal or hexadecimal Unicode code point such as 60. Both representations display identically in the browser, and this tool can convert HTML entities using either format depending on your preference."
+      }
+    ]
+  },
+  "hash-generator": {
+    "usageSteps": [
+      {
+        "title": "Enter the Text You Want to Hash",
+        "content": "Type or paste the string you wish to hash into the input field this could be a password, a file checksum, or any sensitive data. When you generate MD5 hash online or choose another algorithm, the tool computes a fixed-length digest that uniquely represents your input."
+      },
+      {
+        "title": "Select Your Preferred Hash Algorithm",
+        "content": "Choose from multiple algorithms such as MD5, SHA-1, SHA-256, or SHA-512 depending on your security and compatibility needs. Each algorithm produces a different length hash, so you can generate MD5 hash online for legacy systems or opt for SHA-256 when stronger cryptographic integrity is required."
+      },
+      {
+        "title": "Copy the Generated Hash",
+        "content": "The hash value appears in the output panel as a hexadecimal string once you start typing. Copy the digest and use it for password storage, data integrity verification, digital signatures, or API authentication tokens."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the practical difference between MD5 and SHA-256 hashing?",
+        "answer": "MD5 produces a 128-bit hash quickly and is still widely used for checksums and non-critical identifiers, but it is considered cryptographically broken and vulnerable to collision attacks. SHA-256 generates a 256-bit hash that is significantly more secure, making it the preferred choice when you need to generate MD5 hash online for legacy compatibility but should choose SHA-256 for any security-sensitive application."
+      },
+      {
+        "question": "Can I reverse a hash back into the original text?",
+        "answer": "Hash functions are mathematically one-way operations, meaning you cannot reverse a hash to recover the original input. However, when you generate MD5 hash online or use any other algorithm, the resulting digest can be compared against another hash of the same data to verify integrity without ever exposing the original value."
+      }
+    ]
+  },
+  "uuid-generator": {
+    "usageSteps": [
+      {
+        "title": "Choose the UUID Version You Need",
+        "content": "Select from UUID versions such as v4 (random) or v1 (time-based) depending on your use case. When you generate UUID online free, the tool creates a universally unique identifier that follows the standard 8-4-4-4-12 hexadecimal format."
+      },
+      {
+        "title": "Set the Quantity of UUIDs",
+        "content": "Specify how many unique identifiers you need in a single batch whether it is one ID for a database record or dozens for bulk data seeding. The tool generates multiple UUIDs simultaneously so you can generate UUID online free and copy them all at once."
+      },
+      {
+        "title": "Copy the Generated Identifiers",
+        "content": "The list of UUIDs appears in the output area formatted for easy copying. Use these identifiers as primary keys in your database, unique user IDs, session tokens, or request tracking IDs across your distributed systems."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why is a UUID better than an auto-incrementing integer for database keys?",
+        "answer": "UUIDs are globally unique across systems, tables, and even separate databases, which makes them ideal for distributed architectures and microservices where auto-incrementing integers would collide. When you generate UUID online free, you get identifiers that can be safely merged across databases without conflicts, though they take up more storage space than simple integers."
+      },
+      {
+        "question": "What is the difference between UUID v4 and UUID v1?",
+        "answer": "UUID v4 generates identifiers using random numbers, which gives you 122 bits of entropy and an extremely low probability of collision under any circumstances. UUID v1 uses the current timestamp and the host machines MAC address, which makes the IDs sortable chronologically but potentially exposes the generation time and hardware identity of the server."
+      }
+    ]
+  },
+  "password-generator": {
+    "usageSteps": [
+      {
+        "title": "Configure Your Password Requirements",
+        "content": "Adjust the password length slider and check the character types you want to include uppercase letters, lowercase letters, digits, and special symbols. The more character categories you enable and the longer the length, the easier it is to generate strong password online that resists brute-force attacks."
+      },
+      {
+        "title": "Review the Generated Password",
+        "content": "The tool instantly displays a randomly generated password that meets your specified criteria along with a visual strength indicator. Each password is created using a cryptographically secure random generator to ensure true unpredictability."
+      },
+      {
+        "title": "Copy and Store Your New Password",
+        "content": "Click the copy button to save the generated password to your clipboard and store it immediately in your password manager. You can also regenerate as many times as needed until you find a password that balances memorability with the security level you need."
+      }
+    ],
+    "faq": [
+      {
+        "question": "What makes a password strong enough to resist modern hacking attempts?",
+        "answer": "A strong password should be at least 12 to 16 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special symbols. When you generate strong password online, the tool ensures every character is chosen randomly so patterns like dictionary words or common substitutions are avoided, making the password exponentially harder to crack."
+      },
+      {
+        "question": "Should I use the generated password directly or modify it afterward?",
+        "answer": "The passwords produced by this generator are cryptographically random and fully secure to use as-is without any modification. The most important next step after you generate strong password online is to store it in a reputable password manager rather than trying to memorize it or write it down."
+      }
+    ]
+  },
+  "password-strength-checker": {
+    "usageSteps": [
+      {
+        "title": "Type or Paste Your Password",
+        "content": "Enter the password you want to evaluate into the input field. The tool analyzes it in real time so you can check password strength online instantly as you type or modify each character."
+      },
+      {
+        "title": "Review the Strength Score and Feedback",
+        "content": "The tool displays a strength rating from weak to strong along with a score based on length, character variety, and pattern detection. Detailed feedback highlights exactly which aspects of your password need improvement, such as adding special characters or increasing overall length."
+      },
+      {
+        "title": "Improve Your Password Based on the Analysis",
+        "content": "Use the specific recommendations to strengthen your password by adding more character types or increasing its length. Continue typing modifications and watch the score update live until you reach a strength level that you trust for protecting your account."
+      }
+    ],
+    "faq": [
+      {
+        "question": "How does the password strength checker determine if my password is secure?",
+        "answer": "The tool evaluates multiple factors including total length, presence of uppercase and lowercase letters, inclusion of digits and symbols, and avoidance of common patterns like sequential characters or repeated words. When you check password strength online, the algorithm also flags dictionary words and known compromised patterns that dramatically reduce your passwords effectiveness."
+      },
+      {
+        "question": "What should I do if my password is rated as weak or medium?",
+        "answer": "Strengthen your password immediately by increasing its length to at least 12 characters and ensuring it includes a mix of all four character types uppercase, lowercase, digits, and symbols. After each change, check password strength online again to see your improved score and confirm the adjustments have made a meaningful security difference."
+      }
+    ]
+  },
+  "binary-converter": {
+    "usageSteps": [
+      {
+        "title": "Enter a Decimal Number",
+        "content": "Type a decimal number into the input field the tool accepts whole numbers as well as negative values if your use case requires signed binary representation. If you want to convert decimal to binary online, simply type the base-10 number and watch the binary equivalent appear instantly."
+      },
+      {
+        "title": "View the Binary Equivalent",
+        "content": "The tool displays the binary representation of your decimal input as a string of zeros and ones in the output panel. You can also toggle between other numeral systems such as hexadecimal and octal to see the same value expressed in different bases."
+      },
+      {
+        "title": "Use the Conversion in Your Projects",
+        "content": "Copy the binary output and apply it wherever you need binary data whether you are working on low-level programming, digital logic design, network addressing, or simply learning how computers represent numbers internally."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why would I need to convert decimal to binary online instead of using a calculator?",
+        "answer": "A dedicated binary converter shows you the step-by-step conversion process and supports multiple output formats simultaneously, which is more educational and practical than a standard calculator. When you convert decimal to binary online, you also get the hexadecimal and octal equivalents side by side, making it easier to understand how different number systems relate to each other."
+      },
+      {
+        "question": "Can this tool convert binary numbers back into decimal form?",
+        "answer": "Yes the binary converter works in both directions so you can input a binary string and get its decimal equivalent just as easily. This bidirectional conversion is particularly helpful when you are reading memory dumps, configuring subnet masks, or debugging low-level network protocols and need to toggle between binary and decimal representations quickly."
+      }
+    ]
+  }
+}

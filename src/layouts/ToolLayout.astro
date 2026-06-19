@@ -139,6 +139,28 @@ const ogImage = `/og/${categorySlug}.png`;
             ))}
           </div>
         )}
+
+        <!-- How to Use section -->
+        {tool?.usageSteps && tool.usageSteps.length > 0 && (
+          <section class="mt-12 border-t border-hairline pt-10">
+            <h2 class="text-xl font-semibold text-ink mb-6" style="letter-spacing: -0.6px;">
+              How to use the {title}
+            </h2>
+            <div class="space-y-6">
+              {tool.usageSteps.map((step, i) => (
+                <div class="flex gap-4">
+                  <span class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-canvas flex items-center justify-center text-sm font-semibold">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 class="text-base font-medium text-ink mb-1">{step.title}</h3>
+                    <p class="text-sm text-body leading-relaxed">{step.content}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
 
       <!-- Sidebar -->
@@ -173,6 +195,11 @@ const ogImage = `/og/${categorySlug}.png`;
         </div>
       </aside>
     </div>
+
+    <!-- Tool-specific FAQ -->
+    {tool?.faq && tool.faq.length > 0 && (
+      <FAQSection items={tool.faq} title={`${title} — Frequently Asked Questions`} />
+    )}
   </div>
 </Layout>
 

@@ -1,0 +1,134 @@
+{
+  "word-counter": {
+    "usageSteps": [
+      { "title": "Paste or type your text", "content": "Enter or paste your content into the word counter text area. The tool instantly analyzes your words and displays word count, character count, sentence count, and estimated reading time. All results update in real time as you type, with no button clicks required." },
+      { "title": "Review the detailed metrics", "content": "The tool breaks down your text into separate metrics including total words, characters with and without spaces, sentences, paragraphs, syllables, and reading time. Each measurement helps you fine-tune your writing for specific platforms like blogs, academic essays, or social media captions." },
+      { "title": "Copy or edit your text", "content": "Edit directly in the input area and watch the counts update automatically. Use the results to trim content to meet word limits for SEO articles, school assignments, or marketing copy. The counters reset instantly when you clear or replace the text." }
+    ],
+    "faq": [
+      { "question": "How do you count words in text online for free?", "answer": "Simply paste or type your content into the word counter and the tool automatically displays your total word count in real time. No page reloads or button clicks are needed — every keystroke updates the results instantly. All processing happens in your browser, so your text stays completely private and never leaves your device." },
+      { "question": "Does the word counter count characters with or without spaces?", "answer": "Yes, the tool displays both measurements. Character count with spaces matches the total you see in most text editors, while character count without spaces is useful for platforms with strict limits such as Twitter posts or SEO meta descriptions capped at 160 characters." }
+    ]
+  },
+  "character-counter": {
+    "usageSteps": [
+      { "title": "Input your text", "content": "Type or paste your content into the character counter text box. The tool immediately starts counting every character including letters, numbers, spaces, punctuation, and special symbols. No setup or configuration is required — just start typing." },
+      { "title": "View character breakdown", "content": "The character counter shows total character count with spaces, character count without spaces, word count, and line count side by side. This detailed view helps you stay within length requirements for social media posts, SMS messages, product descriptions, or form fields." },
+      { "title": "Refine your text", "content": "Delete, add, or edit your text and watch the character counts change in real time. Use the live feedback to trim or expand your content to hit exact character limits for job applications, online bios, or advertisement copy." }
+    ],
+    "faq": [
+      { "question": "How can I count characters with spaces in my text online?", "answer": "Paste or type your text into the character counter and it instantly shows the total character count including all spaces. The tool updates live as you type, making it easy to stay within character limits for platforms like Twitter or SMS without manually counting." },
+      { "question": "What is the difference between character count with and without spaces?", "answer": "Character count with spaces includes every space between words, while without spaces excludes them. The without-spaces count is useful for SEO meta descriptions and title tags where spaces are often not counted toward limits, while count with spaces is standard for most other platforms." }
+    ]
+  },
+  "case-converter": {
+    "usageSteps": [
+      { "title": "Paste your text", "content": "Copy and paste your text into the case converter input box. The tool works with any length of text from a single word to entire paragraphs. It preserves your original formatting as a fallback so you can switch between cases freely." },
+      { "title": "Choose a case style", "content": "Click the desired conversion option such as uppercase, lowercase, title case, sentence case, or toggle case. The tool instantly transforms your entire text based on your selection so you can quickly convert text to lowercase online or apply proper title capitalization." },
+      { "title": "Copy the converted result", "content": "Once the text is transformed, click the copy button to copy the converted text to your clipboard. Paste it into your target destination such as a blog post editor, email draft, or code comment. Try different case styles until you find the perfect formatting." }
+    ],
+    "faq": [
+      { "question": "How do I convert text to lowercase online for free?", "answer": "Paste your text into the case converter and click the lowercase option. The tool instantly converts every uppercase letter to lowercase while leaving numbers and special characters untouched. This is helpful for normalizing user input, standardizing data, or fixing accidentally typed uppercase text." },
+      { "question": "Can the case converter handle title case and sentence case?", "answer": "Yes, the tool includes dedicated options for title case and sentence case. Title case capitalizes every major word which is ideal for headlines and blog post titles, while sentence case capitalizes only the first word of each sentence for standard paragraph formatting." }
+    ]
+  },
+  "lorem-ipsum-generator": {
+    "usageSteps": [
+      { "title": "Set your desired output", "content": "Choose how many paragraphs, words, sentences, or bytes of lorem ipsum placeholder text you need. The generator lets you specify exact quantities so you get the right amount of filler text for your wireframe or mockup." },
+      { "title": "Generate placeholder text", "content": "Click the generate button and the tool instantly produces standard lorem ipsum dummy text in the quantity you selected. The text follows the classic Lorem Ipsum passage starting with Lorem ipsum dolor sit amet, so your designs look authentic." },
+      { "title": "Copy and use in your project", "content": "Click the copy button to copy the generated lorem ipsum placeholder text to your clipboard. Paste it directly into your design mockups, website prototypes, print layouts, or typography samples to visualize how your final content will appear." }
+    ],
+    "faq": [
+      { "question": "How can I generate lorem ipsum placeholder text online for free?", "answer": "Select the number of paragraphs or words you need and click generate. The tool creates standard Lorem Ipsum dummy text on demand without any sign-up or usage limits. It is perfect for designers and developers who need filler text for mockups and prototypes." },
+      { "question": "What quantities can I specify when generating lorem ipsum text?", "answer": "You can generate lorem ipsum by paragraphs, words, sentences, or bytes. Paragraph mode is best for layout testing and wireframing, while word and sentence modes are useful when you need exactly a specific amount of placeholder content for a design element." }
+    ]
+  },
+  "reverse-text": {
+    "usageSteps": [
+      { "title": "Enter your text", "content": "Type or paste your text into the reverse text tool input field. The tool accepts any text including sentences, paragraphs, single words, or even emojis and special characters. Everything you enter is ready to be reversed immediately." },
+      { "title": "Choose a reversal mode", "content": "Select how you want to reverse text online free — reverse the entire string, reverse each word individually, reverse the word order, or flip the text upside down. Each mode produces a different transformation for different creative or practical needs." },
+      { "title": "Copy the reversed output", "content": "Click copy to grab the transformed text and paste it where you need it. Use reversed text for creating puzzles, formatting social media posts, generating mirrored text for creative projects, or testing how text rendering handles unusual character sequences." }
+    ],
+    "faq": [
+      { "question": "How do I reverse text online free without installing software?", "answer": "Simply type or paste your text into the reverse text tool and select your preferred reversal mode. The tool works entirely in your browser so there is no software to download or install. Your text stays on your device and is never uploaded to any server." },
+      { "question": "What reversal modes are available besides reversing the whole string?", "answer": "The tool offers multiple modes including reverse each word, reverse word order, and upside-down text. Reversing each word keeps the word order but flips each word's letters, while reverse word order keeps individual words intact but reverses their sequence." }
+    ]
+  },
+  "text-analyzer": {
+    "usageSteps": [
+      { "title": "Paste your content", "content": "Enter or paste your text into the text analyzer input area. The tool works with any length of text from short sentences to full documents and research papers. Analysis begins immediately without any button presses." },
+      { "title": "Explore the statistics", "content": "Review the detailed analysis including word frequency, character count, sentence count, paragraph count, average word length, average sentence length, syllable count, and readability scores. Each metric helps you understand your writing patterns and improve clarity." },
+      { "title": "Use insights to improve your writing", "content": "Analyze text statistics online to identify overused words, unusually long sentences, or complex vocabulary that might confuse readers. Use the data to simplify your language, vary your sentence structure, and make your writing more engaging for your target audience." }
+    ],
+    "faq": [
+      { "question": "What statistics does the text analyzer provide about my writing?", "answer": "The text analyzer shows word frequency counts, average word and sentence length, total characters, syllables, and readability scores. These metrics help you assess writing complexity, identify filler words, and ensure your content matches the reading level of your intended audience." },
+      { "question": "How can I analyze text statistics online to improve my writing?", "answer": "Upload or paste your text and review the word frequency table to spot overused terms. Check the average sentence length — sentences over 20 words may be hard to follow. Use the readability score to adjust your vocabulary for different platforms from academic papers to blog posts." }
+    ]
+  },
+  "text-humanizer": {
+    "usageSteps": [
+      { "title": "Paste AI-generated text", "content": "Copy and paste AI-generated content from ChatGPT, Claude, or other language models into the text humanizer. The tool is designed specifically to detect and rewrite robotic-sounding phrases into natural, conversational language." },
+      { "title": "Click Humanize", "content": "Click the humanize button to begin processing. The tool rewrites your text by replacing stiff phrasing with natural idioms, varying sentence structure, and adding the subtle imperfections that characterize authentic human writing." },
+      { "title": "Review and copy the result", "content": "Read through the humanized output to ensure it maintains your original meaning while sounding more natural. You can humanize AI text online free as many times as needed, making adjustments each time until the tone matches your brand voice or personal style." }
+    ],
+    "faq": [
+      { "question": "How can I humanize AI text online free to make it sound more natural?", "answer": "Paste your AI-written content into the text humanizer and click the humanize button. The tool rewrites stiff and repetitive patterns into flowing natural language that reads like something a person would actually write, making it suitable for blogs, emails, and social media." },
+      { "question": "Will the text humanizer preserve my original meaning and key points?", "answer": "Yes, the tool rewrites the phrasing and sentence structure while keeping your core message intact. It targets telltale AI patterns such as overly formal transitions, repetitive sentence starts, and unnatural word choices without altering facts, data, or specific terminology." }
+    ]
+  },
+  "text-summarizer": {
+    "usageSteps": [
+      { "title": "Paste your text", "content": "Copy and paste the article, document, or web page content you want to summarize into the text summarizer. The tool works with long-form content such as news articles, research papers, blog posts, and business reports." },
+      { "title": "Set summary length", "content": "Choose whether you want a short summary of a few key sentences or a longer detailed abstract covering multiple points. The summarizer automatically selects the most important sentences and key phrases from your original text." },
+      { "title": "Copy your summary", "content": "Review the generated summary and copy it for use in notes, reports, or study materials. Use the tool to summarize text online whenever you need to quickly grasp the main points of long documents without reading every word." }
+    ],
+    "faq": [
+      { "question": "How do I summarize text online to quickly understand long articles?", "answer": "Paste the article or document into the text summarizer and select your preferred summary length. The tool extracts the most important sentences and key ideas so you can understand the main points in seconds without reading the entire piece." },
+      { "question": "Can the text summarizer handle different summary lengths?", "answer": "Yes, you can choose between short summaries that capture the single most important point and longer summaries that cover multiple key arguments and supporting details. This flexibility makes it useful for both quick overviews and detailed research." }
+    ]
+  },
+  "text-diff": {
+    "usageSteps": [
+      { "title": "Paste the original text", "content": "Copy your original version into the first text area of the text diff tool. This is the baseline version that you want to compare against. The tool clearly labels this as the original for easy reference." },
+      { "title": "Paste the modified text", "content": "Copy your edited or newer version into the second text area labeled modified. As soon as both versions are entered, the diff checker highlights the differences between the two texts with color coding." },
+      { "title": "Review the differences", "content": "Additions appear highlighted in green and deletions in red so you can compare two texts side by side at a glance. Use the diff view to verify edits in collaborative documents, track revisions in drafts, or check that no content was accidentally lost during editing." }
+    ],
+    "faq": [
+      { "question": "How do I compare two texts side by side to find differences?", "answer": "Paste the original text in the left panel and the modified text in the right panel of the text diff tool. The tool instantly highlights added words in green and removed words in red, making every change immediately visible for quick review." },
+      { "question": "Is the text diff tool suitable for comparing code or just prose?", "answer": "The text diff tool works with any text-based content including prose, code, configuration files, and data entries. It performs a character-level and word-level comparison that catches even small changes such as a single semicolon or a corrected typo." }
+    ]
+  },
+  "slug-generator": {
+    "usageSteps": [
+      { "title": "Enter your title or text", "content": "Type or paste the title, headline, or phrase you want to convert into a URL-friendly slug. The generator accepts text with spaces, special characters, uppercase letters, and punctuation all of which it cleans up automatically." },
+      { "title": "Generate the URL slug", "content": "The tool instantly processes your text by converting it to lowercase, replacing spaces with hyphens, and stripping out special characters and punctuation. The result is a clean SEO-friendly URL slug ready for use in your website." },
+      { "title": "Copy and use in your CMS", "content": "Click copy to grab the generated slug and paste it into your content management system URL field. Use the slug generator online free to create consistent, search-engine-friendly URLs for blog posts, product pages, and category pages across your entire website." }
+    ],
+    "faq": [
+      { "question": "How do I generate a URL slug online free for my blog posts?", "answer": "Type your blog post title into the slug generator and the tool automatically converts it to a lowercase hyphenated URL. For example \"How to Bake Chocolate Cake\" becomes \"how-to-bake-chocolate-cake\" which is clean, readable, and optimized for search engines." },
+      { "question": "What characters does the slug generator remove from my text?", "answer": "The slug generator removes all special characters including punctuation marks, symbols, accents, and any non-alphanumeric characters. It converts spaces to hyphens, reduces multiple hyphens to one, and strips leading and trailing hyphens for clean consistent slugs." }
+    ]
+  },
+  "grammar-checker": {
+    "usageSteps": [
+      { "title": "Paste or type your text", "content": "Enter your sentence, paragraph, or full document into the grammar checker input area. The tool scans your text for spelling mistakes, grammatical errors, punctuation issues, and style suggestions as you type or paste." },
+      { "title": "Review the suggestions", "content": "The grammar checker highlights errors and underlines suggested corrections. Each suggestion includes a brief explanation of why the change is recommended so you learn from your mistakes and improve your writing over time." },
+      { "title": "Apply corrections", "content": "Click on each highlighted issue to see the suggested fix and apply it with one click. Use the grammar checker online free to polish emails, assignments, blog posts, and professional documents before publishing or sending them." }
+    ],
+    "faq": [
+      { "question": "How can I check grammar online free before submitting important documents?", "answer": "Paste your document into the grammar checker and review the highlighted suggestions for spelling, grammar, punctuation, and style issues. The tool catches common mistakes such as subject-verb agreement errors, missing commas, and incorrect word usage so your writing always looks professional." },
+      { "question": "Does the grammar checker also catch spelling mistakes?", "answer": "Yes, the grammar checker includes a built-in spell checker that highlights misspelled words and offers correct alternatives. It catches typos, commonly confused words like their/there/they're, and proper noun capitalization errors alongside its grammar corrections." }
+    ]
+  },
+  "palindrome-checker": {
+    "usageSteps": [
+      { "title": "Enter a word or phrase", "content": "Type or paste any word, phrase, number, or sentence into the palindrome checker input. The tool accepts spaces, punctuation, and mixed case all of which it strips before checking for palindrome properties." },
+      { "title": "Check if it is a palindrome", "content": "Click check and the tool analyzes your text to determine whether it reads the same forwards and backwards after removing spaces and punctuation. A clear result tells you if the input is a palindrome and optionally shows the reversed version." },
+      { "title": "Explore more examples", "content": "Use the palindrome checker to test words like racecar, madam, or A man a plan a canal Panama. The tool makes it fun and easy to check if a word is a palindrome and discover new palindromic phrases for puzzles, word games, or educational activities." }
+    ],
+    "faq": [
+      { "question": "How do I check if a word is a palindrome using an online tool?", "answer": "Type the word into the palindrome checker and click check. The tool ignores spaces, punctuation, and capitalization so phrases like A man a plan a canal Panama are correctly identified as palindromes. It shows the reversed version so you can verify the result yourself." },
+      { "question": "Does the palindrome checker ignore spaces and punctuation?", "answer": "Yes, the tool strips all spaces, punctuation marks, and special characters before checking. It also ignores case sensitivity so both Racecar and racecar are correctly identified. This means full sentences with punctuation like Madam Im Adam are evaluated correctly as palindromes." }
+    ]
+  }
+}
