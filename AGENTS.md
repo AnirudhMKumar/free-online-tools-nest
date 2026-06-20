@@ -1,16 +1,17 @@
 # Free Online Tools Nest — Project Knowledge Base
 
 > This file is a comprehensive knowledge base designed to give any AI model full context about this project without needing to explore the codebase. It saves tokens by consolidating architecture, data models, patterns, completed work, and known issues in one place.
+> **Last audited**: 2026-06-20
 
 ---
 
 ## 1. Project Overview
 
-**What it is**: A collection of 62 free, browser-based utility tools (text, code, math, SEO, PDF, design, converters, calculators). All processing happens client-side — no server uploads, no signups, no ads.
+**What it is**: A collection of 62 free, browser-based utility tools (text, code, math, SEO, PDF, design, converters, calculators). All processing happens client-side — no server uploads, no signups, no ads. Includes a companion Chrome extension for quick tool access.
 
 **Domain**: `https://freeonlinetoolsnest.com`  
 **Deployed on**: Cloudflare Pages (via `wrangler pages deploy`)  
-**Build**: 130 static pages, ~8s build time, 0 errors  
+**Build**: 130 static pages, ~9s build time, 0 errors  
 **GitHub**: (not public yet — codebase local only)
 
 ---
@@ -29,7 +30,9 @@
 | **QR** | `qrcode` | Client-side QR generation |
 | **Markdown** | `marked` | Client-side MD→HTML rendering |
 | **Hosting** | Cloudflare Pages | Custom domain + security headers |
-| **Linting** | Prettier | Code formatting only (no ESLint) |
+| **Linting** | ESLint (`eslint-plugin-astro`) | Astro files only (partial coverage) |
+| **Testing** | Vitest | v4.1.9, node environment, 7 unit tests |
+| **Type Checking** | `astro check` (TypeScript strict) | 37 pre-existing errors (all in tool components) |
 | **Node** | >=22.12.0 | Engine requirement |
 
 ### Why Astro + React?
@@ -53,6 +56,12 @@ freeonlinetoolsnest.com/
 │   ├── apple-touch-icon.png
 │   ├── site.webmanifest
 │   └── web-app-manifest-*.png
+├── extension/                    # Chrome extension (Manifest v3)
+│   ├── manifest.json
+│   ├── popup.html                # Popup with search + category filter
+│   ├── popup.js                  # 38 tools listed, category filtering
+│   └── icons/
+│       └── icon.svg
 ├── src/
 │   ├── assets/                   # Static images used in components
 │   ├── components/               # Shared UI components
@@ -60,7 +69,7 @@ freeonlinetoolsnest.com/
 │   │   ├── FAQSection.astro      # Accordion FAQ + JSON-LD
 │   │   ├── SEOHead.astro         # Meta/OG/hreflang/JSON-LD head component
 │   │   ├── Nav.astro             # Sticky nav + mobile hamburger
-│   │   ├── Footer.astro          # 4-column footer
+│   │   ├── Footer.astro          # 4-column footer + newsletter signup
 │   │   ├── Hero.astro            # Homepage hero
 │   │   ├── ToolCard.astro        # Tool card component
 │   │   ├── CategoryCard.astro    # Category card component
@@ -69,18 +78,19 @@ freeonlinetoolsnest.com/
 │   │   ├── FavoriteButton.tsx    # Client-side favorites (localStorage)
 │   │   ├── FavoritesPage.tsx     # Favorites listing page
 │   │   ├── CmdKSearch.tsx        # Command-K search modal
-│   │   ├── ErrorBanner.tsx       # Error display component
-│   │   └── AsSeenOn.astro        # Social proof section
+│   │   └── ErrorBanner.tsx       # Error display component
 │   ├── content/                  # Astro content collections
-│   │   └── blog/                 # Blog posts (.md files)
+│   │   └── blog/                 # Blog posts (.md files, 3 total)
 │   ├── content.config.ts         # Content collection schema
 │   ├── data/
-│   │   └── tools.ts              # THE central file: categories + 62 tools + helpers
+│   │   └── tools.ts              # THE central file: categories + 62 tools + helpers (2537 lines)
 │   ├── helpers/
-│   │   └── utils.ts              # formatBytes(), escapeHtml()
-│   ├── hooks/                    # (empty — no custom hooks yet)
+│   │   ├── utils.ts              # formatBytes(), escapeHtml()
+│   │   └── utils.test.ts         # 7 unit tests (Vitest)
+│   ├── hooks/
+│   │   └── useCopyToClipboard.ts # Shared clipboard copy hook with feedback state
 │   ├── i18n/
-│   │   ├── ui.ts                 # Translation dictionary (1705 lines, 8 languages)
+│   │   ├── ui.ts                 # Translation dictionary (1717 lines, 8 languages)
 │   │   └── utils.ts              # getLangFromUrl(), useTranslations(), getLocalePaths()
 │   ├── layouts/
 │   │   ├── Layout.astro          # Base layout (HTML shell, SEOHead, Nav, Footer)
@@ -94,26 +104,29 @@ freeonlinetoolsnest.com/
 │   │   │   ├── index.astro       # Locale-specific homepage
 │   │   │   ├── privacy-policy.astro
 │   │   │   └── terms-and-conditions.astro
-│   │   ├── blog/                 # Blog index + [slug] dynamic route
+│   │   ├── blog/                 # Blog index + [slug] dynamic route (3 posts)
 │   │   ├── categories/           # 7 category listing pages
 │   │   ├── tools/                # 62 tool pages + index
-│   │   ├── 404.astro             # Custom 404
-│   │   ├── 500.astro             # Custom 500
+│   │   ├── 404.astro             # Custom 404 (localized, always English via SSR)
+│   │   ├── 500.astro             # Custom 500 (localized, always English via SSR)
 │   │   ├── about.astro           # Default-locale about
 │   │   ├── contact.astro         # Default-locale contact
 │   │   ├── favorites/            # Favorites page
 │   │   ├── index.astro           # Root homepage (redirects to /en/)
 │   │   └── (privacy, terms)      # Default-locale legal pages
 │   ├── styles.css                # Tailwind v4 config + custom CSS
-│   ├── types/
-│   │   └── index.ts              # TypeScript interfaces (Tool, Category, etc.)
-│   └── tools/                    # (empty — tools live in components/tools/)
+│   └── types/
+│       └── index.ts              # TypeScript interfaces (Tool, Category, etc.)
 ├── astro.config.mjs              # Astro config (i18n, sitemap, tailwind)
+├── DESIGN.md                     # Vercel-inspired design system reference (736 lines)
+├── eslint.config.js              # ESLint flat config (Astro only, partial coverage)
+├── vitest.config.ts              # Vitest configuration (node env, globals)
+├── tsconfig.json                 # extends astro/tsconfigs/strict
 ├── package.json
 ├── AGENTS.md                     # ← This file
 └── .omo/
     └── plans/
-        ├── backlink-directory-submissions.md   # Directory submission strategy
+        ├── backlink-directory-submissions.md   # Directory submission strategy (31 directories)
         └── show-hn-launch-draft.md             # Hacker News launch draft
 ```
 
@@ -272,7 +285,7 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 ### Homepage
 
 - `/` → redirects to `/en/`
-- `/en/` → Hero + AsSeenOn + Featured Tools grid + Category cards + Blog list
+- `/en/` → Hero + Featured Tools grid + Category cards + Blog list
 - Each locale gets its own homepage at `/{locale}/`
 
 ---
@@ -325,6 +338,8 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 ### What's Translated
 - Navigation, footer, hero, breadcrumbs, category names, about page content
 - Contact page content, FAQ page content, privacy/terms pages
+- 404/500 error pages (always English via `useTranslations("en")`)
+- Newsletter subscription section
 - **Tool content is NOT translated** — tools, usage steps, FAQ, meta are English only
 
 ### i18n URL Pattern
@@ -343,7 +358,7 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 |-----------|------|---------|
 | **SEOHead.astro** | Astro | Injects `<title>`, meta, OG, Twitter, canonical, hreflang, JSON-LD |
 | **Nav.astro** | Astro | Sticky header with logo, category links, dark mode toggle, CmdK search trigger, hamburger on mobile |
-| **Footer.astro** | Astro | 4-column: Tools (first 6), Categories (all 7), Company (About/Blog/Contact/Faq), Legal (Privacy/Terms) |
+| **Footer.astro** | Astro | 4-column: Tools (first 6), Categories (all 7), Company (About/Blog/Contact/Faq), Legal (Privacy/Terms) + newsletter signup section |
 | **FAQSection.astro** | Astro | Accordion FAQ + auto-generates FAQPage JSON-LD |
 | **ToolLayout.astro** | Astro | Wraps every tool page with all SEO, breadcrumbs, sidebar, FAQ |
 | **ToolCard.astro** | Astro | Card for tool listings (icon, name, description, category badge) |
@@ -354,7 +369,13 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 | **ShareBar.astro** | Astro | Share buttons (copy link, social) |
 | **Breadcrumbs.astro** | Astro | Breadcrumb navigation with JSON-LD |
 | **Hero.astro** | Astro | Homepage hero with tagline and search |
-| **AsSeenOn.astro** | Astro | Social proof (currently empty/placeholder) |
+| **ErrorBanner.tsx** | React | Error display component for tool UIs |
+
+### Helper Hook
+
+| File | Type | Purpose |
+|------|------|---------|
+| **useCopyToClipboard.ts** | React Hook | `useCopyToClipboard()` → `[copied, handleCopy]` — copies text to clipboard, `copied` resets after 2s |
 
 ### 62 React Tool Components (in `src/components/tools/`)
 
@@ -374,6 +395,10 @@ Each is a self-contained React client component with its own state and logic. Th
 - Fonts: Inter (sans-serif), JetBrains Mono (monospace)
 - Stacked box-shadows for depth (card, card-hover, elevated, modal)
 
+### Design Reference Document
+- `DESIGN.md` at project root — Vercel-inspired design system specification
+- 736 lines covering: colors (brand, surface, text, semantic, gradient), typography (display/body/caption families, size/weight/letter-spacing specs), spacing system (4px base), elevation (5 levels of stacked shadows), component specs (buttons, cards, inputs, nav), responsive breakpoints, and do's/don'ts
+
 ### Dark Mode
 - Toggle in nav bar
 - Persisted in localStorage
@@ -381,7 +406,7 @@ Each is a self-contained React client component with its own state and logic. Th
 
 ---
 
-## 11. Deployment
+## 11. Deployment & QA
 
 ### Cloudflare Pages
 - **Project**: `freeonlinetoolsnest`
@@ -392,8 +417,24 @@ Each is a self-contained React client component with its own state and logic. Th
 
 ### Build Stats
 - **130 pages** generated (62 tools + 7 categories + 8 locales × 6 pages + blog index + 3 blog posts + 404 + 500 + tools index + favorites + 2 about + 2 contact + 2 faq + 2 privacy + 2 terms + 8 homepage)
-- **~8s build time**
+- **~9s build time** (slightly slower since adding devDependencies)
 - **0 build errors**
+
+### Testing
+- **Vitest** (v4.1.9) — 7 unit tests for `formatBytes()` and `escapeHtml()` in `src/helpers/utils.test.ts`
+- Run via `npm run test` (alias: `vitest run`)
+- All tests pass in ~369ms
+
+### Linting
+- **ESLint** (v10.5.0) with `eslint-plugin-astro` — flat config covering `dist/**`, `.astro/**`, `node_modules/**`
+- Run via `npm run lint` (alias: `eslint .`)
+- **Partial coverage**: formats Astro files correctly, but lacks TypeScript/JSX parsers (`@typescript-eslint/parser` + `eslint-plugin-react` not configured) — 161 parsing errors on `.ts`/`.tsx` files
+- `prettier` (v3.2.5) used for code formatting
+
+### Type Checking
+- Run via `npm run check` (alias: `astro check`)
+- `tsconfig.json` extends `astro/tsconfigs/strict`
+- **37 pre-existing errors** in complex tool components — all inherited, none from recent work
 
 ### Security Headers (via `public/_headers`)
 ```
@@ -418,6 +459,7 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 ### Phase 2 — Design Cleanup
 - Removed GitHub icon from footer
 - Added offerItem5/6/7 translations to about page for all 8 locales
+- Created `DESIGN.md` — comprehensive Vercel-inspired design system reference
 
 ### Phase 3 — Content System
 - Added `UsageStep` and `FAQPair` interfaces to data model
@@ -434,28 +476,45 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - Created directory submission plan (`.omo/plans/backlink-directory-submissions.md`) — 31 directories
 - Created Hacker News Show HN launch draft (`.omo/plans/show-hn-launch-draft.md`)
 
+### Phase 5 — QA Infrastructure & Polish
+- **Newsletter signup form** added to footer (client-side, localStorage-based mock submission)
+- **404/500 error pages localized** using `useTranslations("en")` with `err.*` translation keys
+- **AsSeenOn.astro removed** — fake social proof section deleted entirely
+- **Empty `src/tools/` directory deleted**
+- **`src/hooks/useCopyToClipboard.ts`** created — shared clipboard hook with 2s feedback state
+- **Unit testing infrastructure** added: Vitest configured, 7 tests for `formatBytes()` and `escapeHtml()`
+- **ESLint configured** with `eslint-plugin-astro` (flat config, Astro files only)
+- **TypeScript strict mode** enabled via `astro/tsconfigs/strict`
+- **Build** confirmed at 130 pages, 0 errors, ~9s
+- **Tests** confirmed at 7/7 passing
+- **Deploy** to Cloudflare Pages successful
+- **Commit and push** — all changes committed to `main`
+
+### Phase 6 — Chrome Extension (ancillary)
+- Built companion browser extension (Manifest v3)
+- Popup with search + category filters for 38 tools
+- Links directly to tool pages on the main site
+
 ---
 
 ## 13. Known Issues & Gaps
 
 ### Content Gaps
 - [ ] Tool content (names, descriptions, longDescriptions, usageSteps, faq) is **English only** — no translations exist for tool-level content
-- [ ] `AsSeenOn.astro` component is empty/placeholder
 - [ ] No blog post sharing / social promotion has been done yet
-- [ ] No email newsletter / lead capture mechanism
+- [ ] Chrome extension only lists 38 of 62 tools (not all)
 
 ### Technical Gaps
-- [ ] No automated tests (unit, integration, or E2E)
-- [ ] No ESLint configured (only Prettier for formatting)
-- [ ] No CI/CD pipeline (manual deploy via `npm run deploy`)
-- [ ] `src/tools/` directory is empty (no tools stored there — all in `components/tools/`)
-- [ ] `src/hooks/` directory is empty
+- [ ] **No CI/CD pipeline** (manual deploy via `npm run deploy`)
+- [ ] **ESLint partial coverage** — `@typescript-eslint/parser` and `eslint-plugin-react` not configured; TS/JSX files produce 161 parsing errors
 - [ ] Password tools categorized under "design-tools" (should be their own or under developer-tools)
 - [ ] Image compressor uses Canvas API — can't match server-side compression ratios (noted in blog post)
+- [ ] 37 pre-existing TypeScript errors in complex tool components (all inherited)
+- [ ] No integration or E2E tests (only 7 unit tests)
 
 ### SEO Gaps
 - [ ] Site is new — no backlinks, low domain authority
-- [ ] 2 blog posts published but no promotion done yet
+- [ ] Blog posts published but no promotion done yet
 - [ ] No social media presence linked from site (Twitter handle in OG tags may be placeholder)
 - [ ] No analytics tracking (no GA, Plausible, or similar)
 - [ ] No performance optimization (no lazy loading audit, no Core Web Vitals check)
@@ -468,7 +527,7 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 ### i18n Gaps
 - [ ] Tool content is English-only (62 tools × titles, descriptions, keywords, meta, usageSteps, faq)
 - [ ] Blog posts are English-only
-- [ ] 404/500 pages might not be fully localized
+- [ ] 404/500 pages hardcoded to English (static fallback limitation)
 
 ---
 
@@ -481,11 +540,13 @@ For maximum context with minimum tokens, read in this order:
 3. **`src/components/FAQSection.astro`** — FAQ with JSON-LD (reused on every tool page)
 4. **`src/components/SEOHead.astro`** — All meta/OG/hreflang/JSON-LD injection
 5. **`astro.config.mjs`** — Build config, i18n, plugins
-6. **`src/i18n/ui.ts`** — Full translation dictionary (1705 lines)
+6. **`src/i18n/ui.ts`** — Full translation dictionary (1717 lines)
 7. **`src/styles.css`** — Design tokens and dark mode
 8. **`src/types/index.ts`** — TypeScript interfaces (but tools.ts has its own superset)
 9. **`package.json`** — Dependencies and scripts
 10. **`public/_headers`** — Security and indexing headers
+11. **`DESIGN.md`** — Vercel-inspired design system reference (if working on UI/UX)
+12. **`src/hooks/useCopyToClipboard.ts`** — Shared clipboard hook (if building new interactive tools)
 
 ---
 
@@ -497,6 +558,9 @@ npm run dev          # Local dev server (port 4321)
 npm run build        # Static build → dist/
 npm run preview      # Preview build locally
 npm run deploy       # Build + deploy to Cloudflare Pages
+npm run test         # Run Vitest unit tests (7 tests)
+npm run lint         # Lint with ESLint (Astro files only)
+npm run check        # TypeScript check with astro check
 ```
 
 ### Adding a New Tool
@@ -526,3 +590,15 @@ Any tool page:   https://freeonlinetoolsnest.com/tools/{slug}/
 Favorites page
 = 130 total
 ```
+
+### Page Count Breakdown (verified by build)
+| Section | Count | Details |
+|---------|-------|---------|
+| Tools | 63 | 62 tools + 1 `/tools/index.html` |
+| Categories | 7 | 7 category listing pages |
+| Blog | 4 | Index + 3 posts |
+| Locale homepages | 9 | `/en/`, `/es/`, `/pt/`, `/fr/`, `/de/`, `/hi/`, `/ja/`, `/ar/` + root `/index.html` redirect |
+| Locale shared pages | 40 | 5 pages (about, contact, faq, privacy, terms) × 8 locales |
+| Root-level pages (English) | 5 | about, contact, privacy-policy, terms-and-conditions, favorites |
+| Error pages | 2 | 404, 500 |
+| **Total** | **130** | |
