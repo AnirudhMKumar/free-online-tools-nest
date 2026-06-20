@@ -18,6 +18,38 @@ const lh = (path: string) => `${localePrefix}${path}`;
 
 <footer class="bg-canvas border-t border-hairline mt-24">
   <div class="container-page py-16">
+    <!-- Newsletter Section -->
+    <div class="mb-12 pb-12 border-b border-hairline flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+      <div class="max-w-md">
+        <h3 class="text-lg font-semibold text-ink mb-2">
+          {t('newsletter.title')}
+        </h3>
+        <p class="text-sm text-body leading-relaxed">
+          {t('newsletter.desc')}
+        </p>
+      </div>
+      <div class="w-full md:w-auto">
+        <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            id="newsletter-email"
+            placeholder={t('newsletter.placeholder')}
+            required
+            class="px-4 py-2.5 text-sm rounded-lg border border-hairline focus:border-link outline-none bg-canvas text-ink transition-colors sm:w-80"
+          />
+          <button
+            type="submit"
+            class="btn-primary btn-sm flex items-center justify-center font-medium cursor-pointer"
+          >
+            {t('newsletter.button')}
+          </button>
+        </form>
+        <div id="newsletter-success" class="hidden text-sm text-success mt-2 font-medium">
+          {t('newsletter.success')}
+        </div>
+      </div>
+    </div>
+
     <!-- Footer columns -->
     <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
       <!-- Tools column -->
@@ -182,5 +214,33 @@ const lh = (path: string) => `${localePrefix}${path}`;
     select.addEventListener("change", () => {
       window.location.href = getTargetPath(select.value);
     });
+
+    // Newsletter form submission mock
+    const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
+    const successMsg = document.getElementById("newsletter-success");
+    if (form && successMsg) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById("newsletter-email") as HTMLInputElement | null;
+        if (!emailInput || !emailInput.value) return;
+
+        // Mock saving the email to local storage for demonstration
+        const email = emailInput.value;
+        const subscribers = JSON.parse(localStorage.getItem("newsletter_subscribers") || "[]");
+        if (!subscribers.includes(email)) {
+          subscribers.push(email);
+          localStorage.setItem("newsletter_subscribers", JSON.stringify(subscribers));
+        }
+
+        form.reset();
+        form.classList.add("hidden");
+        successMsg.classList.remove("hidden");
+
+        setTimeout(() => {
+          successMsg.classList.add("hidden");
+          form.classList.remove("hidden");
+        }, 5000);
+      });
+    }
   });
 </script>
