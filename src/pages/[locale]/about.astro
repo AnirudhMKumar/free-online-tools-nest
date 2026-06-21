@@ -13,7 +13,7 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params as { locale: Lang };
 const t = useTranslations(locale);
-const canonicalPath = `/about/`;
+const canonicalPath = `/${locale}/about/`;
 const localePrefix = `/${locale}`;
 const localePaths = getLocalePaths("/about/");
 const xDefaultPath = "/about/";

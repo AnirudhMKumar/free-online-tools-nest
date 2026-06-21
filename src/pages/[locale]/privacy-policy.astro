@@ -13,7 +13,7 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params as { locale: Lang };
 const t = useTranslations(locale);
-const canonicalPath = `/privacy-policy/`;
+const canonicalPath = `/${locale}/privacy-policy/`;
 const localePrefix = `/${locale}`;
 const localePaths = getLocalePaths("/privacy-policy/");
 const xDefaultPath = "/privacy-policy/";

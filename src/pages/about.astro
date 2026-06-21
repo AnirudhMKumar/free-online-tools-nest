@@ -1,79 +1,27 @@
 ---
 /**
- * About — root-level English page for SEO.
- * Canonical version; locale versions link here as the canonical.
+ * About — root-level redirect page.
+ * Detects browser language and redirects to the locale-prefixed version.
+ * Acts as the x-default target for hreflang.
  */
-import Layout from "../layouts/Layout.astro";
-import { SITE } from "../data/tools";
-import { useTranslations, getLocalePaths } from "../i18n/utils";
-
-const t = useTranslations("en");
-const localePaths = getLocalePaths("/about/");
-const xDefaultPath = "/about/";
-
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE.name,
-  url: SITE.url,
-  logo: `${SITE.url}/favicon-96x96.png`,
-  description: SITE.description,
-};
 ---
-
-<Layout
-  title={t("about.metaTitle")}
-  description={t("about.metaDesc")}
-  canonicalPath="/about/"
-  localePaths={localePaths}
-  xDefaultPath={xDefaultPath}
-  jsonLd={organizationJsonLd}
->
-  <div class="container-narrow py-12 md:py-20">
-    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-6" style="letter-spacing: -1.28px;">
-      {t("about.title").replace("{name}", SITE.name)}
-    </h1>
-
-    <div class="space-y-6 text-body leading-relaxed">
-      <p>
-        {t("about.p1").replace("{name}", SITE.name)}
-      </p>
-
-      <h2 class="text-xl font-semibold text-ink mt-8" style="letter-spacing: -0.6px;">{t("about.missionTitle")}</h2>
-      <p>
-        {t("about.missionText")}
-      </p>
-
-      <h2 class="text-xl font-semibold text-ink mt-8" style="letter-spacing: -0.6px;">{t("about.offerTitle")}</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>{t("about.offerItem1")}</li>
-        <li>{t("about.offerItem2")}</li>
-        <li>{t("about.offerItem3")}</li>
-        <li>{t("about.offerItem4")}</li>
-        <li>{t("about.offerItem5")}</li>
-        <li>{t("about.offerItem6")}</li>
-        <li>{t("about.offerItem7")}</li>
-      </ul>
-
-      <h2 class="text-xl font-semibold text-ink mt-8" style="letter-spacing: -0.6px;">{t("about.principlesTitle")}</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-        {[
-          { title: t("about.principle1Title"), desc: t("about.principle1Desc") },
-          { title: t("about.principle2Title"), desc: t("about.principle2Desc") },
-          { title: t("about.principle3Title"), desc: t("about.principle3Desc") },
-          { title: t("about.principle4Title"), desc: t("about.principle4Desc") },
-        ].map((item) => (
-          <div class="card p-4">
-            <h3 class="text-sm font-semibold text-ink mb-1">{item.title}</h3>
-            <p class="text-sm text-body">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <p class="mt-8">
-        {t("about.ctaText")}
-        <a href="/contact/" class="text-link hover:text-link-deep underline">{t("about.ctaLink")}</a>.
-      </p>
-    </div>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Free Online Tools Nest</title>
+  <meta http-equiv="refresh" content="0;url=/en/about/" />
+  <meta name="robots" content="noindex, follow" />
+  <script is:inline>
+    (function() {
+      var lang = (navigator.language || navigator.languages?.[0] || '').slice(0, 2);
+      var supported = ['es', 'pt', 'fr', 'de', 'hi', 'ja', 'ar'];
+      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/about/';
+    })();
+  </script>
+</head>
+<body>
+  <a href="/en/about/">About — Free Online Tools Nest</a>
+</body>
+</html>

@@ -1,53 +1,27 @@
 ---
 /**
- * Contact — root-level English page for SEO.
- * Canonical version; locale versions link here as the canonical.
+ * Contact — root-level redirect page.
+ * Detects browser language and redirects to the locale-prefixed version.
+ * Acts as the x-default target for hreflang.
  */
-import Layout from "../layouts/Layout.astro";
-import { useTranslations, getLocalePaths } from "../i18n/utils";
-
-const t = useTranslations("en");
-const localePaths = getLocalePaths("/contact/");
-const xDefaultPath = "/contact/";
 ---
-
-<Layout
-  title={t("contact.metaTitle")}
-  description={t("contact.metaDesc")}
-  canonicalPath="/contact/"
-  localePaths={localePaths}
-  xDefaultPath={xDefaultPath}
->
-  <div class="container-narrow py-12 md:py-20">
-    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
-      {t("contact.title")}
-    </h1>
-    <p class="text-body text-lg mb-10">
-      {t("contact.subtitle")}
-    </p>
-
-    <div class="card p-4 sm:p-6 md:p-8 space-y-6">
-      <p class="text-body text-sm leading-relaxed">
-        {t("contact.emailText")}{" "}
-        <a href="mailto:openprojects50@gmail.com" class="text-link hover:text-link-deep underline transition-colors duration-150">
-          openprojects50@gmail.com
-        </a>
-        {" "}{t("contact.responseTime")}
-      </p>
-      <p class="text-body text-sm leading-relaxed">
-        {t("contact.helpText")}
-      </p>
-      <a
-        href="mailto:openprojects50@gmail.com?subject=Feedback%20for%20Free%20Online%20Tools%20Nest"
-        class="btn-primary inline-flex"
-        style="background-color: var(--color-primary); color: var(--color-on-primary); text-decoration: none;"
-      >
-        {t("contact.cta")}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2" y="4" width="20" height="16" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-      </a>
-    </div>
-  </div>
-</Layout>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Free Online Tools Nest</title>
+  <meta http-equiv="refresh" content="0;url=/en/contact/" />
+  <meta name="robots" content="noindex, follow" />
+  <script is:inline>
+    (function() {
+      var lang = (navigator.language || navigator.languages?.[0] || '').slice(0, 2);
+      var supported = ['es', 'pt', 'fr', 'de', 'hi', 'ja', 'ar'];
+      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/contact/';
+    })();
+  </script>
+</head>
+<body>
+  <a href="/en/contact/">Contact — Free Online Tools Nest</a>
+</body>
+</html>

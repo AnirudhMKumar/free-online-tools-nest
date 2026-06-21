@@ -1,8 +1,9 @@
 ---
 /**
- * Privacy Policy — root-level redirect page.
+ * FAQ — root-level redirect page.
  * Detects browser language and redirects to the locale-prefixed version.
  * Acts as the x-default target for hreflang.
+ * Previously missing — caused x-default hreflang to point to a 404.
  */
 ---
 <!doctype html>
@@ -10,18 +11,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Free Online Tools Nest</title>
-  <meta http-equiv="refresh" content="0;url=/en/privacy-policy/" />
+  <title>FAQ — Free Online Tools Nest</title>
+  <meta http-equiv="refresh" content="0;url=/en/faq/" />
   <meta name="robots" content="noindex, follow" />
   <script is:inline>
     (function() {
       var lang = (navigator.language || navigator.languages?.[0] || '').slice(0, 2);
       var supported = ['es', 'pt', 'fr', 'de', 'hi', 'ja', 'ar'];
-      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/privacy-policy/';
+      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/faq/';
     })();
   </script>
 </head>
 <body>
-  <a href="/en/privacy-policy/">Privacy Policy — Free Online Tools Nest</a>
+  <a href="/en/faq/">FAQ — Free Online Tools Nest</a>
 </body>
 </html>
