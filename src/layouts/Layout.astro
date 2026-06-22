@@ -74,7 +74,9 @@ const {
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW0NXYM3MN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(...args: unknown[]) {
+        window.dataLayer.push(args);
+      }
       gtag('js', new Date());
       gtag('config', 'G-KW0NXYM3MN');
     </script>
