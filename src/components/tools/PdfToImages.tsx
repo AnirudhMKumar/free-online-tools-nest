@@ -90,6 +90,7 @@ export default function PdfToImages() {
         if (!ctx) throw new Error("Failed to get canvas context");
 
         const renderContext = {
+          canvas,
           canvasContext: ctx,
           viewport,
         };

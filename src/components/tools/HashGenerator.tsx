@@ -308,7 +308,7 @@ export default function HashGenerator() {
             </span>
             <button
               type="button"
-              onClick={handleCopy}
+              onClick={() => handleCopy(hash)}
               className="text-sm px-3 py-1 rounded-md transition-colors duration-150"
               style={{
                 color: copied ? "var(--color-success)" : "var(--color-link)",

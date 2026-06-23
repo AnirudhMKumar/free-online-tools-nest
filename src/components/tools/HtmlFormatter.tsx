@@ -155,7 +155,7 @@ export default function HtmlFormatter() {
             {output && (
               <button
                 type="button"
-                onClick={handleCopy}
+                onClick={() => handleCopy(output)}
                 className="text-xs px-2.5 py-1.5 rounded transition-colors duration-150"
                 style={{
                   color: copied ? "var(--color-success)" : "var(--color-link)",

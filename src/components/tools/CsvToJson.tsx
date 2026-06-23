@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import ErrorBanner from "../ErrorBanner";
 import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
-import type { Tool } from "../types";
 
 export default function CsvToJson() {
   const [input, setInput] = useState(

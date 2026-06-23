@@ -87,7 +87,7 @@ export default function TemperatureConverter() {
             <button
               key={label}
               type="button"
-              onClick={() => handleCopy(`${value}${symbol}`, label)}
+              onClick={() => handleCopy(`${value}${symbol}`)}
               className="text-sm px-3 py-2 rounded-md transition-colors duration-150"
               style={{
                 color: copied ? "var(--color-success)" : "var(--color-link)",

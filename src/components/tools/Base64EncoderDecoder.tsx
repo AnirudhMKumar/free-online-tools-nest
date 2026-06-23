@@ -102,7 +102,7 @@ export default function Base64EncoderDecoder() {
             <span className="text-sm font-medium" style={{ color: "var(--color-ink)" }}>Result</span>
             <button
               type="button"
-              onClick={handleCopy}
+              onClick={() => handleCopy(output)}
               className="text-sm px-3 py-1 rounded-md transition-colors duration-150"
               style={{
                 color: copied ? "var(--color-success)" : "var(--color-link)",
