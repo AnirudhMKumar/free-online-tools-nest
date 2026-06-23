@@ -1,3 +1,0 @@
-[   43174ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tools/image-compressor:0
-[   85100ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-ZXJDREX2.js?v=8de813d7:20102
-[  119980ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-ZXJDREX2.js?v=8de813d7:20102

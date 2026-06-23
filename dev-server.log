@@ -1,0 +1,49 @@
+
+> freeonlinetoolsnest-com@0.0.1 dev
+> astro dev
+
+[vite] connected.
+[2m16:40:54[22m [34m[types][39m Generated [2m2ms[22m
+[vite] connected.
+[2m16:40:55[22m [34m[content][39m Syncing content
+[2m16:40:55[22m [34m[content][39m Synced content
+[2m16:40:55[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[42m[1m astro [22m[49m [32mv6.4.6[39m [2mready in[22m 2513 [2mms[22m
+[2mΓöâ[22m Local    [36mhttp://localhost:4321/[39m
+[2mΓöâ[22m Network  [36mhttp://192.168.0.106:4321/[39m
+[2m16:40:55[22m [32mwatching for file changes...[39m
+[2m16:50:43[22m [33m[404][39m /tools/json-formatter/ [2m121ms[22m
+[vite] program reload
+[vite] An error happened during full reload
+Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?
+Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js). Does the file exist?
+    at loadAndTransform (file:///C:/Users/Anirudh/Desktop/Projects/FreeOnlineToolsNest.com/node_modules/vite/dist/node/chunks/config.js:22739:33)
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[2m16:55:37[22m [34m[watch][39m /src/styles.css, /src/components/tools/JsonFormatter.tsx
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[2m16:56:39[22m [33m[404][39m /tools/json-formatter/ [2m46ms[22m
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
+[2m16:57:37[22m [34m[watch][39m /src/styles.css
