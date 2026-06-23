@@ -83,8 +83,8 @@ export const ui = {
     "common.error": "Something went wrong",
 
     // ── Homepage ────────────────────────────────────────────
-    "home.metaTitle": "62 Free Online Tools – Private Browser Utilities, No Signup",
-    "home.metaDesc": "Access 62 free online tools for text, code, math, SEO, and design — all running 100% in your browser with zero uploads. No signup, no ads, just fast utilities.",
+    "home.metaTitle": "Free Web Tools Online — Frontier Utilities, No Signup",
+    "home.metaDesc": "Access 62 free web tools and frontier utilities for text, code, math & design. All run 100% in your browser with zero uploads, no signup, no ads. Discover fast online tools.",
     "home.browseByCategory": "Browse by category",
     "home.browseByCategoryDesc": "Find the right tool for your task across {count} curated categories.",
     "home.popularTools": "Popular tools",
@@ -115,8 +115,8 @@ export const ui = {
     "home.faq.a7": "We add new tools on an ongoing basis based on user demand and our development roadmap. The collection has already grown from 37 to 62 tools. If you have a suggestion, email us at openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "About Us — Free Online Tools Nest",
-    "about.metaDesc": "Learn about Free Online Tools Nest, our mission, values, and dedication to providing fast, browser-based, and private utility tools for everyone.",
+    "about.metaTitle": "About Free Online Tools Nest — Browser-Based Utility Tools",
+    "about.metaDesc": "Learn about Free Online Tools Nest, the free online tools website that builds fast, private browser-based utility tools. 62 tools, no signup, 100% client-side.",
     "about.title": "About {name}",
     "about.p1": "{name} is a collection of free online tools built for speed, privacy, and simplicity. We serve writers, developers, students, marketers, and anyone who needs quick utility tools without the hassle of downloads, sign-ups, or subscriptions.",
     "about.missionTitle": "Our mission",
@@ -142,8 +142,8 @@ export const ui = {
     "about.ctaLink": "Get in touch",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "Contact Us — Free Online Tools Nest",
-    "contact.metaDesc": "Have a suggestion, feedback, or need to report a bug? Get in touch with the Free Online Tools Nest team. We'd love to hear from you.",
+    "contact.metaTitle": "Contact Free Online Tools Nest — Support & Feedback",
+    "contact.metaDesc": "Have feedback, a tool suggestion, or need to report a bug? Contact the Free Online Tools Nest team. We respond within 1-2 business days.",
     "contact.title": "Contact us",
     "contact.subtitle": "Have feedback, a tool suggestion, or found a bug? We would love to hear from you.",
     "contact.emailText": "Send us an email at",
@@ -152,8 +152,8 @@ export const ui = {
     "contact.cta": "Send us an email",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "Frequently Asked Questions — Free Online Tools Nest",
-    "faq.metaDesc": "Find answers to common questions about Free Online Tools Nest. Learn how our browser-based utility tools keep your data 100% secure and private.",
+    "faq.metaTitle": "FAQ — Are Online Text Tools Safe? Browser Privacy",
+    "faq.metaDesc": "Wondering if online text tools are safe or save your data? Find answers about browser-based tools, client-side privacy, and how we keep your data 100% secure.",
     "faq.title": "Frequently asked questions",
     "faq.subtitle": "Everything you need to know about {name}.",
     "faq.ctaText": "Still have questions?",
@@ -191,8 +191,8 @@ export const ui = {
     "faq.a15": "Visit the contact page, select \"Report a bug\" as the subject, and describe the issue. Include the tool name, your browser, and device type to help us fix it quickly.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "Privacy Policy — Free Online Tools Nest",
-    "privacy.metaDesc": "Read the privacy policy of Free Online Tools Nest. Discover how our client-side browser tools ensure 100% data privacy and security.",
+    "privacy.metaTitle": "Privacy Policy — Free Online Tools | Client-Side Privacy",
+    "privacy.metaDesc": "Read the Free Online Tools Nest privacy policy. Discover how our client-side browser tools keep your data 100% private with zero server uploads.",
     "privacy.title": "Privacy Policy",
     "privacy.lastUpdated": "Last updated: {date}",
     "privacy.overviewTitle": "Overview",
@@ -216,8 +216,8 @@ export const ui = {
     "privacy.contactP1": "If you have questions about this privacy policy, please ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "Terms and Conditions — Free Online Tools Nest",
-    "terms.metaDesc": "Read the terms and conditions for using Free Online Tools Nest. Learn about our terms of service, disclaimer of warranties, and limitation of liability.",
+    "terms.metaTitle": "Terms & Conditions — Free Online Tools Nest",
+    "terms.metaDesc": "Read the terms and conditions for using Free Online Tools Nest. Learn about our free tool service, disclaimers, your rights, and limitations of liability.",
     "terms.title": "Terms and Conditions",
     "terms.lastUpdated": "Last updated: {date}",
     "terms.acceptanceTitle": "Acceptance of Terms",
@@ -338,8 +338,8 @@ export const ui = {
     "home.faq.a7": "Añadimos nuevas herramientas regularmente según la demanda de los usuarios y nuestra hoja de ruta. La colección ha crecido de 37 a 62 herramientas. Si tienes una sugerencia, envíanos un correo a openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "Acerca de nosotros – Free Online Tools Nest",
-    "about.metaDesc": "Conoce Free Online Tools Nest, nuestra misión, valores y dedicación a proporcionar herramientas rápidas, basadas en navegador y privadas para todos.",
+    "about.metaTitle": "Acerca de Free Online Tools Nest — Herramientas de navegador privadas",
+    "about.metaDesc": "Conoce Free Online Tools Nest, el sitio de herramientas web gratuitas con 62 utilidades de navegador para texto, código y diseño. Todo 100% local, sin registro, sin anuncios.",
     "about.title": "Acerca de {name}",
     "about.p1": "{name} es una colección de herramientas gratuitas en línea creadas para la velocidad, privacidad y simplicidad. Servimos a escritores, desarrolladores, estudiantes, profesionales de marketing y cualquier persona que necesite herramientas rápidas sin complicaciones de descargas, registros o suscripciones.",
     "about.missionTitle": "Nuestra misión",
@@ -365,8 +365,8 @@ export const ui = {
     "about.ctaLink": "Ponte en contacto",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "Contacto – Free Online Tools Nest",
-    "contact.metaDesc": "¿Tienes una sugerencia, comentarios o necesitas reportar un error? Ponte en contacto con el equipo de Free Online Tools Nest. Nos encantaría saber de ti.",
+    "contact.metaTitle": "Contacto — Free Online Tools Nest | Soporte y comentarios",
+    "contact.metaDesc": "¿Sugerencias, comentarios o necesitas reportar un error? Contacta al equipo de Free Online Tools Nest. Respondemos en 1-2 días hábiles.",
     "contact.title": "Contáctanos",
     "contact.subtitle": "¿Tienes comentarios, una sugerencia de herramienta o encontraste un error? Nos encantaría saber de ti.",
     "contact.emailText": "Envíanos un correo a",
@@ -375,8 +375,8 @@ export const ui = {
     "contact.cta": "Envíanos un correo",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "Preguntas frecuentes – Free Online Tools Nest",
-    "faq.metaDesc": "Encuentra respuestas a preguntas comunes sobre Free Online Tools Nest. Descubre cómo nuestras herramientas de navegador mantienen tus datos 100% seguros y privados.",
+    "faq.metaTitle": "Preguntas frecuentes — ¿Son seguras las herramientas online?",
+    "faq.metaDesc": "¿Te preguntas si las herramientas online son seguras o guardan tus datos? Encuentra respuestas sobre herramientas de navegador, privacidad local y cómo protegemos tu información al 100%.",
     "faq.title": "Preguntas frecuentes",
     "faq.subtitle": "Todo lo que necesitas saber sobre {name}.",
     "faq.ctaText": "¿Aún tienes preguntas?",
@@ -413,8 +413,8 @@ export const ui = {
     "faq.a15": "Visita la página de contacto, selecciona 'Reportar un error' como asunto y describe el problema. Incluye el nombre de la herramienta, tu navegador y tipo de dispositivo para ayudarnos a solucionarlo rápidamente.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "Política de privacidad – Free Online Tools Nest",
-    "privacy.metaDesc": "Lee la política de privacidad de Free Online Tools Nest. Descubre cómo nuestras herramientas de navegador garantizan 100% de privacidad y seguridad de datos.",
+    "privacy.metaTitle": "Política de privacidad — Herramientas gratuitas | Privacidad local",
+    "privacy.metaDesc": "Lee la política de privacidad de Free Online Tools Nest. Descubre cómo nuestras herramientas de navegador procesan todo localmente sin enviar datos a servidores. Privacidad 100%.",
     "privacy.title": "Política de privacidad",
     "privacy.lastUpdated": "Última actualización: {date}",
     "privacy.overviewTitle": "Resumen",
@@ -438,8 +438,8 @@ export const ui = {
     "privacy.contactP1": "Si tienes preguntas sobre esta política de privacidad, ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "Términos y condiciones – Free Online Tools Nest",
-    "terms.metaDesc": "Lee los términos y condiciones para usar Free Online Tools Nest. Conoce nuestros términos de servicio, exención de garantías y limitación de responsabilidad.",
+    "terms.metaTitle": "Términos y condiciones — Free Online Tools Nest",
+    "terms.metaDesc": "Lee los términos y condiciones de Free Online Tools Nest. Conoce nuestros términos de servicio, responsabilidades y limitaciones para usar nuestras herramientas gratuitas.",
     "terms.title": "Términos y condiciones",
     "terms.lastUpdated": "Última actualización: {date}",
     "terms.acceptanceTitle": "Aceptación de términos",
@@ -560,8 +560,8 @@ export const ui = {
     "home.faq.a7": "Adicionamos novas ferramentas regularmente com base na demanda dos usuários e nosso roteiro de desenvolvimento. A coleção cresceu de 37 para 62 ferramentas. Se tiver uma sugestão, envie um e-mail para openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "Sobre nós – Free Online Tools Nest",
-    "about.metaDesc": "Conheça o Free Online Tools Nest, nossa missão, valores e dedicação em fornecer ferramentas rápidas, baseadas em navegador e privadas para todos.",
+    "about.metaTitle": "Sobre o Free Online Tools Nest — Ferramentas de navegador privadas",
+    "about.metaDesc": "Conheça o Free Online Tools Nest, o site de ferramentas web gratuitas com 62 utilidades de navegador para texto, código e design. Tudo 100% local, sem cadastro, sem anúncios.",
     "about.title": "Sobre {name}",
     "about.p1": "{name} é uma coleção de ferramentas online gratuitas criadas para velocidade, privacidade e simplicidade. Atendemos escritores, desenvolvedores, estudantes, profissionais de marketing e qualquer pessoa que precise de utilitários rápidos sem complicações de downloads, cadastros ou assinaturas.",
     "about.missionTitle": "Nossa missão",
@@ -587,8 +587,8 @@ export const ui = {
     "about.ctaLink": "Entre em contato",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "Contato – Free Online Tools Nest",
-    "contact.metaDesc": "Tem uma sugestão, feedback ou precisa reportar um erro? Entre em contato com a equipe do Free Online Tools Nest. Adoraríamos ouvir você.",
+    "contact.metaTitle": "Contato — Free Online Tools Nest | Suporte e feedback",
+    "contact.metaDesc": "Tem sugestões, feedback ou precisa reportar um erro? Entre em contato com a equipe do Free Online Tools Nest. Respondemos em 1-2 dias úteis.",
     "contact.title": "Fale conosco",
     "contact.subtitle": "Tem feedback, sugestão de ferramenta ou encontrou um bug? Adoraríamos ouvir você.",
     "contact.emailText": "Envie-nos um e-mail para",
@@ -597,8 +597,8 @@ export const ui = {
     "contact.cta": "Enviar e-mail",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "Perguntas frequentes – Free Online Tools Nest",
-    "faq.metaDesc": "Encontre respostas para perguntas comuns sobre o Free Online Tools Nest. Saiba como nossas ferramentas de navegador mantêm seus dados 100% seguros e privados.",
+    "faq.metaTitle": "Perguntas frequentes — Ferramentas online são seguras?",
+    "faq.metaDesc": "Saber se ferramentas online são seguras ou salvam seus dados? Encontre respostas sobre ferramentas de navegador, privacidade local e como mantemos seus dados 100% seguros.",
     "faq.title": "Perguntas frequentes",
     "faq.subtitle": "Tudo que você precisa saber sobre {name}.",
     "faq.ctaText": "Ainda tem dúvidas?",
@@ -635,8 +635,8 @@ export const ui = {
     "faq.a15": "Visite a página de contato, selecione 'Reportar um bug' como assunto e descreva o problema. Inclua o nome da ferramenta, seu navegador e tipo de dispositivo para nos ajudar a corrigi-lo rapidamente.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "Política de privacidade – Free Online Tools Nest",
-    "privacy.metaDesc": "Leia a política de privacidade do Free Online Tools Nest. Descubra como nossas ferramentas de navegador garantem 100% de privacidade e segurança dos dados.",
+    "privacy.metaTitle": "Política de privacidade — Ferramentas gratuitas | Privacidade local",
+    "privacy.metaDesc": "Leia a política de privacidade do Free Online Tools Nest. Descubra como nossas ferramentas de navegador processam tudo localmente sem enviar dados a servidores. Privacidade 100%.",
     "privacy.title": "Política de privacidade",
     "privacy.lastUpdated": "Última atualização: {date}",
     "privacy.overviewTitle": "Visão geral",
@@ -660,8 +660,8 @@ export const ui = {
     "privacy.contactP1": "Se tiver dúvidas sobre esta política de privacidade, ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "Termos e condições – Free Online Tools Nest",
-    "terms.metaDesc": "Leia os termos e condições para usar o Free Online Tools Nest. Conheça nossos termos de serviço, isenção de garantias e limitação de responsabilidade.",
+    "terms.metaTitle": "Termos e condições — Free Online Tools Nest",
+    "terms.metaDesc": "Leia os termos e condições do Free Online Tools Nest. Conheça nossos termos de serviço, responsabilidades e limitações para usar nossas ferramentas gratuitas.",
     "terms.title": "Termos e condições",
     "terms.lastUpdated": "Última atualização: {date}",
     "terms.acceptanceTitle": "Aceitação dos termos",
@@ -782,8 +782,8 @@ export const ui = {
     "home.faq.a7": "Nous ajoutons régulièrement de nouveaux outils en fonction de la demande des utilisateurs et de notre feuille de route. La collection est passée de 37 à 62 outils. Si vous avez une suggestion, envoyez-nous un email à openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "À propos – Free Online Tools Nest",
-    "about.metaDesc": "Découvrez Free Online Tools Nest, notre mission, nos valeurs et notre engagement à fournir des outils rapides, basés sur le navigateur et privés pour tous.",
+    "about.metaTitle": "À propos de Free Online Tools Nest — Outils de navigateur privés",
+    "about.metaDesc": "Découvrez Free Online Tools Nest, le site d'outils web gratuits avec 62 utilitaires de navigateur pour le texte, le code et le design. 100% local, sans inscription, sans pub.",
     "about.title": "À propos de {name}",
     "about.p1": "{name} est une collection d'outils en ligne gratuits conçus pour la rapidité, la confidentialité et la simplicité. Nous servons les rédacteurs, développeurs, étudiants, spécialistes du marketing et toute personne ayant besoin d'utilitaires rapides sans avoir à télécharger, s'inscrire ou souscrire un abonnement.",
     "about.missionTitle": "Notre mission",
@@ -809,8 +809,8 @@ export const ui = {
     "about.ctaLink": "Prenez contact",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "Contact – Free Online Tools Nest",
-    "contact.metaDesc": "Vous avez une suggestion, des commentaires ou besoin de signaler un bug? Contactez l'équipe Free Online Tools Nest. Nous serions ravis de vous entendre.",
+    "contact.metaTitle": "Contact — Free Online Tools Nest | Support et avis",
+    "contact.metaDesc": "Des suggestions, des commentaires ou besoin de signaler un bug ? Contactez l'équipe Free Online Tools Nest. Nous répondons sous 1 à 2 jours ouvrés.",
     "contact.title": "Contactez-nous",
     "contact.subtitle": "Vous avez des commentaires, une suggestion d'outil ou vous avez trouvé un bug? Nous serions ravis de vous entendre.",
     "contact.emailText": "Envoyez-nous un email à",
@@ -819,8 +819,8 @@ export const ui = {
     "contact.cta": "Envoyer un email",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "Foire aux questions – Free Online Tools Nest",
-    "faq.metaDesc": "Trouvez des réponses aux questions courantes sur Free Online Tools Nest. Découvrez comment nos outils navigateur gardent vos données 100% sécurisées et privées.",
+    "faq.metaTitle": "FAQ — Les outils en ligne sont-ils sûrs ? Confidentialité navigateur",
+    "faq.metaDesc": "Vous vous demandez si les outils en ligne sont sûrs ou conservent vos données ? Trouvez des réponses sur les outils navigateur, la confidentialité locale et comment nous protégeons vos données.",
     "faq.title": "Foire aux questions",
     "faq.subtitle": "Tout ce que vous devez savoir sur {name}.",
     "faq.ctaText": "Encore des questions?",
@@ -857,8 +857,8 @@ export const ui = {
     "faq.a15": "Visitez la page de contact, sélectionnez 'Signaler un bug' comme sujet et décrivez le problème. Incluez le nom de l'outil, votre navigateur et le type d'appareil pour nous aider à le corriger rapidement.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "Politique de confidentialité – Free Online Tools Nest",
-    "privacy.metaDesc": "Lisez la politique de confidentialité de Free Online Tools Nest. Découvrez comment nos outils navigateur garantissent 100% de confidentialité et sécurité des données.",
+    "privacy.metaTitle": "Politique de confidentialité — Outils gratuits | Confidentialité locale",
+    "privacy.metaDesc": "Lisez la politique de confidentialité de Free Online Tools Nest. Découvrez comment nos outils navigateur traitent tout localement sans envoyer de données aux serveurs.",
     "privacy.title": "Politique de confidentialité",
     "privacy.lastUpdated": "Dernière mise à jour : {date}",
     "privacy.overviewTitle": "Aperçu",
@@ -882,8 +882,8 @@ export const ui = {
     "privacy.contactP1": "Si vous avez des questions sur cette politique de confidentialité, ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "Conditions d'utilisation – Free Online Tools Nest",
-    "terms.metaDesc": "Lisez les conditions d'utilisation de Free Online Tools Nest. Découvrez nos conditions de service, exonération de garanties et limitation de responsabilité.",
+    "terms.metaTitle": "Conditions d'utilisation — Free Online Tools Nest",
+    "terms.metaDesc": "Lisez les conditions d'utilisation de Free Online Tools Nest. Découvrez nos conditions de service, responsabilités et limitations pour utiliser nos outils gratuits.",
     "terms.title": "Conditions d'utilisation",
     "terms.lastUpdated": "Dernière mise à jour : {date}",
     "terms.acceptanceTitle": "Acceptation des conditions",
@@ -1004,8 +1004,8 @@ export const ui = {
     "home.faq.a7": "Wir fügen regelmäßig neue Werkzeuge basierend auf Benutzeranfragen und unserem Entwicklungsfahrplan hinzu. Die Sammlung ist von 37 auf 62 Werkzeuge angewachsen. Wenn du einen Vorschlag hast, sende uns eine E-Mail an openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "Über uns – Free Online Tools Nest",
-    "about.metaDesc": "Erfahre mehr über Free Online Tools Nest, unsere Mission, Werte und Hingabe, schnelle, browserbasierte und private Werkzeuge für alle bereitzustellen.",
+    "about.metaTitle": "Über Free Online Tools Nest — Browser-basierte Privatwerkzeuge",
+    "about.metaDesc": "Erfahre mehr über Free Online Tools Nest, die Website für kostenlose Web-Tools mit 62 Browser-Utilitäten für Text, Code und Design. Alles 100% lokal, ohne Anmeldung, ohne Werbung.",
     "about.title": "Über {name}",
     "about.p1": "{name} ist eine Sammlung kostenloser Online-Tools, die für Geschwindigkeit, Datenschutz und Einfachheit entwickelt wurden. Wir bedienen Autoren, Entwickler, Studenten, Vermarkter und alle, die schnelle Werkzeuge ohne Downloads, Anmeldungen oder Abonnements benötigen.",
     "about.missionTitle": "Unsere Mission",
@@ -1031,8 +1031,8 @@ export const ui = {
     "about.ctaLink": "Nimm Kontakt auf",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "Kontakt – Free Online Tools Nest",
-    "contact.metaDesc": "Hast du einen Vorschlag, Feedback oder musst einen Fehler melden? Kontaktiere das Free Online Tools Nest Team. Wir freuen uns, von dir zu hören.",
+    "contact.metaTitle": "Kontakt — Free Online Tools Nest | Support und Feedback",
+    "contact.metaDesc": "Hast du Vorschläge, Feedback oder musst einen Fehler melden? Kontaktiere das Free Online Tools Nest Team. Wir antworten innerhalb von 1–2 Werktagen.",
     "contact.title": "Kontaktiere uns",
     "contact.subtitle": "Hast du Feedback, einen Werkzeugvorschlag oder einen Fehler gefunden? Wir würden uns freuen, von dir zu hören.",
     "contact.emailText": "Sende uns eine E-Mail an",
@@ -1041,8 +1041,8 @@ export const ui = {
     "contact.cta": "E-Mail senden",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "Häufig gestellte Fragen – Free Online Tools Nest",
-    "faq.metaDesc": "Finde Antworten auf häufige Fragen zu Free Online Tools Nest. Erfahre, wie unsere browserbasierten Werkzeuge deine Daten 100% sicher und privat halten.",
+    "faq.metaTitle": "FAQ — Sind Online-Tools sicher? Browser-Datenschutz",
+    "faq.metaDesc": "Fragst du dich, ob Online-Tools sicher sind oder deine Daten speichern? Finde Antworten zu browserbasierten Tools, lokalem Datenschutz und wie wir deine Daten 100% schützen.",
     "faq.title": "Häufig gestellte Fragen",
     "faq.subtitle": "Alles, was du über {name} wissen musst.",
     "faq.ctaText": "Hast du noch Fragen?",
@@ -1079,8 +1079,8 @@ export const ui = {
     "faq.a15": "Besuche die Kontaktseite, wähle 'Fehler melden' als Betreff und beschreibe das Problem. Gib den Werkzeugnamen, deinen Browser und Gerätetyp an, damit wir es schnell beheben können.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "Datenschutzerklärung – Free Online Tools Nest",
-    "privacy.metaDesc": "Lies die Datenschutzerklärung von Free Online Tools Nest. Erfahre, wie unsere clientseitigen Browser-Tools 100% Datenschutz und Sicherheit gewährleisten.",
+    "privacy.metaTitle": "Datenschutzerklärung — Kostenlose Tools | Lokale Privatsphäre",
+    "privacy.metaDesc": "Lies die Datenschutzerklärung von Free Online Tools Nest. Erfahre, wie unsere Browser-Tools alles lokal verarbeiten, ohne Daten an Server zu senden.",
     "privacy.title": "Datenschutzerklärung",
     "privacy.lastUpdated": "Zuletzt aktualisiert: {date}",
     "privacy.overviewTitle": "Überblick",
@@ -1104,8 +1104,8 @@ export const ui = {
     "privacy.contactP1": "Wenn du Fragen zu dieser Datenschutzerklärung hast, ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "Allgemeine Geschäftsbedingungen – Free Online Tools Nest",
-    "terms.metaDesc": "Lies die Allgemeinen Geschäftsbedingungen für die Nutzung von Free Online Tools Nest. Erfahre mehr über unsere Dienstleistungsbedingungen, Gewährleistungsausschluss und Haftungsbeschränkung.",
+    "terms.metaTitle": "AGB — Free Online Tools Nest",
+    "terms.metaDesc": "Lies die Allgemeinen Geschäftsbedingungen für die Nutzung von Free Online Tools Nest. Erfahre mehr über unsere Servicebedingungen, Pflichten und Haftungsbeschränkungen.",
     "terms.title": "Allgemeine Geschäftsbedingungen",
     "terms.lastUpdated": "Zuletzt aktualisiert: {date}",
     "terms.acceptanceTitle": "Akzeptanz der Bedingungen",
@@ -1226,8 +1226,8 @@ export const ui = {
     "home.faq.a7": "हम उपयोगकर्ता की माँग और अपने विकास रोडमैप के आधार पर नियमित रूप से नए टूल जोड़ते हैं। संग्रह 37 से बढ़कर 62 टूल हो गया है। यदि आपके पास सुझाव है, तो हमें openprojects50@gmail.com पर ईमेल करें।",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "हमारे बारे में – Free Online Tools Nest",
-    "about.metaDesc": "Free Online Tools Nest के बारे में जानें, हमारा मिशन, मूल्य और सभी के लिए तेज़, ब्राउज़र-आधारित और निजी उपयोगिता टूल प्रदान करने का समर्पण।",
+    "about.metaTitle": "Free Online Tools Nest के बारे में — ब्राउज़र-आधारित निजी उपकरण",
+    "about.metaDesc": "Free Online Tools Nest के बारे में जानें, 62 मुफ़्त ब्राउज़र उपयोगिताओं वाली वेबसाइट टेक्स्ट, कोड और डिज़ाइन के लिए। 100% स्थानीय, बिना साइनअप, बिना विज्ञापन।",
     "about.title": "{name} के बारे में",
     "about.p1": "{name} गति, गोपनीयता और सरलता के लिए बनाए गए मुफ़्त ऑनलाइन टूल का संग्रह है। हम लेखकों, डेवलपर्स, छात्रों, विपणकों और उन सभी की सेवा करते हैं जिन्हें डाउनलोड, साइनअप या सदस्यता की परेशानी के बिना त्वरित उपयोगिता टूल की आवश्यकता है।",
     "about.missionTitle": "हमारा मिशन",
@@ -1253,8 +1253,8 @@ export const ui = {
     "about.ctaLink": "संपर्क करें",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "संपर्क करें – Free Online Tools Nest",
-    "contact.metaDesc": "कोई सुझाव, प्रतिक्रिया या बग रिपोर्ट करने की ज़रूरत है? Free Online Tools Nest टीम से संपर्क करें। हमें आपसे सुनकर खुशी होगी।",
+    "contact.metaTitle": "संपर्क करें — Free Online Tools Nest | सहायता और प्रतिक्रिया",
+    "contact.metaDesc": "सुझाव, प्रतिक्रिया या बग रिपोर्ट करने की ज़रूरत है? Free Online Tools Nest टीम से संपर्क करें। हम 1-2 कार्य दिवसों में जवाब देते हैं।",
     "contact.title": "संपर्क करें",
     "contact.subtitle": "प्रतिक्रिया, टूल सुझाव या कोई बग मिला? हमें आपसे सुनकर खुशी होगी।",
     "contact.emailText": "हमें ईमेल करें",
@@ -1263,8 +1263,8 @@ export const ui = {
     "contact.cta": "हमें ईमेल भेजें",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "अक्सर पूछे जाने वाले प्रश्न – Free Online Tools Nest",
-    "faq.metaDesc": "Free Online Tools Nest के बारे में सामान्य प्रश्नों के उत्तर खोजें। जानें कैसे हमारे ब्राउज़र-आधारित उपयोगिता टूल आपके डेटा को 100% सुरक्षित और निजी रखते हैं।",
+    "faq.metaTitle": "सामान्य प्रश्न — क्या ऑनलाइन टूल सुरक्षित हैं? ब्राउज़र गोपनीयता",
+    "faq.metaDesc": "सोच रहे हैं कि क्या ऑनलाइन टूल सुरक्षित हैं या आपका डेटा सेव करते हैं? ब्राउज़र-आधारित टूल, क्लाइंट-साइड गोपनीयता के बारे में जवाब पाएं।",
     "faq.title": "अक्सर पूछे जाने वाले प्रश्न",
     "faq.subtitle": "{name} के बारे में वह सब कुछ जो आपको जानना चाहिए।",
     "faq.ctaText": "अभी भी प्रश्न हैं?",
@@ -1301,8 +1301,8 @@ export const ui = {
     "faq.a15": "संपर्क पृष्ठ पर जाएँ, विषय के रूप में 'बग रिपोर्ट करें' चुनें और समस्या का वर्णन करें। हमें इसे जल्दी ठीक करने में मदद करने के लिए टूल का नाम, अपना ब्राउज़र और डिवाइस प्रकार शामिल करें।",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "गोपनीयता नीति – Free Online Tools Nest",
-    "privacy.metaDesc": "Free Online Tools Nest की गोपनीयता नीति पढ़ें। जानें कैसे हमारे क्लाइंट-साइड ब्राउज़र टूल 100% डेटा गोपनीयता और सुरक्षा सुनिश्चित करते हैं।",
+    "privacy.metaTitle": "गोपनीयता नीति — मुफ़्त टूल | क्लाइंट-साइड गोपनीयता",
+    "privacy.metaDesc": "Free Online Tools Nest की गोपनीयता नीति पढ़ें। जानें कैसे हमारे ब्राउज़र टूल सब कुछ स्थानीय रूप से प्रोसेस करते हैं बिना सर्वर पर डेटा भेजे।",
     "privacy.title": "गोपनीयता नीति",
     "privacy.lastUpdated": "अंतिम अद्यतन: {date}",
     "privacy.overviewTitle": "अवलोकन",
@@ -1326,8 +1326,8 @@ export const ui = {
     "privacy.contactP1": "यदि आपके पास इस गोपनीयता नीति के बारे में प्रश्न हैं, ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "नियम और शर्तें – Free Online Tools Nest",
-    "terms.metaDesc": "Free Online Tools Nest का उपयोग करने के लिए नियम और शर्तें पढ़ें। हमारी सेवा की शर्तों, वारंटी की अस्वीकृति और दायित्व की सीमा के बारे में जानें।",
+    "terms.metaTitle": "नियम और शर्तें — Free Online Tools Nest",
+    "terms.metaDesc": "Free Online Tools Nest के नियम और शर्तें पढ़ें। हमारी मुफ़्त टूल सेवा, उत्तरदायित्वों और सीमाओं के बारे में जानें।",
     "terms.title": "नियम और शर्तें",
     "terms.lastUpdated": "अंतिम अद्यतन: {date}",
     "terms.acceptanceTitle": "शर्तों की स्वीकृति",
@@ -1448,8 +1448,8 @@ export const ui = {
     "home.faq.a7": "ユーザーの需要と開発ロードマップに基づいて定期的に新しいツールを追加しています。コレクションは37から62のツールに成長しました。ご提案がある場合は、openprojects50@gmail.comまでメールをお送りください。",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "当社について – Free Online Tools Nest",
-    "about.metaDesc": "Free Online Tools Nestについて、私たちのミッション、価値観、そして高速でブラウザベースのプライベートなユーティリティツールをすべての人に提供する取り組みをご紹介します。",
+    "about.metaTitle": "Free Online Tools Nestについて — ブラウザベースのプライベートツール",
+    "about.metaDesc": "Free Online Tools Nestについてご紹介。テキスト、コード、デザインのための62の無料ブラウザユーティリティを提供。100%ローカル処理、登録不要、広告なし。",
     "about.title": "{name}について",
     "about.p1": "{name}は、スピード、プライバシー、シンプルさを重視して作られた無料のオンラインツール集です。ライター、開発者、学生、マーケターなど、ダウンロードや登録、サブスクリプションの手間なく素早いユーティリティツールを必要とするすべての方にご利用いただいています。",
     "about.missionTitle": "私たちのミッション",
@@ -1475,8 +1475,8 @@ export const ui = {
     "about.ctaLink": "お問い合わせ",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "お問い合わせ – Free Online Tools Nest",
-    "contact.metaDesc": "ご提案、フィードバック、バグ報告がありますか？Free Online Tools Nestチームにお問い合わせください。",
+    "contact.metaTitle": "お問い合わせ — Free Online Tools Nest | サポートとフィードバック",
+    "contact.metaDesc": "ご提案、フィードバック、バグ報告がありましたら、Free Online Tools Nestチームまでお問い合わせください。1〜2営業日以内にご返信いたします。",
     "contact.title": "お問い合わせ",
     "contact.subtitle": "フィードバック、ツールの提案、バグ発見がありましたか？ぜひお聞かせください。",
     "contact.emailText": "メールをお送りください：",
@@ -1485,8 +1485,8 @@ export const ui = {
     "contact.cta": "メールを送信",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "よくある質問 – Free Online Tools Nest",
-    "faq.metaDesc": "Free Online Tools Nestに関するよくある質問の回答をご覧ください。ブラウザベースのユーティリティツールがデータを100%安全かつプライベートに保つ方法をご紹介します。",
+    "faq.metaTitle": "よくある質問 — オンラインツールは安全？ブラウザのプライバシー",
+    "faq.metaDesc": "オンラインツールの安全性やデータ保存について疑問がありますか？ブラウザベースのツール、クライアントサイドのプライバシーについての回答をご覧ください。",
     "faq.title": "よくある質問",
     "faq.subtitle": "{name}について知っておくべきこと。",
     "faq.ctaText": "まだ質問がありますか？",
@@ -1523,8 +1523,8 @@ export const ui = {
     "faq.a15": "お問い合わせページで「バグを報告」を件名に選択し、問題を説明してください。迅速な修正のために、ツール名、ブラウザ、デバイスタイプを記載してください。",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "プライバシーポリシー – Free Online Tools Nest",
-    "privacy.metaDesc": "Free Online Tools Nestのプライバシーポリシーをお読みください。クライアントサイドのブラウザツールがどのように100%のデータプライバシーとセキュリティを確保するかをご確認ください。",
+    "privacy.metaTitle": "プライバシーポリシー — 無料ツール | クライアントサイドのプライバシー",
+    "privacy.metaDesc": "Free Online Tools Nestのプライバシーポリシーをお読みください。ブラウザツールがすべてをローカル処理し、サーバーにデータを送信しない仕組みをご確認ください。",
     "privacy.title": "プライバシーポリシー",
     "privacy.lastUpdated": "最終更新日: {date}",
     "privacy.overviewTitle": "概要",
@@ -1548,8 +1548,8 @@ export const ui = {
     "privacy.contactP1": "このプライバシーポリシーについてご質問がある場合は、",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "利用規約 – Free Online Tools Nest",
-    "terms.metaDesc": "Free Online Tools Nestの利用規約をお読みください。サービス条件、保証の免責、責任の制限についてご確認ください。",
+    "terms.metaTitle": "利用規約 — Free Online Tools Nest",
+    "terms.metaDesc": "Free Online Tools Nestの利用規約をお読みください。無料ツールサービスの条件、責任と制限についてご確認ください。",
     "terms.title": "利用規約",
     "terms.lastUpdated": "最終更新日: {date}",
     "terms.acceptanceTitle": "規約の同意",
@@ -1670,8 +1670,8 @@ export const ui = {
     "home.faq.a7": "نضيف أدوات جديدة بانتظام بناءً على طلب المستخدمين وخريطة طريق التطوير لدينا. نمت المجموعة من 37 إلى 62 أداة. إذا كان لديك اقتراح، أرسل لنا بريداً إلكترونياً على openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
-    "about.metaTitle": "من نحن – Free Online Tools Nest",
-    "about.metaDesc": "تعرف على Free Online Tools Nest، مهمتنا وقيمنا وتفانينا في توفير أدوات سريعة قائمة على المتصفح وخاصة للجميع.",
+    "about.metaTitle": "حول Free Online Tools Nest — أدوات متصفح خاصة",
+    "about.metaDesc": "تعرف على Free Online Tools Nest، موقع الأدوات المجانية عبر الإنترنت مع 62 أداة متصفح للنص والكود والتصميم. كل شيء 100% محلي، بدون تسجيل، بدون إعلانات.",
     "about.title": "حول {name}",
     "about.p1": "{name} هي مجموعة من الأدوات المجانية عبر الإنترنت المصممة للسرعة والخصوصية والبساطة. نخدم الكتّاب والمطورين والطلاب والمسوقين وكل من يحتاج إلى أدوات مساعدة سريعة دون عناء التنزيلات أو التسجيلات أو الاشتراكات.",
     "about.missionTitle": "مهمتنا",
@@ -1697,8 +1697,8 @@ export const ui = {
     "about.ctaLink": "تواصل معنا",
 
     // ── Contact ──────────────────────────────────────────────
-    "contact.metaTitle": "اتصل بنا – Free Online Tools Nest",
-    "contact.metaDesc": "هل لديك اقتراح أو ملاحظات أو تحتاج إلى الإبلاغ عن خطأ؟ تواصل مع فريق Free Online Tools Nest. يسعدنا سماع رأيك.",
+    "contact.metaTitle": "اتصل بنا — Free Online Tools Nest | الدعم والملاحظات",
+    "contact.metaDesc": "هل لديك اقتراح أو ملاحظات أو تحتاج إلى الإبلاغ عن خطأ؟ تواصل مع فريق Free Online Tools Nest. نرد خلال 1-2 يوم عمل.",
     "contact.title": "اتصل بنا",
     "contact.subtitle": "هل لديك ملاحظات أو اقتراح أداة أو وجدت خطأ؟ يسعدنا سماع رأيك.",
     "contact.emailText": "أرسل لنا بريداً إلكترونياً على",
@@ -1707,8 +1707,8 @@ export const ui = {
     "contact.cta": "أرسل لنا بريداً إلكترونياً",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "الأسئلة الشائعة – Free Online Tools Nest",
-    "faq.metaDesc": "ابحث عن إجابات للأسئلة الشائعة حول Free Online Tools Nest. تعرف على كيفية الحفاظ على بياناتك آمنة وخاصة بنسبة 100%.",
+    "faq.metaTitle": "الأسئلة الشائعة — هل أدوات الإنترنت آمنة؟ خصوصية المتصفح",
+    "faq.metaDesc": "تتساءل هل أدوات الإنترنت آمنة أو تحفظ بياناتك؟ ابحث عن إجابات حول أدوات المتصفح والخصوصية المحلية وكيف نحافظ على أمان بياناتك 100%.",
     "faq.title": "الأسئلة الشائعة",
     "faq.subtitle": "كل ما تحتاج معرفته عن {name}.",
     "faq.ctaText": "لا يزال لديك أسئلة؟",
@@ -1745,8 +1745,8 @@ export const ui = {
     "faq.a15": "قم بزيارة صفحة الاتصال، واختر 'الإبلاغ عن خطأ' كموضوع، ووصف المشكلة. قم بتضمين اسم الأداة والمتصفح ونوع الجهاز لمساعدتنا في إصلاحها بسرعة.",
 
     // ── Privacy Policy ───────────────────────────────────────
-    "privacy.metaTitle": "سياسة الخصوصية – Free Online Tools Nest",
-    "privacy.metaDesc": "اقرأ سياسة الخصوصية لـ Free Online Tools Nest. اكتشف كيف تضمن أدوات المتصفح لدينا خصوصية وأمان البيانات بنسبة 100%.",
+    "privacy.metaTitle": "سياسة الخصوصية — أدوات مجانية | خصوصية المتصفح",
+    "privacy.metaDesc": "اقرأ سياسة الخصوصية لـ Free Online Tools Nest. اكتشف كيف تعالج أدوات المتصفح كل شيء محلياً دون إرسال بيانات إلى الخوادم.",
     "privacy.title": "سياسة الخصوصية",
     "privacy.lastUpdated": "آخر تحديث: {date}",
     "privacy.overviewTitle": "نظرة عامة",
@@ -1770,8 +1770,8 @@ export const ui = {
     "privacy.contactP1": "إذا كانت لديك أسئلة حول سياسة الخصوصية هذه، ",
 
     // ── Terms & Conditions ───────────────────────────────────
-    "terms.metaTitle": "الشروط والأحكام – Free Online Tools Nest",
-    "terms.metaDesc": "اقرأ الشروط والأحكام لاستخدام Free Online Tools Nest. تعرف على شروط الخدمة وإخلاء المسؤولية عن الضمانات والحد من المسؤولية.",
+    "terms.metaTitle": "الشروط والأحكام — Free Online Tools Nest",
+    "terms.metaDesc": "اقرأ الشروط والأحكام لاستخدام Free Online Tools Nest. تعرف على شروط خدمة الأدوات المجانية والمسؤوليات والحدود.",
     "terms.title": "الشروط والأحكام",
     "terms.lastUpdated": "آخر تحديث: {date}",
     "terms.acceptanceTitle": "قبول الشروط",

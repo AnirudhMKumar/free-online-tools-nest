@@ -1,5 +1,139 @@
 # SEO Keyword Plan — Free Online Tools Nest
 
+## Part 1: Main Site Pages (Homepage + Static Pages)
+
+> **Current state** as of June 2026. Documented below is what each main site page currently uses for meta titles, descriptions, and implicit keyword targets.
+>
+> ⬇️ **Your job**: research and fill in the `target_keyword` column below for each page you want to optimize. I'll then apply new metaTitle, metaDescription, and any needed content changes.
+
+---
+
+### Where Meta Lives
+
+All static page meta (homepage, about, contact, faq, privacy, terms) is stored in **`src/i18n/ui.ts`** under the `en` locale keys. 404/500 error pages use `err.*` keys. Favorites page has hardcoded meta in its Astro frontmatter. The `SITE` constant in `src/data/tools.ts` provides brand-level defaults.
+
+Error pages (404, 500) and Favorites page are **noindexed** — they won't appear in search results anyway. The root-level redirect pages (index.astro, about.astro, contact.astro, privacy-policy.astro, terms-and-conditions.astro) also have `noindex, follow` and are just JS redirectors.
+
+---
+
+### Pages to Optimize
+
+#### 1. Homepage (`/en/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `62 Free Online Tools — Private Browser Utilities, No Signup` |
+| **metaDesc** | `Access 62 free online tools for text, code, math, SEO, and design — all running 100% in your browser with zero uploads. No signup, no ads, just fast utilities.` |
+| **Source** | `home.metaTitle` / `home.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | free online tools, browser utilities, no signup, private browser tools |
+| **Target Keyword (fill in)** | online tools, free web tools, frontier utilities |
+
+#### 2. About Page (`/en/about/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `About Us — Free Online Tools Nest` |
+| **metaDesc** | `Learn about Free Online Tools Nest, our mission, values, and dedication to providing fast, browser-based, and private utility tools for everyone.` |
+| **Source** | `about.metaTitle` / `about.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | (brand only — no real keyword targeting) |
+| **Target Keyword** | about free online tools website |
+
+#### 3. Contact Page (`/en/contact/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `Contact Free Online Tools Nest — Support & Feedback` |
+| **metaDesc** | `Have feedback, a tool suggestion, or need to report a bug? Contact the Free Online Tools Nest team. We respond within 1-2 business days.` |
+| **Source** | `contact.metaTitle` / `contact.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | (brand only — low SEO priority) |
+| **Target Keyword** | contact free online tools support |
+
+#### 4. FAQ Page (`/en/faq/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `Frequently Asked Questions — Free Online Tools Nest` |
+| **metaDesc** | `Find answers to common questions about Free Online Tools Nest. Learn how our browser-based utility tools keep your data 100% secure and private.` |
+| **Source** | `faq.metaTitle` / `faq.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | browser-based utility tools, private online tools |
+| **Target Keyword (fill in)** | are online text tools safe, do online tools save your data, where do web tools upload files, how do browser based tools work, client side vs server side online tools |
+
+#### 5. Privacy Policy (`/en/privacy-policy/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `Privacy Policy — Free Online Tools Nest` |
+| **metaDesc** | `Read the privacy policy of Free Online Tools Nest. Discover how our client-side browser tools ensure 100% data privacy and security.` |
+| **Source** | `privacy.metaTitle` / `privacy.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | client-side browser tools, data privacy, online tool security |
+| **Target Keyword** | free online tools privacy policy client side |
+
+#### 6. Terms & Conditions (`/en/terms-and-conditions/`)
+
+| Field | Current Value |
+|-------|---------------|
+| **metaTitle** | `Terms & Conditions — Free Online Tools Nest` |
+| **metaDesc** | `Read the terms and conditions for using Free Online Tools Nest. Learn about our free tool service, disclaimers, your rights, and limitations of liability.` |
+| **Source** | `terms.metaTitle` / `terms.metaDesc` in `src/i18n/ui.ts` |
+| **Implicit keywords** | (brand only — boilerplate SEO, low priority) |
+| **Target Keyword** | free online tools terms of service |
+
+---
+
+### Noindex Pages (Search results not affected)
+
+| Page | metaTitle | metaDesc | Reason |
+|------|-----------|----------|--------|
+| **404 Error** | `Page not found` | `The page you're looking for doesn't exist or has been moved.` | `noindex` |
+| **500 Error** | `Server Error` | `We encountered an unexpected error.` | `noindex` |
+| **Favorites** | `Favorite Tools — Free Online Tools Nest` | `Your saved favorite tools. Quickly access the tools you use most.` | `noindex` |
+| **Root redirects** (/, /about/, /contact/, /privacy-policy/, /terms-and-conditions/) | Varies per page | Varies per page | `noindex, follow` — JS redirectors to locale versions |
+
+---
+
+### SITE Constant (Brand-Level — `src/data/tools.ts`)
+
+```typescript
+export const SITE = {
+  name: "Free Online Tools Nest",
+  domain: "freeonlinetoolsnest.com",
+  url: "https://freeonlinetoolsnest.com",
+  description: "62 free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
+  tagline: "Free tools for text, code, and math.",
+};
+```
+
+The SITE constant feeds OG tags, JSON-LD organization/website schema, and default brand references across all pages.
+
+---
+
+### How to Fill In
+
+For each page above, write in the `target_keyword` column with the **long-tail, low-difficulty keyword** you want that page to rank for. Some guidance:
+
+| Page | Keyword Opportunity (examples — replace with your research) |
+|------|--------------------------------------------------------------|
+| **Homepage** | `free online tools no signup` / `browser based utilities private` |
+| **About** | `free online tools website about` / `about free browser tools` |
+| **Contact** | `contact free online tools team` / `free tool support email` |
+| **FAQ** | `free online tools faq how do they work` / `are online tools private` |
+| **Privacy** | `free online tools privacy policy client side` |
+| **Terms** | `free online tools terms of service disclaimer` |
+
+> ⚠️ **Priority order**: Homepage >>> FAQ > About > Privacy > Contact > Terms. Focus your research effort accordingly.
+
+Once you fill in the target keywords, **hand the file back to me** and I will:
+1. Update metaTitle (under 60 chars)
+2. Update metaDescription (under 160 chars, keyword-first)
+3. Update implicit keyword targeting in H1, H2 headings, and body content where appropriate
+4. Verify with `npm run build`
+
+---
+
+---
+
+## Part 2: 62 Tools Keyword Plan (already applied — kept for reference)
+
 > **Instructions**: Below are all 62 tools organized by category. For each tool, fill in the `target_keyword` field with the **lower-difficulty, long-tail keyword** you want to target. Leave blank any you're unsure about — I'll suggest alternatives.
 > Once complete, I will update each tool's `metaTitle`, `metaDescription`, `keywords[]`, `usageSteps`, and `faq` to optimize for your chosen keywords.
 
@@ -136,4 +270,4 @@ When picking target keywords, aim for:
 
 ---
 
-*File created: 2026-06-22 | Once filled, hand back to Sisyphus for implementation.*
+*File created: 2026-06-22 | Last updated: 2026-06-23*
