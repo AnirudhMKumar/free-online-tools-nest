@@ -26,5 +26,8 @@ pnpm-debug.log*
 # Playwright test artifacts
 .playwright-mcp/
 
+# OpenCode session state
+.omo/
+
 # Dev server logs
 dev-server.log
