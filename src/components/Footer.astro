@@ -4,16 +4,11 @@
  * Matches DESIGN.md footer component: body-sm text, caption-mono eyebrows.
  */
 import { CATEGORIES, TOOLS, SITE } from "../data/tools";
-import { languages } from "../i18n/ui";
-import type { Lang } from "../i18n/ui";
 import { useTranslations, getLangFromUrl } from "../i18n/utils";
-import { defaultLang } from "../i18n/ui";
 
 const currentYear = new Date().getFullYear();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const localePrefix = `/${lang}`;
-const lh = (path: string) => `${localePrefix}${path}`;
 ---
 
 <footer class="bg-canvas border-t border-hairline mt-24">
@@ -83,10 +78,10 @@ const lh = (path: string) => `${localePrefix}${path}`;
       <div>
         <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.company')}</h3>
         <ul class="space-y-2">
-          <li><a href={lh('/about/')} class="footer-link">{t('footer.about')}</a></li>
+          <li><a href="/about/" class="footer-link">{t('footer.about')}</a></li>
           <li><a href="/blog/" class="footer-link">{t('footer.blog')}</a></li>
-          <li><a href={lh('/contact/')} class="footer-link">{t('footer.contact')}</a></li>
-          <li><a href={lh('/faq/')} class="footer-link">{t('footer.faq')}</a></li>
+          <li><a href="/contact/" class="footer-link">{t('footer.contact')}</a></li>
+          <li><a href="/faq/" class="footer-link">{t('footer.faq')}</a></li>
           <li><a href="/favorites/" class="footer-link">{t('footer.favorites')}</a></li>
         </ul>
       </div>
@@ -95,8 +90,8 @@ const lh = (path: string) => `${localePrefix}${path}`;
       <div>
         <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.legal')}</h3>
         <ul class="space-y-2">
-          <li><a href={lh('/privacy-policy/')} class="footer-link">{t('footer.privacy')}</a></li>
-          <li><a href={lh('/terms-and-conditions/')} class="footer-link">{t('footer.terms')}</a></li>
+          <li><a href="/privacy-policy/" class="footer-link">{t('footer.privacy')}</a></li>
+          <li><a href="/terms-and-conditions/" class="footer-link">{t('footer.terms')}</a></li>
         </ul>
       </div>
     </div>
@@ -111,24 +106,6 @@ const lh = (path: string) => `${localePrefix}${path}`;
         <a href="https://x.com/openProj3ct" target="_blank" rel="noopener noreferrer" class="text-mute hover:text-ink transition-colors duration-150" aria-label={t('footer.twitter')}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-
-        <!-- Language switcher -->
-        <div class="flex items-center gap-1.5 text-xs text-mute">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <select
-            id="lang-switcher"
-            class="lang-select"
-            aria-label={t('footer.language')}
-          >
-            {Object.entries(languages).map(([code, label]) => (
-              <option value={code}>{label}</option>
-            ))}
-          </select>
-        </div>
 
         <span class="text-xs text-mute">
           {t('footer.tagline')}
@@ -151,32 +128,7 @@ const lh = (path: string) => `${localePrefix}${path}`;
     color: var(--color-ink);
   }
 
-  .lang-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: transparent;
-    border: 1px solid var(--color-hairline);
-    border-radius: var(--radius-md);
-    color: var(--color-body);
-    font-size: 12px;
-    line-height: 1;
-    padding: 3px 20px 3px 6px;
-    cursor: pointer;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 4px center;
-    background-size: 10px 6px;
-  }
-  .lang-select:hover {
-    color: var(--color-ink);
-    border-color: var(--color-body);
-  }
-  .lang-select option {
-    background: var(--color-canvas);
-    color: var(--color-ink);
-  }
+
 </style>
 
 <script>
@@ -185,36 +137,6 @@ const lh = (path: string) => `${localePrefix}${path}`;
    * on selection change. All locales have a URL prefix (/en/, /es/, etc.).
    */
   document.addEventListener("DOMContentLoaded", () => {
-    const KNOWN = ["en", "es", "pt", "fr", "de", "hi", "ja", "ar"];
-    const select = document.getElementById("lang-switcher") as HTMLSelectElement | null;
-    if (!select) return;
-
-    /** Extract current locale from the URL pathname (first segment). */
-    function getCurrentLang(): string {
-      const seg = window.location.pathname.split("/").filter(Boolean)[0];
-      return KNOWN.includes(seg) ? seg : "en";
-    }
-
-    /** Replace the locale prefix in the current path. */
-    function getTargetPath(target: string): string {
-      const parts = window.location.pathname.split("/").filter(Boolean);
-      // If first segment is a known locale, replace it; otherwise insert it
-      if (KNOWN.includes(parts[0])) {
-        parts[0] = target;
-      } else {
-        parts.unshift(target);
-      }
-      return "/" + parts.join("/") + "/";
-    }
-
-    // Set initial value
-    select.value = getCurrentLang();
-
-    // Navigate on change
-    select.addEventListener("change", () => {
-      window.location.href = getTargetPath(select.value);
-    });
-
     // Newsletter form submission mock
     const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
     const successMsg = document.getElementById("newsletter-success");

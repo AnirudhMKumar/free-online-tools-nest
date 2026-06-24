@@ -1,27 +1,78 @@
 ---
-/**
- * Privacy Policy — root-level redirect page.
- * Detects browser language and redirects to the locale-prefixed version.
- * Acts as the x-default target for hreflang.
- */
+import Layout from "../layouts/Layout.astro";
+import { SITE } from "../data/tools";
+import { useTranslations } from "../i18n/utils";
+
+const t = useTranslations("en");
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Free Online Tools Nest</title>
-  <meta http-equiv="refresh" content="0;url=/en/privacy-policy/" />
-  <meta name="robots" content="noindex, follow" />
-  <script is:inline>
-    (function() {
-      var lang = (navigator.language || navigator.languages?.[0] || '').slice(0, 2);
-      var supported = ['es', 'pt', 'fr', 'de', 'hi', 'ja', 'ar'];
-      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/privacy-policy/';
-    })();
-  </script>
-</head>
-<body>
-  <a href="/en/privacy-policy/">Privacy Policy — Free Online Tools Nest</a>
-</body>
-</html>
+
+<Layout
+  title={t("privacy.metaTitle")}
+  description={t("privacy.metaDesc")}
+  canonicalPath="/privacy-policy/"
+>
+  <div class="container-narrow py-12 md:py-20">
+    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
+      {t("privacy.title")}
+    </h1>
+    <p class="text-sm text-mute mb-10">{t("privacy.lastUpdated").replace("{date}", "June 2026")}</p>
+
+    <article class="space-y-6 text-body leading-relaxed">
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.overviewTitle")}</h2>
+        <p>
+          {t("privacy.overviewP1").replace("{name}", SITE.name).replace("{domain}", SITE.domain)}
+        </p>
+        <p class="mt-3 font-medium text-ink">
+          {t("privacy.overviewP2")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.dataProcessingTitle")}</h2>
+        <p>
+          {t("privacy.dataProcessingP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.infoCollectTitle")}</h2>
+        <p>{t("privacy.infoCollectP1")}</p>
+        <ul class="list-disc pl-6 space-y-1 mt-2">
+          <li>{t("privacy.infoCollectItem1")}</li>
+          <li>{t("privacy.infoCollectItem2")}</li>
+          <li>{t("privacy.infoCollectItem3")}</li>
+        </ul>
+        <p class="mt-3">{t("privacy.infoCollectP2")}</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.cookiesTitle")}</h2>
+        <p>
+          {t("privacy.cookiesP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.thirdPartyTitle")}</h2>
+        <p>
+          {t("privacy.thirdPartyP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.yourRightsTitle")}</h2>
+        <p>
+          {t("privacy.yourRightsP1")}
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.contactTitle")}</h2>
+        <p>
+          {t("privacy.contactP1")}<a href="/contact/" class="text-link hover:text-link-deep underline">{t("footer.contact")}</a>.
+        </p>
+      </section>
+    </article>
+  </div>
+</Layout>

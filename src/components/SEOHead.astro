@@ -11,16 +11,9 @@ interface Props {
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
-  /** hreflang alternatives: { en: "/en/about/", es: "/es/about/", ... } */
-  localePaths?: Record<string, string>;
-  /** x-default URL path (usually the root-level canonical) */
-  xDefaultPath?: string;
 }
 
 import { SITE } from "../data/tools";
-import { getLangFromUrl } from "../i18n/utils";
-
-const lang = getLangFromUrl(Astro.url);
 
 const {
   title,
@@ -35,25 +28,16 @@ const {
 const canonicalURL = `${SITE.url}${canonicalPath}`;
 const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}`;
-
-const {
-  localePaths,
-  xDefaultPath,
-} = Astro.props;
 ---
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 
-{noindex && <meta name="robots" content="noindex, nofollow" />}
-
-<!-- Hreflang for multi-language pages -->
-{localePaths && Object.entries(localePaths).map(([lang, path]) => (
-  <link rel="alternate" hreflang={lang} href={`${SITE.url}${path}`} />
-))}
-{xDefaultPath && (
-  <link rel="alternate" hreflang="x-default" href={`${SITE.url}${xDefaultPath}`} />
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow" />
 )}
 
 <!-- Open Graph -->
@@ -66,7 +50,7 @@ const {
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:site_name" content={SITE.name} />
-<meta property="og:locale" content={lang === "en" ? "en_US" : lang === "pt" ? "pt_BR" : lang === "hi" ? "hi_IN" : lang === "ja" ? "ja_JP" : lang === "ar" ? "ar_SA" : `${lang}_${lang.toUpperCase()}`} />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />

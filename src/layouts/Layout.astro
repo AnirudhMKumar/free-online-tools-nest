@@ -11,8 +11,6 @@ interface Props {
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
-  localePaths?: Record<string, string>;
-  xDefaultPath?: string;
 }
 
 import Nav from "../components/Nav.astro";
@@ -32,8 +30,6 @@ const {
   ogType,
   jsonLd,
   noindex,
-  localePaths,
-  xDefaultPath,
 } = Astro.props;
 ---
 
@@ -66,8 +62,6 @@ const {
       ogType={ogType}
       jsonLd={jsonLd}
       noindex={noindex}
-      localePaths={localePaths}
-      xDefaultPath={xDefaultPath}
     />
 
     <!-- Google Analytics -->

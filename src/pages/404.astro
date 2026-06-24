@@ -1,38 +1,36 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getFeaturedTools } from "../data/tools";
-import { useTranslations } from "../i18n/utils";
 
-const t = useTranslations("en");
 const popularTools = getFeaturedTools().slice(0, 4);
 ---
 
 <Layout
-  title={t("err.404Title")}
-  description={t("err.404Desc")}
+  title="Page not found | Free Online Tools Nest"
+  description="The page you're looking for doesn't exist or has been moved. Try searching for a tool or browse our directory."
   noindex={true}
 >
   <div class="container-page py-20 md:py-32 text-center">
     <p class="text-6xl font-semibold text-hairline mb-4" style="letter-spacing: -2.4px;">404</p>
     <h1 class="text-2xl md:text-3xl font-semibold text-ink mb-3" style="letter-spacing: -0.96px;">
-      {t("err.404Title")}
+      Page not found
     </h1>
     <p class="text-body max-w-md mx-auto mb-8">
-      {t("err.404Desc")}
+      The page you're looking for doesn't exist or has been moved. Try searching for a tool or browse our directory.
     </p>
     <div class="flex items-center justify-center gap-3 flex-wrap mb-12">
-      <a href="/en/" class="btn-primary" style="background-color: var(--color-primary); color: var(--color-on-primary);">
-        {t("err.goHome")}
+      <a href="/" class="btn-primary" style="background-color: var(--color-primary); color: var(--color-on-primary);">
+        Go home
       </a>
-      <a href="/en/tools/" class="btn-secondary" style="border-color: var(--color-hairline); color: var(--color-ink); background-color: var(--color-canvas);">
-        {t("err.browseTools")}
+      <a href="/tools/" class="btn-secondary" style="border-color: var(--color-hairline); color: var(--color-ink); background-color: var(--color-canvas);">
+        Browse tools
       </a>
     </div>
 
     <!-- Popular tools -->
     <div class="max-w-md mx-auto text-left">
       <h2 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-3">
-        {t("err.popularTools")}
+        Popular tools
       </h2>
       <div class="space-y-2">
         {popularTools.map((tool) => (

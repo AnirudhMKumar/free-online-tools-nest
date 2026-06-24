@@ -1,21 +1,12 @@
 /**
  * i18n Utilities — helpers that bridge translation strings with Astro pages.
- *
- * - getLangFromUrl(): extract the current locale from the URL
- * - useTranslations(): returns a t(key) function for string lookups
- * - getLocalePath(): computes a URL path for a target locale
  */
 
 import { ui, defaultLang, type Lang, languages } from "./ui";
 
 /**
  * Extract the current language from the URL pathname.
- * Works on both server (Astro.url) and client (window.location).
- *
- * Examples:
- *   /es/tools/case-converter/  → "es"
- *   /about                     → "en" (default)
- *   /                          → "en" (default)
+ * Now always returns "en" since we're English-only.
  */
 export function getLangFromUrl(url: URL): Lang {
   const [, lang] = url.pathname.split("/");
@@ -36,54 +27,4 @@ export function useTranslations(lang: Lang) {
     const dict = ui[lang] as Record<string, string> | undefined;
     return dict?.[key] ?? key;
   };
-}
-
-/**
- * Compute the URL path for a target locale from the current pathname.
- *
- * - English (default) removes the prefix: /es/about → /about
- * - Other locales replace or add the prefix: /about → /es/about
- *
- * Use this in the language switcher to build the target href.
- */
-/**
- * Build a locale-to-path map for hreflang tags.
- * Returns { en: "/en/about/", es: "/es/about/", ... } given a base path.
- * The x-default variant is the canonical path itself.
- *
- * Usage: getLocalePaths("/about/")  → { en: "/en/about/", es: "/es/about/", ... }
- */
-export function getLocalePaths(canonicalPath: string): Record<string, string> {
-  const clean = canonicalPath.replace(/\/$/, "") || "";
-  const result: Record<string, string> = {};
-  for (const lang of Object.keys(languages)) {
-    result[lang] = `/${lang}${clean}/`;
-  }
-  return result;
-}
-
-export function getLocalePath(
-  pathname: string,
-  targetLang: Lang,
-  currentLang: Lang,
-): string {
-  // Strip trailing slash for easier manipulation, we'll re-add it
-  const clean = pathname.replace(/\/$/, "");
-
-  if (currentLang === defaultLang) {
-    // Currently on English (no prefix) → prepend target unless also English
-    if (targetLang === defaultLang) return pathname;
-    return `/${targetLang}${clean}`;
-  }
-
-  // Currently on a prefixed locale
-  const prefix = `/${currentLang}`;
-  if (targetLang === defaultLang) {
-    // Going to English → remove current prefix
-    const rest = clean.startsWith(prefix) ? clean.slice(prefix.length) : clean;
-    return rest || "/";
-  }
-
-  // Going from one non-English locale to another
-  return clean.replace(prefix, `/${targetLang}`);
 }

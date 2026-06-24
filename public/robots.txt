@@ -1,4 +1,21 @@
+# All crawlers (default)
 User-agent: *
+Allow: /
+
+# AI search crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-Web
 Allow: /
 
 Sitemap: https://freeonlinetoolsnest.com/sitemap-index.xml

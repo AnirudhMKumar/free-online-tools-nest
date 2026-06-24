@@ -5,12 +5,13 @@ interface Props {
   pubDate: Date;
   updatedDate?: Date;
   tags?: string[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 import Layout from "./Layout.astro";
-const { title, description, pubDate, updatedDate, tags = [] } = Astro.props;
+const { title, description, pubDate, updatedDate, tags = [], jsonLd } = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} jsonLd={jsonLd}>
   <article class="container-narrow py-12">
     <header class="mb-10">
       <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">

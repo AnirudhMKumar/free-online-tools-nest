@@ -1,28 +1,47 @@
 ---
-/**
- * FAQ — root-level redirect page.
- * Detects browser language and redirects to the locale-prefixed version.
- * Acts as the x-default target for hreflang.
- * Previously missing — caused x-default hreflang to point to a 404.
- */
+import Layout from "../layouts/Layout.astro";
+import FAQSection from "../components/FAQSection.astro";
+import { SITE } from "../data/tools";
+import { useTranslations } from "../i18n/utils";
+
+const t = useTranslations("en");
+
+const faqItems = Array.from({ length: 15 }, (_, i) => {
+  const n = i + 1;
+  const answer = t(`faq.a${n}`);
+  return {
+    question: t(`faq.q${n}`),
+    answer: answer.includes("{name}") ? answer.replace("{name}", SITE.name) : answer,
+  };
+});
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ — Free Online Tools Nest</title>
-  <meta http-equiv="refresh" content="0;url=/en/faq/" />
-  <meta name="robots" content="noindex, follow" />
-  <script is:inline>
-    (function() {
-      var lang = (navigator.language || navigator.languages?.[0] || '').slice(0, 2);
-      var supported = ['es', 'pt', 'fr', 'de', 'hi', 'ja', 'ar'];
-      window.location.href = '/' + (supported.includes(lang) ? lang : 'en') + '/faq/';
-    })();
-  </script>
-</head>
-<body>
-  <a href="/en/faq/">FAQ — Free Online Tools Nest</a>
-</body>
-</html>
+
+<Layout
+  title={t("faq.metaTitle")}
+  description={t("faq.metaDesc")}
+  canonicalPath="/faq/"
+>
+  <div class="py-4 md:py-8">
+    <div class="container-page mb-8">
+      <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
+        {t("faq.title")}
+      </h1>
+      <p class="mt-3 text-body text-lg max-w-xl">
+        {t("faq.subtitle").replace("{name}", SITE.name)}
+      </p>
+    </div>
+
+    <FAQSection items={faqItems} title="" />
+
+    <div class="container-page mt-8">
+      <div class="card p-6 text-center">
+        <p class="text-body mb-3">
+          {t("faq.ctaText")}
+        </p>
+        <a href="/contact/" class="btn-primary inline-flex" style="background-color: var(--color-primary); color: var(--color-on-primary);">
+          {t("faq.ctaLink")}
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

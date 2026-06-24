@@ -58,41 +58,14 @@ const toolJsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
+  about: {
+    "@type": "Thing",
+    name: title,
+    description: finalMetaDescription,
+  },
 };
 
-// BreadcrumbList JSON-LD
-const breadcrumbJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: SITE.url,
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Tools",
-      item: `${SITE.url}/tools/`,
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: categoryName,
-      item: `${SITE.url}/categories/${categorySlug}/`,
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      name: title,
-      item: `${SITE.url}/tools/${toolSlug}/`,
-    },
-  ],
-};
-
-const combinedJsonLd = [toolJsonLd, breadcrumbJsonLd];
+const combinedJsonLd = [toolJsonLd];
 const ogImage = `/og/${categorySlug}.png`;
 ---
 
