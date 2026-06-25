@@ -13,13 +13,35 @@ const faqItems = Array.from({ length: 15 }, (_, i) => {
     question: t(`faq.q${n}`),
     answer: answer.includes("{name}") ? answer.replace("{name}", SITE.name) : answer,
   };
-});
+  });
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE.url}/faq/`,
+  name: t("faq.metaTitle"),
+  description: t("faq.metaDesc"),
+  url: `${SITE.url}/faq/`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+  },
+  author: {
+    "@type": "Person",
+    name: "Free Online Tools Nest Team",
+    url: "https://freeonlinetoolsnest.com/about/",
+  },
+  datePublished: "2026-01-15",
+  dateModified: "2026-06-01",
+};
 ---
 
 <Layout
   title={t("faq.metaTitle")}
   description={t("faq.metaDesc")}
   canonicalPath="/faq/"
+  jsonLd={faqJsonLd}
 >
   <div class="py-4 md:py-8">
     <div class="container-page mb-8">
@@ -28,6 +50,9 @@ const faqItems = Array.from({ length: 15 }, (_, i) => {
       </h1>
       <p class="mt-3 text-body text-lg max-w-xl">
         {t("faq.subtitle").replace("{name}", SITE.name)}
+      </p>
+      <p class="mt-6 text-body leading-relaxed">
+        {t("faq.a1").replace("{name}", SITE.name)} Browse the full list of frequently asked questions below for more details.
       </p>
     </div>
 

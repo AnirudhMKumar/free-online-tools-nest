@@ -20,3 +20,6 @@
 /tools/*  /tools/:splat/ 301
 /categories/*  /categories/:splat/ 301
 /blog/*  /blog/:splat/ 301
+
+# Sitemap alias for crawler compatibility
+/sitemap.xml  /sitemap-index.xml 301
