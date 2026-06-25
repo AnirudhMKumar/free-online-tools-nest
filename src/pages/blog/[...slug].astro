@@ -40,6 +40,7 @@ const blogJsonLd = {
   pubDate={post.data.pubDate}
   updatedDate={post.data.updatedDate}
   tags={post.data.tags}
+  canonicalPath={`/blog/${post.id}/`}
   jsonLd={blogJsonLd}
 >
   <Content />
