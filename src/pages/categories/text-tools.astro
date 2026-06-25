@@ -5,11 +5,25 @@
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ToolCard from "../../components/ToolCard.astro";
-import { getToolsByCategory, getCategoryBySlug, CATEGORIES } from "../../data/tools";
+import { getToolsByCategory, getCategoryBySlug, CATEGORIES, SITE } from "../../data/tools";
 
 const category = getCategoryBySlug("text-tools")!;
 const tools = getToolsByCategory("text-tools");
 const otherCategories = CATEGORIES.filter((c) => c.slug !== "text-tools");
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE.url}/categories/${category.slug}/`,
+  name: category.name,
+  description: category.description,
+  url: `${SITE.url}/categories/${category.slug}/`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
 ---
 
 <Layout
@@ -17,6 +31,7 @@ const otherCategories = CATEGORIES.filter((c) => c.slug !== "text-tools");
   description={category.metaDescription || category.description}
   canonicalPath={`/categories/${category.slug}/`}
   ogImage={`/og/${category.slug}.png`}
+  jsonLd={collectionJsonLd}
 >
   <div class="container-page py-8 md:py-12">
     <Breadcrumbs items={[{ label: "Categories", href: "/tools/" }, { label: category.name }]} />

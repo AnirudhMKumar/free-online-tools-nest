@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { PDFDocument } from "pdf-lib";
 import ErrorBanner from "../ErrorBanner";
 import { formatBytes } from "../../helpers/utils";
 
@@ -56,6 +55,7 @@ export default function PdfCompressor() {
       const arrayBuf = await file.arrayBuffer();
       setOriginalSize(arrayBuf.byteLength);
 
+      const { PDFDocument } = await import("pdf-lib");
       const pdf = await PDFDocument.load(arrayBuf, { ignoreEncryption: true });
 
       /*

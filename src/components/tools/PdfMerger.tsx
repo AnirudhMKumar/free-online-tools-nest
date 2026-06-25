@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { PDFDocument } from "pdf-lib";
 import ErrorBanner from "../ErrorBanner";
 import { formatBytes } from "../../helpers/utils";
 
@@ -77,6 +76,7 @@ export default function PdfMerger() {
     setMergedSize(null);
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
       const mergedPdf = await PDFDocument.create();
 
       for (const item of files) {

@@ -28,10 +28,14 @@ const {
 const canonicalURL = `${SITE.url}${canonicalPath}`;
 const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
 const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}`;
+
+// Safety nets: ensure title ≤60 chars and description ≤160 chars for SEO
+const safeTitle = fullTitle.length <= 60 ? fullTitle : fullTitle.slice(0, 57).trimEnd() + "…";
+const safeDescription = description.length <= 160 ? description : description.slice(0, 157).trimEnd() + "…";
 ---
 
-<title>{fullTitle}</title>
-<meta name="description" content={description} />
+<title>{safeTitle}</title>
+<meta name="description" content={safeDescription} />
 <link rel="canonical" href={canonicalURL} />
 
 {noindex ? (
@@ -41,8 +45,8 @@ const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}
 )}
 
 <!-- Open Graph -->
-<meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
+<meta property="og:title" content={safeTitle} />
+<meta property="og:description" content={safeDescription} />
 <meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:image" content={ogImageURL} />
@@ -55,8 +59,8 @@ const ogImageURL = ogImage.startsWith("http") ? ogImage : `${SITE.url}${ogImage}
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@openProj3ct" />
-<meta name="twitter:title" content={fullTitle} />
-<meta name="twitter:description" content={description} />
+<meta name="twitter:title" content={safeTitle} />
+<meta name="twitter:description" content={safeDescription} />
 <meta name="twitter:image" content={ogImageURL} />
 
 <!-- JSON-LD Structured Data -->

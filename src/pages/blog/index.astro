@@ -1,16 +1,32 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { SITE } from "../../data/tools";
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${SITE.url}/blog/`,
+  name: "Blog — Free Online Tools Nest | Tips & Updates",
+  description: "Read about the latest free online tools, productivity tips, and web development insights.",
+  url: `${SITE.url}/blog/`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
 ---
 
 <Layout
-  title="Blog — Free Online Tools Nest"
+  title="Blog — Free Online Tools Nest | Tips & Updates"
   description="Read about the latest free online tools, productivity tips, and web development insights."
   canonicalPath="/blog/"
   ogImage="/og-default.png"
+  jsonLd={blogJsonLd}
 >
   <div class="container-narrow py-12">
     <header class="mb-12">

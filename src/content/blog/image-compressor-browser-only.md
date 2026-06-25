@@ -1,6 +1,6 @@
 ---
-title: "How Our Image Compressor Works 100% in Your Browser — No Server Upload Required"
-description: "Most image compression tools upload your photos to a server. Here's how we built a browser-only image compressor that keeps your files private — and why it matters."
+title: "How Our Browser Image Compressor Works — No Server Upload"
+description: "Most image compressors upload your photos to a server. Here's how we built a browser-only image compressor that keeps your files private."
 pubDate: 2026-06-19
 tags: ["image-compression", "privacy", "web-development", "client-side", "free-tools"]
 draft: false

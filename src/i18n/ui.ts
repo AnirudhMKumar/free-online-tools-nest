@@ -77,7 +77,7 @@ export const ui = {
 
     // ── Homepage ────────────────────────────────────────────
     "home.metaTitle": "Free Web Tools Online — Frontier Utilities, No Signup",
-    "home.metaDesc": "Access 62 free web tools and frontier utilities for text, code, math & design. All run 100% in your browser with zero uploads, no signup, no ads. Discover fast online tools.",
+    "home.metaDesc": "Access 62 free web tools for text, code, math & design. All run 100% in your browser with zero uploads, no signup, no ads.",
     "home.browseByCategory": "Browse by category",
     "home.browseByCategoryDesc": "Find the right tool for your task across {count} curated categories.",
     "home.popularTools": "Popular tools",
@@ -145,7 +145,7 @@ export const ui = {
     "contact.cta": "Send us an email",
 
     // ── FAQ Page ─────────────────────────────────────────────
-    "faq.metaTitle": "FAQ — Are Online Text Tools Safe? Browser Privacy",
+    "faq.metaTitle": "FAQ — Online Text Tools Safety & Browser Privacy",
     "faq.metaDesc": "Wondering if online text tools are safe or save your data? Find answers about browser-based tools, client-side privacy, and how we keep your data 100% secure.",
     "faq.title": "Frequently asked questions",
     "faq.subtitle": "Everything you need to know about {name}.",

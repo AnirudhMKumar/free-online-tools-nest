@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { PDFDocument } from "pdf-lib";
 import ErrorBanner from "../ErrorBanner";
 import { formatBytes } from "../../helpers/utils";
 
@@ -55,6 +54,7 @@ export default function PdfSplitter() {
     try {
       const arrayBuf = await f.arrayBuffer();
       setPdfBytes(arrayBuf);
+      const { PDFDocument } = await import("pdf-lib");
       const pdf = await PDFDocument.load(arrayBuf, { ignoreEncryption: true });
       setPageCount(pdf.getPageCount());
     } catch (err: unknown) {
@@ -83,6 +83,7 @@ export default function PdfSplitter() {
     setError("");
 
     try {
+      const { PDFDocument } = await import("pdf-lib");
       const sourcePdf = await PDFDocument.load(pdfBytes, { ignoreEncryption: true });
       const totalPages = sourcePdf.getPageCount();
 

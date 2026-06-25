@@ -53,10 +53,19 @@ const toolJsonLd = {
   url: `${SITE.url}/tools/${toolSlug}/`,
   applicationCategory: "UtilityApplication",
   operatingSystem: "Any",
+  browserRequirements: "Requires JavaScript",
+  softwareVersion: "1.0",
+  author: {
+    "@type": "Organization",
+    name: SITE.name,
+    url: SITE.url,
+  },
+  image: `${SITE.url}/og/${categorySlug}.png`,
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
   },
   about: {
     "@type": "Thing",

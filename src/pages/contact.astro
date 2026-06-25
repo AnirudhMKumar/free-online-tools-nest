@@ -4,12 +4,27 @@ import { SITE } from "../data/tools";
 import { useTranslations } from "../i18n/utils";
 
 const t = useTranslations("en");
+
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE.url}/contact/`,
+  name: t("contact.metaTitle"),
+  description: t("contact.metaDesc"),
+  url: `${SITE.url}/contact/`,
+  isPartOf: {
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+  },
+};
 ---
 
 <Layout
   title={t("contact.metaTitle")}
   description={t("contact.metaDesc")}
   canonicalPath="/contact/"
+  jsonLd={webPageJsonLd}
 >
   <div class="container-narrow py-12 md:py-20">
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">

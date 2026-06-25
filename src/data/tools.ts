@@ -1871,7 +1871,7 @@ export const TOOLS: Tool[] = [
     featured: true,
     keywords: ["seo meta tag generator", "meta tag creator", "html meta tags generator", "og meta tag generator", "meta description generator", "seo head tags"],
     metaTitle: "SEO Meta Tag Generator",
-    metaDescription: "Use our free SEO meta tag generator to create optimized title, description, Open Graph, and Twitter Card tags. Preview search snippets and copy HTML code instantly.",
+    metaDescription: "Use our free SEO meta tag generator to create optimized title, description, Open Graph, and Twitter Card tags. Preview snippets and copy HTML code instantly.",
     usageSteps: [
       {
         title: "Enter Your Page Title & Description",
@@ -1945,7 +1945,7 @@ export const TOOLS: Tool[] = [
     featured: true,
     keywords: ["sitemap generator by spellmistake", "xml sitemap generator", "seo sitemap creator", "google sitemap generator", "website sitemap tool", "sitemap xml creator"],
     metaTitle: "Sitemap Generator",
-    metaDescription: "Use this sitemap generator by Spellmistake to create XML sitemaps with priority, frequency, and last modified dates. Copy valid sitemap code for Google Search Console.",
+    metaDescription: "Use this sitemap generator to create XML sitemaps with priority, frequency, and last modified dates. Copy valid sitemap code for Google Search Console.",
     usageSteps: [
       {
         title: "Enter Your Website URLs",
@@ -2019,7 +2019,7 @@ export const TOOLS: Tool[] = [
     featured: false,
     keywords: ["all in one seo open graph", "open graph meta tags", "og tag generator", "social media preview tool", "facebook share preview", "twitter card generator"],
     metaTitle: "Open Graph Generator",
-    metaDescription: "Use this all in one SEO open graph generator to create and preview OG meta tags for Facebook, X/Twitter, and LinkedIn. Generate complete social sharing tags instantly.",
+    metaDescription: "Use this open graph generator to create and preview OG meta tags for Facebook, X/Twitter, and LinkedIn. Generate social sharing tags instantly.",
     usageSteps: [
       {
         title: "Enter Your Page Information",
@@ -2056,7 +2056,7 @@ export const TOOLS: Tool[] = [
     featured: false,
     keywords: ["seo by highsoftware99.com", "seo title length checker", "meta description length tool", "seo snippet checker", "title tag analyzer", "search preview tool"],
     metaTitle: "SEO Title & Meta Length Checker",
-    metaDescription: "Use this SEO length checker by HighSoftware99.com to test your title tags and meta descriptions against recommended limits. See pixel width, character count, and search preview in real time.",
+    metaDescription: "Use this SEO length checker to test title tags and meta descriptions against recommended limits. See pixel width, character count, and search preview.",
     usageSteps: [
       {
         title: "Enter Your Title and Description",
@@ -2093,7 +2093,7 @@ export const TOOLS: Tool[] = [
     featured: false,
     keywords: ["canonical tag generator", "rel canonical generator", "canonical url creator", "duplicate content seo", "hreflang tag generator", "seo canonical tool"],
     metaTitle: "Canonical Tag Generator",
-    metaDescription: "Use our free canonical tag generator to create rel=canonical link tags and prevent duplicate content issues. Generate canonical URLs with hreflang support easily.",
+    metaDescription: "Use our free canonical tag generator to create rel=canonical tags and prevent duplicate content issues. Generate canonical URLs with hreflang support.",
     usageSteps: [
       {
         title: "Enter Your Preferred Canonical URL",
