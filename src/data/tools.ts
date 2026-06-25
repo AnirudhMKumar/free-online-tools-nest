@@ -141,7 +141,7 @@ export const TOOLS: Tool[] = [
       "word count checker online",
       "free word counter tool"
     ],
-    metaTitle: "Word Counter Google Docs — Free Word Count Checker Online",
+    metaTitle: "Word Counter — Google Docs Style",
     metaDescription: "Check word count in Google Docs style with our free word counter. Instantly count words, characters, sentences, and paragraphs for any content.",
     usageSteps: [
       {
@@ -185,7 +185,7 @@ export const TOOLS: Tool[] = [
       "x post character counter",
       "social media character counter"
     ],
-    metaTitle: "Twitter Character Counter — Free Character Count Tool Online",
+    metaTitle: "Twitter Character Counter",
     metaDescription: "Check character limits for Twitter/X with our free twitter character counter. Count characters with and without spaces to fit 280-character posts perfectly.",
     usageSteps: [
       {
@@ -229,7 +229,7 @@ export const TOOLS: Tool[] = [
       "lowercase converter",
       "title case converter"
     ],
-    metaTitle: "Upper Case Converter Online — Convert Text to Uppercase Free",
+    metaTitle: "Case Converter — Upper & Lowercase",
     metaDescription: "Convert any text to uppercase instantly with our free upper case converter. Switch between uppercase, lowercase, title case, and sentence case with one click.",
     usageSteps: [
       {
@@ -272,7 +272,7 @@ export const TOOLS: Tool[] = [
       "placeholder text generator",
       "dummy text filler"
     ],
-    metaTitle: "Lorem Ipsum Charlotte — Free Lorem Ipsum Generator Online",
+    metaTitle: "Lorem Ipsum Charlotte Generator",
     metaDescription: "Generate classic lorem ipsum charlotte placeholder text for your design mockups. Choose paragraphs, sentences, or words — free and instant.",
     usageSteps: [
       {
@@ -315,7 +315,7 @@ export const TOOLS: Tool[] = [
       "json validator",
       "json prettify",
     ],
-    metaTitle: "Notepad++ JSON Formatter Online — Prettify and Validate JSON",
+    metaTitle: "JSON Formatter — Notepad++ Style",
     metaDescription:
       "Validate and prettify JSON like a Notepad++ JSON formatter plugin — right in your browser. Detect errors with line numbers and copy clean, highlighted code.",
     usageSteps: [
@@ -366,7 +366,7 @@ export const TOOLS: Tool[] = [
       "percent encoding",
       "urlencoder",
     ],
-    metaTitle: "URL Encoder Decoder Online — Encode and Decode URL Strings",
+    metaTitle: "URL Encoder / Decoder Online",
     metaDescription:
       "Free URL encoder decoder online — convert special characters in query strings and URLs with percent-encoding, or decode them back to readable paths.",
     usageSteps: [
@@ -417,7 +417,7 @@ export const TOOLS: Tool[] = [
       "base64 converter",
       "binary to text",
     ],
-    metaTitle: "Base64 Encoder/Decoder — Encode and Decode Base64 Strings",
+    metaTitle: "Base64 Encoder / Decoder",
     metaDescription:
       "Free Base64 encoder/decoder tool — encode text to Base64 format or decode strings back to plain text instantly. All client-side, no server uploads.",
     usageSteps: [
@@ -470,7 +470,7 @@ export const TOOLS: Tool[] = [
       "percentage difference calculator",
       "math percentage tool",
     ],
-    metaTitle: "Average Percentage Calculator Online — Find Percentages Fast",
+    metaTitle: "Percentage Average Calculator",
     metaDescription: "Use our average percentage calculator to find what percent X is of Y, calculate percentage change, and compute percentage increases or decreases in seconds.",
     usageSteps: [
       {
@@ -514,7 +514,7 @@ export const TOOLS: Tool[] = [
       "birthday calculator",
       "exact age finder",
     ],
-    metaTitle: "Chronological Age Calculator — Find Your Exact Age from DOB",
+    metaTitle: "Age Calculator — Chronological Age",
     metaDescription: "Use our chronological age calculator to find your exact age from your date of birth in years, months, days, hours, minutes, and seconds. Free and accurate.",
     usageSteps: [
       {
@@ -558,7 +558,7 @@ export const TOOLS: Tool[] = [
       "ideal weight calculator",
       "bmi checker",
     ],
-    metaTitle: "BMI Calculator Online — Calculate Body Mass Index Instantly",
+    metaTitle: "BMI Calculator — Body Mass Index",
     metaDescription: "Use our BMI calculator online to get your Body Mass Index instantly. Enter height and weight to see your BMI value, weight category, and scale position.",
     usageSteps: [
       {
@@ -602,7 +602,7 @@ export const TOOLS: Tool[] = [
       "restaurant tip calculator",
       "dinner bill calculator",
     ],
-    metaTitle: "Tip Calculator iPhone — Quick Gratuity and Bill Split Tool",
+    metaTitle: "Tip Calculator — iPhone Style",
     metaDescription: "Use this tip calculator iPhone-friendly tool to calculate gratuity and split bills. Choose tip percentage, see per-person amounts, and never overpay.",
     usageSteps: [
       {
@@ -646,7 +646,7 @@ export const TOOLS: Tool[] = [
       "date duration calculator",
       "date math tool",
     ],
-    metaTitle: "Date Difference Calculator Excel-Style — Days Between Dates",
+    metaTitle: "Date Difference Calculator",
     metaDescription: "Use our date difference calculator Excel-style to find exact days, months, and years between two dates. Great for project timelines, countdowns, and age math.",
     usageSteps: [
       {
@@ -689,7 +689,7 @@ export const TOOLS: Tool[] = [
       "spell number to words",
       "number to text converter"
     ],
-    metaTitle: "Phone Number to Words Converter — Free Number to Text Tool",
+    metaTitle: "Number to Words Converter",
     metaDescription: "Convert phone numbers to easy-to-remember words with our free converter. Also spell any number to English words for checks and documents.",
     usageSteps: [
       {
@@ -733,7 +733,7 @@ export const TOOLS: Tool[] = [
       "downloadable qr code",
       "url to qr code converter"
     ],
-    metaTitle: "Adobe QR Code Generator Online — Create Custom QR Codes Free",
+    metaTitle: "QR Code Generator — Adobe Style",
     metaDescription:
       "Generate custom QR codes like Adobe with our free online QR code generator. Create downloadable QR codes from URLs, text, and more — no signup needed.",
     usageSteps: [
@@ -782,7 +782,7 @@ export const TOOLS: Tool[] = [
       "color code converter",
       "rgb hex hsl converter",
     ],
-    metaTitle: "PMS Color Converter Online — Convert HEX, RGB, and HSL Codes",
+    metaTitle: "Color Converter — HEX, RGB, HSL",
     metaDescription: "Convert colors between HEX, RGB, and HSL instantly with this PMS color converter. Preview each shade dynamically and copy values for your designs.",
     usageSteps: [
       {
@@ -825,8 +825,7 @@ export const TOOLS: Tool[] = [
       "html beautifier",
       "minify html",
     ],
-    metaTitle:
-      "HTML Formatter Notepad++ Style — Prettify and Minify Markup",
+    metaTitle: "HTML Formatter — Notepad++ Style",
     metaDescription:
       "An HTML formatter notepad++ alternative that lets you beautify messy HTML with custom indent sizes or compress markup into minified code — all in your browser.",
     usageSteps: [
@@ -877,8 +876,7 @@ export const TOOLS: Tool[] = [
       "regular expression tester",
       "regex matcher",
     ],
-    metaTitle:
-      "Ruby Regex Tester — Test Regular Expressions in Real-Time",
+    metaTitle: "Regex Tester — Ruby Style",
     metaDescription:
       "Free Ruby regex tester online — write and test regular expressions against sample text. See matches, capture groups, and positions in your browser.",
     usageSteps: [
@@ -929,7 +927,7 @@ export const TOOLS: Tool[] = [
       "markdown compiler online",
       "html from markdown"
     ],
-    metaTitle: "Markdown to HTML Converter Online — Free MD to HTML Tool",
+    metaTitle: "Markdown to HTML Converter",
     metaDescription: "Convert markdown to HTML instantly with our free converter. See live preview and copy clean, semantic HTML5 code with one click.",
     usageSteps: [
       {
@@ -972,7 +970,7 @@ export const TOOLS: Tool[] = [
       "csv parser online",
       "excel to json converter",
     ],
-    metaTitle: "CSV to JSON Python Converter Online — Parse CSV Free",
+    metaTitle: "CSV to JSON Converter",
     metaDescription:
       "Convert CSV to JSON Python-style with our free online converter. Parse comma-separated values, set headers, and generate clean JSON arrays in your browser.",
     usageSteps: [
@@ -1022,7 +1020,7 @@ export const TOOLS: Tool[] = [
       "lossless image compression",
       "optimize images for web"
     ],
-    metaTitle: "Image Compressor Online — Reduce JPEG, PNG & WebP File Size",
+    metaTitle: "Image Compressor — JPEG, PNG, WebP",
     metaDescription:
       "Compress images online for free. Reduce JPEG, PNG, and WebP file sizes without quality loss — all in your browser with private client-side processing.",
     usageSteps: [
@@ -1067,7 +1065,7 @@ export const TOOLS: Tool[] = [
     icon: "📑",
     featured: true,
     keywords: ["adobe pdf merger", "merge pdf files online", "combine pdf documents", "join pdf files", "pdf merger free tool", "merge multiple pdfs"],
-    metaTitle: "Adobe PDF Merger Online — Merge Multiple PDFs into One Free",
+    metaTitle: "PDF Merger — Adobe Style",
     metaDescription: "Use this adobe pdf merger to combine multiple PDFs into one document. Upload, reorder, and merge instantly in your browser — 100% free and private.",
     usageSteps: [
       {
@@ -1104,7 +1102,7 @@ export const TOOLS: Tool[] = [
     icon: "✂️",
     featured: true,
     keywords: ["free pdf splitter", "split pdf into separate pages", "extract pages from pdf", "pdf page separator", "pdf splitter no upload", "separate pdf document"],
-    metaTitle: "Free PDF Splitter Online — Split PDF into Individual Pages",
+    metaTitle: "PDF Splitter — Free Online",
     metaDescription: "Use this free pdf splitter to split a PDF into individual pages or extract specific page ranges. No uploads, no signups — entirely private browser processing.",
     usageSteps: [
       {
@@ -1141,7 +1139,7 @@ export const TOOLS: Tool[] = [
     icon: "🗜️",
     featured: true,
     keywords: ["adobe pdf compressor", "compress pdf file size", "reduce pdf size online", "pdf compression tool", "optimize pdf documents", "smaller pdf file"],
-    metaTitle: "Adobe PDF Compressor Online — Reduce PDF File Size Free",
+    metaTitle: "PDF Compressor — Adobe Style",
     metaDescription: "Use this adobe pdf compressor to reduce PDF file size instantly. Choose compression level and download a smaller PDF — all client-side, no uploads, 100% free.",
     usageSteps: [
       {
@@ -1178,7 +1176,7 @@ export const TOOLS: Tool[] = [
     icon: "📝",
     featured: false,
     keywords: ["pdf to text", "convert pdf to text", "extract text from pdf", "pdf text extractor online", "pdf to text converter free", "copy text from pdf"],
-    metaTitle: "PDF to Text Converter — Extract Text from PDF Files Free",
+    metaTitle: "PDF to Text Converter",
     metaDescription: "Use our pdf to text converter to extract text from PDF files instantly in your browser. No uploads, no signups — copy formatted text with one click.",
     usageSteps: [
       {
@@ -1215,7 +1213,7 @@ export const TOOLS: Tool[] = [
     icon: "🖼️",
     featured: false,
     keywords: ["convert pdf to images online free", "pdf to png converter", "pdf to jpg converter", "pdf pages to images", "extract images from pdf", "pdf to image converter"],
-    metaTitle: "Convert PDF to Images Online Free — PNG/JPG Converter",
+    metaTitle: "PDF to Images — PNG / JPG",
     metaDescription: "Convert PDF to images online free with high quality. Turn each PDF page into PNG or JPEG format instantly in your browser — download individually or all as ZIP.",
     usageSteps: [
       {
@@ -1261,7 +1259,7 @@ export const TOOLS: Tool[] = [
       "image cropping tool",
       "free online photo cropper"
     ],
-    metaTitle: "Best Free Image Cropper Tool Online — Crop Photos Instantly",
+    metaTitle: "Image Cropper — Crop Photos Online",
     metaDescription:
       "The best free image cropper tool online. Crop photos to custom dimensions or preset aspect ratios instantly in your browser — no uploads, no signups, 100% free.",
     usageSteps: [
@@ -1311,7 +1309,7 @@ export const TOOLS: Tool[] = [
       "image scaling tool",
       "resize pictures without quality loss"
     ],
-    metaTitle: "Adobe Image Resizer Online — Resize Photos Free Instantly",
+    metaTitle: "Image Resizer — Adobe Style",
     metaDescription:
       "Resize images like Adobe with our free online image resizer. Change photo dimensions, maintain aspect ratio, and download — all in your browser with no uploads.",
     usageSteps: [
@@ -1360,7 +1358,7 @@ export const TOOLS: Tool[] = [
       "jpg to png converter",
       "webp converter online",
     ],
-    metaTitle: "Image Format Converter Online — Convert PNG, JPEG, WebP Free",
+    metaTitle: "Image Format Converter",
     metaDescription: "Convert images between PNG, JPEG, and WebP formats instantly with this free image format converter. Browser-based with quality controls and no uploads.",
     usageSteps: [
       {
@@ -1404,7 +1402,7 @@ export const TOOLS: Tool[] = [
       "sepia filter for images",
       "image effects online"
     ],
-    metaTitle: "Black and White Image Filter Online — Convert Photos Free",
+    metaTitle: "Image Filter — Black & White, Sepia",
     metaDescription:
       "Apply a black and white image filter to any photo instantly. Convert color images to grayscale, sepia, or adjust brightness and contrast — free and client-side.",
     usageSteps: [
@@ -1453,7 +1451,7 @@ export const TOOLS: Tool[] = [
       "data uri generator",
       "encode image to base64 string",
     ],
-    metaTitle: "Image to Base64 Converter Online — Encode Images to Data URI",
+    metaTitle: "Image to Base64 Converter",
     metaDescription: "Convert any image to a Base64 string with this free image to base64 converter online. Encode images for direct embedding in HTML, CSS, and JavaScript.",
     usageSteps: [
       {
@@ -1499,7 +1497,7 @@ export const TOOLS: Tool[] = [
       "password with symbols",
       "cryptographically secure password"
     ],
-    metaTitle: "Secure Password Generator — Create Strong Passwords Online",
+    metaTitle: "Password Generator — Secure Online",
     metaDescription:
       "Generate secure passwords with custom length and character options. Free online secure password generator with strength indicator — fully client-side.",
     usageSteps: [
@@ -1548,8 +1546,7 @@ export const TOOLS: Tool[] = [
       "sha256 hash",
       "sha512 hash",
     ],
-    metaTitle:
-      "NTLM Hash Generator Online — MD5, SHA-1, SHA-256, SHA-512",
+    metaTitle: "Hash Generator — MD5, SHA-256",
     metaDescription:
       "Free NTLM hash generator tool — generate cryptographic hashes (MD5, SHA-1, SHA-256, SHA-512) of any text instantly in your browser using the Web Crypto API.",
     usageSteps: [
@@ -1600,8 +1597,7 @@ export const TOOLS: Tool[] = [
       "generate uuid v4",
       "unique id generator",
     ],
-    metaTitle:
-      "Random UUID Generator Online — Generate UUID v4 Free",
+    metaTitle: "UUID Generator — Random v4",
     metaDescription:
       "Free random UUID generator — generate UUID v4 identifiers instantly in your browser. Copy to clipboard for database keys, API tokens, and testing.",
     usageSteps: [
@@ -1654,7 +1650,7 @@ export const TOOLS: Tool[] = [
       "compare text side by side",
       "text difference finder"
     ],
-    metaTitle: "Online Text Diff Checker — Compare Text Side by Side Free",
+    metaTitle: "Text Diff Checker — Side by Side",
     metaDescription: "Compare two texts side by side with our free online text diff checker. See additions in green, deletions in red, and unchanged text instantly.",
     usageSteps: [
       {
@@ -1697,7 +1693,7 @@ export const TOOLS: Tool[] = [
       "text to slug",
       "create url slug online"
     ],
-    metaTitle: "Slug Generator Online — Create SEO-Friendly URL Slugs Free",
+    metaTitle: "SEO Slug Generator",
     metaDescription: "Generate clean, SEO-friendly URL slugs from any text with our free slug generator. Perfect for blog posts, product pages, and web paths.",
     usageSteps: [
       {
@@ -1740,7 +1736,7 @@ export const TOOLS: Tool[] = [
       "article summarizer free",
       "text summary generator free"
     ],
-    metaTitle: "Text Summarizer Free Online — Summarize Articles Instantly",
+    metaTitle: "Text Summarizer",
     metaDescription: "Use our free text summarizer to condense long articles into concise key points. Adjustable summary length with instant results — no signup required.",
     usageSteps: [
       {
@@ -1786,7 +1782,7 @@ export const TOOLS: Tool[] = [
       "password complexity checker",
       "secure password test"
     ],
-    metaTitle: "Password Strength Checker Online — Test Password Security",
+    metaTitle: "Password Strength Checker",
     metaDescription:
       "Check password strength online with real-time analysis. Test your password security, get a strength score, and actionable tips to make your passwords stronger.",
     usageSteps: [
@@ -1835,7 +1831,7 @@ export const TOOLS: Tool[] = [
       "text complexity analyzer",
       "reading level checker"
     ],
-    metaTitle: "Lexile Text Analyzer — Free Text Readability Checker",
+    metaTitle: "Lexile Text Analyzer",
     metaDescription: "Analyze text with our lexile text analyzer. Get word count, character count, readability scores, and reading level metrics for your content instantly.",
     usageSteps: [
       {
@@ -1874,7 +1870,7 @@ export const TOOLS: Tool[] = [
     icon: "🏷️",
     featured: true,
     keywords: ["seo meta tag generator", "meta tag creator", "html meta tags generator", "og meta tag generator", "meta description generator", "seo head tags"],
-    metaTitle: "SEO Meta Tag Generator Online — Create Optimized Meta Tags Free",
+    metaTitle: "SEO Meta Tag Generator",
     metaDescription: "Use our free SEO meta tag generator to create optimized title, description, Open Graph, and Twitter Card tags. Preview search snippets and copy HTML code instantly.",
     usageSteps: [
       {
@@ -1911,7 +1907,7 @@ export const TOOLS: Tool[] = [
     icon: "📈",
     featured: true,
     keywords: ["keyword density checker free", "keyword density analyzer", "keyword frequency tool", "seo keyword analyzer", "content optimization tool", "keyword density calculator"],
-    metaTitle: "Free Keyword Density Checker Online — Analyze Content SEO",
+    metaTitle: "Keyword Density Checker",
     metaDescription: "Use our free keyword density checker to analyze keyword frequency and density in any text. Optimize your content for better search engine rankings instantly.",
     usageSteps: [
       {
@@ -1948,7 +1944,7 @@ export const TOOLS: Tool[] = [
     icon: "🗺️",
     featured: true,
     keywords: ["sitemap generator by spellmistake", "xml sitemap generator", "seo sitemap creator", "google sitemap generator", "website sitemap tool", "sitemap xml creator"],
-    metaTitle: "Sitemap Generator by Spellmistake — Create XML Sitemaps Free",
+    metaTitle: "Sitemap Generator",
     metaDescription: "Use this sitemap generator by Spellmistake to create XML sitemaps with priority, frequency, and last modified dates. Copy valid sitemap code for Google Search Console.",
     usageSteps: [
       {
@@ -1985,7 +1981,7 @@ export const TOOLS: Tool[] = [
     icon: "🤖",
     featured: true,
     keywords: ["wordpress robots.txt generator", "robots txt creator", "seo robots.txt tool", "crawl rules generator", "search engine bot control", "robots.txt maker"],
-    metaTitle: "WordPress Robots.txt Generator Online — Create Crawl Rules Free",
+    metaTitle: "Robots.txt Generator",
     metaDescription: "Use our WordPress robots.txt generator to create optimized crawl rules for search engine bots. Add allow/disallow directives, sitemap URLs, and crawl delays.",
     usageSteps: [
       {
@@ -2022,7 +2018,7 @@ export const TOOLS: Tool[] = [
     icon: "🔗",
     featured: false,
     keywords: ["all in one seo open graph", "open graph meta tags", "og tag generator", "social media preview tool", "facebook share preview", "twitter card generator"],
-    metaTitle: "All in One SEO Open Graph Generator — Create Social Tags Free",
+    metaTitle: "Open Graph Generator",
     metaDescription: "Use this all in one SEO open graph generator to create and preview OG meta tags for Facebook, X/Twitter, and LinkedIn. Generate complete social sharing tags instantly.",
     usageSteps: [
       {
@@ -2059,7 +2055,7 @@ export const TOOLS: Tool[] = [
     icon: "📏",
     featured: false,
     keywords: ["seo by highsoftware99.com", "seo title length checker", "meta description length tool", "seo snippet checker", "title tag analyzer", "search preview tool"],
-    metaTitle: "SEO by HighSoftware99.com — Title & Meta Length Checker",
+    metaTitle: "SEO Title & Meta Length Checker",
     metaDescription: "Use this SEO length checker by HighSoftware99.com to test your title tags and meta descriptions against recommended limits. See pixel width, character count, and search preview in real time.",
     usageSteps: [
       {
@@ -2096,7 +2092,7 @@ export const TOOLS: Tool[] = [
     icon: "🔗",
     featured: false,
     keywords: ["canonical tag generator", "rel canonical generator", "canonical url creator", "duplicate content seo", "hreflang tag generator", "seo canonical tool"],
-    metaTitle: "Canonical Tag Generator Online — Create Rel=Canonical Tags Free",
+    metaTitle: "Canonical Tag Generator",
     metaDescription: "Use our free canonical tag generator to create rel=canonical link tags and prevent duplicate content issues. Generate canonical URLs with hreflang support easily.",
     usageSteps: [
       {
@@ -2133,7 +2129,7 @@ export const TOOLS: Tool[] = [
     icon: "👁️",
     featured: false,
     keywords: ["alt text checker", "image alt text analyzer", "accessibility checker html", "wcag alt text tool", "seo image checker", "missing alt attribute finder"],
-    metaTitle: "Alt Text Checker Online — Find Missing Image Alt Attributes Free",
+    metaTitle: "Alt Text Checker",
     metaDescription: "Use our free alt text checker to scan HTML for missing or empty image alt attributes. Improve accessibility and SEO with this WCAG compliance tool.",
     usageSteps: [
       {
@@ -2179,7 +2175,7 @@ export const TOOLS: Tool[] = [
       "aa aaa compliance checker",
       "foreground background contrast"
     ],
-    metaTitle: "WebAIM Color Contrast Checker Online — Check WCAG AA/AAA",
+    metaTitle: "Color Contrast Checker WCAG",
     metaDescription:
       "Check color contrast ratios like WebAIM for WCAG 2.1 AA and AAA compliance. Free online accessibility tool for foreground and background color combinations.",
     usageSteps: [
@@ -2230,7 +2226,7 @@ export const TOOLS: Tool[] = [
       "metric imperial converter",
       "measurement converter tool",
     ],
-    metaTitle: "Lego Unit Converter Online — Length, Weight, Temperature",
+    metaTitle: "Unit Converter",
     metaDescription: "Convert between length, weight, temperature, speed, and volume with this lego unit converter. Free online tool with multiple measurement categories.",
     usageSteps: [
       {
@@ -2273,7 +2269,7 @@ export const TOOLS: Tool[] = [
       "convert json to csv",
       "json to excel converter",
     ],
-    metaTitle: "JSON to CSV Python Online — Convert JSON to Spreadsheet",
+    metaTitle: "JSON to CSV Converter",
     metaDescription: "Convert JSON arrays to CSV with this json to csv python online tool. Supports nested objects, custom delimiters, and table preview for data analysis.",
     usageSteps: [
       {
@@ -2316,7 +2312,7 @@ export const TOOLS: Tool[] = [
       "yaml parser online",
       "yaml converter tool",
     ],
-    metaTitle: "YAML to JSON Converter Online — Convert YAML to JSON Free",
+    metaTitle: "YAML to JSON Converter",
     metaDescription:
       "Convert YAML to JSON instantly with our free online converter. Parse configuration files, resolve anchors, and export clean JSON — all in your browser.",
     usageSteps: [
@@ -2365,7 +2361,7 @@ export const TOOLS: Tool[] = [
       "kelvin converter",
       "temp conversion online",
     ],
-    metaTitle: "Temperature Converter Online — Celsius, Fahrenheit, Kelvin",
+    metaTitle: "Temperature Converter",
     metaDescription: "Convert temperatures between Celsius, Fahrenheit, and Kelvin with this free temperature converter. Instant results for cooking, science, and travel planning.",
     usageSteps: [
       {
@@ -2408,7 +2404,7 @@ export const TOOLS: Tool[] = [
       "kg to lbs converter",
       "pound kilogram converter",
     ],
-    metaTitle: "Lbs to Kg Converter Online — Pounds to Kilograms Converter",
+    metaTitle: "Lbs to Kg Converter",
     metaDescription: "Convert pounds to kilograms and kilograms to pounds with this free lbs to kg converter. Instant weight conversion for fitness, shipping, and everyday use.",
     usageSteps: [
       {
@@ -2454,7 +2450,7 @@ export const TOOLS: Tool[] = [
       "interest calculator loan",
       "personal loan calculator",
     ],
-    metaTitle: "Online Loan Calculator — Monthly Payments and Amortization",
+    metaTitle: "Loan Calculator",
     metaDescription: "Use our online loan calculator to estimate monthly payments, total interest, and full amortization schedules. Free for mortgages, auto, and personal loans.",
     usageSteps: [
       {
@@ -2498,7 +2494,7 @@ export const TOOLS: Tool[] = [
       "shopping discount tool",
       "markdown calculator",
     ],
-    metaTitle: "Percent Discount Calculator — Calculate Sale Prices Fast",
+    metaTitle: "Discount Calculator",
     metaDescription: "Use our percent discount calculator to find sale prices and savings. Enter original price and discount percentage to see the final price and amount you save.",
     usageSteps: [
       {
@@ -2542,7 +2538,7 @@ export const TOOLS: Tool[] = [
       "home buying calculator",
       "mortgage affordability calculator",
     ],
-    metaTitle: "Dave Ramsey Mortgage Calculator — Estimate Monthly Payments",
+    metaTitle: "Mortgage Calculator",
     metaDescription: "Use our Dave Ramsey mortgage calculator to estimate monthly payments with taxes, insurance, and PMI. Plan your home purchase with this free mortgage estimator.",
     usageSteps: [
       {
@@ -2587,8 +2583,7 @@ export const TOOLS: Tool[] = [
       "minify css online",
       "css compressor",
     ],
-    metaTitle:
-      "CSS Minifier Online — Compress, Minify, and Optimize CSS",
+    metaTitle: "CSS Minifier",
     metaDescription:
       "Free CSS minifier tool — compress CSS by removing whitespace and comments. See compression ratio and copy minified output to speed up your website.",
     usageSteps: [
@@ -2639,8 +2634,7 @@ export const TOOLS: Tool[] = [
       "html entity decode",
       "escape html",
     ],
-    metaTitle:
-      "HTML Entity Converter — Encode and Decode HTML Entities",
+    metaTitle: "HTML Entity Converter",
     metaDescription:
       "Free HTML entity converter tool — convert special characters to HTML entities and decode them back. Encode text for safe HTML display in any browser.",
     usageSteps: [
@@ -2691,8 +2685,7 @@ export const TOOLS: Tool[] = [
       "number base converter",
       "binary to hex",
     ],
-    metaTitle:
-      "Text to Binary Converter — Decimal, Hex, Octal Converter",
+    metaTitle: "Binary Converter",
     metaDescription:
       "Free text to binary converter — convert numbers between binary, decimal, hex, and octal formats instantly. Perfect for devs, students, and electronics.",
     usageSteps: [
@@ -2745,7 +2738,7 @@ export const TOOLS: Tool[] = [
       "bypass ai detection free",
       "ai content humanizer free"
     ],
-    metaTitle: "AI Text Humanizer Free — Make AI Content Sound Human Online",
+    metaTitle: "AI Text Humanizer",
     metaDescription: "Use our free AI text humanizer to rewrite AI-generated content naturally. Make ChatGPT and Claude text sound authentically human — no signup required.",
     usageSteps: [
       {
@@ -2788,7 +2781,7 @@ export const TOOLS: Tool[] = [
       "free writing checker",
       "english grammar checker free"
     ],
-    metaTitle: "Free Grammar Checker Online — Check Grammar Instantly Free",
+    metaTitle: "Grammar Checker",
     metaDescription: "Use our free grammar checker online to find grammar mistakes, punctuation errors, and spelling issues. Clean, error-free writing in seconds.",
     usageSteps: [
       {
@@ -2831,7 +2824,7 @@ export const TOOLS: Tool[] = [
       "is it a palindrome",
       "word palindrome tester"
     ],
-    metaTitle: "Palindrome Checker Online — Test Words and Phrases Free",
+    metaTitle: "Palindrome Checker",
     metaDescription: "Check if any word, phrase, or number is a palindrome with our free palindrome checker. See character-by-character comparison and instant pass/fail results.",
     usageSteps: [
       {
@@ -2874,7 +2867,7 @@ export const TOOLS: Tool[] = [
       "text reverser tool",
       "backwards text generator"
     ],
-    metaTitle: "Reverse Text Online — How to Reverse Text in Word Free",
+    metaTitle: "Reverse Text — Backwards Text",
     metaDescription: "Learn how to reverse text in word and online with our free text reverser. Reverse by characters, words, or both — instant results in your browser.",
     usageSteps: [
       {
