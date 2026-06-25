@@ -1,7 +1,7 @@
 # Free Online Tools Nest — Project Knowledge Base
 
 > This file is a comprehensive knowledge base designed to give any AI model full context about this project without needing to explore the codebase. It saves tokens by consolidating architecture, data models, patterns, completed work, and known issues in one place.
-> **Last audited**: 2026-06-22
+> **Last audited**: 2026-06-24
 
 ---
 
@@ -11,7 +11,7 @@
 
 **Domain**: `https://freeonlinetoolsnest.com`  
 **Deployed on**: Cloudflare Pages (via `wrangler pages deploy`)  
-**Build**: 130 static pages, ~9s build time, 0 errors  
+**Build**: 83 static pages, ~9s build time, 0 errors  
 **GitHub**: (not public yet — codebase local only)
 
 ---
@@ -25,7 +25,7 @@
 | **CSS** | Tailwind CSS v4 | via `@tailwindcss/vite`, custom design tokens |
 | **Build** | Vite (Astro built-in) | esbuild for JSX |
 | **Sitemap** | `@astrojs/sitemap` | Auto-generated, lastmod enabled |
-| **i18n** | Custom (no library) | 8 locales: en, es, pt, fr, de, hi, ja, ar |
+| **i18n** | Custom (no library) | English-only (was 8 locales, removed in Phase 9) |
 | **PDF** | `pdf-lib` + `pdfjs-dist` | Client-side PDF processing |
 | **QR** | `qrcode` | Client-side QR generation |
 | **Markdown** | `marked` | Client-side MD→HTML rendering |
@@ -90,41 +90,37 @@ freeonlinetoolsnest.com/
 │   ├── hooks/
 │   │   └── useCopyToClipboard.ts # Shared clipboard copy hook with feedback state
 │   ├── i18n/
-│   │   ├── ui.ts                 # Translation dictionary (1717 lines, 8 languages)
-│   │   └── utils.ts              # getLangFromUrl(), useTranslations(), getLocalePaths()
+│   │   ├── ui.ts                 # English-only translation dictionary (~255 lines, was 1717)
+│   │   └── utils.ts              # getLangFromUrl(), useTranslations()
 │   ├── layouts/
 │   │   ├── Layout.astro          # Base layout (HTML shell, SEOHead, Nav, Footer, favicon links, PWA manifest, dark mode flash prevention)
 │   │   ├── ToolLayout.astro      # Tool page layout (breadcrumbs, sidebar, FAQ, JSON-LD)
 │   │   └── BlogLayout.astro      # Blog post layout
 │   ├── pages/
-│   │   ├── [locale]/             # 8 localized pages per locale
-│   │   │   ├── about.astro
-│   │   │   ├── contact.astro
-│   │   │   ├── faq.astro
-│   │   │   ├── index.astro       # Locale-specific homepage
-│   │   │   ├── privacy-policy.astro
-│   │   │   └── terms-and-conditions.astro
 │   │   ├── blog/                 # Blog index + [slug] dynamic route (3 posts)
 │   │   ├── categories/           # 7 category listing pages
 │   │   ├── tools/                # 62 tool pages + index
-│   │   ├── 404.astro             # Custom 404 (localized, always English via SSR)
-│   │   ├── 500.astro             # Custom 500 (localized, always English via SSR)
-│   │   ├── about.astro           # Default-locale about
-│   │   ├── contact.astro         # Default-locale contact
+│   │   ├── 404.astro             # Custom 404 (English hardcoded)
+│   │   ├── 500.astro             # Custom 500 (English hardcoded)
+│   │   ├── about.astro           # English about page (was redirect stub → real content)
+│   │   ├── contact.astro         # English contact page (was redirect stub → real content)
+│   │   ├── faq.astro             # English FAQ page (was redirect stub → real content)
+│   │   ├── privacy-policy.astro  # English privacy policy (was redirect stub → real content)
+│   │   ├── terms-and-conditions.astro # English terms (was redirect stub → real content)
 │   │   ├── favorites/            # Favorites page
-│   │   ├── index.astro           # Root homepage (redirects to /en/)
-│   │   └── (privacy, terms)      # Default-locale legal pages
+│   │   └── index.astro           # Real English homepage (was redirect to /en/)
 │   ├── styles.css                # Tailwind v4 config + custom CSS
 │   └── types/
 │       └── index.ts              # TypeScript interfaces (Tool, Category, etc.)
-├── astro.config.mjs              # Astro config (i18n, sitemap, tailwind)
+├── astro.config.mjs              # Astro config (sitemap, tailwind — i18n config removed in Phase 9)
 ├── DESIGN.md                     # Vercel-inspired design system reference (736 lines)
 ├── eslint.config.js              # ESLint flat config (Astro only, partial coverage)
 ├── vitest.config.ts              # Vitest configuration (node env, globals)
 ├── tsconfig.json                 # extends astro/tsconfigs/strict
 ├── package.json
 ├── AGENTS.md                     # ← This file
-└── .omo/
+├── .gitignore                    # dist/, .astro/, node_modules/, .playwright-mcp/, .omo/
+└── .omo/                         # OpenCode session state (gitignored)
     └── plans/
         ├── backlink-directory-submissions.md   # Directory submission strategy (31 directories)
         └── show-hn-launch-draft.md             # Hacker News launch draft
@@ -284,9 +280,8 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 
 ### Homepage
 
-- `/` → redirects to `/en/`
-- `/en/` → Hero + Featured Tools grid + Category cards + Blog list
-- Each locale gets its own homepage at `/{locale}/`
+- `/` → Real English homepage with Hero, Featured Tools grid, Category cards, Blog list, FAQ, JSON-LD
+- No locale-prefixed homepages (`/en/`, `/es/`, etc. — all removed)
 
 ---
 
@@ -295,9 +290,9 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 ### Per-Page SEO
 - **Custom metaTitle/metaDescription** on every tool (overrides auto-generated defaults)
 - **Canonical URLs** on every page
-- **Hreflang tags** for all 8 locales on shared pages (about, contact, privacy, terms, faq)
-- **OG tags** (title, description, image, type, locale, site_name)
+- **OG tags** (title, description, image, type, locale, site_name) — `og:locale` hardcoded to `en_US`
 - **Twitter Card** (summary_large_image)
+- **Hreflang tags** removed (Phase 9 — English-only, no alternate locales)
 
 ### Structured Data (JSON-LD)
 - **WebApplication** on every tool page
@@ -308,7 +303,7 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 - **WebSite** + **SearchAction** on homepage (site search)
 
 ### Technical SEO
-- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 131 pages
+- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 83 pages
 - **robots.txt**: Proper crawl directives
 - **_headers**: Security headers + noindex for preview domains
 - **OG images**: Per-category OG images in `public/og/`
@@ -349,6 +344,8 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 - `/about/` → also English (default locale, redirects to `/en/about/`)
 - Tool pages are single-locale: `/tools/image-compressor/` (always English)
 
+> **Phase 9 update**: All non-English locales removed. The site is now English-only. `src/pages/[locale]/` deleted (6 files). `src/i18n/ui.ts` stripped to English (~255 lines). Root pages (index, about, contact, faq, privacy-policy, terms-and-conditions) converted from redirect stubs to real content. hreflang tags removed. Language switcher removed from footer. `og:locale` hardcoded to `en_US`. The i18n system still exists (`useTranslations` with `getLangFromUrl`) but always resolves to `"en"`.
+
 ---
 
 ## 9. Component Details
@@ -357,7 +354,7 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 
 | Component | Type | Purpose |
 |-----------|------|---------|
-| **SEOHead.astro** | Astro | Injects `<title>`, meta, OG, Twitter, canonical, hreflang, JSON-LD |
+| **SEOHead.astro** | Astro | Injects `<title>`, meta, OG, Twitter, canonical, JSON-LD (hreflang removed in Phase 9) |
 | **Nav.astro** | Astro | Sticky header with logo, category links, dark mode toggle, CmdK search trigger, hamburger on mobile |
 | **Footer.astro** | Astro | 4-column: Tools (first 6), Categories (all 7), Company (About/Blog/Contact/Faq), Legal (Privacy/Terms) + newsletter signup section |
 | **FAQSection.astro** | Astro | Accordion FAQ + auto-generates FAQPage JSON-LD |
@@ -417,7 +414,7 @@ Each is a self-contained React client component with its own state and logic. Th
 - **Preview domain**: `*.freeonlinetoolsnest.pages.dev` (blocked from indexing via `_headers`)
 
 ### Build Stats
-- **131 pages** generated (62 tools + 7 categories + 8 locales × 6 pages + blog index + 3 blog posts + 404 + 500 + tools index + favorites + 2 about + 2 contact + 2 faq + 2 privacy + 2 terms + 8 homepage + root redirect)
+- **83 pages** generated (62 tools + 7 categories + 4 blog + 404 + 500 + tools index + favorites + about + contact + faq + privacy-policy + terms-and-conditions + homepage)
 - **~8s build time**
 - **0 build errors**
 
@@ -504,6 +501,20 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - `tools.ts` grew from 2537 → 2892 lines
 - **Verification**: 0 LSP errors, 62 tools present, build 131 pages 0 errors, tests 7/7 passing
 
+### Phase 9 — Remove All Non-English Locales (English-Only Conversion)
+- Stripped `src/i18n/ui.ts` from ~1800 lines (8 languages) to ~255 lines (English only)
+- Simplified `src/i18n/utils.ts` — removed `getLocalePaths`, `getLocalePath`
+- Deleted `src/pages/[locale]/` folder (6 files, 48 generated pages removed from build)
+- Converted root-level pages from `<meta http-equiv="refresh">` redirect stubs to real content: index, about, contact, faq, privacy-policy, terms-and-conditions
+- Removed language switcher dropdown + JS from `Footer.astro`
+- Removed hreflang block from `SEOHead.astro`; hardcoded `og:locale` to `en_US`
+- Removed `localePaths`/`xDefaultPath` from `Layout.astro` Props interface
+- Removed i18n config block from `astro.config.mjs`; simplified sitemap filter
+- Replaced `useTranslations("en")` with direct English strings in 404.astro and 500.astro
+- **Build**: 83 pages (was 131), 0 errors, tests 7/7 passing
+- **Deploy**: Committed to `main`, deployed to Cloudflare Pages
+- **Live verification**: Homepage, all root pages, tool page (word counter), sitemap, locale 404s — all confirmed working
+
 ### Phase 8 — Favicon Investigation & Google Search Fix
 - Investigated why favicon doesn't display in Google search results despite being properly wired in `Layout.astro`
 - Launched 3 parallel background agents to cross-reference Google Search Central docs, current head tags, and favicon image files
@@ -532,7 +543,6 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - [ ] Site is new — no backlinks, low domain authority
 - [ ] Blog posts published but no promotion done yet
 - [ ] No social media presence linked from site (Twitter handle in OG tags may be placeholder)
-- [ ] No analytics tracking (no GA, Plausible, or similar)
 - [ ] No performance optimization (no lazy loading audit, no Core Web Vitals check)
 
 ### Design Gaps
@@ -541,7 +551,7 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - [ ] No loading states for tool components that do heavy processing (PDF tools, image tools)
 
 ### i18n Gaps
-- [ ] Tool content is English-only (62 tools × titles, descriptions, keywords, meta, usageSteps, faq)
+- [ ] Tool content is English-only (62 tools × titles, descriptions, keywords, meta, usageSteps, faq) — no translations exist for tool-level content
 - [ ] Blog posts are English-only
 - [ ] 404/500 pages hardcoded to English (static fallback limitation)
 
@@ -554,9 +564,9 @@ For maximum context with minimum tokens, read in this order:
 1. **`src/data/tools.ts`** — Central file: all categories, all 62 tools, SITE config, helper functions
 2. **`src/layouts/ToolLayout.astro`** — Tool page layout (shows every rendered section)
 3. **`src/components/FAQSection.astro`** — FAQ with JSON-LD (reused on every tool page)
-4. **`src/components/SEOHead.astro`** — All meta/OG/hreflang/JSON-LD injection
-5. **`astro.config.mjs`** — Build config, i18n, plugins
-6. **`src/i18n/ui.ts`** — Full translation dictionary (1717 lines)
+4. **`src/components/SEOHead.astro`** — All meta/OG/JSON-LD injection
+5. **`astro.config.mjs`** — Build config, sitemap, plugins
+6. **`src/i18n/ui.ts`** — English-only translation dictionary (~255 lines, was 1717)
 7. **`src/styles.css`** — Design tokens and dark mode
 8. **`src/types/index.ts`** — TypeScript interfaces (but tools.ts has its own superset)
 9. **`package.json`** — Dependencies and scripts
@@ -588,24 +598,23 @@ npm run check        # TypeScript check with astro check
 
 ### Key URLs (Production)
 ```
-Homepage:        https://freeonlinetoolsnest.com/en/
+Homepage:        https://freeonlinetoolsnest.com/
 All tools:       https://freeonlinetoolsnest.com/tools/
 Blog:            https://freeonlinetoolsnest.com/blog/
 Sitemap:         https://freeonlinetoolsnest.com/sitemap-index.xml
 Any tool page:   https://freeonlinetoolsnest.com/tools/{slug}/
 ```
 
-### Build Output (131 pages)
+### Build Output (83 pages)
 ```
 62 tool pages + 1 tools index
 7 category pages
-3 blog posts + 1 blog index
-8 locale homepages
-8 locales × 6 shared pages (about, contact, faq, privacy, terms, index)
-404 + 500 error pages
-Favorites page
-Root index redirect
-= 131 total
+4 blog (index + 3 posts)
+1 homepage
+5 root content pages (about, contact, faq, privacy-policy, terms-and-conditions)
+2 error pages (404 + 500)
+1 favorites page
+= 83 total
 ```
 
 ### Page Count Breakdown (verified by build)
@@ -614,9 +623,8 @@ Root index redirect
 | Tools | 63 | 62 tools + 1 `/tools/index.html` |
 | Categories | 7 | 7 category listing pages |
 | Blog | 4 | Index + 3 posts |
-| Locale homepages | 8 | `/en/`, `/es/`, `/pt/`, `/fr/`, `/de/`, `/hi/`, `/ja/`, `/ar/` |
-| Root redirect | 1 | `/index.html` (redirects to `/en/`) |
-| Locale shared pages | 40 | 5 pages (about, contact, faq, privacy, terms) × 8 locales |
-| Root-level pages (English) | 5 | about, contact, privacy-policy, terms-and-conditions, favorites |
+| Homepage | 1 | `/index.html` (real content, not redirect) |
+| Root content pages | 5 | about, contact, faq, privacy-policy, terms-and-conditions |
 | Error pages | 2 | 404, 500 |
-| **Total** | **131** | |
+| Favorites | 1 | `/favorites/index.html` |
+| **Total** | **83** | |
