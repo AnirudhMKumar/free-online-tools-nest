@@ -1,0 +1,116 @@
+# Free Online Tools Nest
+
+> 62 free online tools for text, code, math, SEO, PDF, design, and conversions. All processing happens client-side in the browser — no uploads, no signups, 100% private.
+
+## Key Pages
+
+- Home: https://freeonlinetoolsnest.com/
+- All Tools: https://freeonlinetoolsnest.com/tools/
+- About: https://freeonlinetoolsnest.com/about/
+- Contact: https://freeonlinetoolsnest.com/contact/
+- FAQ: https://freeonlinetoolsnest.com/faq/
+- Privacy Policy: https://freeonlinetoolsnest.com/privacy-policy/
+- Terms: https://freeonlinetoolsnest.com/terms-and-conditions/
+- Favorites: https://freeonlinetoolsnest.com/favorites/
+- Blog: https://freeonlinetoolsnest.com/blog/
+
+## Categories
+
+### Text Tools ✏️
+Transform, analyze, and format text. 14 tools.
+- Character Counter: https://freeonlinetoolsnest.com/tools/character-counter/
+- Word Counter: https://freeonlinetoolsnest.com/tools/word-counter/
+- Case Converter: https://freeonlinetoolsnest.com/tools/case-converter/
+- Text Analyzer: https://freeonlinetoolsnest.com/tools/text-analyzer/
+- Text Diff: https://freeonlinetoolsnest.com/tools/text-diff/
+- Text Summarizer: https://freeonlinetoolsnest.com/tools/text-summarizer/
+- Text Humanizer: https://freeonlinetoolsnest.com/tools/text-humanizer/
+- Grammar Checker: https://freeonlinetoolsnest.com/tools/grammar-checker/
+- Palindrome Checker: https://freeonlinetoolsnest.com/tools/palindrome-checker/
+- Reverse Text: https://freeonlinetoolsnest.com/tools/reverse-text/
+- Lorem Ipsum Generator: https://freeonlinetoolsnest.com/tools/lorem-ipsum-generator/
+- Markdown to HTML: https://freeonlinetoolsnest.com/tools/markdown-to-html/
+- Number to Words: https://freeonlinetoolsnest.com/tools/number-to-words/
+- Slug Generator: https://freeonlinetoolsnest.com/tools/slug-generator/
+
+### Developer Tools ⚡
+Format, encode, and validate code. 12 tools.
+- JSON Formatter: https://freeonlinetoolsnest.com/tools/json-formatter/
+- HTML Formatter: https://freeonlinetoolsnest.com/tools/html-formatter/
+- Regex Tester: https://freeonlinetoolsnest.com/tools/regex-tester/
+- CSS Minifier: https://freeonlinetoolsnest.com/tools/css-minifier/
+- Base64 Encoder/Decoder: https://freeonlinetoolsnest.com/tools/base64-encoder-decoder/
+- URL Encoder/Decoder: https://freeonlinetoolsnest.com/tools/url-encoder-decoder/
+- UUID Generator: https://freeonlinetoolsnest.com/tools/uuid-generator/
+- Hash Generator: https://freeonlinetoolsnest.com/tools/hash-generator/
+- Binary Converter: https://freeonlinetoolsnest.com/tools/binary-converter/
+- HTML Entity Converter: https://freeonlinetoolsnest.com/tools/html-entity-converter/
+- CSV to JSON: https://freeonlinetoolsnest.com/tools/csv-to-json/
+- YAML to JSON: https://freeonlinetoolsnest.com/tools/yaml-to-json/
+
+### Calculators 🔢
+Quick, precise math solvers. 8 tools.
+- Percentage Calculator: https://freeonlinetoolsnest.com/tools/percentage-calculator/
+- Loan Calculator: https://freeonlinetoolsnest.com/tools/loan-calculator/
+- Discount Calculator: https://freeonlinetoolsnest.com/tools/discount-calculator/
+- Mortgage Calculator: https://freeonlinetoolsnest.com/tools/mortgage-calculator/
+- Tip Calculator: https://freeonlinetoolsnest.com/tools/tip-calculator/
+- Age Calculator: https://freeonlinetoolsnest.com/tools/age-calculator/
+- BMI Calculator: https://freeonlinetoolsnest.com/tools/bmi-calculator/
+- Date Difference Calculator: https://freeonlinetoolsnest.com/tools/date-difference-calculator/
+
+### Converters 🔄
+Convert between formats, units, and encodings. 7 tools.
+- Unit Converter: https://freeonlinetoolsnest.com/tools/unit-converter/
+- Temperature Converter: https://freeonlinetoolsnest.com/tools/temperature-converter/
+- Lbs to Kg Converter: https://freeonlinetoolsnest.com/tools/lbs-to-kg-converter/
+- JSON to CSV: https://freeonlinetoolsnest.com/tools/json-to-csv/
+- Color Converter: https://freeonlinetoolsnest.com/tools/color-converter/
+- Image Format Converter: https://freeonlinetoolsnest.com/tools/image-format-converter/
+- Image to Base64: https://freeonlinetoolsnest.com/tools/image-to-base64/
+
+### PDF Tools 📄
+Merge, split, compress, and convert PDFs in-browser. 5 tools.
+- PDF Merger: https://freeonlinetoolsnest.com/tools/pdf-merger/
+- PDF Splitter: https://freeonlinetoolsnest.com/tools/pdf-splitter/
+- PDF Compressor: https://freeonlinetoolsnest.com/tools/pdf-compressor/
+- PDF to Text: https://freeonlinetoolsnest.com/tools/pdf-to-text/
+- PDF to Images: https://freeonlinetoolsnest.com/tools/pdf-to-images/
+
+### SEO Tools 🔍
+Meta tags, sitemaps, robots.txt, and optimization utilities. 8 tools.
+- Meta Tag Generator: https://freeonlinetoolsnest.com/tools/meta-tag-generator/
+- Sitemap Generator: https://freeonlinetoolsnest.com/tools/sitemap-generator/
+- Robots.txt Generator: https://freeonlinetoolsnest.com/tools/robots-txt-generator/
+- Keyword Density Checker: https://freeonlinetoolsnest.com/tools/keyword-density-checker/
+- Canonical Tag Generator: https://freeonlinetoolsnest.com/tools/canonical-tag-generator/
+- SEO Length Checker: https://freeonlinetoolsnest.com/tools/seo-length-checker/
+- Open Graph Preview Generator: https://freeonlinetoolsnest.com/tools/open-graph-preview-generator/
+- Alt Text Checker: https://freeonlinetoolsnest.com/tools/alt-text-checker/
+
+### Design Tools 🎨
+Color, contrast, images, and password utilities. 8 tools.
+- QR Code Generator: https://freeonlinetoolsnest.com/tools/qr-code-generator/
+- Image Resizer: https://freeonlinetoolsnest.com/tools/image-resizer/
+- Image Cropper: https://freeonlinetoolsnest.com/tools/image-cropper/
+- Image Filter: https://freeonlinetoolsnest.com/tools/image-filter/
+- Image Compressor: https://freeonlinetoolsnest.com/tools/image-compressor/
+- Color Contrast Checker: https://freeonlinetoolsnest.com/tools/color-contrast-checker/
+- Password Generator: https://freeonlinetoolsnest.com/tools/password-generator/
+- Password Strength Checker: https://freeonlinetoolsnest.com/tools/password-strength-checker/
+
+## Blog Posts
+
+- 10 Free Online Tools Every Developer and Content Creator Should Bookmark in 2026: https://freeonlinetoolsnest.com/blog/10-free-online-tools-2026/
+- The Ultimate Guide to Free Online Tools in 2026: https://freeonlinetoolsnest.com/blog/free-online-tools-guide-2026/
+- How Our Image Compressor Works 100% in Your Browser: https://freeonlinetoolsnest.com/blog/image-compressor-browser-only/
+
+## Tech Stack
+
+- Framework: Astro 6 (static site generator)
+- UI: React 19 (interactive tool islands)
+- CSS: Tailwind CSS v4
+- Hosting: Cloudflare Pages
+- Languages: English only
+- Client-side libraries: pdf-lib, pdfjs-dist, qrcode, marked
+- Privacy: Zero server uploads. All processing runs in your browser.
