@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
 
 function normalizeText(text: string): string {
@@ -62,12 +62,12 @@ function findMatchingRanges(
 function renderHighlightedText(
   text: string,
   matchedRanges: Set<number>
-): (string | JSX.Element)[] {
+): (string | React.ReactNode)[] {
   const words = normalizeText(text).split(" ");
   const originalWords = text.split(/\s+/);
-  const result: (string | JSX.Element)[] = [];
+  const result: (string | React.ReactNode)[] = [];
   let inMatch = false;
-  let span: JSX.Element | null = null;
+  let span: React.ReactNode = null;
   let spanWords: string[] = [];
 
   for (let i = 0; i < words.length; i++) {
