@@ -234,7 +234,7 @@ export default function ColorPaletteGenerator() {
             {copiedAll ? "Copied All" : "Copy All"}
           </button>
         </div>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {palette.map((hex, index) => (
             <div key={index} className="flex flex-col items-center gap-1">
               <button
@@ -256,7 +256,7 @@ export default function ColorPaletteGenerator() {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 gap-2">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
         {palette.map((hex, index) => (
           <div key={index} className="flex items-center justify-between px-3 py-2 rounded-lg" style={{ backgroundColor: "var(--color-canvas-soft-2)" }}>
             <span className="text-xs font-mono" style={{ color: "var(--color-ink)" }}>

@@ -260,7 +260,7 @@ export default function HashGenerator() {
           <label htmlFor="hash-algo" className="block text-sm font-medium mb-2" style={{ color: "var(--color-ink)" }}>
             Algorithm
           </label>
-          <div className="flex rounded-lg overflow-hidden border" style={{ borderColor: "var(--color-hairline)" }}>
+          <div className="flex flex-wrap rounded-lg border" style={{ borderColor: "var(--color-hairline)" }}>
             {ALGORITHMS.map((algo) => (
               <button
                 key={algo.key}

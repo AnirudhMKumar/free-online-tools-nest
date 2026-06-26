@@ -139,7 +139,7 @@ export default function SitemapGenerator() {
                 type="date"
                 value={entry.lastmod}
                 onChange={(e) => updateEntry(entry.id, "lastmod", e.target.value)}
-                className="h-9 px-3 border rounded-md text-sm outline-none"
+                className="w-full h-9 px-3 border rounded-md text-sm outline-none"
                 style={{ backgroundColor: "var(--color-canvas-soft)", borderColor: "var(--color-hairline)", color: "var(--color-ink)" }}
               />
             </div>

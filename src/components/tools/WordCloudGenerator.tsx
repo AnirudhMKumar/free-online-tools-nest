@@ -57,7 +57,9 @@ function getWordFrequencies(text: string, maxWords: number): WordEntry[] {
 function drawWordCloud(
   canvas: HTMLCanvasElement,
   words: WordEntry[],
-  palette: string[]
+  palette: string[],
+  bgColor: string,
+  textColor: string
 ) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
@@ -66,11 +68,11 @@ function drawWordCloud(
   const h = canvas.height;
 
   ctx.clearRect(0, 0, w, h);
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = bgColor;
   ctx.fillRect(0, 0, w, h);
 
   if (words.length === 0) {
-    ctx.fillStyle = "#999";
+    ctx.fillStyle = textColor;
     ctx.font = "16px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText("No words to display. Enter some text to generate a word cloud.", w / 2, h / 2);
@@ -164,7 +166,11 @@ export default function WordCloudGenerator() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const palette = PALETTES[paletteName] || PALETTES.Ocean;
-    drawWordCloud(canvas, wordEntries, palette);
+    // Read CSS custom property values so the canvas adapts to dark mode
+    const style = getComputedStyle(canvas);
+    const bgColor = style.getPropertyValue("--color-canvas").trim() || "#ffffff";
+    const textColor = style.getPropertyValue("--color-ink").trim() || "#333333";
+    drawWordCloud(canvas, wordEntries, palette, bgColor, textColor);
   }, [wordEntries, paletteName]);
 
   const handleDownload = useCallback(() => {

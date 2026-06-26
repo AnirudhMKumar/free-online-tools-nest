@@ -119,7 +119,7 @@ export default function MarkdownToHtml() {
 
           {activeTab === "preview" ? (
             <div
-              className="w-full p-6 border rounded-lg text-sm overflow-y-auto flex-1 min-h-[350px] max-h-[500px]"
+              className="w-full p-6 border rounded-lg text-sm overflow-y-auto overflow-x-auto flex-1 min-h-[350px] max-h-[500px]"
               style={{
                 backgroundColor: "var(--color-canvas)",
                 borderColor: "var(--color-hairline)",

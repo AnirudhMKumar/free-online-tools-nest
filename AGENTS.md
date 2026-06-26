@@ -190,13 +190,13 @@ export const SITE = {
 
 | Slug | Name | Icon | # Tools |
 |------|------|------|---------|
-| `text-tools` | Text Tools | ✏️ | 17 |
+| `text-tools` | Text Tools | ✏️ | 15 |
 | `developer-tools` | Developer Tools | ⚡ | 16 |
-| `calculators` | Calculators | 🔢 | 9 |
-| `converters` | Converters | 🔄 | 8 |
+| `calculators` | Calculators | 🔢 | 10 |
+| `converters` | Converters | 🔄 | 16 |
 | `pdf-tools` | PDF Tools | 📄 | 5 |
 | `seo-tools` | SEO Tools | 🔍 | 11 |
-| `design-tools` | Design Tools | 🎨 | 11 |
+| `design-tools` | Design Tools | 🎨 | 4 |
 
 ### Helper Functions (all in tools.ts)
 
@@ -211,17 +211,17 @@ export const SITE = {
 
 ## 5. Complete Tool Inventory (77 Tools)
 
-### Text Tools (17)
-character-counter, word-counter, case-converter, text-analyzer, text-diff, text-summarizer, text-humanizer, grammar-checker, palindrome-checker, reverse-text, lorem-ipsum-generator, markdown-to-html, number-to-words, slug-generator, plagiarism-checker, readability-score, word-cloud-generator
+### Text Tools (15)
+character-counter, word-counter, case-converter, text-analyzer, text-diff, text-summarizer, text-humanizer, grammar-checker, palindrome-checker, reverse-text, lorem-ipsum-generator, slug-generator, plagiarism-checker, readability-score, word-cloud-generator
 
 ### Developer Tools (16)
-json-formatter, html-formatter, regex-tester, css-minifier, base64-encoder-decoder, url-encoder-decoder, uuid-generator, hash-generator, binary-converter, html-entity-converter, csv-to-json, yaml-to-json, jwt-decoder, sql-formatter, html-to-markdown, json-to-xml
+json-formatter, url-encoder-decoder, base64-encoder-decoder, html-formatter, regex-tester, password-generator, hash-generator, uuid-generator, password-strength-checker, css-minifier, html-entity-converter, binary-converter, jwt-decoder, sql-formatter, html-to-markdown, json-to-xml
 
-### Calculators (9)
-percentage-calculator, loan-calculator, discount-calculator, mortgage-calculator, tip-calculator, age-calculator, bmi-calculator, date-difference-calculator, random-number-generator
+### Calculators (10)
+percentage-calculator, age-calculator, bmi-calculator, tip-calculator, date-difference-calculator, number-to-words, loan-calculator, discount-calculator, mortgage-calculator, random-number-generator
 
-### Converters (8)
-unit-converter, temperature-converter, lbs-to-kg-converter, json-to-csv, color-converter, image-format-converter, image-to-base64, epoch-converter
+### Converters (16)
+qr-code-generator, color-converter, markdown-to-html, csv-to-json, image-compressor, image-cropper, image-resizer, image-format-converter, image-filter, image-to-base64, unit-converter, json-to-csv, yaml-to-json, temperature-converter, lbs-to-kg-converter, epoch-converter
 
 ### PDF Tools (5)
 pdf-merger, pdf-splitter, pdf-compressor, pdf-to-text, pdf-to-images
@@ -229,10 +229,8 @@ pdf-merger, pdf-splitter, pdf-compressor, pdf-to-text, pdf-to-images
 ### SEO Tools (11)
 meta-tag-generator, sitemap-generator, robots-txt-generator, keyword-density-checker, canonical-tag-generator, seo-length-checker, open-graph-preview-generator, alt-text-checker, serp-preview-generator, heading-structure-checker, schema-markup-generator
 
-### Design Tools (11)
-qr-code-generator, image-resizer, image-cropper, image-filter, image-compressor, color-contrast-checker, password-generator, password-strength-checker, color-palette-generator, gradient-generator, css-border-radius-generator
-
-> Note: password-generator and password-strength-checker are in design-tools category (legacy categorization)
+### Design Tools (4)
+color-contrast-checker, color-palette-generator, gradient-generator, css-border-radius-generator
 
 ---
 

@@ -134,8 +134,8 @@ export default function CanonicalTagGenerator() {
               <select
                 value={hf.lang}
                 onChange={(e) => updateHreflang(hf.id, "lang", e.target.value)}
-                className="h-10 px-2 border rounded-lg text-sm outline-none shrink-0"
-                style={{ backgroundColor: "var(--color-canvas-soft)", borderColor: "var(--color-hairline)", color: "var(--color-ink)", width: "140px" }}
+                className="h-10 px-2 border rounded-lg text-sm outline-none"
+                style={{ backgroundColor: "var(--color-canvas-soft)", borderColor: "var(--color-hairline)", color: "var(--color-ink)" }}
               >
                 {LANGUAGE_OPTIONS.map((opt) => (
                   <option key={opt.code} value={opt.code}>{opt.label}</option>
