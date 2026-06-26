@@ -90,7 +90,7 @@ export default function PdfCompressor() {
 
       setCompressedSize(pdfBytes.length);
 
-      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const blob = new Blob([pdfBytes as BlobPart], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       setCompressedUrl(url);
     } catch (err: unknown) {

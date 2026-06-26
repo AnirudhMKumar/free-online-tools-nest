@@ -111,7 +111,7 @@ export default function PdfSplitter() {
           newPdf.addPage(page);
         }
         const bytes = await newPdf.save();
-        const blob = new Blob([bytes], { type: "application/pdf" });
+        const blob = new Blob([bytes as BlobPart], { type: "application/pdf" });
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
