@@ -2894,6 +2894,652 @@ export const TOOLS: Tool[] = [
       }
     ]
   },
+  // ── NEW TOOLS (Phase: Option A Expansion) ──────────────────
+  {
+    slug: "plagiarism-checker",
+    name: "Plagiarism Checker",
+    description: "Compare two texts and check similarity percentage online.",
+    longDescription:
+      "Compare two texts side by side to check for plagiarism and content similarity. Paste the original text and the text to compare, then get a similarity score with highlighted matching phrases. Perfect for teachers, students, and content creators who need to verify content originality.",
+    categorySlug: "text-tools",
+    icon: "✓",
+    featured: true,
+    keywords: [
+      "plagiarism checker",
+      "check for plagiarism",
+      "free plagiarism checker",
+      "plagiarism detector online",
+      "content similarity checker"
+    ],
+    metaTitle: "Plagiarism Checker — Free Online",
+    metaDescription: "Check for plagiarism with our free online plagiarism checker. Compare two texts side by side and get a similarity percentage with highlighted matching phrases.",
+    usageSteps: [
+      {
+        title: "Paste the original text",
+        content: "Paste the original source text into the plagiarism checker's first input box. This is the reference text that will be used as a baseline for comparison against the second text you want to check for similarity."
+      },
+      {
+        title: "Paste the text to compare",
+        content: "Paste the content you want to check into the second input box. The plagiarism checker compares both texts and calculates a similarity percentage based on overlapping phrases and sentence structures."
+      },
+      {
+        title: "Review the similarity results",
+        content: "Review the detailed similarity score and highlighted matching sections. The plagiarism checker shows exactly which phrases match between the two texts, making it easy to identify potential plagiarism or verify content originality."
+      }
+    ],
+    faq: [
+      {
+        question: "How does a free plagiarism checker compare two texts?",
+        answer: "A free plagiarism checker compares texts by breaking them into overlapping n-grams (phrase chunks) and measuring how many phrases appear in both documents. The similarity percentage reflects the proportion of matching content between the two texts."
+      },
+      {
+        question: "Can this plagiarism checker detect paraphrased content?",
+        answer: "This plagiarism checker detects verbatim matching phrases and near-identical sentence structures. While it cannot detect heavily paraphrased content where synonyms replace most words, it effectively catches direct copying and lightly modified text."
+      }
+    ]
+  },
+  {
+    slug: "readability-score",
+    name: "Readability Score Checker",
+    description: "Check readability scores like Flesch-Kincaid and Gunning Fog.",
+    longDescription:
+      "Analyze your text's readability using multiple standard formulas: Flesch-Kincaid Grade Level, Flesch Reading Ease, Gunning Fog Index, Coleman-Liau Index, SMOG Index, and Automated Readability Index. Get grade-level estimates and actionable suggestions to make your writing clearer.",
+    categorySlug: "text-tools",
+    icon: "📊",
+    featured: false,
+    keywords: [
+      "readability score checker",
+      "flesch kincaid grade level",
+      "readability test online",
+      "text readability analyzer",
+      "gunning fog index calculator"
+    ],
+    metaTitle: "Readability Score Checker — Flesch-Kincaid & Gunning Fog",
+    metaDescription: "Check readability scores with our free readability score checker. Analyze Flesch-Kincaid grade level, Gunning Fog Index, and more — instant text analysis.",
+    usageSteps: [
+      {
+        title: "Paste your text",
+        content: "Paste any text into the readability score checker input. The tool works with any length from a single paragraph to full articles, automatically analyzing sentence length, syllable count, and word complexity for accurate readability assessment."
+      },
+      {
+        title: "View multiple readability scores",
+        content: "The readability score checker displays Flesch-Kincaid Grade Level, Flesch Reading Ease, Gunning Fog Index, Coleman-Liau Index, SMOG Index, and Automated Readability Index side by side for comprehensive text analysis."
+      },
+      {
+        title: "Interpret the results",
+        content: "Each readability score checker result includes a grade-level interpretation and suggestions for improvement. Lower grade levels indicate easier-to-read text, making this tool valuable for writers targeting specific audience reading levels."
+      }
+    ],
+    faq: [
+      {
+        question: "What is a good Flesch-Kincaid grade level for web content?",
+        answer: "A Flesch-Kincaid grade level between 6 and 8 is recommended for most web content, as this targets a broad audience. The readability score checker helps you verify your content is accessible to readers with at least a middle school reading level."
+      },
+      {
+        question: "How does the readability score checker calculate the Gunning Fog Index?",
+        answer: "The Gunning Fog Index is calculated by measuring average sentence length and the percentage of complex words (three or more syllables) in your text. The readability score checker applies this formula along with five other common readability metrics for a complete analysis."
+      }
+    ]
+  },
+  {
+    slug: "word-cloud-generator",
+    name: "Word Cloud Generator",
+    description: "Generate a visual word cloud from any text online.",
+    longDescription:
+      "Create beautiful word clouds from any text. Paste your content and instantly see a visual representation where the most frequent words appear larger. Customize colors, remove common stop words, and download your word cloud as an image. Perfect for presentations, reports, and content analysis.",
+    categorySlug: "text-tools",
+    icon: "☁️",
+    featured: false,
+    keywords: [
+      "word cloud generator",
+      "create word cloud online",
+      "word cloud maker free",
+      "tag cloud generator",
+      "text visualization tool"
+    ],
+    metaTitle: "Word Cloud Generator — Create Free Online",
+    metaDescription: "Create a word cloud online with our free word cloud generator. Paste any text and generate a visual tag cloud with customizable colors. Download as PNG.",
+    usageSteps: [
+      {
+        title: "Paste or type your text",
+        content: "Enter the text you want to visualize into the word cloud generator. The tool analyzes word frequency and prepares your data for visual rendering — the more frequently a word appears, the larger it will appear in the cloud."
+      },
+      {
+        title: "Customize your word cloud",
+        content: "Adjust colors, remove common stop words, and set the maximum number of words displayed. The word cloud generator updates in real time as you change settings, giving you full control over the final visual output."
+      },
+      {
+        title: "Download or share",
+        content: "Once satisfied with the layout, download your word cloud as a PNG image. The word cloud generator creates print-ready visuals perfect for presentations, educational materials, blog posts, and content analysis reports."
+      }
+    ],
+    faq: [
+      {
+        question: "How does a word cloud generator determine word sizes?",
+        answer: "A word cloud generator analyzes word frequency in your text — words that appear more frequently are displayed larger in the cloud. Stop words like 'the', 'and', and 'is' are typically filtered out to highlight meaningful content words."
+      },
+      {
+        question: "Can I customize colors in the word cloud generator?",
+        answer: "Yes, the word cloud generator offers customizable color schemes and palettes. You can choose from preset color themes or customize individual colors to match your brand or presentation style before downloading the final image."
+      }
+    ]
+  },
+  {
+    slug: "jwt-decoder",
+    name: "JWT Decoder",
+    description: "Decode JWT tokens and inspect header and payload.",
+    longDescription:
+      "Decode any JSON Web Token (JWT) to inspect its header, payload, and signature information. Paste a JWT string and instantly see the decoded header and payload as formatted JSON. Perfect for debugging authentication flows, verifying token contents, and learning JWT structure.",
+    categorySlug: "developer-tools",
+    icon: "🔐",
+    featured: true,
+    keywords: [
+      "jwt decoder",
+      "jwt decode online",
+      "jwt token decoder",
+      "jwt debugger",
+      "json web token decoder"
+    ],
+    metaTitle: "JWT Decoder — Free Online",
+    metaDescription: "Decode JWT tokens online with our free JWT decoder. Inspect JWT header and payload as formatted JSON. Debug authentication tokens instantly in your browser.",
+    usageSteps: [
+      {
+        title: "Paste your JWT token",
+        content: "Copy and paste your JSON Web Token into the JWT decoder input. The tool automatically detects the three JWT segments (header, payload, signature) separated by dots and prepares them for decoding."
+      },
+      {
+        title: "View decoded header and payload",
+        content: "The JWT decoder instantly shows the decoded header (token type and signing algorithm) and payload (claims like subject, issuer, and expiration) as formatted, readable JSON objects for easy inspection."
+      },
+      {
+        title: "Copy decoded data",
+        content: "Use the copy buttons to grab the decoded header or payload JSON. The JWT decoder is perfect for debugging authentication issues, verifying token contents during development, and learning about JWT structure."
+      }
+    ],
+    faq: [
+      {
+        question: "Is the JWT decoder safe to use with production tokens?",
+        answer: "Yes, the JWT decoder runs entirely in your browser — no data is sent to any server. Your JWT tokens, including any sensitive claims in the payload, never leave your device, making it safe for debugging production authentication tokens."
+      },
+      {
+        question: "Does the JWT decoder verify token signatures?",
+        answer: "The JWT decoder decodes and displays the header and payload but does not verify cryptographic signatures. For signature verification, you need the secret key or public key used to sign the token, which is a server-side operation."
+      }
+    ]
+  },
+  {
+    slug: "sql-formatter",
+    name: "SQL Formatter",
+    description: "Format and beautify SQL queries online.",
+    longDescription:
+      "Format and beautify your SQL queries with configurable indentation and case options. Paste unformatted SQL and instantly get clean, readable output. Supports SELECT, INSERT, UPDATE, DELETE, CREATE, and other SQL statements. Perfect for developers debugging complex queries or formatting code for readability.",
+    categorySlug: "developer-tools",
+    icon: "🗄️",
+    featured: false,
+    keywords: [
+      "sql formatter",
+      "format sql online",
+      "sql beautifier",
+      "sql query formatter",
+      "pretty print sql"
+    ],
+    metaTitle: "SQL Formatter — Beautify Queries Online",
+    metaDescription: "Format SQL queries online with our free SQL formatter. Beautify and pretty-print your SQL code with customizable indentation. Instant, in-browser formatting.",
+    usageSteps: [
+      {
+        title: "Paste your SQL query",
+        content: "Paste any unformatted SQL query into the SQL formatter input. The tool supports SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, ALTER TABLE, JOINs, subqueries, and other standard SQL statements for comprehensive formatting."
+      },
+      {
+        title: "Choose formatting options",
+        content: "Select your preferred indentation size and keyword case (uppercase or lowercase). The SQL formatter applies these settings instantly, transforming messy queries into clean, readable, well-structured SQL code."
+      },
+      {
+        title: "Copy the formatted output",
+        content: "Copy the beautified SQL query to your clipboard with one click. The SQL formatter produces consistently formatted output that's easier to read, debug, and share with your development team."
+      }
+    ],
+    faq: [
+      {
+        question: "What SQL dialects does the SQL formatter support?",
+        answer: "The SQL formatter supports standard SQL syntax including MySQL, PostgreSQL, SQLite, and most common SQL dialects. It handles SELECT statements, JOINs, subqueries, aggregation functions, and DDL statements like CREATE and ALTER."
+      },
+      {
+        question: "Can the SQL formatter handle complex queries with multiple JOINs?",
+        answer: "Yes, the SQL formatter is designed to handle complex queries with multiple JOINs, nested subqueries, Common Table Expressions (CTEs), and complex WHERE clauses. Each clause is properly indented for maximum readability."
+      }
+    ]
+  },
+  {
+    slug: "html-to-markdown",
+    name: "HTML to Markdown Converter",
+    description: "Convert HTML to clean Markdown format online.",
+    longDescription:
+      "Convert any HTML snippet or full document to clean Markdown format. Paste HTML and get well-formatted Markdown output that preserves headings, links, images, lists, code blocks, and tables. The perfect companion to our Markdown to HTML converter for bidirectional conversion needs.",
+    categorySlug: "developer-tools",
+    icon: "🔄",
+    featured: false,
+    keywords: [
+      "html to markdown converter",
+      "convert html to markdown",
+      "html to md converter",
+      "html to markdown online",
+      "html to md online free"
+    ],
+    metaTitle: "HTML to Markdown Converter — Free Online",
+    metaDescription: "Convert HTML to Markdown with our free HTML to Markdown converter. Transform HTML to clean Markdown format preserving headings, links, images, and code blocks.",
+    usageSteps: [
+      {
+        title: "Paste your HTML code",
+        content: "Paste any HTML content into the converter input field. The HTML to Markdown converter handles everything from simple inline formatting to complex nested structures including tables, lists, and code blocks."
+      },
+      {
+        title: "Convert HTML to Markdown",
+        content: "Click convert and the tool transforms your HTML into clean, readable Markdown. The HTML to Markdown converter preserves heading hierarchy, link URLs, image sources, code block formatting, and table structures."
+      },
+      {
+        title: "Copy the Markdown result",
+        content: "Copy the generated Markdown to your clipboard with one click. The HTML to Markdown converter produces output compatible with GitHub Flavored Markdown, making it perfect for documentation, README files, and static site generators."
+      }
+    ],
+    faq: [
+      {
+        question: "Does the HTML to Markdown converter preserve image and link formatting?",
+        answer: "Yes, the HTML to Markdown converter converts images to standard Markdown image syntax and links to Markdown link format, preserving both the URL and alt text or link text from the original HTML."
+      },
+      {
+        question: "How does the HTML to Markdown converter handle tables?",
+        answer: "The HTML to Markdown converter transforms HTML tables into Markdown table format with pipe-separated columns and dash separators. Complex tables with merged cells are handled with reasonable approximation for clean Markdown output."
+      }
+    ]
+  },
+  {
+    slug: "json-to-xml",
+    name: "JSON to XML Converter",
+    description: "Convert JSON data to structured XML format online.",
+    longDescription:
+      "Convert JSON objects and arrays into properly structured XML format. The converter handles nested objects, arrays, numbers, booleans, and null values — transforming them into valid XML elements with appropriate attributes. Perfect for data migration, API integration, and format conversion workflows.",
+    categorySlug: "developer-tools",
+    icon: "📄",
+    featured: false,
+    keywords: [
+      "json to xml converter",
+      "convert json to xml",
+      "json to xml online",
+      "json to xml free",
+      "json xml transformation tool"
+    ],
+    metaTitle: "JSON to XML Converter — Free Online",
+    metaDescription: "Convert JSON to XML with our free online converter. Transform JSON data into structured XML format with proper nesting. Instant client-side conversion.",
+    usageSteps: [
+      {
+        title: "Paste your JSON data",
+        content: "Paste valid JSON into the JSON to XML converter input. The tool accepts JSON objects, arrays, and nested structures — automatically parsing them and preparing for XML transformation."
+      },
+      {
+        title: "Choose conversion options",
+        content: "Set the root element name and decide whether to use attributes for primitive values. The JSON to XML converter gives you control over the output structure while ensuring valid XML formatting."
+      },
+      {
+        title: "Copy the XML output",
+        content: "Copy the generated XML to your clipboard or download it as a file. The JSON to XML converter produces clean, indented XML that can be used for data exchange, configuration files, or API integration."
+      }
+    ],
+    faq: [
+      {
+        question: "How does the JSON to XML converter handle JSON arrays?",
+        answer: "The JSON to XML converter wraps array items in a parent element named after the array key, with each item as a child element. Empty arrays are represented as empty elements in the XML output."
+      },
+      {
+        question: "Can the JSON to XML converter handle deeply nested JSON structures?",
+        answer: "Yes, the JSON to XML converter recursively processes nested JSON objects and arrays, creating properly nested XML elements with appropriate depth and structure for complex data hierarchies."
+      }
+    ]
+  },
+  {
+    slug: "serp-preview-generator",
+    name: "SERP Preview Generator",
+    description: "Preview how your page looks in Google search results.",
+    longDescription:
+      "Preview exactly how your web page will appear in Google search results before you publish. Enter a title, meta description, and URL to see a realistic SERP snippet preview. Adjust and optimize your title and description length for maximum click-through rates. Essential for SEO professionals and content creators.",
+    categorySlug: "seo-tools",
+    icon: "🔍",
+    featured: true,
+    keywords: [
+      "serp preview generator",
+      "google search preview",
+      "serp snippet preview",
+      "meta tag preview tool",
+      "search result preview"
+    ],
+    metaTitle: "SERP Preview Generator — Google Snippet Preview",
+    metaDescription: "Preview your Google search result snippet with our free SERP preview generator. See exactly how your title and meta description appear in search results.",
+    usageSteps: [
+      {
+        title: "Enter your title tag",
+        content: "Type or paste your page title into the SERP preview generator. The tool shows a live, realistic preview of how Google will display your title in search results, including character count and truncation warnings."
+      },
+      {
+        title: "Add your meta description",
+        content: "Enter your meta description and watch the SERP preview generator update the snippet in real time. Pixel-perfect rendering shows exactly how your description appears below the title in Google search results."
+      },
+      {
+        title: "Preview and optimize",
+        content: "Review the complete SERP preview including URL display and adjust your title and description until they look perfect. The SERP preview generator helps you optimize click-through rates by showing exactly what searchers will see."
+      }
+    ],
+    faq: [
+      {
+        question: "How accurate is the SERP preview generator compared to real Google results?",
+        answer: "The SERP preview generator creates a realistic simulation of Google's search result display, including title formatting, description length limits, and URL breadcrumb display. Actual Google results may vary slightly based on user search history and device type."
+      },
+      {
+        question: "What is the ideal title length for Google search results?",
+        answer: "Google typically displays the first 50-60 characters of a title tag before truncating. The SERP preview generator shows a pixel-width-based truncation that is more accurate than simple character counts, helping you craft titles that display fully."
+      }
+    ]
+  },
+  {
+    slug: "heading-structure-checker",
+    name: "Heading Structure Checker",
+    description: "Analyze heading hierarchy (H1-H6) from HTML content.",
+    longDescription:
+      "Paste your HTML content to analyze the heading structure and hierarchy. The tool extracts all H1 through H6 tags and displays them in a structured outline, highlighting any hierarchy violations like missing levels or multiple H1 tags. Essential for SEO content optimization and accessibility compliance.",
+    categorySlug: "seo-tools",
+    icon: "📑",
+    featured: false,
+    keywords: [
+      "heading structure checker",
+      "heading hierarchy checker",
+      "h1 h2 checker",
+      "html heading analyzer",
+      "seo heading structure tool"
+    ],
+    metaTitle: "Heading Structure Checker — H1-H6 Analyzer",
+    metaDescription: "Analyze your heading structure with our free heading structure checker. Check H1-H6 hierarchy and find SEO issues like missing levels or duplicate H1s.",
+    usageSteps: [
+      {
+        title: "Paste your HTML content",
+        content: "Paste your page's HTML content into the heading structure checker. The tool automatically scans for all H1 through H6 heading tags and extracts their text content for structural analysis."
+      },
+      {
+        title: "Review the heading outline",
+        content: "The heading structure checker displays a visual outline of your heading hierarchy, properly indented to show the document structure. Any issues like skipped heading levels or multiple H1 tags are highlighted for attention."
+      },
+      {
+        title: "Fix structural issues",
+        content: "Use the heading structure checker's recommendations to fix heading hierarchy problems. Proper heading structure improves both SEO rankings and accessibility for screen reader users navigating your content."
+      }
+    ],
+    faq: [
+      {
+        question: "Why is heading structure important for SEO?",
+        answer: "Proper heading structure helps search engines understand your content hierarchy and topic relationships. The heading structure checker identifies issues like missing heading levels or multiple H1 tags that can negatively impact your search rankings."
+      },
+      {
+        question: "How many H1 tags should a page have?",
+        answer: "Best practice recommends one H1 tag per page that describes the main topic. The heading structure checker flags pages with multiple H1 tags as a potential SEO issue, as this can confuse search engines about the primary topic of your content."
+      }
+    ]
+  },
+  {
+    slug: "schema-markup-generator",
+    name: "Schema Markup Generator",
+    description: "Generate JSON-LD schema markup for your web pages.",
+    longDescription:
+      "Generate ready-to-use JSON-LD schema markup for your web pages. Select from common schema types like Article, Product, LocalBusiness, FAQ, BreadcrumbList, Recipe, Event, and Organization. Fill in the fields and get properly formatted JSON-LD code you can copy directly into your website's HTML head section.",
+    categorySlug: "seo-tools",
+    icon: "🏷️",
+    featured: false,
+    keywords: [
+      "schema markup generator",
+      "json ld generator",
+      "schema org generator",
+      "structured data generator",
+      "rich snippet generator"
+    ],
+    metaTitle: "Schema Markup Generator — JSON-LD Structured Data",
+    metaDescription: "Generate JSON-LD schema markup with our free schema markup generator. Create structured data for Article, Product, FAQ, LocalBusiness, and more — copy and paste ready.",
+    usageSteps: [
+      {
+        title: "Select schema type",
+        content: "Choose from common schema types including Article, Product, LocalBusiness, FAQ, BreadcrumbList, Recipe, Event, or Organization. The schema markup generator loads the appropriate form fields for your selected type."
+      },
+      {
+        title: "Fill in the fields",
+        content: "Complete the required and recommended fields for your selected schema type. The schema markup generator validates your input in real time and provides guidance for each field based on Google's structured data guidelines."
+      },
+      {
+        title: "Copy the JSON-LD code",
+        content: "Copy the generated JSON-LD markup with one click and paste it into your page's head section. The schema markup generator creates Google-compatible structured data that helps your pages qualify for rich results and enhanced search listings."
+      }
+    ],
+    faq: [
+      {
+        question: "What is JSON-LD schema markup and why do I need it?",
+        answer: "JSON-LD is Google's recommended format for structured data markup. The schema markup generator creates JSON-LD code that helps search engines understand your content and display rich results like star ratings, product prices, and FAQ snippets in search results."
+      },
+      {
+        question: "Which schema types does the schema markup generator support?",
+        answer: "The schema markup generator supports Article, Product, LocalBusiness, FAQ, BreadcrumbList, Recipe, Event, and Organization schema types. Each type includes the most commonly used properties based on Google's structured data documentation."
+      }
+    ]
+  },
+  {
+    slug: "color-palette-generator",
+    name: "Color Palette Generator",
+    description: "Generate harmonious color palettes for your designs.",
+    longDescription:
+      "Create beautiful, harmonious color palettes with ease. Generate monochromatic, complementary, analogous, triadic, and tetradic color schemes from any base color. See your palette as a visual grid with hex codes for easy copying. Perfect for designers, developers, and anyone creating color schemes for web or print projects.",
+    categorySlug: "design-tools",
+    icon: "🎨",
+    featured: true,
+    keywords: [
+      "color palette generator",
+      "color scheme generator",
+      "color palette maker",
+      "harmonious color generator",
+      "hex color palette"
+    ],
+    metaTitle: "Color Palette Generator — Free Color Scheme Maker",
+    metaDescription: "Generate beautiful color palettes with our free color palette generator. Create monochromatic, complementary, analogous, and triadic color schemes from any base color.",
+    usageSteps: [
+      {
+        title: "Choose a base color",
+        content: "Pick any color as your starting point using the color picker or by entering a hex code. The color palette generator instantly creates harmonious color schemes based on color theory principles from your selected base color."
+      },
+      {
+        title: "Select a palette type",
+        content: "Choose from monochromatic, complementary, analogous, triadic, or tetradic color schemes. The color palette generator applies color relationships to create balanced, professional-looking palettes for any design project."
+      },
+      {
+        title: "Copy hex codes",
+        content: "Copy individual hex codes or the entire palette with one click. The color palette generator displays all colors in a visual grid with hex values, making it easy to use your generated palette in CSS, design tools, or brand guidelines."
+      }
+    ],
+    faq: [
+      {
+        question: "What is the difference between monochromatic and complementary color schemes?",
+        answer: "Monochromatic schemes use variations in lightness and saturation of a single hue, creating a cohesive look. Complementary schemes use colors opposite each other on the color wheel for high contrast. The color palette generator offers both options for different design needs."
+      },
+      {
+        question: "How does the color palette generator create harmonious color schemes?",
+        answer: "The color palette generator uses color theory rules based on the color wheel. Complementary schemes use opposite colors, analogous uses adjacent colors, triadic uses evenly spaced colors, and tetradic uses two complementary pairs for visually balanced results."
+      }
+    ]
+  },
+  {
+    slug: "gradient-generator",
+    name: "Gradient Generator",
+    description: "Create CSS gradients with a visual preview.",
+    longDescription:
+      "Design beautiful CSS gradients with a live visual preview. Choose from linear or radial gradients, pick colors, adjust direction and angle, and see your changes in real time. Copy the generated CSS code instantly. Perfect for web designers and developers creating gradient backgrounds for websites, apps, and UI elements.",
+    categorySlug: "design-tools",
+    icon: "🌈",
+    featured: false,
+    keywords: [
+      "gradient generator",
+      "css gradient generator",
+      "css gradient maker",
+      "linear gradient css",
+      "radial gradient generator"
+    ],
+    metaTitle: "Gradient Generator — CSS Gradient Maker",
+    metaDescription: "Create CSS gradients with our free gradient generator. Design linear and radial gradients with a live preview. Copy the generated CSS code instantly.",
+    usageSteps: [
+      {
+        title: "Choose gradient type",
+        content: "Select linear or radial gradient type from the options. The gradient generator updates the preview in real time as you switch between types, showing you exactly how your gradient will look."
+      },
+      {
+        title: "Pick your colors",
+        content: "Add color stops by picking colors using the color pickers. The gradient generator supports two or more color stops with adjustable positions for complete control over your gradient appearance."
+      },
+      {
+        title: "Copy the CSS code",
+        content: "Adjust the angle or position, then copy the generated CSS code with one click. The gradient generator creates cross-browser compatible CSS that you can paste directly into your stylesheets."
+      }
+    ],
+    faq: [
+      {
+        question: "What is the difference between linear and radial gradients?",
+        answer: "Linear gradients transition colors along a straight line (specified by angle or direction), while radial gradients transition outward from a central point in a circular pattern. The gradient generator lets you switch between both types to find the perfect effect."
+      },
+      {
+        question: "Can I add more than two colors to my gradient?",
+        answer: "Yes, the gradient generator supports multiple color stops. You can add as many colors as you want and adjust each stop's position independently, giving you complete creative control over the final gradient result."
+      }
+    ]
+  },
+  {
+    slug: "css-border-radius-generator",
+    name: "Border Radius Generator",
+    description: "Generate CSS border-radius values with a visual preview.",
+    longDescription:
+      "Create and preview CSS border-radius values visually. Adjust all four corners independently or together using sliders, see a live preview of your element, and copy the generated CSS code. Perfect for web designers and developers creating rounded corners for buttons, cards, images, and UI elements.",
+    categorySlug: "design-tools",
+    icon: "⬜",
+    featured: false,
+    keywords: [
+      "border radius generator",
+      "css border radius maker",
+      "rounded corners generator",
+      "border radius css",
+      "corner radius tool"
+    ],
+    metaTitle: "Border Radius Generator — CSS Rounded Corners",
+    metaDescription: "Generate CSS border-radius values with our free border radius generator. Preview rounded corners visually and copy the CSS code. Customize each corner independently.",
+    usageSteps: [
+      {
+        title: "Adjust border radius values",
+        content: "Use the sliders to adjust the border-radius of each corner or all corners uniformly. The border radius generator shows a live preview of your element with the current corner radius values applied."
+      },
+      {
+        title: "Preview the result",
+        content: "See your element update in real time as you adjust values. The border radius generator provides a visual preview box that demonstrates exactly how your rounded corners will look on a real element."
+      },
+      {
+        title: "Copy the CSS code",
+        content: "Copy the generated CSS with one click. The border radius generator outputs clean, formatted CSS that you can paste directly into your stylesheet for buttons, cards, images, or any other element needing rounded corners."
+      }
+    ],
+    faq: [
+      {
+        question: "What is the CSS border-radius property used for?",
+        answer: "The CSS border-radius property creates rounded corners on HTML elements. The border radius generator makes it easy to visualize and generate the correct CSS values without manually calculating pixel or percentage values for each corner."
+      },
+      {
+        question: "Can I set different values for each corner using the border radius generator?",
+        answer: "Yes, the border radius generator lets you set individual values for the top-left, top-right, bottom-right, and bottom-left corners independently. You can also use the uniform mode to apply the same value to all corners at once."
+      }
+    ]
+  },
+  {
+    slug: "epoch-converter",
+    name: "Epoch Timestamp Converter",
+    description: "Convert Unix timestamps to human-readable dates and vice versa.",
+    longDescription:
+      "Convert Unix epoch timestamps to human-readable dates and times, and convert dates back to timestamps. Supports seconds, milliseconds, and microseconds. See the converted result in multiple time formats including UTC, ISO 8601, and local time. Essential for developers working with APIs, databases, and log files.",
+    categorySlug: "converters",
+    icon: "⏰",
+    featured: false,
+    keywords: [
+      "epoch converter",
+      "unix timestamp converter",
+      "epoch time converter",
+      "timestamp to date",
+      "unix time converter online"
+    ],
+    metaTitle: "Epoch Timestamp Converter — Unix Time to Date",
+    metaDescription: "Convert Unix epoch timestamps to human-readable dates with our free epoch converter. Convert timestamps to UTC, ISO 8601, and local time — and convert dates back to timestamps.",
+    usageSteps: [
+      {
+        title: "Enter a timestamp or date",
+        content: "Paste a Unix epoch timestamp or select a date and time. The epoch converter automatically detects whether your input is in seconds, milliseconds, or microseconds and converts it accordingly."
+      },
+      {
+        title: "View converted results",
+        content: "See the converted result in multiple formats simultaneously: UTC, ISO 8601, local time, and relative time (e.g., '2 hours ago'). The epoch converter makes it easy to understand timestamps in whatever format you need."
+      },
+      {
+        title: "Copy the result",
+        content: "Copy any of the converted formats to your clipboard. The epoch converter also shows the current timestamp and lets you convert dates back to Unix timestamps for use in API calls and database queries."
+      }
+    ],
+    faq: [
+      {
+        question: "What is a Unix epoch timestamp?",
+        answer: "A Unix epoch timestamp represents the number of seconds (or milliseconds) that have elapsed since January 1, 1970 (midnight UTC). The epoch converter translates these numeric timestamps into human-readable date and time formats."
+      },
+      {
+        question: "Does the epoch converter support milliseconds and microseconds?",
+        answer: "Yes, the epoch converter supports timestamps in seconds (10 digits), milliseconds (13 digits), and microseconds (16 digits). It automatically detects the precision of your input and converts it correctly without manual configuration."
+      }
+    ]
+  },
+  {
+    slug: "random-number-generator",
+    name: "Random Number Generator",
+    description: "Generate random numbers, dice rolls, and lottery numbers.",
+    longDescription:
+      "Generate truly random numbers with customizable ranges and quantities. Use it for dice rolls, lottery number picking, random sampling, giveaways, or any situation needing unbiased random values. Choose from single random numbers, multiple unique numbers, or sorted results. Perfect for games, contests, statistics, and decision making.",
+    categorySlug: "calculators",
+    icon: "🎲",
+    featured: false,
+    keywords: [
+      "random number generator",
+      "random number picker",
+      "lottery number generator",
+      "dice roller online",
+      "true random generator"
+    ],
+    metaTitle: "Random Number Generator — Dice Roll & Lottery Picker",
+    metaDescription: "Generate random numbers with our free random number generator. Use it as a dice roller, lottery number picker, or randomizer for giveaways and contests.",
+    usageSteps: [
+      {
+        title: "Set your range",
+        content: "Enter the minimum and maximum values for your random number range. The random number generator supports any range from simple 1-6 dice rolls to complex ranges for lottery numbers or statistical sampling."
+      },
+      {
+        title: "Choose how many numbers",
+        content: "Select how many random numbers to generate and whether they should be unique. The random number generator can produce a single number or multiple numbers at once, with or without duplicates."
+      },
+      {
+        title: "Copy your results",
+        content: "View the generated numbers and copy them to your clipboard. The random number generator can also sort results in ascending order, making it easy to use for lottery tickets, contest winners, or random assignments."
+      }
+    ],
+    faq: [
+      {
+        question: "Is the random number generator truly random?",
+        answer: "The random number generator uses JavaScript's cryptographic random number generator (Crypto.getRandomValues) which provides cryptographically strong random values suitable for applications requiring unbiased randomness."
+      },
+      {
+        question: "Can the random number generator be used for lottery number selection?",
+        answer: "Yes, the random number generator is perfect for lottery number picks. Set the range to match your lottery's number pool (e.g., 1-69), enable unique numbers, and generate your set of random picks instantly."
+      }
+    ]
+  },
 ];
 
 // ── Helper functions ────────────────────────────────────────
@@ -2931,6 +3577,6 @@ export const SITE = {
   domain: "freeonlinetoolsnest.com",
   url: "https://freeonlinetoolsnest.com",
   description:
-    "62 free web tools and frontier utilities for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
+    "77 free web tools and frontier utilities for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
   tagline: "Free web tools and frontier utilities for text, code, and math.",
 };

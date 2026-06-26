@@ -1,0 +1,20 @@
+---
+import ToolLayout from "../../layouts/ToolLayout.astro";
+import HeadingStructureChecker from "../../components/tools/HeadingStructureChecker";
+import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
+
+const tool = getToolBySlug("heading-structure-checker")!;
+const category = getCategoryBySlug(tool.categorySlug)!;
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+>
+  <HeadingStructureChecker client:load />
+</ToolLayout>

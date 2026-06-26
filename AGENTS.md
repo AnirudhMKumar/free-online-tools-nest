@@ -7,11 +7,11 @@
 
 ## 1. Project Overview
 
-**What it is**: A collection of 62 free, browser-based utility tools (text, code, math, SEO, PDF, design, converters, calculators). All processing happens client-side — no server uploads, no signups, no ads. Includes a companion Chrome extension for quick tool access.
+**What it is**: A collection of 77 free, browser-based utility tools (text, code, math, SEO, PDF, design, converters, calculators). All processing happens client-side — no server uploads, no signups, no ads. Includes a companion Chrome extension for quick tool access.
 
 **Domain**: `https://freeonlinetoolsnest.com`  
 **Deployed on**: Cloudflare Pages (via `wrangler pages deploy`)  
-**Build**: 84 static pages, ~9s build time, 0 errors  
+**Build**: 99 static pages, ~9s build time, 0 errors  
 **GitHub**: (not public yet — codebase local only)
 
 ---
@@ -65,7 +65,7 @@ freeonlinetoolsnest.com/
 ├── src/
 │   ├── assets/                   # Static images used in components
 │   ├── components/               # Shared UI components
-│   │   ├── tools/                # 62 React tool components (one per tool)
+│   │   ├── tools/                # 77 React tool components (one per tool)
 │   │   ├── FAQSection.astro      # Accordion FAQ + JSON-LD
 │   │   ├── SEOHead.astro         # Meta/OG/hreflang/JSON-LD head component
 │   │   ├── Nav.astro             # Sticky nav + mobile hamburger
@@ -83,7 +83,7 @@ freeonlinetoolsnest.com/
 │   │   └── blog/                 # Blog posts (.md files, 3 total)
 │   ├── content.config.ts         # Content collection schema
 │   ├── data/
-│       │   └── tools.ts              # THE central file: categories + 62 tools + helpers (2892 lines)
+│       │   └── tools.ts              # THE central file: categories + 77 tools + helpers
 │   ├── helpers/
 │   │   ├── utils.ts              # formatBytes(), escapeHtml()
 │   │   └── utils.test.ts         # 7 unit tests (Vitest)
@@ -99,7 +99,7 @@ freeonlinetoolsnest.com/
 │   ├── pages/
 │   │   ├── blog/                 # Blog index + [slug] dynamic route (3 posts)
 │   │   ├── categories/           # 7 category listing pages
-│   │   ├── tools/                # 62 tool pages + index
+│   │   ├── tools/                # 77 tool pages + index
 │   │   ├── 404.astro             # Custom 404 (English hardcoded)
 │   │   ├── 500.astro             # Custom 500 (English hardcoded)
 │   │   ├── about.astro           # English about page (was redirect stub → real content)
@@ -181,7 +181,7 @@ export const SITE = {
   name: "Free Online Tools Nest",
   domain: "freeonlinetoolsnest.com",
   url: "https://freeonlinetoolsnest.com",
-  description: "62 free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
+  description: "77 free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
   tagline: "Free tools for text, code, and math.",
 };
 ```
@@ -190,13 +190,13 @@ export const SITE = {
 
 | Slug | Name | Icon | # Tools |
 |------|------|------|---------|
-| `text-tools` | Text Tools | ✏️ | 14 |
-| `developer-tools` | Developer Tools | ⚡ | 12 |
-| `calculators` | Calculators | 🔢 | 8 |
-| `converters` | Converters | 🔄 | 7 |
+| `text-tools` | Text Tools | ✏️ | 17 |
+| `developer-tools` | Developer Tools | ⚡ | 16 |
+| `calculators` | Calculators | 🔢 | 9 |
+| `converters` | Converters | 🔄 | 8 |
 | `pdf-tools` | PDF Tools | 📄 | 5 |
-| `seo-tools` | SEO Tools | 🔍 | 8 |
-| `design-tools` | Design Tools | 🎨 | 8 |
+| `seo-tools` | SEO Tools | 🔍 | 11 |
+| `design-tools` | Design Tools | 🎨 | 11 |
 
 ### Helper Functions (all in tools.ts)
 
@@ -209,28 +209,28 @@ export const SITE = {
 
 ---
 
-## 5. Complete Tool Inventory (62 Tools)
+## 5. Complete Tool Inventory (77 Tools)
 
-### Text Tools (14)
-character-counter, word-counter, case-converter, text-analyzer, text-diff, text-summarizer, text-humanizer, grammar-checker, palindrome-checker, reverse-text, lorem-ipsum-generator, markdown-to-html, number-to-words, slug-generator
+### Text Tools (17)
+character-counter, word-counter, case-converter, text-analyzer, text-diff, text-summarizer, text-humanizer, grammar-checker, palindrome-checker, reverse-text, lorem-ipsum-generator, markdown-to-html, number-to-words, slug-generator, plagiarism-checker, readability-score, word-cloud-generator
 
-### Developer Tools (12)
-json-formatter, html-formatter, regex-tester, css-minifier, base64-encoder-decoder, url-encoder-decoder, uuid-generator, hash-generator, binary-converter, html-entity-converter, csv-to-json, yaml-to-json
+### Developer Tools (16)
+json-formatter, html-formatter, regex-tester, css-minifier, base64-encoder-decoder, url-encoder-decoder, uuid-generator, hash-generator, binary-converter, html-entity-converter, csv-to-json, yaml-to-json, jwt-decoder, sql-formatter, html-to-markdown, json-to-xml
 
-### Calculators (8)
-percentage-calculator, loan-calculator, discount-calculator, mortgage-calculator, tip-calculator, age-calculator, bmi-calculator, date-difference-calculator
+### Calculators (9)
+percentage-calculator, loan-calculator, discount-calculator, mortgage-calculator, tip-calculator, age-calculator, bmi-calculator, date-difference-calculator, random-number-generator
 
-### Converters (7)
-unit-converter, temperature-converter, lbs-to-kg-converter, json-to-csv, color-converter, image-format-converter, image-to-base64
+### Converters (8)
+unit-converter, temperature-converter, lbs-to-kg-converter, json-to-csv, color-converter, image-format-converter, image-to-base64, epoch-converter
 
 ### PDF Tools (5)
 pdf-merger, pdf-splitter, pdf-compressor, pdf-to-text, pdf-to-images
 
-### SEO Tools (8)
-meta-tag-generator, sitemap-generator, robots-txt-generator, keyword-density-checker, canonical-tag-generator, seo-length-checker, open-graph-preview-generator, alt-text-checker
+### SEO Tools (11)
+meta-tag-generator, sitemap-generator, robots-txt-generator, keyword-density-checker, canonical-tag-generator, seo-length-checker, open-graph-preview-generator, alt-text-checker, serp-preview-generator, heading-structure-checker, schema-markup-generator
 
-### Design Tools (8)
-qr-code-generator, image-resizer, image-cropper, image-filter, image-compressor, color-contrast-checker, password-generator, password-strength-checker
+### Design Tools (11)
+qr-code-generator, image-resizer, image-cropper, image-filter, image-compressor, color-contrast-checker, password-generator, password-strength-checker, color-palette-generator, gradient-generator, css-border-radius-generator
 
 > Note: password-generator and password-strength-checker are in design-tools category (legacy categorization)
 
@@ -303,7 +303,7 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 - **WebSite** + **SearchAction** on homepage (site search)
 
 ### Technical SEO
-- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 84 pages
+- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 99 pages
 - **robots.txt**: Proper crawl directives
 - **_headers**: Security headers + noindex for preview domains
 - **OG images**: Per-category OG images in `public/og/`
@@ -363,7 +363,7 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 | **CategoryCard.astro** | Astro | Card for category listings (icon, name, description, tool count) |
 | **FavoriteButton.tsx** | React | Toggle favorite, stored in localStorage, works offline |
 | **FavoritesPage.tsx** | React | Lists favorited tools from localStorage |
-| **CmdKSearch.tsx** | React | ⌘K search modal — fuzzy-search across all 62 tools |
+| **CmdKSearch.tsx** | React | ⌘K search modal — fuzzy-search across all 77 tools |
 | **ShareBar.astro** | Astro | Share buttons (copy link, social) |
 | **Breadcrumbs.astro** | Astro | Breadcrumb navigation with JSON-LD |
 | **Hero.astro** | Astro | Homepage hero with tagline and search |
@@ -375,7 +375,7 @@ English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
 |------|------|---------|
 | **useCopyToClipboard.ts** | React Hook | `useCopyToClipboard()` → `[copied, handleCopy]` — copies text to clipboard, `copied` resets after 2s |
 
-### 62 React Tool Components (in `src/components/tools/`)
+### 77 React Tool Components (in `src/components/tools/`)
 
 Each is a self-contained React client component with its own state and logic. They use:
 - Browser APIs (Canvas, FileReader, URL, etc.)
@@ -414,8 +414,8 @@ Each is a self-contained React client component with its own state and logic. Th
 - **Preview domain**: `*.freeonlinetoolsnest.pages.dev` (blocked from indexing via `_headers`)
 
 ### Build Stats
-- **84 pages** generated (62 tools + 1 categories index + 7 categories + 4 blog + 404 + 500 + tools index + favorites + about + contact + faq + privacy-policy + terms-and-conditions + homepage)
-- **~8s build time**
+- **99 pages** generated (77 tools + 1 categories index + 7 categories + 4 blog + 404 + 500 + tools index + favorites + about + contact + faq + privacy-policy + terms-and-conditions + homepage)
+- **~9s build time**
 - **0 build errors**
 
 ### Testing
@@ -522,6 +522,15 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - Updated `Layout.astro` favicon link: `sizes="96x96"` → `sizes="48x48 96x96"` for explicit Google compatibility
 - Confirmed: `favicon-96x96.png` (96×96, 6153 bytes) meets Google's minimum; `favicon.ico` (15086 bytes) has 48×48 frame; `_headers` and `robots.txt` don't block favicon files
 
+### Phase 10 — Tool Expansion (62 → 77 Tools)
+- Added **15 new tools** across all 7 categories: plagiarism-checker, readability-score, word-cloud-generator (text); jwt-decoder, sql-formatter, html-to-markdown, json-to-xml (developer); random-number-generator (calculators); epoch-converter (converters); serp-preview-generator, heading-structure-checker, schema-markup-generator (seo); color-palette-generator, gradient-generator, css-border-radius-generator (design)
+- Conducted 11-competitor analysis to select high-impact, client-side-feasible tools
+- Built 15 React components + 15 Astro page files using existing patterns (ErrorBanner, useCopyToClipboard, CSS custom properties, ToolLayout)
+- Updated `SITE` constant to reflect 77 tools
+- Updated AGENTS.md counts: 84→99 pages, 62→77 tools across all categories
+- **Build**: 99 pages, 0 errors, ~9s. **Tests**: 7/7 passing.
+- **Deploy**: Committed to `main`, deployed to Cloudflare Pages
+
 ---
 
 ## 13. Known Issues & Gaps
@@ -529,7 +538,7 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 ### Content Gaps
 - [ ] Tool content (names, descriptions, longDescriptions, usageSteps, faq) is **English only** — no translations exist for tool-level content
 - [ ] No blog post sharing / social promotion has been done yet
-- [ ] Chrome extension only lists 38 of 62 tools (not all)
+- [ ] Chrome extension only lists 38 of 77 tools (not all)
 
 ### Technical Gaps
 - [ ] **No CI/CD pipeline** (manual deploy via `npm run deploy`)
@@ -547,11 +556,11 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 
 ### Design Gaps
 - [ ] Dark mode might have incomplete coverage on some tool pages
-- [ ] Mobile responsiveness not thoroughly tested across all 62 tools
+- [ ] Mobile responsiveness not thoroughly tested across all 77 tools
 - [ ] No loading states for tool components that do heavy processing (PDF tools, image tools)
 
 ### i18n Gaps
-- [ ] Tool content is English-only (62 tools × titles, descriptions, keywords, meta, usageSteps, faq) — no translations exist for tool-level content
+- [ ] Tool content is English-only (77 tools × titles, descriptions, keywords, meta, usageSteps, faq) — no translations exist for tool-level content
 - [ ] Blog posts are English-only
 - [ ] 404/500 pages hardcoded to English (static fallback limitation)
 
@@ -561,7 +570,7 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 
 For maximum context with minimum tokens, read in this order:
 
-1. **`src/data/tools.ts`** — Central file: all categories, all 62 tools, SITE config, helper functions
+1. **`src/data/tools.ts`** — Central file: all categories, all 77 tools, SITE config, helper functions
 2. **`src/layouts/ToolLayout.astro`** — Tool page layout (shows every rendered section)
 3. **`src/components/FAQSection.astro`** — FAQ with JSON-LD (reused on every tool page)
 4. **`src/components/SEOHead.astro`** — All meta/OG/JSON-LD injection
@@ -605,26 +614,26 @@ Sitemap:         https://freeonlinetoolsnest.com/sitemap-index.xml
 Any tool page:   https://freeonlinetoolsnest.com/tools/{slug}/
 ```
 
-### Build Output (84 pages)
+### Build Output (99 pages)
 ```
-62 tool pages + 1 tools index
+77 tool pages + 1 tools index
 1 categories index + 7 category pages
 4 blog (index + 3 posts)
 1 homepage
 5 root content pages (about, contact, faq, privacy-policy, terms-and-conditions)
 2 error pages (404 + 500)
 1 favorites page
-= 84 total
+= 99 total
 ```
 
 ### Page Count Breakdown (verified by build)
 | Section | Count | Details |
 |---------|-------|---------|
-| Tools | 63 | 62 tools + 1 `/tools/index.html` |
+| Tools | 78 | 77 tools + 1 `/tools/index.html` |
 | Categories | 8 | 1 categories index + 7 category listing pages |
 | Blog | 4 | Index + 3 posts |
 | Homepage | 1 | `/index.html` (real content, not redirect) |
 | Root content pages | 5 | about, contact, faq, privacy-policy, terms-and-conditions |
 | Error pages | 2 | 404, 500 |
 | Favorites | 1 | `/favorites/index.html` |
-| **Total** | **83** | |
+| **Total** | **99** | |
