@@ -214,7 +214,13 @@ const lh = (path: string) => `${localePrefix}${path}`;
       document.body.style.overflow = "";
     }
 
-    btn?.addEventListener("click", openMenu);
+    btn?.addEventListener("click", () => {
+      if (menu?.classList.contains("hidden")) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
     closeBtn?.addEventListener("click", closeMenu);
 
     // Close on escape
