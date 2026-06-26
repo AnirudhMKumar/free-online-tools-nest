@@ -36,7 +36,7 @@ export default function CmdKSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  // Listen for ⌘K / Ctrl+K
+  // Listen for ⌘K / Ctrl+K and custom event from search button click
   useEffect(() => {
     function handler(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -47,8 +47,15 @@ export default function CmdKSearch() {
         setOpen(false);
       }
     }
+    function openHandler() {
+      setOpen(true);
+    }
     document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
+    document.addEventListener("open-cmdk", openHandler);
+    return () => {
+      document.removeEventListener("keydown", handler);
+      document.removeEventListener("open-cmdk", openHandler);
+    };
   }, [open]);
 
   // Focus input when open

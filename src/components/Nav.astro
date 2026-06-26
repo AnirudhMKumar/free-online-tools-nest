@@ -225,6 +225,14 @@ const lh = (path: string) => `${localePrefix}${path}`;
     });
   }
 
+  // Search button — dispatch custom event for CmdKSearch
+  function initCmdK() {
+    document.getElementById("cmd-k-trigger")?.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("open-cmdk"));
+    });
+  }
+
   initTheme();
   initMobileMenu();
+  initCmdK();
 </script>
