@@ -16,6 +16,11 @@
 /categories  /categories/ 301
 /blog  /blog/ 301
 
+# Index page passthroughs — prevents wildcard rules from self-redirecting
+/tools/  /tools/ 200
+/categories/  /categories/ 200
+/blog/  /blog/ 200
+
 # Nested pages — prefix-scoped wildcards (safe: assets are under /_astro/, /og/, /favicon etc.)
 /tools/*  /tools/:splat/ 301
 /categories/*  /categories/:splat/ 301
