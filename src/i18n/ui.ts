@@ -93,19 +93,19 @@ export const ui = {
 
     // Homepage FAQs (7 items)
     "home.faq.q1": "Are all tools on this site completely free?",
-    "home.faq.a1": "Yes, every tool on {name} is 100% free to use with no sign-up, no credit card, and no hidden fees. There is no premium version or paid tier — every feature across all 77 tools is completely free. {name} believes essential online tools should be accessible to everyone.",
+    "home.faq.a1": "Yes, every tool on {name} is completely free to use — no sign-up, no credit card, no hidden fees, no premium tiers. All 77 tools are fully accessible with zero restrictions. Essential online tools should be available to everyone.",
     "home.faq.q2": "Is my data safe when I use these tools?",
-    "home.faq.a2": "Your data is completely safe on {name}. All processing happens directly in your browser — your data never leaves your device or gets sent to any server. {name} does not store, log, or share any input you provide. You can verify this yourself by opening DevTools (F12), going to the Network tab, and using any tool — you will see zero network requests containing your data.",
+    "home.faq.a2": "Your data is completely safe. All processing happens directly in your browser — your data never leaves your device or gets sent to any server. We do not store, log, or share any input you provide. You can verify this yourself by opening DevTools (F12), going to the Network tab, and using any tool — you will see zero network requests containing your data.",
     "home.faq.q3": "Do I need to create an account to use the tools?",
-    "home.faq.a3": "No account or registration is needed on {name}. Every tool works instantly without login, email, or any personal information. Just open a tool page and start using it immediately with no sign-up barriers.",
+    "home.faq.a3": "No account or registration needed. Every tool works instantly — no login, no email, no personal information. Just open a tool page and start using it.",
     "home.faq.q4": "Are there any daily usage limits?",
-    "home.faq.a4": "There are no daily usage limits on {name} whatsoever. You can use every tool as many times as you want with no daily caps, no file count limits, and no premium tiers. All 77 tools are completely free and unlimited in usage.",
+    "home.faq.a4": "There are no daily usage limits whatsoever. Use every tool as many times as you want — no daily caps, no file count limits, no premium tiers. All 77 tools are completely free and unlimited.",
     "home.faq.q5": "Do you sell my data? How do you make money?",
-    "home.faq.a5": "{name} never sells or shares your data. Since all processing happens in your browser, the site never sees your files or input — they never leave your device. {name} is currently self-funded as a free resource for everyone.",
+    "home.faq.a5": "We never sell or share your data. Since all processing happens in your browser, we never see your files or input — they never leave your device. The site is self-funded as a free resource for everyone.",
     "home.faq.q6": "Can I use these tools on my phone or tablet?",
-    "home.faq.a6": "Yes, all tools on {name} are fully responsive and work on mobile phones, tablets, and desktop computers. The interface automatically adapts to your screen size so you can use any tool on any device without downloading an app.",
+    "home.faq.a6": "Yes, all tools are fully responsive and work on mobile phones, tablets, and desktop computers. The interface adapts to your screen size so you can use any tool on any device without downloading an app.",
     "home.faq.q7": "How often do you add new tools?",
-    "home.faq.a7": "{name} adds new tools on an ongoing basis based on user demand and the development roadmap. The collection has already grown from 37 to 77 tools. Users can suggest new tools by emailing openprojects50@gmail.com.",
+    "home.faq.a7": "We add new tools regularly based on user demand and our development roadmap. The collection has grown from 37 to 77 tools. Users can suggest new tools by emailing openprojects50@gmail.com.",
 
     // ── About ───────────────────────────────────────────────
     "about.metaTitle": "About Free Online Tools Nest — Browser-Based Utility Tools",
