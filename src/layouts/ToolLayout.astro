@@ -145,6 +145,20 @@ const ogImage = `/og/${categorySlug}.png`;
             </div>
           </section>
         )}
+
+        <!-- Additional contextual content -->
+        {tool?.additionalContent && tool.additionalContent.length > 0 && (
+          <section class="mt-12 border-t border-hairline pt-10">
+            {tool.additionalContent.map((block) => (
+              <div class="mb-8 last:mb-0">
+                <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">
+                  {block.heading}
+                </h2>
+                <p class="text-sm text-body leading-relaxed">{block.content}</p>
+              </div>
+            ))}
+          </section>
+        )}
       </div>
 
       <!-- Sidebar -->

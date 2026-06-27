@@ -25,6 +25,11 @@ export interface FAQPair {
   answer: string;
 }
 
+export interface ContentSection {
+  heading: string;
+  content: string;
+}
+
 export interface Tool {
   slug: string;
   name: string;
@@ -38,6 +43,7 @@ export interface Tool {
   metaDescription?: string;
   usageSteps?: UsageStep[];
   faq?: FAQPair[];
+  additionalContent?: ContentSection[];
 }
 
 // ── Categories ──────────────────────────────────────────────
@@ -135,36 +141,46 @@ export const TOOLS: Tool[] = [
     icon: "📝",
     featured: true,
     keywords: [
-      "word counter google docs",
-      "google docs word count",
-      "count words in google docs",
+      "word counter free",
+      "online word counter",
+      "character counter online",
       "word count checker online",
       "free word counter tool"
     ],
-    metaTitle: "Word Counter — Google Docs Style",
-    metaDescription: "Check word count in Google Docs style with our free word counter. Instantly count words, characters, sentences, and paragraphs for any content.",
+    metaTitle: "Word Counter Online — Free Word Count Checker",
+    metaDescription: "Check word count online free — instantly count words, characters, sentences, and paragraphs for any content. No signup needed.",
     usageSteps: [
       {
         title: "Paste or type your text",
-        content: "Enter your content into the word counter google docs style text area. The tool instantly analyzes your text and displays word count, character count, sentence count, and paragraph count in real time. No configuration or setup needed — just start typing to see live results."
+        content: "Enter your content into the word counter text area. The tool instantly analyzes your text and displays word count, character count, sentence count, and paragraph count in real time. No configuration or setup needed — just start typing to see live results."
       },
       {
         title: "Review the detailed breakdown",
-        content: "The word counter google docs interface shows a complete analysis including estimated reading time, average word length, and keyword density. This detailed breakdown helps writers, students, and content creators meet specific word limits and improve their writing efficiency."
+        content: "The word counter shows a complete analysis including estimated reading time, average word length, and keyword density. This detailed breakdown helps writers, students, and content creators meet specific word limits and improve their writing efficiency."
       },
       {
         title: "Copy and use your stats",
-        content: "Use the copy buttons to grab specific metrics or clear the text to start a new analysis. Our word counter google docs tool is perfect for blog posts, essays, academic papers, and any content where precise word and character counts matter."
+        content: "Use the copy buttons to grab specific metrics or clear the text to start a new analysis. Our word counter tool is perfect for blog posts, essays, academic papers, and any content where precise word and character counts matter."
       }
     ],
     faq: [
       {
-        question: "How do I use a word counter google docs style for my content?",
-        answer: "Simply paste or type your text into the word counter and it displays live word and character counts just like in Google Docs. The tool updates instantly as you type, making it easy to track word limits for essays, articles, and blog posts without switching between tabs."
+        question: "How do I use a word counter for my content?",
+        answer: "Simply paste or type your text into the word counter and it displays live word and character counts. The tool updates instantly as you type, making it easy to track word limits for essays, articles, and blog posts without switching between tabs."
       },
       {
-        question: "What metrics does the word counter google docs tool provide?",
-        answer: "The word counter shows word count, character count with and without spaces, sentence count, paragraph count, and estimated reading time. These metrics mirror the functionality you would find in a word counter google docs integration, giving you complete text analysis in one place."
+        question: "What metrics does the word counter tool provide?",
+        answer: "The word counter shows word count, character count with and without spaces, sentence count, paragraph count, and estimated reading time. These metrics give you complete text analysis in one place."
+      }
+    ],
+    additionalContent: [
+      {
+        heading: "Why Word Count Matters for Different Types of Writing",
+        content: "Word count is more than just a number — it is a critical constraint that shapes how you communicate across different platforms and formats. Academic papers often have strict word limits that require precise planning and editing. Blog posts between 1,500 and 2,500 words tend to rank best in search engines, giving content creators a target range to aim for. Social media platforms enforce hard character limits that demand concise expression. A reliable word counter helps you navigate these requirements without guesswork, ensuring your content fits the format while maintaining its message and impact."
+      },
+      {
+        heading: "Understanding Estimated Reading Time and Its Role in User Engagement",
+        content: "Estimated reading time is a powerful metric that affects how users decide whether to engage with your content. Research shows that displaying an estimated read time can increase engagement by helping readers commit to the time investment upfront. A 500-word article takes roughly two minutes to read, while a 2,000-word piece requires about eight minutes. Content creators use this metric to set reader expectations, improve on-page engagement signals, and structure their writing for skimmability. By knowing your text's reading time, you can match your content length to your audience's attention span and boost overall retention."
       }
     ]
   },
@@ -185,7 +201,7 @@ export const TOOLS: Tool[] = [
       "x post character counter",
       "social media character counter"
     ],
-    metaTitle: "Twitter Character Counter",
+    metaTitle: "Character Counter - Free Word Count Tool",
     metaDescription: "Check character limits for Twitter/X with our free twitter character counter. Count characters with and without spaces to fit 280-character posts perfectly.",
     usageSteps: [
       {
@@ -266,36 +282,36 @@ export const TOOLS: Tool[] = [
     icon: "\u{1F4C4}",
     featured: false,
     keywords: [
-      "lorem ipsum charlotte",
-      "charlotte lorem ipsum",
+      "lorem ipsum text",
+      "classic lorem ipsum",
       "lorem ipsum generator",
       "placeholder text generator",
       "dummy text filler"
     ],
-    metaTitle: "Lorem Ipsum Charlotte Generator",
-    metaDescription: "Generate classic lorem ipsum charlotte placeholder text for your design mockups. Choose paragraphs, sentences, or words — free and instant.",
+    metaTitle: "Lorem Ipsum Generator Online — Free Placeholder Text",
+    metaDescription: "Generate classic lorem ipsum placeholder text for your design mockups. Choose paragraphs, sentences, or words — free and instant.",
     usageSteps: [
       {
         title: "Set your desired output",
-        content: "Choose how many paragraphs, words, or sentences of lorem ipsum charlotte placeholder text you need. The generator lets you specify exact quantities so you get the right amount of filler text for your wireframe or mockup."
+        content: "Choose how many paragraphs, words, or sentences of lorem ipsum placeholder text you need. The generator lets you specify exact quantities so you get the right amount of filler text for your wireframe or mockup."
       },
       {
         title: "Generate placeholder text",
-        content: "Click generate and the tool instantly produces standard lorem ipsum charlotte dummy text in the quantity you selected. The text follows the classic Lorem Ipsum passage starting with 'Lorem ipsum dolor sit amet'."
+        content: "Click generate and the tool instantly produces standard lorem ipsum dummy text in the quantity you selected. The text follows the classic Lorem Ipsum passage starting with 'Lorem ipsum dolor sit amet'."
       },
       {
         title: "Copy and use in your project",
-        content: "Click copy to grab the generated lorem ipsum charlotte placeholder text to your clipboard. Paste it directly into your design mockups, website prototypes, or typography samples to visualize how your final content will appear."
+        content: "Click copy to grab the generated lorem ipsum placeholder text to your clipboard. Paste it directly into your design mockups, website prototypes, or typography samples to visualize how your final content will appear."
       }
     ],
     faq: [
       {
-        question: "What is lorem ipsum charlotte placeholder text used for?",
-        answer: "Lorem ipsum charlotte is a variation of classic lorem ipsum text used as placeholder content in design mockups, wireframes, and print layouts. It fills space with realistic-looking text so designers and clients can visualize the final product without needing final copy."
+        question: "What is lorem ipsum placeholder text used for?",
+        answer: "Lorem ipsum is classic placeholder text used as filler content in design mockups, wireframes, and print layouts. It fills space with realistic-looking text so designers and clients can visualize the final product without needing final copy."
       },
       {
-        question: "How can I generate lorem ipsum charlotte text for free online?",
-        answer: "Select the number of paragraphs, words, or sentences you need and click generate. The tool creates lorem ipsum charlotte placeholder text on demand without any sign-up or usage limits — perfect for designers and developers who need filler text for mockups."
+        question: "How can I generate lorem ipsum text for free online?",
+        answer: "Select the number of paragraphs, words, or sentences you need and click generate. The tool creates lorem ipsum placeholder text on demand without any sign-up or usage limits — perfect for designers and developers who need filler text for mockups."
       }
     ]
   },
@@ -309,44 +325,44 @@ export const TOOLS: Tool[] = [
     icon: "{ }",
     featured: true,
     keywords: [
-      "notepad++ json formatter",
+      "json formatter online",
       "json formatter",
       "json beautifier",
       "json validator",
       "json prettify",
     ],
-    metaTitle: "JSON Formatter — Notepad++ Style",
+    metaTitle: "JSON Formatter Online — Validate & Beautify JSON",
     metaDescription:
-      "Validate and prettify JSON like a Notepad++ JSON formatter plugin — right in your browser. Detect errors with line numbers and copy clean, highlighted code.",
+      "Validate, format, and beautify JSON online free. Detect errors with line numbers and syntax highlighting — right in your browser.",
     usageSteps: [
       {
         title: "Paste Your Raw JSON Data",
         content:
-          "Copy your unformatted or minified JSON string from any source and paste it into the input area. Whether you retrieved the data from an API response or a configuration file, this Notepad++ JSON formatter online tool lets you format JSON without installing any software.",
+          "Copy your unformatted or minified JSON string from any source and paste it into the input area. Whether you retrieved the data from an API response or a configuration file, our JSON formatter lets you format JSON without installing any software.",
       },
       {
         title: "Click the Format Button",
         content:
-          "Press the Format or Beautify button to instantly transform your messy JSON into a properly indented, human-readable structure. Like a dedicated Notepad++ JSON formatter plugin, it applies perfect nesting and line breaks so you can debug and edit your data with ease.",
+          "Press the Format or Beautify button to instantly transform your messy JSON into a properly indented, human-readable structure. It applies perfect nesting and line breaks so you can debug and edit your data with ease.",
       },
       {
         title: "Copy or Download the Result",
         content:
-          "Review the formatted output in the result panel and use the copy button to transfer it to your clipboard. You can also download the beautified JSON as a file, exactly as you would after using a Notepad++ JSON formatter in your local editor.",
+          "Review the formatted output in the result panel and use the copy button to transfer it to your clipboard. You can also download the beautified JSON as a file, ready to use in any project.",
       },
     ],
     faq: [
       {
         question:
-          "How does this Notepad++ JSON formatter work directly in my browser?",
+          "How does this JSON formatter work directly in my browser?",
         answer:
-          "This Notepad++ JSON formatter online tool works entirely in your browser using JavaScript to parse, validate, and re-indent your JSON data with proper spacing and syntax highlighting. You get the same clean output as a Notepad++ plugin without needing to launch your editor or install any extensions.",
+          "This JSON formatter works entirely in your browser using JavaScript to parse, validate, and re-indent your JSON data with proper spacing and syntax highlighting. You get clean, validated output without needing to launch your editor or install any extensions.",
       },
       {
         question:
-          "Can I use this Notepad++ JSON formatter to debug API responses?",
+          "Can I use this JSON formatter to debug API responses?",
         answer:
-          "Absolutely — developers commonly paste raw API responses into this Notepad++ JSON formatter to beautify JSON code and quickly inspect nested objects, arrays, and values. The formatted view makes it much easier to spot missing commas, mismatched brackets, or unexpected data types in your API payloads.",
+          "Absolutely — developers commonly paste raw API responses into this JSON formatter to beautify JSON code and quickly inspect nested objects, arrays, and values. The formatted view makes it much easier to spot missing commas, mismatched brackets, or unexpected data types in your API payloads.",
       },
     ],
   },
@@ -366,7 +382,7 @@ export const TOOLS: Tool[] = [
       "percent encoding",
       "urlencoder",
     ],
-    metaTitle: "URL Encoder / Decoder Online",
+    metaTitle: "URL Encoder Decoder - Free Online Encode Tool",
     metaDescription:
       "Free URL encoder decoder online — convert special characters in query strings and URLs with percent-encoding, or decode them back to readable paths.",
     usageSteps: [
@@ -417,7 +433,7 @@ export const TOOLS: Tool[] = [
       "base64 converter",
       "binary to text",
     ],
-    metaTitle: "Base64 Encoder / Decoder",
+    metaTitle: "Base64 Encoder Decoder - Free Online Tool",
     metaDescription:
       "Free Base64 encoder/decoder tool — encode text to Base64 format or decode strings back to plain text instantly. All client-side, no server uploads.",
     usageSteps: [
@@ -470,8 +486,8 @@ export const TOOLS: Tool[] = [
       "percentage difference calculator",
       "math percentage tool",
     ],
-    metaTitle: "Percentage Average Calculator",
-    metaDescription: "Use our average percentage calculator to find what percent X is of Y, calculate percentage change, and compute percentage increases or decreases in seconds.",
+    metaTitle: "Percentage Calculator Online — Free & Easy",
+    metaDescription: "Use our free percentage calculator online to find what percent X is of Y, calculate percentage change, and compute percentage increases or decreases in seconds.",
     usageSteps: [
       {
         title: "Enter Your Values",
@@ -595,37 +611,37 @@ export const TOOLS: Tool[] = [
     icon: "\uD83D\uDCB5",
     featured: true,
     keywords: [
-      "tip calculator iphone",
+      "bill split calculator",
       "gratuity calculator",
       "bill splitter",
       "tip per person",
       "restaurant tip calculator",
       "dinner bill calculator",
     ],
-    metaTitle: "Tip Calculator — iPhone Style",
-    metaDescription: "Use this tip calculator iPhone-friendly tool to calculate gratuity and split bills. Choose tip percentage, see per-person amounts, and never overpay.",
+    metaTitle: "Tip Calculator Online — Split Bill & Gratuity",
+    metaDescription: "Use this free tip calculator to calculate gratuity and split bills online. Choose tip percentage, see per-person amounts, and never overpay.",
     usageSteps: [
       {
         title: "Enter Your Bill Amount",
-        content: "Enter the total bill amount in the provided field. This tip calculator iPhone-style interface accepts any currency and works seamlessly for dining, delivery, or service bills."
+        content: "Enter the total bill amount in the provided field. This tip calculator accepts any currency and works seamlessly for dining, delivery, or service bills."
       },
       {
         title: "Choose Your Tip Percentage",
-        content: "Select a preset tip like 10%, 15%, 18%, or 20%, or enter a custom percentage. This tip calculator iPhone-friendly tool also helps you split the bill among multiple people."
+        content: "Select a preset tip like 10%, 15%, 18%, or 20%, or enter a custom percentage. This mobile-friendly tip calculator also helps you split the bill among multiple people."
       },
       {
         title: "Split the Bill Among Guests",
-        content: "Enter the number of people sharing the bill. The tool divides the total including tip equally, showing each person's share — perfect for group dinners using this tip calculator iPhone-style tool."
+        content: "Enter the number of people sharing the bill. The tool divides the total including tip equally, showing each person's share — perfect for group dinners."
       }
     ],
     faq: [
       {
-        question: "Can I use this tip calculator iPhone on mobile devices?",
-        answer: "Yes, this tip calculator iPhone-friendly tool works perfectly on any mobile device with a clean, responsive interface designed for both phones and desktop. It adjusts seamlessly to any screen size."
+        question: "Can I use this tip calculator on mobile devices?",
+        answer: "Yes, this tip calculator works perfectly on any mobile device with a clean, responsive interface designed for both phones and desktop. It adjusts seamlessly to any screen size."
       },
       {
-        question: "How does this tip calculator iPhone handle bill splitting?",
-        answer: "After entering the bill and tip percentage, simply input the number of diners. This tip calculator iPhone-style tool automatically divides the total plus gratuity equally, showing exactly what each person owes in seconds."
+        question: "How does this tip calculator handle bill splitting?",
+        answer: "After entering the bill and tip percentage, simply input the number of diners. This tool automatically divides the total plus gratuity equally, showing exactly what each person owes in seconds."
       }
     ]
   },
@@ -639,37 +655,37 @@ export const TOOLS: Tool[] = [
     icon: "\uD83D\uDCC5",
     featured: true,
     keywords: [
-      "date difference calculator excel",
+      "date difference calculator online",
       "days between dates",
       "date calculator",
       "how many days between dates",
       "date duration calculator",
       "date math tool",
     ],
-    metaTitle: "Date Difference Calculator",
-    metaDescription: "Use our date difference calculator Excel-style to find exact days, months, and years between two dates. Great for project timelines, countdowns, and age math.",
+    metaTitle: "Date Difference Calculator - Free Online Tool",
+    metaDescription: "Use our free date difference calculator to find exact days, months, and years between two dates. Great for project timelines, countdowns, and age math.",
     usageSteps: [
       {
         title: "Select Your Start Date",
-        content: "Pick your start date using the calendar widget or type it manually. This date difference calculator Excel-style accepts dates from any year and works similar to Excel's DATEDIF function."
+        content: "Pick your start date using the calendar widget or type it manually. This date difference calculator accepts dates from any year and computes the duration between them."
       },
       {
         title: "Select Your End Date",
-        content: "Select your end date to complete the comparison. Like a date difference calculator Excel formula would, the tool automatically computes positive values even if you reverse the dates."
+        content: "Select your end date to complete the comparison. The tool automatically computes positive values even if you reverse the dates."
       },
       {
         title: "View the Duration Breakdown",
-        content: "View the total days, weeks, months, and years between the dates. This date difference calculator Excel-style also provides business day counts for professional planning and scheduling."
+        content: "View the total days, weeks, months, and years between the dates. This date difference calculator also provides business day counts for professional planning and scheduling."
       }
     ],
     faq: [
       {
-        question: "How is this date difference calculator like Excel's DATEDIF?",
-        answer: "This date difference calculator Excel-style works similarly to Excel's DATEDIF function, computing the difference between two dates in years, months, or days. It offers the same functionality with an easier visual interface."
+        question: "How does this date difference calculator compute durations?",
+        answer: "This date difference calculator computes the difference between two dates in years, months, days, and business days. It offers an intuitive visual interface for quick date math."
       },
       {
         question: "Can I use this date difference calculator for business planning?",
-        answer: "Yes, this date difference calculator Excel-style tool shows both calendar days and business days between dates. It automatically excludes weekends and is ideal for project planning, deadline tracking, and contract date calculations."
+        answer: "Yes, this date difference calculator shows both calendar days and business days between dates. It automatically excludes weekends and is ideal for project planning, deadline tracking, and contract date calculations."
       }
     ]
   },
@@ -683,36 +699,36 @@ export const TOOLS: Tool[] = [
     icon: "\u{1F522}",
     featured: true,
     keywords: [
-      "phone number to words converter",
-      "convert phone number to words",
+      "spell number online",
+      "convert numbers to words",
       "number to english words",
       "spell number to words",
       "number to text converter"
     ],
-    metaTitle: "Number to Words Converter",
-    metaDescription: "Convert phone numbers to easy-to-remember words with our free converter. Also spell any number to English words for checks and documents.",
+    metaTitle: "Number to Words - Free Online Converter Tool",
+    metaDescription: "Convert any number to English words online free. Spell numbers for checks, documents, and invoices with our easy-to-use converter.",
     usageSteps: [
       {
         title: "Enter Your Number",
-        content: "Type any number into the input field — including phone numbers you want to convert to memorable words. Our phone number to words converter supports whole numbers, decimals, and values up to trillions."
+        content: "Type any number into the input field. Our number to words converter supports whole numbers, decimals, and values up to trillions."
       },
       {
         title: "Choose Your Output Format",
-        content: "Select whether you want the result in standard English words or phone number to words format. This flexibility makes our phone number to words converter useful for creating mnemonic phone numbers and writing formal documents."
+        content: "The result appears in standard English words format. This flexibility makes our number to words converter useful for writing checks, contracts, and formal documents."
       },
       {
         title: "Copy or Download the Result",
-        content: "The converted text appears instantly in readable English words. Copy it to your clipboard for checks, contracts, invoices, or to find meaningful words from phone numbers."
+        content: "The converted text appears instantly in readable English words. Copy it to your clipboard for checks, contracts, invoices, or formal documentation."
       }
     ],
     faq: [
       {
-        question: "How does a phone number to words converter work?",
-        answer: "A phone number to words converter maps each digit of your phone number to corresponding letters on a telephone keypad, generating memorable words or phrases. This makes it easier to remember phone numbers by associating them with real words."
+        question: "How does a number to words converter work?",
+        answer: "A number to words converter translates numeric digits into their English word representation, such as converting 123 into 'one hundred twenty-three'. This makes it easier to spell out numbers for checks, contracts, invoices, and formal documents."
       },
       {
-        question: "Can the phone number to words converter handle large numbers too?",
-        answer: "Yes, beyond phone numbers, this tool can convert any number up to trillions into English words. Whether you need to spell out a check amount, formal document number, or use the phone number to words converter for mnemonics, it handles all cases."
+        question: "Can the number to words converter handle large numbers too?",
+        answer: "Yes, this tool can convert any number up to trillions into English words. Whether you need to spell out a check amount, formal document number, or large figure for official records, it handles all cases."
       }
     ]
   },
@@ -726,43 +742,53 @@ export const TOOLS: Tool[] = [
     icon: "📱",
     featured: true,
     keywords: [
-      "adobe qr code generator",
+      "qr code maker online",
       "qr code creator online",
       "custom qr code maker",
       "free qr code generator",
       "downloadable qr code",
       "url to qr code converter"
     ],
-    metaTitle: "QR Code Generator — Adobe Style",
+    metaTitle: "QR Code Generator Online — Custom QR Codes",
     metaDescription:
-      "Generate custom QR codes like Adobe with our free online QR code generator. Create downloadable QR codes from URLs, text, and more — no signup needed.",
+      "Generate custom QR codes online free. Create downloadable QR codes from URLs, text, and more — no signup needed.",
     usageSteps: [
       {
         title: "Enter Your Content",
         content:
-          "Type or paste the URL, text, or data you want to encode. Our Adobe QR code generator lets you create scannable codes for websites, contact details, Wi-Fi credentials, and any other text-based information in seconds."
+          "Type or paste the URL, text, or data you want to encode. Our QR code generator lets you create scannable codes for websites, contact details, Wi-Fi credentials, and any other text-based information in seconds."
       },
       {
         title: "Customize Your QR Code",
         content:
-          "Choose from size options and add colors to personalize your QR code's appearance. This Adobe QR code generator gives you full control over the output so your codes match your brand or project style perfectly."
+          "Choose from size options and add colors to personalize your QR code's appearance. This QR code generator gives you full control over the output so your codes match your brand or project style perfectly."
       },
       {
         title: "Download Your QR Code",
         content:
-          "Click download to save your QR code as a high-resolution PNG image. Generate QR codes with this Adobe QR code generator online and use them on business cards, flyers, menus, or digital displays."
+          "Click download to save your QR code as a high-resolution PNG image. Generate QR codes with this QR code generator online and use them on business cards, flyers, menus, or digital displays."
       }
     ],
     faq: [
       {
-        question: "How does an Adobe QR code generator work to create scannable codes?",
+        question: "How does a QR code generator work to create scannable codes?",
         answer:
-          "An Adobe QR code generator encodes text or URLs into a matrix barcode that smartphone cameras can scan instantly. Our tool processes everything in your browser so you can generate QR codes like Adobe would — securely and without uploading your data to any server."
+          "A QR code generator encodes text or URLs into a matrix barcode that smartphone cameras can scan instantly. Our tool processes everything in your browser so you can generate QR codes securely — without uploading your data to any server."
       },
       {
         question: "Can I customize colors and sizes with this QR code generator?",
         answer:
-          "Yes, you can adjust the QR code size and choose custom colors before downloading. This Adobe QR code generator provides flexible options so your codes remain scannable while matching your design preferences for marketing materials or product packaging."
+          "Yes, you can adjust the QR code size and choose custom colors before downloading. This QR code generator provides flexible options so your codes remain scannable while matching your design preferences for marketing materials or product packaging."
+      }
+    ],
+    additionalContent: [
+      {
+        heading: "Different Types of QR Codes and When to Use Each One",
+        content: "QR codes come in several formats optimized for different use cases. The most common is the URL QR code, which directs users to a website or landing page when scanned — ideal for marketing campaigns and product packaging. Text QR codes encode plain text that displays directly on the user's screen without requiring an internet connection, making them useful for offline information like contact details or instructions. Wi-Fi QR codes encode network credentials so users can connect by scanning, eliminating the need to share passwords verbally. Each type uses the same error-correcting QR code standard but encodes different data structures, and this tool supports all major formats to cover your everyday needs."
+      },
+      {
+        heading: "QR Code Best Practices for Maximum Scan Rate and Engagement",
+        content: "To ensure your QR codes are scanned reliably, follow a few proven design guidelines. Maintain sufficient contrast between the code and its background — dark modules on a light surface work best for reliable scanning. Keep the minimum size at least 2 cm × 2 cm (about 0.8 inches) for print materials, and larger for outdoor or long-distance applications. Add a short call-to-action label near the code telling users what they will get when they scan it, such as 'Scan to view menu' or 'Scan to download.' Finally, always test your QR code with multiple devices before printing or publishing — different smartphone cameras and scanning apps can behave differently with the same code pattern."
       }
     ]
   },
@@ -776,36 +802,46 @@ export const TOOLS: Tool[] = [
     icon: "🎨",
     featured: true,
     keywords: [
-      "pms color converter",
-      "pantone color converter",
-      "hex to pms",
+      "hex to rgb converter",
+      "color converter online",
+      "hex color converter",
       "color code converter",
       "rgb hex hsl converter",
     ],
     metaTitle: "Color Converter — HEX, RGB, HSL",
-    metaDescription: "Convert colors between HEX, RGB, and HSL instantly with this PMS color converter. Preview each shade dynamically and copy values for your designs.",
+    metaDescription: "Convert colors between HEX, RGB, and HSL online free. Preview each shade dynamically and copy values for your designs.",
     usageSteps: [
       {
         title: "Enter Your Color Value",
-        content: "Type or paste any color value in HEX (like #FF5733), RGB, or HSL format into this PMS color converter. The tool instantly detects which format you entered and prepares the conversion."
+        content: "Type or paste any color value in HEX (like #FF5733), RGB, or HSL format into this color converter. The tool instantly detects which format you entered and prepares the conversion."
       },
       {
         title: "View Real-Time Conversions",
-        content: "Watch as all three color formats update simultaneously with matching values. This PMS color converter shows you the exact equivalent across HEX, RGB, and HSL as you type or adjust colors."
+        content: "Watch as all three color formats update simultaneously with matching values. This color converter shows you the exact equivalent across HEX, RGB, and HSL as you type or adjust colors."
       },
       {
         title: "Copy or Use the Result",
-        content: "Click the copy icon next to any color format to copy it to your clipboard. Whether you need PMS color converter results for CSS, design software, or print projects, the values are ready for immediate use."
+        content: "Click the copy icon next to any color format to copy it to your clipboard. Whether you need color converter results for CSS, design software, or print projects, the values are ready for immediate use."
       }
     ],
     faq: [
       {
-        question: "How does this PMS color converter handle different color formats?",
-        answer: "This PMS color converter supports HEX, RGB, and HSL formats by instantly translating between them using standard conversion algorithms. Each format represents the same color differently, and the tool handles all conversions automatically."
+        question: "How does this color converter handle different color formats?",
+        answer: "This color converter supports HEX, RGB, and HSL formats by instantly translating between them using standard conversion algorithms. Each format represents the same color differently, and the tool handles all conversions automatically."
       },
       {
         question: "Can I use this color converter for print and web design projects?",
-        answer: "Yes, the converted values from this PMS color converter are directly compatible with CSS, Figma, Adobe Photoshop, and print design tools. Simply copy the format you need and paste it directly into your project files."
+        answer: "Yes, the converted values from this color converter are directly compatible with CSS and print design tools. Simply copy the format you need and paste it directly into your project files."
+      }
+    ],
+    additionalContent: [
+      {
+        heading: "Understanding HEX, RGB, and HSL Color Models and Their Use Cases",
+        content: "Each color model serves a different purpose in design and development. HEX (hexadecimal) is the most common format in web development, used directly in CSS to define colors with a six-character code like #FF5733. It is compact and precise but not intuitive for manual adjustment. RGB (red, green, blue) describes colors by their component light values from 0 to 255, which maps directly to how screens display color — useful when you need fine control over individual channels. HSL (hue, saturation, lightness) is the most human-readable format: hue determines the color on a 0–360 degree wheel, saturation controls intensity, and lightness adjusts brightness. HSL is ideal for creating color schemes because you can shift the hue value while keeping the same saturation and lightness for a consistent look across a palette."
+      },
+      {
+        heading: "Why Color Format Conversion Matters for Cross-Platform Design",
+        content: "Designers and developers frequently switch between color formats as they move from design tools to production code. A color created in a design tool like Figma or Sketch is typically represented in RGB or HSL, but the final CSS or SVG code often requires HEX values. Manual conversion between formats is error-prone — a single digit off in a HEX code produces a noticeably different shade. A reliable color format converter eliminates this risk by performing precise mathematical conversions between all three models. This is especially important when maintaining brand consistency across web, print, and mobile platforms where each medium may require a different color representation of the same brand palette."
       }
     ]
   },
@@ -819,44 +855,44 @@ export const TOOLS: Tool[] = [
     icon: "\ud83c\udf10",
     featured: true,
     keywords: [
-      "html formatter notepad++",
+      "html beautifier online",
       "html formatter",
       "beautify html",
       "html beautifier",
       "minify html",
     ],
-    metaTitle: "HTML Formatter — Notepad++ Style",
+    metaTitle: "HTML Formatter Online — Beautify & Minify HTML",
     metaDescription:
-      "An HTML formatter notepad++ alternative that lets you beautify messy HTML with custom indent sizes or compress markup into minified code — all in your browser.",
+      "Free HTML formatter online — beautify messy HTML or compress into minified code. Custom indent sizes, instant results in your browser.",
     usageSteps: [
       {
         title: "Insert Your HTML Code",
         content:
-          "Paste your raw, minified, or poorly indented HTML markup into the editor area on the left. Whether you copied the source from a webpage or retrieved it from a template file, this HTML formatter notepad++ alternative works instantly without any setup.",
+          "Paste your raw, minified, or poorly indented HTML markup into the editor area on the left. Whether you copied the source from a webpage or retrieved it from a template file, our HTML formatter works instantly without any setup.",
       },
       {
         title: "Run the Formatter",
         content:
-          "Click the format button to re-indent every tag, attribute, and text node with the correct nesting hierarchy. Much like an HTML formatter notepad++ plugin, the tool intelligently preserves inline styles and scripts while ensuring every opening and closing tag aligns properly for maximum readability.",
+          "Click the format button to re-indent every tag, attribute, and text node with the correct nesting hierarchy. The tool intelligently preserves inline styles and scripts while ensuring every opening and closing tag aligns properly for maximum readability.",
       },
       {
         title: "Export the Cleaned Markup",
         content:
-          "Once the formatted HTML appears in the output panel, use the copy icon to grab the entire cleaned code block. You can then paste it directly into your editor or save it as a new file — exactly the workflow you would expect from an HTML formatter notepad++ extension.",
+          "Once the formatted HTML appears in the output panel, use the copy icon to grab the entire cleaned code block. You can then paste it directly into your editor or save it as a new file — ready for your development workflow.",
       },
     ],
     faq: [
       {
         question:
-          "How is this HTML formatter notepad++ alternative different from an editor plugin?",
+          "How is this HTML formatter different from an editor plugin?",
         answer:
-          "This HTML formatter notepad++ alternative works entirely in your browser without requiring any plugin installation or editor configuration. It is especially useful when you are working on a shared or restricted machine, troubleshooting malformed markup from a live page, or need a quick second opinion on your document structure.",
+          "This HTML formatter works entirely in your browser without requiring any plugin installation or editor configuration. It is especially useful when you are working on a shared or restricted machine, troubleshooting malformed markup from a live page, or need a quick second opinion on your document structure.",
       },
       {
         question:
-          "Does this HTML formatter notepad++ tool handle embedded CSS and JavaScript?",
+          "Does this HTML formatter handle embedded CSS and JavaScript?",
         answer:
-          "Yes — the tool is designed to intelligently format HTML code while preserving the integrity of embedded style blocks and script sections. Like a good HTML formatter notepad++ plugin, it indents the content inside style and script tags appropriately without breaking syntax, so your entire document remains valid.",
+          "Yes — the tool is designed to intelligently format HTML code while preserving the integrity of embedded style blocks and script sections. It indents the content inside style and script tags appropriately without breaking syntax, so your entire document remains valid.",
       },
     ],
   },
@@ -870,44 +906,44 @@ export const TOOLS: Tool[] = [
     icon: "\ud83e\uddea",
     featured: true,
     keywords: [
-      "ruby regex tester",
+      "regex pattern tester",
       "regex tester",
       "test regex online",
       "regular expression tester",
       "regex matcher",
     ],
-    metaTitle: "Regex Tester — Ruby Style",
+    metaTitle: "Regex Tester Online — Test Regular Expressions",
     metaDescription:
-      "Free Ruby regex tester online — write and test regular expressions against sample text. See matches, capture groups, and positions in your browser.",
+      "Free regex tester online — write and test regular expressions against sample text. See matches, capture groups, and positions in your browser.",
     usageSteps: [
       {
         title: "Enter Your Regular Expression Pattern",
         content:
-          "Type or paste your regex pattern into the pattern field, including any flags like global or case-insensitive. If you are used to a Ruby regex tester workflow, you will find the same instant feedback loop here — test your pattern against sample data without setting up a local environment.",
+          "Type or paste your regex pattern into the pattern field, including any flags like global or case-insensitive. If you are used to a regex tester workflow, you will find the same instant feedback loop here — test your pattern against sample data without setting up a local environment.",
       },
       {
         title: "Provide a Test String",
         content:
-          "Paste one or more sample strings into the test input area that you want to match against your pattern. Like any good Ruby regex tester, the tool highlights every match in real time, showing you exactly which portions of your text the regular expression captures.",
+          "Paste one or more sample strings into the test input area that you want to match against your pattern. Like any good regex tester, the tool highlights every match in real time, showing you exactly which portions of your text the regular expression captures.",
       },
       {
         title: "Review Matches and Refine Your Pattern",
         content:
-          "Examine the highlighted matches and the detailed match info panel to understand capture groups and positions. Iterate on your pattern by editing it directly and watching the results update instantly — just like a dedicated Ruby regex tester, this rapid feedback loop helps you get your expression exactly right.",
+          "Examine the highlighted matches and the detailed match info panel to understand capture groups and positions. Iterate on your pattern by editing it directly and watching the results update instantly — just like a dedicated regex tester, this rapid feedback loop helps you get your expression exactly right.",
       },
     ],
     faq: [
       {
         question:
-          "How does this Ruby regex tester improve my development workflow?",
+          "How does this regex tester improve my development workflow?",
         answer:
-          "When you use this Ruby regex tester, you get immediate visual feedback on every match, capture group, and replacement operation without running your entire application. It mimics the behavior of a Ruby regex tester library call but with a visual interface that shows you exactly what each part of your expression does.",
+          "When you use this regex tester, you get immediate visual feedback on every match, capture group, and replacement operation without running your entire application. It mimics the behavior of a regex tester library call but with a visual interface that shows you exactly what each part of your expression does.",
       },
       {
         question:
-          "Can I use this Ruby regex tester for languages other than Ruby?",
+          "Can I use this regex tester for languages other than Ruby?",
         answer:
-          "Yes — while this Ruby regex tester is designed with Ruby-style syntax in mind, it supports common regex flavors including PCRE-compatible patterns, JavaScript regular expressions, and Python-style expressions. You can test patterns for any language and then adapt the final expression to your specific runtime syntax.",
+          "Yes — while this regex tester is designed with common regex syntax in mind, it supports common regex flavors including PCRE-compatible patterns, JavaScript regular expressions, and Python-style expressions. You can test patterns for any language and then adapt the final expression to your specific runtime syntax.",
       },
     ],
   },
@@ -927,7 +963,7 @@ export const TOOLS: Tool[] = [
       "markdown compiler online",
       "html from markdown"
     ],
-    metaTitle: "Markdown to HTML Converter",
+    metaTitle: "Markdown to HTML Converter - Free Online Tool",
     metaDescription: "Convert markdown to HTML instantly with our free converter. See live preview and copy clean, semantic HTML5 code with one click.",
     usageSteps: [
       {
@@ -970,7 +1006,7 @@ export const TOOLS: Tool[] = [
       "csv parser online",
       "excel to json converter",
     ],
-    metaTitle: "CSV to JSON Converter",
+    metaTitle: "CSV to JSON Converter - Free Online Tool",
     metaDescription:
       "Convert CSV to JSON Python-style with our free online converter. Parse comma-separated values, set headers, and generate clean JSON arrays in your browser.",
     usageSteps: [
@@ -1064,13 +1100,13 @@ export const TOOLS: Tool[] = [
     categorySlug: "pdf-tools",
     icon: "📑",
     featured: true,
-    keywords: ["adobe pdf merger", "merge pdf files online", "combine pdf documents", "join pdf files", "pdf merger free tool", "merge multiple pdfs"],
-    metaTitle: "PDF Merger — Adobe Style",
-    metaDescription: "Use this adobe pdf merger to combine multiple PDFs into one document. Upload, reorder, and merge instantly in your browser — 100% free and private.",
+    keywords: ["combine pdf files", "merge pdf files online", "combine pdf documents", "join pdf files", "pdf merger free tool", "merge multiple pdfs"],
+    metaTitle: "Merge PDF Files Online Free — Combine PDFs",
+    metaDescription: "Merge PDF files online free — combine multiple PDFs into one document. Upload, reorder, and merge instantly in your browser, 100% private.",
     usageSteps: [
       {
         title: "Upload Your PDF Files",
-        content: "Start by selecting the PDF files you want to combine with our adobe pdf merger. You can upload multiple documents at once using our secure drag-and-drop interface. Your files are processed entirely in your browser with no server upload required."
+        content:           "Start by selecting the PDF files you want to combine with our PDF merger. You can upload multiple documents at once using our secure drag-and-drop interface. Your files are processed entirely in your browser with no server upload required."
       },
       {
         title: "Arrange the Order",
@@ -1078,17 +1114,27 @@ export const TOOLS: Tool[] = [
       },
       {
         title: "Merge and Download",
-        content: "Click the merge button to combine all your PDFs into a single cohesive document using our adobe pdf merger. Your merged file is generated instantly and ready for download with just one click."
+        content:           "Click the merge button to combine all your PDFs into a single cohesive document using our PDF merger. Your merged file is generated instantly and ready for download with just one click."
       }
     ],
     faq: [
       {
-        question: "How does the adobe pdf merger handle multiple pages?",
-        answer: "Our adobe pdf merger handles page reordering seamlessly across all uploaded documents. You can rearrange individual pages from different PDFs before finalizing the merge, giving you complete control over the final output."
+        question: "How does the PDF merger handle multiple pages?",
+        answer: "Our PDF merger handles page reordering seamlessly across all uploaded documents. You can rearrange individual pages from different PDFs before finalizing the merge, giving you complete control over the final output."
       },
       {
-        question: "Is the adobe pdf merger compatible with all PDF versions?",
-        answer: "Yes, our adobe pdf merger supports all standard PDF formats and versions. Files created in Adobe Acrobat or other PDF software work seamlessly with our free online tool."
+        question: "Is the PDF merger compatible with all PDF versions?",
+        answer: "Yes, our PDF merger supports all standard PDF formats and versions. Files created in any PDF software work seamlessly with our free online tool."
+      }
+    ],
+    additionalContent: [
+      {
+        heading: "How Browser-Based PDF Merging Works Without Server Uploads",
+        content: "Every PDF merge operation in this tool happens entirely inside your browser using the PDF-Lib JavaScript library. When you upload files, the tool reads them as binary data using the FileReader API and processes each document's page structure locally. This means your sensitive documents — contracts, invoices, personal records — never leave your device. The merging engine reconstructs the PDF file from scratch, embedding fonts, images, and metadata from the original documents while creating a clean, combined output. This client-side approach is what sets private PDF tools apart from online services that require server uploads and temporary storage of your files."
+      },
+      {
+        heading: "Best Practices for Organizing and Preparing PDFs for Merging",
+        content: "Before merging multiple PDFs, take a few steps to ensure the best results. First, check that all your source documents are in the same orientation — mixing portrait and landscape pages can produce inconsistent output. Second, consider the file size of each source document: merging very large files (over 50 MB each) may slow the browser-based processing. Third, label your files clearly before uploading so you can identify them during reordering. If you need to merge only specific pages from a document, use a PDF splitter first to extract the relevant pages, then merge the extracted files. This workflow gives you precise control over the final document structure."
       }
     ]
   },
@@ -1102,7 +1148,7 @@ export const TOOLS: Tool[] = [
     icon: "✂️",
     featured: true,
     keywords: ["free pdf splitter", "split pdf into separate pages", "extract pages from pdf", "pdf page separator", "pdf splitter no upload", "separate pdf document"],
-    metaTitle: "PDF Splitter — Free Online",
+    metaTitle: "PDF Splitter - Separate Pages Free Online Tool",
     metaDescription: "Use this free pdf splitter to split a PDF into individual pages or extract specific page ranges. No uploads, no signups — entirely private browser processing.",
     usageSteps: [
       {
@@ -1138,31 +1184,31 @@ export const TOOLS: Tool[] = [
     categorySlug: "pdf-tools",
     icon: "🗜️",
     featured: true,
-    keywords: ["adobe pdf compressor", "compress pdf file size", "reduce pdf size online", "pdf compression tool", "optimize pdf documents", "smaller pdf file"],
-    metaTitle: "PDF Compressor — Adobe Style",
-    metaDescription: "Use this adobe pdf compressor to reduce PDF file size instantly. Choose compression level and download a smaller PDF — all client-side, no uploads, 100% free.",
+    keywords: ["pdf size reducer", "compress pdf file size", "reduce pdf size online", "pdf compression tool", "optimize pdf documents", "smaller pdf file"],
+    metaTitle: "Compress PDF Online Free — Reduce PDF File Size",
+    metaDescription: "Compress PDF files online free — reduce PDF file size instantly. Choose compression level and download a smaller PDF, all client-side, no uploads.",
     usageSteps: [
       {
         title: "Upload Your PDF File",
-        content: "Drag and drop your PDF file onto the adobe pdf compressor or select it from your device. Our tool handles large files with ease while keeping your data secure on your own machine."
+        content: "Drag and drop your PDF file onto the PDF compressor or select it from your device. Our tool handles large files with ease while keeping your data secure on your own machine."
       },
       {
         title: "Choose Compression Level",
-        content: "Select your preferred compression level using the adobe pdf compressor — from maximum size reduction to high-quality output. A real-time preview shows the estimated file size so you can balance quality and compression."
+        content: "Select your preferred compression level using the PDF compressor — from maximum size reduction to high-quality output. A real-time preview shows the estimated file size so you can balance quality and compression."
       },
       {
         title: "Download the Compressed PDF",
-        content: "Click Compress to reduce your PDF file size instantly with the adobe pdf compressor. The optimized PDF maintains excellent readability while being significantly smaller, making it easy to email or upload."
+        content: "Click Compress to reduce your PDF file size instantly with the PDF compressor. The optimized PDF maintains excellent readability while being significantly smaller, making it easy to email or upload."
       }
     ],
     faq: [
       {
-        question: "How much can the adobe pdf compressor reduce file size?",
-        answer: "Our adobe pdf compressor can reduce file size by up to 80 percent depending on your chosen compression level. Documents with images see the most dramatic reduction while maintaining good visual quality."
+        question: "How much can the PDF compressor reduce file size?",
+        answer: "Our PDF compressor can reduce file size by up to 80 percent depending on your chosen compression level. Documents with images see the most dramatic reduction while maintaining good visual quality."
       },
       {
-        question: "Does the adobe pdf compressor affect image quality?",
-        answer: "Some image quality loss can occur with maximum compression, but our adobe pdf compressor offers multiple levels. For most documents, balanced compression significantly reduces file size while keeping images looking sharp."
+        question: "Does the PDF compressor affect image quality?",
+        answer: "Some image quality loss can occur with maximum compression, but our PDF compressor offers multiple levels. For most documents, balanced compression significantly reduces file size while keeping images looking sharp."
       }
     ]
   },
@@ -1176,7 +1222,7 @@ export const TOOLS: Tool[] = [
     icon: "📝",
     featured: false,
     keywords: ["pdf to text", "convert pdf to text", "extract text from pdf", "pdf text extractor online", "pdf to text converter free", "copy text from pdf"],
-    metaTitle: "PDF to Text Converter",
+    metaTitle: "PDF to Text - Free Online PDF Extractor Tool",
     metaDescription: "Use our pdf to text converter to extract text from PDF files instantly in your browser. No uploads, no signups — copy formatted text with one click.",
     usageSteps: [
       {
@@ -1213,7 +1259,7 @@ export const TOOLS: Tool[] = [
     icon: "🖼️",
     featured: false,
     keywords: ["convert pdf to images online free", "pdf to png converter", "pdf to jpg converter", "pdf pages to images", "extract images from pdf", "pdf to image converter"],
-    metaTitle: "PDF to Images — PNG / JPG",
+    metaTitle: "PDF to Images - Convert Pages to PNG JPG Online",
     metaDescription: "Convert PDF to images online free with high quality. Turn each PDF page into PNG or JPEG format instantly in your browser — download individually or all as ZIP.",
     usageSteps: [
       {
@@ -1302,21 +1348,21 @@ export const TOOLS: Tool[] = [
     icon: "📏",
     featured: true,
     keywords: [
-      "adobe image resizer",
+      "resize photos free",
       "resize image online free",
       "photo resizer tool",
       "change image dimensions",
       "image scaling tool",
       "resize pictures without quality loss"
     ],
-    metaTitle: "Image Resizer — Adobe Style",
+    metaTitle: "Image Resizer Online — Change Photo Dimensions",
     metaDescription:
-      "Resize images like Adobe with our free online image resizer. Change photo dimensions, maintain aspect ratio, and download — all in your browser with no uploads.",
+      "Resize images online free. Change photo dimensions, maintain aspect ratio, and download — all in your browser with no uploads.",
     usageSteps: [
       {
         title: "Upload Your Image",
         content:
-          "Select an image from your device by clicking the upload area or dragging a file. This Adobe image resizer supports JPEG, PNG, WebP, and GIF formats so you can resize image online free regardless of your source type."
+          "Select an image from your device by clicking the upload area or dragging a file. This image resizer supports JPEG, PNG, WebP, and GIF formats so you can resize image online free regardless of your source type."
       },
       {
         title: "Set Your Target Dimensions",
@@ -1326,19 +1372,19 @@ export const TOOLS: Tool[] = [
       {
         title: "Download the Resized Image",
         content:
-          "Preview the final result and click download to save your resized image. When you resize image online free with this Adobe image resizer, the tool applies high-quality resampling for crisp results."
+          "Preview the final result and click download to save your resized image. When you resize image online free with this image resizer, the tool applies high-quality resampling for crisp results."
       }
     ],
     faq: [
       {
-        question: "How do I resize an image like Adobe without installing software?",
+        question: "How do I resize an image without installing software?",
         answer:
-          "Upload your image to this Adobe image resizer, enter your target dimensions, and download instantly. The entire process happens in your browser so you can resize image online free without downloading or paying for expensive editing software."
+          "Upload your image to this image resizer, enter your target dimensions, and download instantly. The entire process happens in your browser so you can resize image online free without downloading or paying for expensive editing software."
       },
       {
         question: "Does this image resizer maintain quality when changing dimensions?",
         answer:
-          "Yes, the tool uses advanced interpolation algorithms to preserve image quality when resizing. You can resize image online free with this Adobe image resizer while keeping your photos sharp and detailed for both web and print use."
+          "Yes, the tool uses advanced interpolation algorithms to preserve image quality when resizing. You can resize image online free with this image resizer while keeping your photos sharp and detailed for both web and print use."
       }
     ]
   },
@@ -1358,7 +1404,7 @@ export const TOOLS: Tool[] = [
       "jpg to png converter",
       "webp converter online",
     ],
-    metaTitle: "Image Format Converter",
+    metaTitle: "Image Format Converter - Free Online File Tool",
     metaDescription: "Convert images between PNG, JPEG, and WebP formats instantly with this free image format converter. Browser-based with quality controls and no uploads.",
     usageSteps: [
       {
@@ -1451,7 +1497,7 @@ export const TOOLS: Tool[] = [
       "data uri generator",
       "encode image to base64 string",
     ],
-    metaTitle: "Image to Base64 Converter",
+    metaTitle: "Image to Base64 - Free Online Converter Tool",
     metaDescription: "Convert any image to a Base64 string with this free image to base64 converter online. Encode images for direct embedding in HTML, CSS, and JavaScript.",
     usageSteps: [
       {
@@ -1540,44 +1586,44 @@ export const TOOLS: Tool[] = [
     icon: "#",
     featured: false,
     keywords: [
-      "ntlm hash generator",
+      "cryptographic hash calculator",
       "hash generator",
       "md5 generator",
       "sha256 hash",
       "sha512 hash",
     ],
-    metaTitle: "Hash Generator — MD5, SHA-256",
+    metaTitle: "Hash Generator - Free MD5 SHA256 Tool Online",
     metaDescription:
-      "Free NTLM hash generator tool — generate cryptographic hashes (MD5, SHA-1, SHA-256, SHA-512) of any text instantly in your browser using the Web Crypto API.",
+      "Free hash generator — generate cryptographic hashes (MD5, SHA-1, SHA-256, SHA-512) of any text instantly in your browser using the Web Crypto API.",
     usageSteps: [
       {
         title: "Enter the Text You Want to Hash",
         content:
-          "Type or paste the string you wish to hash into the input field — this could be a password, a file checksum, or any sensitive data. Whether you need an NTLM hash generator for Windows authentication or a general-purpose tool, this utility computes a fixed-length digest that uniquely represents your input.",
+          "Type or paste the string you wish to hash into the input field — this could be a password, a file checksum, or any sensitive data. This utility computes a fixed-length digest that uniquely represents your input.",
       },
       {
         title: "Select Your Preferred Hash Algorithm",
         content:
-          "Choose from multiple algorithms such as MD5, SHA-1, SHA-256, or SHA-512 depending on your security and compatibility needs. If you are specifically looking for an NTLM hash generator, MD4-based NTLM hashing is supported; for stronger cryptographic integrity, opt for SHA-256 or SHA-512.",
+          "Choose from multiple algorithms such as MD5, SHA-1, SHA-256, or SHA-512 depending on your security and compatibility needs. For stronger cryptographic integrity, opt for SHA-256 or SHA-512.",
       },
       {
         title: "Copy the Generated Hash",
         content:
-          "The hash value appears in the output panel as a hexadecimal string once you start typing. Copy the digest and use it for password storage, data integrity verification, digital signatures, or API authentication tokens — exactly as you would with any standard NTLM hash generator.",
+          "The hash value appears in the output panel as a hexadecimal string once you start typing. Copy the digest and use it for password storage, data integrity verification, digital signatures, or API authentication tokens.",
       },
     ],
     faq: [
       {
         question:
-          "What is an NTLM hash generator and when would I need one?",
+          "What is a hash generator and when would I need one?",
         answer:
-          "An NTLM hash generator computes the MD4 hash of a password, which is the format used by Windows for challenge-response authentication. This NTLM hash generator is useful for penetration testers, system administrators, and developers working with Windows authentication protocols who need to quickly compute or verify NTLM hashes.",
+          "A hash generator computes a fixed-length digest from input data using cryptographic algorithms. It is useful for verifying file integrity, storing passwords securely, generating checksums, and working with digital signatures or authentication tokens.",
       },
       {
         question:
           "What is the practical difference between MD5 and SHA-256 hashing?",
         answer:
-          "MD5 produces a 128-bit hash quickly and is still widely used for checksums and non-critical identifiers, but it is considered cryptographically broken and vulnerable to collision attacks. SHA-256 generates a 256-bit hash that is significantly more secure, making it the preferred choice when you need stronger protection than an NTLM hash generator provides for legacy systems.",
+          "MD5 produces a 128-bit hash quickly and is still widely used for checksums and non-critical identifiers, but it is considered cryptographically broken and vulnerable to collision attacks. SHA-256 generates a 256-bit hash that is significantly more secure, making it the preferred choice for stronger cryptographic protection.",
       },
     ],
   },
@@ -1597,7 +1643,7 @@ export const TOOLS: Tool[] = [
       "generate uuid v4",
       "unique id generator",
     ],
-    metaTitle: "UUID Generator — Random v4",
+    metaTitle: "UUID Generator - Free Random v4 ID Creator",
     metaDescription:
       "Free random UUID generator — generate UUID v4 identifiers instantly in your browser. Copy to clipboard for database keys, API tokens, and testing.",
     usageSteps: [
@@ -1693,7 +1739,7 @@ export const TOOLS: Tool[] = [
       "text to slug",
       "create url slug online"
     ],
-    metaTitle: "SEO Slug Generator",
+    metaTitle: "SEO Slug Generator - Free URL Slug Creator",
     metaDescription: "Generate clean, SEO-friendly URL slugs from any text with our free slug generator. Perfect for blog posts, product pages, and web paths.",
     usageSteps: [
       {
@@ -1736,7 +1782,7 @@ export const TOOLS: Tool[] = [
       "article summarizer free",
       "text summary generator free"
     ],
-    metaTitle: "Text Summarizer",
+    metaTitle: "Text Summarizer - Free AI Text Shortener Tool",
     metaDescription: "Use our free text summarizer to condense long articles into concise key points. Adjustable summary length with instant results — no signup required.",
     usageSteps: [
       {
@@ -1782,7 +1828,7 @@ export const TOOLS: Tool[] = [
       "password complexity checker",
       "secure password test"
     ],
-    metaTitle: "Password Strength Checker",
+    metaTitle: "Password Strength Checker - Free Security Tool",
     metaDescription:
       "Check password strength online with real-time analysis. Test your password security, get a strength score, and actionable tips to make your passwords stronger.",
     usageSteps: [
@@ -1825,36 +1871,36 @@ export const TOOLS: Tool[] = [
     icon: "📊",
     featured: true,
     keywords: [
-      "lexile text analyzer",
+      "text analysis online",
       "text readability analyzer",
-      "lexile score checker",
+      "readability checker",
       "text complexity analyzer",
       "reading level checker"
     ],
-    metaTitle: "Lexile Text Analyzer",
-    metaDescription: "Analyze text with our lexile text analyzer. Get word count, character count, readability scores, and reading level metrics for your content instantly.",
+    metaTitle: "Text Analyzer Online — Word Count & Readability",
+    metaDescription: "Analyze text online free with word count, character count, readability scores, and reading level metrics for your content instantly.",
     usageSteps: [
       {
         title: "Paste your content",
-        content: "Paste your text into the lexile text analyzer input area. The tool works with any length of text from short sentences to full documents, beginning analysis immediately to provide comprehensive text statistics."
+        content: "Paste your text into the text analyzer input area. The tool works with any length of text from short sentences to full documents, beginning analysis immediately to provide comprehensive text statistics."
       },
       {
         title: "Explore the statistics",
-        content: "Review detailed analysis including word frequency, character count, sentence count, readability scores, and reading level estimates. The lexile text analyzer calculates metrics that help you understand your writing's complexity and target audience suitability."
+        content: "Review detailed analysis including word frequency, character count, sentence count, readability scores, and reading level estimates. The text analyzer calculates metrics that help you understand your writing's complexity and target audience suitability."
       },
       {
         title: "Use insights to improve your writing",
-        content: "Use the insights from the lexile text analyzer to identify overused words, unusually long sentences, or complex vocabulary that might confuse readers. Adjust your content to match the appropriate reading level for your audience."
+        content: "Use the insights from the text analyzer to identify overused words, unusually long sentences, or complex vocabulary that might confuse readers. Adjust your content to match the appropriate reading level for your audience."
       }
     ],
     faq: [
       {
-        question: "How does a lexile text analyzer measure text readability?",
-        answer: "The lexile text analyzer evaluates word frequency, sentence length, and vocabulary complexity to calculate readability scores including Flesch-Kincaid and Lexile measures. These metrics help you determine if your content matches the reading level of your target audience."
+        question: "How does a text analyzer measure text readability?",
+        answer: "The text analyzer evaluates word frequency, sentence length, and vocabulary complexity to calculate readability scores including Flesch-Kincaid and other measures. These metrics help you determine if your content matches the reading level of your target audience."
       },
       {
-        question: "What statistics does this lexile text analyzer provide beyond readability?",
-        answer: "In addition to readability scores, the lexile text analyzer provides word count, character count, sentence count, paragraph count, average word length, and word frequency analysis — giving you a complete picture of your text's structure and complexity."
+        question: "What statistics does this text analyzer provide beyond readability?",
+        answer: "In addition to readability scores, the text analyzer provides word count, character count, sentence count, paragraph count, average word length, and word frequency analysis — giving you a complete picture of your text's structure and complexity."
       }
     ]
   },
@@ -1870,7 +1916,7 @@ export const TOOLS: Tool[] = [
     icon: "🏷️",
     featured: true,
     keywords: ["seo meta tag generator", "meta tag creator", "html meta tags generator", "og meta tag generator", "meta description generator", "seo head tags"],
-    metaTitle: "SEO Meta Tag Generator",
+    metaTitle: "SEO Meta Tag Generator - Free Meta Creator",
     metaDescription: "Use our free SEO meta tag generator to create optimized title, description, Open Graph, and Twitter Card tags. Preview snippets and copy HTML code instantly.",
     usageSteps: [
       {
@@ -1907,7 +1953,7 @@ export const TOOLS: Tool[] = [
     icon: "📈",
     featured: true,
     keywords: ["keyword density checker free", "keyword density analyzer", "keyword frequency tool", "seo keyword analyzer", "content optimization tool", "keyword density calculator"],
-    metaTitle: "Keyword Density Checker",
+    metaTitle: "Keyword Density Checker - Free SEO Content Tool",
     metaDescription: "Use our free keyword density checker to analyze keyword frequency and density in any text. Optimize your content for better search engine rankings instantly.",
     usageSteps: [
       {
@@ -1943,17 +1989,17 @@ export const TOOLS: Tool[] = [
     categorySlug: "seo-tools",
     icon: "🗺️",
     featured: true,
-    keywords: ["sitemap generator by spellmistake", "xml sitemap generator", "seo sitemap creator", "google sitemap generator", "website sitemap tool", "sitemap xml creator"],
-    metaTitle: "Sitemap Generator",
+    keywords: ["xml sitemap generator", "seo sitemap creator", "google sitemap generator", "website sitemap tool", "sitemap xml creator"],
+    metaTitle: "Sitemap Generator - Free XML SEO Sitemap Tool",
     metaDescription: "Use this sitemap generator to create XML sitemaps with priority, frequency, and last modified dates. Copy valid sitemap code for Google Search Console.",
     usageSteps: [
       {
         title: "Enter Your Website URLs",
-        content: "Paste all your important page URLs into this sitemap generator by Spellmistake. The tool supports bulk URL entry and automatically detects the correct protocol for each address."
+        content: "Paste all your important page URLs into this sitemap generator. The tool supports bulk URL entry and automatically detects the correct protocol for each address."
       },
       {
         title: "Configure Sitemap Settings",
-        content: "Set priority levels, change frequency, and last modified dates for each URL in your list. This sitemap generator by Spellmistake produces search-engine-valid XML that Google and Bing can parse correctly."
+        content: "Set priority levels, change frequency, and last modified dates for each URL in your list. This sitemap generator produces search-engine-valid XML that Google and Bing can parse correctly."
       },
       {
         title: "Generate and Submit Sitemap",
@@ -1962,12 +2008,12 @@ export const TOOLS: Tool[] = [
     ],
     faq: [
       {
-        question: "Why use a sitemap generator by Spellmistake for my website?",
-        answer: "This sitemap generator by Spellmistake creates valid XML sitemaps that follow official search engine protocols. It saves time by automatically formatting your URLs with proper priority, frequency, and last-modified date tags."
+        question: "Why use a sitemap generator for my website?",
+        answer: "This sitemap generator creates valid XML sitemaps that follow official search engine protocols. It saves time by automatically formatting your URLs with proper priority, frequency, and last-modified date tags."
       },
       {
         question: "Does this sitemap generator support large websites?",
-        answer: "Yes, this sitemap generator by Spellmistake can handle hundreds of URLs at once. The generated XML follows standard sitemap protocol and can be submitted directly to Google Search Console, Bing Webmaster Tools, and other search engines."
+        answer: "Yes, this sitemap generator can handle hundreds of URLs at once. The generated XML follows standard sitemap protocol and can be submitted directly to Google Search Console, Bing Webmaster Tools, and other search engines."
       }
     ]
   },
@@ -1980,31 +2026,31 @@ export const TOOLS: Tool[] = [
     categorySlug: "seo-tools",
     icon: "🤖",
     featured: true,
-    keywords: ["wordpress robots.txt generator", "robots txt creator", "seo robots.txt tool", "crawl rules generator", "search engine bot control", "robots.txt maker"],
-    metaTitle: "Robots.txt Generator",
-    metaDescription: "Use our WordPress robots.txt generator to create optimized crawl rules for search engine bots. Add allow/disallow directives, sitemap URLs, and crawl delays.",
+    keywords: ["robots txt creator", "seo robots.txt tool", "crawl rules generator", "search engine bot control", "robots.txt maker", "website crawl manager"],
+    metaTitle: "Robots.txt Generator - Free SEO Crawl Config",
+    metaDescription: "Use our robots.txt generator to create optimized crawl rules for search engine bots. Add allow/disallow directives, sitemap URLs, and crawl delays.",
     usageSteps: [
       {
-        title: "Enter Your WordPress Domain",
-        content: "Type your WordPress site domain into this robots.txt generator. The tool automatically detects common WordPress paths and suggests appropriate crawl rules based on your site structure."
+        title: "Enter Your Domain",
+        content: "Type your website domain into this robots.txt generator. The tool helps you create appropriate crawl rules based on your site structure."
       },
       {
-        title: "Configure Crawl Rules for WordPress",
-        content: "Set allow and disallow rules for Googlebot, Bingbot, and other search engine crawlers. Our WordPress robots.txt generator includes pre-built rules for wp-admin, wp-includes, and other common WordPress directories."
+        title: "Configure Crawl Rules for Your Site",
+        content: "Set allow and disallow rules for Googlebot, Bingbot, and other search engine crawlers. This robots.txt generator includes pre-built rules for common directories like admin panels, system folders, and other non-public areas."
       },
       {
         title: "Generate and Deploy Robots.txt",
-        content: "Click Generate to create your complete WordPress robots.txt file with all configured rules. Copy the generated code and upload it to the root directory of your WordPress site for search engines to find immediately."
+        content: "Click Generate to create your complete robots.txt file with all configured rules. Copy the generated code and upload it to the root directory of your website for search engines to find immediately."
       }
     ],
     faq: [
       {
-        question: "Why does WordPress need a custom robots.txt file?",
-        answer: "A WordPress robots.txt generator helps you control which parts of WordPress are crawled by search engines. Blocking wp-admin, wp-includes, and other system directories prevents wasted crawl budget on non-essential backend pages."
+        question: "Why does my website need a custom robots.txt file?",
+        answer: "A robots.txt generator helps you control which parts of your website are crawled by search engines. Blocking admin pages, system directories, and other non-public areas prevents wasted crawl budget on irrelevant content."
       },
       {
-        question: "Can a WordPress robots.txt generator block specific bots?",
-        answer: "Yes, our WordPress robots.txt generator lets you create specific user-agent rules for Googlebot, Bingbot, and any other crawler individually. You can block certain bots entirely or restrict them to specific areas of your WordPress site."
+        question: "Can a robots.txt generator block specific bots?",
+        answer: "Yes, this robots.txt generator lets you create specific user-agent rules for Googlebot, Bingbot, and any other crawler individually. You can block certain bots entirely or restrict them to specific areas of your site."
       }
     ]
   },
@@ -2018,7 +2064,7 @@ export const TOOLS: Tool[] = [
     icon: "🔗",
     featured: false,
     keywords: ["all in one seo open graph", "open graph meta tags", "og tag generator", "social media preview tool", "facebook share preview", "twitter card generator"],
-    metaTitle: "Open Graph Generator",
+    metaTitle: "Open Graph Generator - Free Social Preview Tool",
     metaDescription: "Use this open graph generator to create and preview OG meta tags for Facebook, X/Twitter, and LinkedIn. Generate social sharing tags instantly.",
     usageSteps: [
       {
@@ -2054,17 +2100,17 @@ export const TOOLS: Tool[] = [
     categorySlug: "seo-tools",
     icon: "📏",
     featured: false,
-    keywords: ["seo by highsoftware99.com", "seo title length checker", "meta description length tool", "seo snippet checker", "title tag analyzer", "search preview tool"],
+    keywords: ["seo title length checker", "meta description length tool", "seo snippet checker", "title tag analyzer", "search preview tool"],
     metaTitle: "SEO Title & Meta Length Checker",
     metaDescription: "Use this SEO length checker to test title tags and meta descriptions against recommended limits. See pixel width, character count, and search preview.",
     usageSteps: [
       {
         title: "Enter Your Title and Description",
-        content: "Paste your meta title and meta description into this SEO length checker by HighSoftware99.com. The tool provides real-time character count and pixel width measurements as you type or edit your content."
+        content: "Paste your meta title and meta description into this SEO length checker. The tool provides real-time character count and pixel width measurements as you type or edit your content."
       },
       {
         title: "Review Length Analysis",
-        content: "Check your content against recommended SEO length limits with clear visual indicators. This SEO tool by HighSoftware99.com highlights titles and descriptions that need adjustment for optimal search engine display."
+        content: "Check your content against recommended SEO length limits with clear visual indicators. This SEO tool highlights titles and descriptions that need adjustment for optimal search engine display."
       },
       {
         title: "Optimize Your Meta Content",
@@ -2073,12 +2119,12 @@ export const TOOLS: Tool[] = [
     ],
     faq: [
       {
-        question: "How accurate is this SEO length checker by HighSoftware99.com?",
-        answer: "This SEO tool by HighSoftware99.com measures both character count and approximate pixel width for accurate length analysis. It follows current search engine display guidelines to give you reliable recommendations for your meta content."
+        question: "How accurate is this SEO length checker?",
+        answer: "This SEO length checker measures both character count and approximate pixel width for accurate length analysis. It follows current search engine display guidelines to give you reliable recommendations for your meta content."
       },
       {
         question: "What are the ideal SEO title and description lengths?",
-        answer: "According to best practices reflected in this SEO tool by HighSoftware99.com, titles should be 50 to 60 characters and descriptions should be 150 to 160 characters for optimal search result display without truncation."
+        answer: "According to SEO best practices, titles should be 50 to 60 characters and descriptions should be 150 to 160 characters for optimal search result display without truncation."
       }
     ]
   },
@@ -2092,7 +2138,7 @@ export const TOOLS: Tool[] = [
     icon: "🔗",
     featured: false,
     keywords: ["canonical tag generator", "rel canonical generator", "canonical url creator", "duplicate content seo", "hreflang tag generator", "seo canonical tool"],
-    metaTitle: "Canonical Tag Generator",
+    metaTitle: "Canonical Tag Generator - Fix Duplicate Content",
     metaDescription: "Use our free canonical tag generator to create rel=canonical tags and prevent duplicate content issues. Generate canonical URLs with hreflang support.",
     usageSteps: [
       {
@@ -2129,7 +2175,7 @@ export const TOOLS: Tool[] = [
     icon: "👁️",
     featured: false,
     keywords: ["alt text checker", "image alt text analyzer", "accessibility checker html", "wcag alt text tool", "seo image checker", "missing alt attribute finder"],
-    metaTitle: "Alt Text Checker",
+    metaTitle: "Alt Text Checker - Free SEO Image Audit Tool",
     metaDescription: "Use our free alt text checker to scan HTML for missing or empty image alt attributes. Improve accessibility and SEO with this WCAG compliance tool.",
     usageSteps: [
       {
@@ -2175,7 +2221,7 @@ export const TOOLS: Tool[] = [
       "aa aaa compliance checker",
       "foreground background contrast"
     ],
-    metaTitle: "Color Contrast Checker WCAG",
+    metaTitle: "Color Contrast Checker WCAG - Free Accessibility",
     metaDescription:
       "Check color contrast ratios like WebAIM for WCAG 2.1 AA and AAA compliance. Free online accessibility tool for foreground and background color combinations.",
     usageSteps: [
@@ -2226,7 +2272,7 @@ export const TOOLS: Tool[] = [
       "metric imperial converter",
       "measurement converter tool",
     ],
-    metaTitle: "Unit Converter",
+    metaTitle: "Unit Converter - Free Online Conversion Calculator",
     metaDescription: "Convert between length, weight, temperature, speed, and volume with this lego unit converter. Free online tool with multiple measurement categories.",
     usageSteps: [
       {
@@ -2269,7 +2315,7 @@ export const TOOLS: Tool[] = [
       "convert json to csv",
       "json to excel converter",
     ],
-    metaTitle: "JSON to CSV Converter",
+    metaTitle: "JSON to CSV Converter - Free Online Tool",
     metaDescription: "Convert JSON arrays to CSV with this json to csv python online tool. Supports nested objects, custom delimiters, and table preview for data analysis.",
     usageSteps: [
       {
@@ -2312,7 +2358,7 @@ export const TOOLS: Tool[] = [
       "yaml parser online",
       "yaml converter tool",
     ],
-    metaTitle: "YAML to JSON Converter",
+    metaTitle: "YAML to JSON Converter - Free Online Tool",
     metaDescription:
       "Convert YAML to JSON instantly with our free online converter. Parse configuration files, resolve anchors, and export clean JSON — all in your browser.",
     usageSteps: [
@@ -2361,7 +2407,7 @@ export const TOOLS: Tool[] = [
       "kelvin converter",
       "temp conversion online",
     ],
-    metaTitle: "Temperature Converter",
+    metaTitle: "Temperature Converter - Free Metric Imperial",
     metaDescription: "Convert temperatures between Celsius, Fahrenheit, and Kelvin with this free temperature converter. Instant results for cooking, science, and travel planning.",
     usageSteps: [
       {
@@ -2404,7 +2450,7 @@ export const TOOLS: Tool[] = [
       "kg to lbs converter",
       "pound kilogram converter",
     ],
-    metaTitle: "Lbs to Kg Converter",
+    metaTitle: "Lbs to Kg Converter - Free Weight Calculator",
     metaDescription: "Convert pounds to kilograms and kilograms to pounds with this free lbs to kg converter. Instant weight conversion for fitness, shipping, and everyday use.",
     usageSteps: [
       {
@@ -2450,7 +2496,7 @@ export const TOOLS: Tool[] = [
       "interest calculator loan",
       "personal loan calculator",
     ],
-    metaTitle: "Loan Calculator",
+    metaTitle: "Loan Calculator - Free Monthly Payment Estimator",
     metaDescription: "Use our online loan calculator to estimate monthly payments, total interest, and full amortization schedules. Free for mortgages, auto, and personal loans.",
     usageSteps: [
       {
@@ -2494,7 +2540,7 @@ export const TOOLS: Tool[] = [
       "shopping discount tool",
       "markdown calculator",
     ],
-    metaTitle: "Discount Calculator",
+    metaTitle: "Discount Calculator - Free Sale Price Finder",
     metaDescription: "Use our percent discount calculator to find sale prices and savings. Enter original price and discount percentage to see the final price and amount you save.",
     usageSteps: [
       {
@@ -2531,37 +2577,37 @@ export const TOOLS: Tool[] = [
     icon: "\uD83C\uDFE0",
     featured: false,
     keywords: [
-      "dave ramsey mortgage calculator",
+      "mortgage calculator online",
       "mortgage payment estimator",
       "home loan calculator",
       "monthly mortgage calculator",
       "home buying calculator",
       "mortgage affordability calculator",
     ],
-    metaTitle: "Mortgage Calculator",
-    metaDescription: "Use our Dave Ramsey mortgage calculator to estimate monthly payments with taxes, insurance, and PMI. Plan your home purchase with this free mortgage estimator.",
+    metaTitle: "Mortgage Calculator - Free Monthly Payment Tool",
+    metaDescription: "Use our free mortgage calculator to estimate monthly payments with taxes, insurance, and PMI. Plan your home purchase with this free mortgage estimator.",
     usageSteps: [
       {
         title: "Enter Home Price and Loan Details",
-        content: "Enter the home price, down payment, interest rate, and loan term. Built with a Dave Ramsey-style approach, this mortgage calculator online free tool estimates your principal and interest portion."
+        content: "Enter the home price, down payment, interest rate, and loan term. This mortgage calculator online free tool estimates your principal and interest portion."
       },
       {
         title: "Add Taxes, Insurance, and PMI",
-        content: "Add annual property tax, homeowners insurance, and PMI if your down payment is under 20%. This Dave Ramsey mortgage calculator online free gives a complete picture of your total monthly housing cost."
+        content: "Add annual property tax, homeowners insurance, and PMI if your down payment is under 20%. This mortgage calculator gives a complete picture of your total monthly housing cost."
       },
       {
         title: "Review Your Full Monthly Payment",
-        content: "See your total monthly mortgage payment broken down by component. This Dave Ramsey mortgage calculator online free also shows total interest over the loan's lifetime for informed home buying."
+        content: "See your total monthly mortgage payment broken down by component. This mortgage calculator also shows total interest over the loan's lifetime for informed home buying."
       }
     ],
     faq: [
       {
-        question: "How does a Dave Ramsey mortgage calculator help with home buying?",
-        answer: "A Dave Ramsey mortgage calculator helps you estimate total monthly payments including all costs. Dave Ramsey recommends a 15-year fixed-rate mortgage with at least 20% down, and this calculator follows that approach to show you affordable payment options."
+        question: "How does this mortgage calculator help with home buying?",
+        answer: "This mortgage calculator helps you estimate total monthly payments including all costs. It lets you compare different loan terms and down payment scenarios to find an affordable payment option that works for your budget."
       },
       {
-        question: "What factors does this Dave Ramsey mortgage calculator include?",
-        answer: "This Dave Ramsey mortgage calculator includes principal, interest, property taxes, homeowners insurance, and PMI. Dave Ramsey's philosophy emphasizes knowing your full housing cost before committing to a mortgage."
+        question: "What factors does this mortgage calculator include?",
+        answer: "This mortgage calculator includes principal, interest, property taxes, homeowners insurance, and PMI for a complete view of your full housing cost before committing to a mortgage."
       }
     ]
   },
@@ -2583,7 +2629,7 @@ export const TOOLS: Tool[] = [
       "minify css online",
       "css compressor",
     ],
-    metaTitle: "CSS Minifier",
+    metaTitle: "CSS Minifier - Minify CSS Code Online Free",
     metaDescription:
       "Free CSS minifier tool — compress CSS by removing whitespace and comments. See compression ratio and copy minified output to speed up your website.",
     usageSteps: [
@@ -2634,7 +2680,7 @@ export const TOOLS: Tool[] = [
       "html entity decode",
       "escape html",
     ],
-    metaTitle: "HTML Entity Converter",
+    metaTitle: "HTML Entity Converter - Free Encode Decode Tool",
     metaDescription:
       "Free HTML entity converter tool — convert special characters to HTML entities and decode them back. Encode text for safe HTML display in any browser.",
     usageSteps: [
@@ -2679,44 +2725,44 @@ export const TOOLS: Tool[] = [
     icon: "\ud83d\udcbb",
     featured: false,
     keywords: [
-      "text to binary converter",
+      "number base converter",
       "binary converter",
       "decimal to binary",
-      "number base converter",
       "binary to hex",
+      "binary translator",
     ],
-    metaTitle: "Binary Converter",
+    metaTitle: "Binary Converter - Decimal to Hex Translator",
     metaDescription:
-      "Free text to binary converter — convert numbers between binary, decimal, hex, and octal formats instantly. Perfect for devs, students, and electronics.",
+      "Free binary converter online — convert numbers between binary, decimal, hex, and octal formats instantly. Perfect for devs, students, and electronics.",
     usageSteps: [
       {
         title: "Enter a Number in Any Base",
         content:
-          "Type a number into the binary, decimal, hexadecimal, or octal input field. This text to binary converter tool automatically validates the input for each base and flags invalid digits so you always get accurate conversions.",
+          "Type a number into the binary, decimal, hexadecimal, or octal input field. This number base converter tool automatically validates the input for each base and flags invalid digits so you always get accurate conversions.",
       },
       {
         title: "View the Equivalent Values",
         content:
-          "See the number converted and displayed in all four number bases simultaneously. The text to binary converter updates all fields in real time as you type in any single base, giving you instant cross-base results for programming and computer science tasks.",
+          "See the number converted and displayed in all four number bases simultaneously. The converter updates all fields in real time as you type in any single base, giving you instant cross-base results for programming and computer science tasks.",
       },
       {
         title: "Copy Any Base Value",
         content:
-          "Click the copy icon next to any converted value to copy it to your clipboard. When you use this text to binary converter, you get accurate conversions for programming, digital electronics, and computer science applications without any manual calculation.",
+          "Click the copy icon next to any converted value to copy it to your clipboard. When you use this number base converter, you get accurate conversions for programming, digital electronics, and computer science applications without any manual calculation.",
       },
     ],
     faq: [
       {
         question:
-          "How do I use a text to binary converter for programming?",
+          "How do I use a number base converter for programming?",
         answer:
-          "A text to binary converter helps programmers quickly translate between number bases when working with memory addresses, color codes, bitmasks, and low-level data manipulation. Simply type your value in any base and the tool shows you the equivalent in binary, decimal, hex, and octal simultaneously.",
+          "A number base converter helps programmers quickly translate between number bases when working with memory addresses, color codes, bitmasks, and low-level data manipulation. Simply type your value in any base and the tool shows you the equivalent in binary, decimal, hex, and octal simultaneously.",
       },
       {
         question:
           "What are binary, decimal, hexadecimal, and octal used for in computing?",
         answer:
-          "Binary (base-2) is the fundamental language of computers representing on/off states. Decimal (base-10) is for everyday human use. Hexadecimal (base-16) is used in programming for memory addresses and color codes. Octal (base-8) appears in Unix file permissions and some legacy systems — all of which a text to binary converter handles instantly.",
+          "Binary (base-2) is the fundamental language of computers representing on/off states. Decimal (base-10) is for everyday human use. Hexadecimal (base-16) is used in programming for memory addresses and color codes. Octal (base-8) appears in Unix file permissions and some legacy systems — all of which a number base converter handles instantly.",
       },
     ],
   },
@@ -2738,7 +2784,7 @@ export const TOOLS: Tool[] = [
       "bypass ai detection free",
       "ai content humanizer free"
     ],
-    metaTitle: "AI Text Humanizer",
+    metaTitle: "AI Text Humanizer - Free Online Content Tool",
     metaDescription: "Use our free AI text humanizer to rewrite AI-generated content naturally. Make ChatGPT and Claude text sound authentically human — no signup required.",
     usageSteps: [
       {
@@ -2781,7 +2827,7 @@ export const TOOLS: Tool[] = [
       "free writing checker",
       "english grammar checker free"
     ],
-    metaTitle: "Grammar Checker",
+    metaTitle: "Grammar Checker - Free Online Writing Assistant",
     metaDescription: "Use our free grammar checker online to find grammar mistakes, punctuation errors, and spelling issues. Clean, error-free writing in seconds.",
     usageSteps: [
       {
@@ -2824,7 +2870,7 @@ export const TOOLS: Tool[] = [
       "is it a palindrome",
       "word palindrome tester"
     ],
-    metaTitle: "Palindrome Checker",
+    metaTitle: "Palindrome Checker - Free Online Word Checker",
     metaDescription: "Check if any word, phrase, or number is a palindrome with our free palindrome checker. See character-by-character comparison and instant pass/fail results.",
     usageSteps: [
       {
@@ -2867,7 +2913,7 @@ export const TOOLS: Tool[] = [
       "text reverser tool",
       "backwards text generator"
     ],
-    metaTitle: "Reverse Text — Backwards Text",
+    metaTitle: "Reverse Text - Free Backwards Text Generator",
     metaDescription: "Learn how to reverse text in word and online with our free text reverser. Reverse by characters, words, or both — instant results in your browser.",
     usageSteps: [
       {
@@ -3040,7 +3086,7 @@ export const TOOLS: Tool[] = [
       "jwt debugger",
       "json web token decoder"
     ],
-    metaTitle: "JWT Decoder — Free Online",
+    metaTitle: "JWT Decoder - Free Online JSON Web Token Tool",
     metaDescription: "Decode JWT tokens online with our free JWT decoder. Inspect JWT header and payload as formatted JSON. Debug authentication tokens instantly in your browser.",
     usageSteps: [
       {
@@ -3299,7 +3345,7 @@ export const TOOLS: Tool[] = [
       "rich snippet generator"
     ],
     metaTitle: "Schema Markup Generator — JSON-LD Structured Data",
-    metaDescription: "Generate JSON-LD schema markup with our free schema markup generator. Create structured data for Article, Product, FAQ, LocalBusiness, and more — copy and paste ready.",
+    metaDescription: "Generate JSON-LD schema markup with our free tool. Create structured data for Article, Product, FAQ, LocalBusiness, and more. Copy and paste ready.",
     usageSteps: [
       {
         title: "Select schema type",
@@ -3342,7 +3388,7 @@ export const TOOLS: Tool[] = [
       "hex color palette"
     ],
     metaTitle: "Color Palette Generator — Free Color Scheme Maker",
-    metaDescription: "Generate beautiful color palettes with our free color palette generator. Create monochromatic, complementary, analogous, and triadic color schemes from any base color.",
+    metaDescription: "Generate beautiful color palettes with our free generator. Create monochromatic, complementary, analogous, and triadic color schemes from any base color.",
     usageSteps: [
       {
         title: "Choose a base color",
@@ -3428,7 +3474,7 @@ export const TOOLS: Tool[] = [
       "corner radius tool"
     ],
     metaTitle: "Border Radius Generator — CSS Rounded Corners",
-    metaDescription: "Generate CSS border-radius values with our free border radius generator. Preview rounded corners visually and copy the CSS code. Customize each corner independently.",
+    metaDescription: "Generate CSS border-radius values with our free tool. Preview rounded corners visually and copy the CSS code. Customize each corner independently.",
     usageSteps: [
       {
         title: "Adjust border radius values",
@@ -3471,7 +3517,7 @@ export const TOOLS: Tool[] = [
       "unix time converter online"
     ],
     metaTitle: "Epoch Timestamp Converter — Unix Time to Date",
-    metaDescription: "Convert Unix epoch timestamps to human-readable dates with our free epoch converter. Convert timestamps to UTC, ISO 8601, and local time — and convert dates back to timestamps.",
+    metaDescription: "Convert Unix timestamps to readable dates with our free epoch converter. Convert timestamps to UTC, ISO 8601, and local time, plus dates back to timestamps.",
     usageSteps: [
       {
         title: "Enter a timestamp or date",
