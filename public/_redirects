@@ -1,3 +1,14 @@
+# Locale prefix redirects (old i18n URLs removed in English-only conversion June 2026)
+# Redirect all old locale-prefixed paths (/en/..., /es/..., etc.) to new canonical URLs
+/en/*  /:splat  301
+/es/*  /:splat  301
+/pt/*  /:splat  301
+/fr/*  /:splat  301
+/de/*  /:splat  301
+/hi/*  /:splat  301
+/ja/*  /:splat  301
+/ar/*  /:splat  301
+
 # Passthrough for already-correct trailing-slash URLs (first-match wins)
 /tools/*/  /tools/:splat/ 200
 /categories/*/  /categories/:splat/ 200
