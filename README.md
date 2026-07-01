@@ -1,46 +1,41 @@
-# Astro Starter Kit: Basics
+# Free Online Tools Nest
 
-```sh
-npm create astro@latest -- --template basics
+**77 free, client-side browser tools — no uploads, no signups, no ads.**
+
+All processing happens in your browser. Your data never leaves your device.
+
+**Site**: https://freeonlinetoolsnest.com
+
+## Categories
+
+| Category | Count | What |
+|----------|-------|------|
+| ✏️ Text Tools | 15 | Word counter, text summarizer, grammar checker, plagiarism checker, text diff, case converter, and more |
+| ⚡ Developer Tools | 16 | JSON/HTML/SQL formatter, regex tester, JWT decoder, Base64 encoder, password generator, and more |
+| 🔢 Calculators | 10 | Percentage, loan, mortgage, BMI, age, tip, date difference, random number generator |
+| 🔄 Converters | 16 | Unit converter, QR code generator, image compressor/cropper/resizer, CSV/JSON/YAML, epoch converter |
+| 📄 PDF Tools | 5 | PDF merger, splitter, compressor, PDF to text, PDF to images |
+| 🔍 SEO Tools | 11 | Meta tag generator, sitemap generator, SERP preview, keyword density checker, schema markup generator |
+| 🎨 Design Tools | 4 | Color contrast checker, color palette generator, gradient generator, border radius generator |
+
+## Tech Stack
+
+- **Framework**: [Astro](https://astro.build) (static site, zero JS on non-interactive pages)
+- **UI**: React 18 + TypeScript (`client:load` islands for interactive tools)
+- **Styling**: Tailwind CSS v4
+- **PDF**: pdf-lib + pdfjs-dist (fully client-side)
+- **Hosting**: Cloudflare Pages
+- **Analytics**: Google Analytics (gtag.js)
+
+## Quick Start
+
+```bash
+npm install
+npm run dev     # local dev at localhost:4321
+npm run build   # static build → dist/
+npm run test    # 7 unit tests (Vitest)
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## License
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+MIT

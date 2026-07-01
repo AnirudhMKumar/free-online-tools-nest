@@ -1,6 +1,6 @@
 ---
 title: "The 2026 Guide to Free Online Tools — No Uploads, No Signups"
-description: "Why browser-based tools are taking over in 2026 and how Free Online Tools Nest gives you 60+ utilities that run entirely in your browser."
+description: "Why browser-based tools are taking over in 2026 and how Free Online Tools Nest gives you 77 free tools that run entirely in your browser."
 pubDate: 2026-06-18
 tags: ["tools", "productivity", "web-apps"]
 draft: false
@@ -28,7 +28,7 @@ This has three concrete advantages:
 
 **Reliability.** The tools work even without an internet connection after the page loads. You can format JSON, count words, or compress images on a plane, in a coffee shop, or anywhere with intermittent connectivity.
 
-## What You Can Do With 60+ Free Tools
+## What You Can Do With 77 Free Tools
 
 With categories spanning text tools, developer utilities, PDF processing, SEO analysis, calculators, converters, and design tools, there's a tool for almost every common task.
 
