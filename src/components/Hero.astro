@@ -17,8 +17,10 @@ const quickTasks = [
 ];
 ---
 
-<section class="relative overflow-hidden" id="hero">
-  <div class="hero-gradient absolute inset-0 opacity-22 dark:opacity-16 pointer-events-none" aria-hidden="true"></div>
+<section class="hero-shell relative overflow-hidden" id="hero">
+  <div class="hero-atmosphere absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="hero-vignette absolute inset-x-0 bottom-0 h-24 pointer-events-none" aria-hidden="true"></div>
 
   <div class="container-page relative z-10 py-10 md:py-14 lg:py-16 text-center">
     <div class="w-fit mx-auto flex items-center gap-2 mb-5 px-4 py-1.5 bg-canvas-soft rounded-full shadow-card text-xs font-mono text-body">
@@ -87,17 +89,56 @@ const quickTasks = [
 </section>
 
 <style>
-  .hero-gradient {
-    background: radial-gradient(ellipse 120% 80% at 50% 0%,
-      #007cf0 0%,
-      #00dfd8 25%,
-      #7928ca 50%,
-      #ff0080 75%,
-      #f9cb28 100%
-    );
-    background-size: 200% 200%;
-    animation: mesh-shift 12s ease-in-out infinite;
-    filter: blur(56px);
+  .hero-shell {
+    background:
+      linear-gradient(180deg, var(--color-canvas) 0%, color-mix(in srgb, var(--color-canvas-soft) 78%, var(--color-canvas)) 100%);
+  }
+
+  .hero-atmosphere {
+    opacity: 0.92;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 124, 240, 0.16), transparent 34%),
+      radial-gradient(circle at 16% 24%, rgba(0, 223, 216, 0.10), transparent 24%),
+      radial-gradient(circle at 84% 26%, rgba(255, 0, 128, 0.08), transparent 25%),
+      radial-gradient(circle at 50% 68%, rgba(249, 203, 40, 0.07), transparent 32%);
+  }
+
+  .hero-grid {
+    opacity: 0.42;
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-ink) 7%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-ink) 7%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 58%, transparent 88%);
+  }
+
+  .hero-vignette {
+    background: linear-gradient(180deg, transparent, var(--color-canvas));
+  }
+
+  :global(.dark) .hero-shell {
+    background:
+      linear-gradient(180deg, #080808 0%, var(--color-canvas) 52%, var(--color-canvas-soft) 100%);
+  }
+
+  :global(.dark) .hero-atmosphere {
+    opacity: 0.76;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(0, 124, 240, 0.24), transparent 36%),
+      radial-gradient(circle at 18% 30%, rgba(0, 223, 216, 0.12), transparent 28%),
+      radial-gradient(circle at 82% 28%, rgba(121, 40, 202, 0.16), transparent 30%),
+      radial-gradient(circle at 50% 72%, rgba(245, 166, 35, 0.08), transparent 34%);
+  }
+
+  :global(.dark) .hero-grid {
+    opacity: 0.34;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  }
+
+  :global(.dark) .hero-vignette {
+    background: linear-gradient(180deg, transparent, var(--color-canvas));
   }
 
   .quick-task {
@@ -122,10 +163,6 @@ const quickTasks = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-gradient {
-      animation: none;
-    }
-
     .quick-task:hover {
       transform: none;
     }
