@@ -29,5 +29,8 @@ pnpm-debug.log*
 # OpenCode session state
 .omo/
 
+# Agent skill files
+.agents/
+
 # Dev server logs
 dev-server.log
