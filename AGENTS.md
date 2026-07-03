@@ -1,7 +1,9 @@
 # Free Online Tools Nest — Project Knowledge Base
 
 > This file is a comprehensive knowledge base designed to give any AI model full context about this project without needing to explore the codebase. It saves tokens by consolidating architecture, data models, patterns, completed work, and known issues in one place.
-> **Last audited**: 2026-06-24
+> **Last audited**: 2026-07-03
+> **Commit**: `2030524` (main)
+> **GitHub**: https://github.com/AnirudhMKumar/free-online-tools-nest
 
 ---
 
@@ -10,9 +12,10 @@
 **What it is**: A collection of 77 free, browser-based utility tools (text, code, math, SEO, PDF, design, converters, calculators). All processing happens client-side — no server uploads, no signups, no ads. Includes a companion Chrome extension for quick tool access.
 
 **Domain**: `https://freeonlinetoolsnest.com`  
-**Deployed on**: Cloudflare Pages (via `wrangler pages deploy`)  
+**GitHub**: `https://github.com/AnirudhMKumar/free-online-tools-nest`  
+**Deployed on**: Cloudflare Pages (auto-deploy from `main` branch)  
 **Build**: 99 static pages, ~9s build time, 0 errors  
-**GitHub**: (not public yet — codebase local only)
+**Codebase**: 203 source files, 25,531 lines — Astro + React 19 + Tailwind CSS v4
 
 ---
 
@@ -119,7 +122,7 @@ freeonlinetoolsnest.com/
 ├── tsconfig.json                 # extends astro/tsconfigs/strict
 ├── package.json
 ├── AGENTS.md                     # ← This file
-├── .gitignore                    # dist/, .astro/, node_modules/, .playwright-mcp/, .omo/
+├── .gitignore                    # dist/, .astro/, node_modules/, .playwright-mcp/, .omo/, .agents/
 └── .omo/                         # OpenCode session state (gitignored)
     └── plans/
         ├── backlink-directory-submissions.md   # Directory submission strategy (31 directories)
@@ -146,6 +149,7 @@ interface Tool {
   metaDescription?: string; // Custom <description> (falls back to description)
   usageSteps?: UsageStep[]; // 3-step "How to use" guide
   faq?: FAQPair[];        // 2 FAQ items per tool
+  additionalContent?: ContentSection[]; // Extra long-form SEO sections (4 tools use this)
 }
 
 interface UsageStep {
@@ -156,6 +160,11 @@ interface UsageStep {
 interface FAQPair {
   question: string;
   answer: string;         // 2-3 sentences
+}
+
+interface ContentSection {
+  heading: string;
+  content: string;        // Long-form paragraph
 }
 ```
 
@@ -181,8 +190,8 @@ export const SITE = {
   name: "Free Online Tools Nest",
   domain: "freeonlinetoolsnest.com",
   url: "https://freeonlinetoolsnest.com",
-  description: "77 free online tools for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
-  tagline: "Free tools for text, code, and math.",
+  description: "77 free web tools and frontier utilities for text, code, math, and more. No uploads, no signups — everything runs in your browser, 100% private.",
+  tagline: "Free web tools and frontier utilities for text, code, and math.",
 };
 ```
 
@@ -238,15 +247,15 @@ color-contrast-checker, color-palette-generator, gradient-generator, css-border-
 
 ### Tool Page Pattern
 
-Every tool page follows this exact pattern (`src/pages/tools/[slug].astro`):
+Every tool page follows this exact pattern — each is its own **individual static `.astro` file** (no dynamic `[slug].astro` route). All 77 files in `src/pages/tools/` share identical 19-line boilerplate, differing only in the slug string and imported component name:
 
 ```astro
 ---
 import ToolLayout from "../../layouts/ToolLayout.astro";
-import ToolComponent from "../../components/tools/ToolComponent";
+import WordCounter from "../../components/tools/WordCounter";
 import { getToolBySlug, getCategoryBySlug } from "../../data/tools";
 
-const tool = getToolBySlug("slug")!;
+const tool = getToolBySlug("word-counter")!;
 const category = getCategoryBySlug(tool.categorySlug)!;
 ---
 
@@ -259,22 +268,33 @@ const category = getCategoryBySlug(tool.categorySlug)!;
   longDescription={tool.longDescription}
   keywords={tool.keywords}
 >
-  <ToolComponent client:load />
+  <WordCounter client:load />
 </ToolLayout>
 ```
 
 ### ToolLayout Renders (in order)
 
-1. **Breadcrumbs**: Tools > Category > Tool Name
-2. **JSON-LD**: WebApplication + BreadcrumbList structured data
+1. **Breadcrumbs**: Tools > Category > Tool Name (auto-generates BreadcrumbList JSON-LD)
+2. **JSON-LD**: WebApplication structured data (passed to Layout → SEOHead)
 3. **OG Image**: `/og/{categorySlug}.png` (per-category)
 4. **H1 + longDescription**: Page header
 5. **Tool component** (slot): The interactive React tool
 6. **FavoriteButton** + **ShareBar**: Engagement widgets
 7. **Keyword tags**: Displayed as styled pills
 8. **How to Use section**: 3 numbered steps (from `tool.usageSteps`)
-9. **Related tools sidebar**: 4 tools from same category
-10. **FAQSection**: Accordion FAQ with FAQPage JSON-LD
+9. **Additional content**: Extra long-form SEO sections (from `tool.additionalContent`, 4 tools use this)
+10. **Related tools sidebar**: 4 tools from same category (sticky on desktop)
+11. **FAQSection**: Accordion FAQ with FAQPage JSON-LD (injected independently, not via SEOHead)
+
+### JSON-LD by Page Type
+
+| Page Type | Schema Types | Injection Points |
+|-----------|-------------|------------------|
+| **Tool page** | WebApplication + FAQPage + BreadcrumbList | ToolLayout→SEOHead + FAQSection + Breadcrumbs |
+| **Homepage** | Organization + WebSite/SearchAction + FAQPage | index.astro→SEOHead + FAQSection |
+| **Blog post** | BlogPosting | blog/[...slug].astro→SEOHead |
+| **Tools directory** | CollectionPage | tools/index.astro→SEOHead |
+| **404 / 500** | None | — |
 
 ### Homepage
 
@@ -319,30 +339,24 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 
 ## 8. i18n System
 
-### Languages
-English (default), Spanish, Portuguese, French, German, Hindi, Japanese, Arabic
+### Current State
+English-only. Phase 9 removed all 7 non-English locales (Spanish, Portuguese, French, German, Hindi, Japanese, Arabic).
 
-### How It Works
-- Routes prefixed with locale: `/en/tools/`, `/es/tools/`, etc.
-- English is default: `/about/` = English, `/es/about/` = Spanish
-- Translation dictionary in `src/i18n/ui.ts` — flat key-value pairs per locale
-- `useTranslations(lang)` returns a `t(key)` function that looks up keys
-- Falls back to the key name if missing (safe to add translations gradually)
+### What Remains
+- `src/i18n/ui.ts` — English-only translation dictionary (~255 lines, was 1717)
+- `src/i18n/utils.ts` — `getLangFromUrl()` and `useTranslations()` still exist, but always resolve to `"en"`
+- `useTranslations("en")` used on homepage, about, contact, faq, privacy, terms pages
+- 404/500 pages use hardcoded English strings (no i18n dependency)
+- `og:locale` hardcoded to `en_US`
 
-### What's Translated
-- Navigation, footer, hero, breadcrumbs, category names, about page content
-- Contact page content, FAQ page content, privacy/terms pages
-- 404/500 error pages (always English via `useTranslations("en")`)
-- Newsletter subscription section
-- **Tool content is NOT translated** — tools, usage steps, FAQ, meta are English only
+### What Was Removed
+- `src/pages/[locale]/` folder (6 files, 48 generated pages removed from build)
+- hreflang tags from SEOHead.astro
+- Language switcher from Footer.astro
+- i18n config block from `astro.config.mjs`
+- `localePaths`/`xDefaultPath` from Layout.astro props
 
-### i18n URL Pattern
-- `/en/about/` → English about page
-- `/es/about/` → Spanish about page
-- `/about/` → also English (default locale, redirects to `/en/about/`)
-- Tool pages are single-locale: `/tools/image-compressor/` (always English)
-
-> **Phase 9 update**: All non-English locales removed. The site is now English-only. `src/pages/[locale]/` deleted (6 files). `src/i18n/ui.ts` stripped to English (~255 lines). Root pages (index, about, contact, faq, privacy-policy, terms-and-conditions) converted from redirect stubs to real content. hreflang tags removed. Language switcher removed from footer. `og:locale` hardcoded to `en_US`. The i18n system still exists (`useTranslations` with `getLangFromUrl`) but always resolves to `"en"`.
+> **Tool content is NOT translated** — all 77 tools, usage steps, FAQ, meta are English only.
 
 ---
 
@@ -410,6 +424,7 @@ Each is a self-contained React client component with its own state and logic. Th
 - **Command**: `npm run deploy` (builds + deploys)
 - **Custom domain**: `freeonlinetoolsnest.com`
 - **Preview domain**: `*.freeonlinetoolsnest.pages.dev` (blocked from indexing via `_headers`)
+- **Auto-deploy**: Connected to GitHub repo — every `main` push auto-deploys via Cloudflare Pages
 
 ### Build Stats
 - **99 pages** generated (77 tools + 1 categories index + 7 categories + 4 blog + 404 + 500 + tools index + favorites + about + contact + faq + privacy-policy + terms-and-conditions + homepage)
@@ -499,6 +514,13 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - `tools.ts` grew from 2537 → 2892 lines
 - **Verification**: 0 LSP errors, 62 tools present, build 131 pages 0 errors, tests 7/7 passing
 
+### Phase 8 — Favicon Investigation & Google Search Fix
+- Investigated why favicon doesn't display in Google search results despite being properly wired in `Layout.astro`
+- Launched 3 parallel background agents to cross-reference Google Search Central docs, current head tags, and favicon image files
+- **Key finding**: Google reads favicon from homepage `<link rel="icon">` tags, NOT from sitemap. Requirement: ≥48×48px PNG/GIF/ICO (SVG not supported for search results). Site must be indexed first; Google caches favicons (changes take days-weeks)
+- Updated `Layout.astro` favicon link: `sizes="96x96"` → `sizes="48x48 96x96"` for explicit Google compatibility
+- Confirmed: `favicon-96x96.png` (96×96, 6153 bytes) meets Google's minimum; `favicon.ico` (15086 bytes) has 48×48 frame; `_headers` and `robots.txt` don't block favicon files
+
 ### Phase 9 — Remove All Non-English Locales (English-Only Conversion)
 - Stripped `src/i18n/ui.ts` from ~1800 lines (8 languages) to ~255 lines (English only)
 - Simplified `src/i18n/utils.ts` — removed `getLocalePaths`, `getLocalePath`
@@ -513,13 +535,6 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - **Deploy**: Committed to `main`, deployed to Cloudflare Pages
 - **Live verification**: Homepage, all root pages, tool page (word counter), sitemap, locale 404s — all confirmed working
 
-### Phase 8 — Favicon Investigation & Google Search Fix
-- Investigated why favicon doesn't display in Google search results despite being properly wired in `Layout.astro`
-- Launched 3 parallel background agents to cross-reference Google Search Central docs, current head tags, and favicon image files
-- **Key finding**: Google reads favicon from homepage `<link rel="icon">` tags, NOT from sitemap. Requirement: ≥48×48px PNG/GIF/ICO (SVG not supported for search results). Site must be indexed first; Google caches favicons (changes take days-weeks)
-- Updated `Layout.astro` favicon link: `sizes="96x96"` → `sizes="48x48 96x96"` for explicit Google compatibility
-- Confirmed: `favicon-96x96.png` (96×96, 6153 bytes) meets Google's minimum; `favicon.ico` (15086 bytes) has 48×48 frame; `_headers` and `robots.txt` don't block favicon files
-
 ### Phase 10 — Tool Expansion (62 → 77 Tools)
 - Added **15 new tools** across all 7 categories: plagiarism-checker, readability-score, word-cloud-generator (text); jwt-decoder, sql-formatter, html-to-markdown, json-to-xml (developer); random-number-generator (calculators); epoch-converter (converters); serp-preview-generator, heading-structure-checker, schema-markup-generator (seo); color-palette-generator, gradient-generator, css-border-radius-generator (design)
 - Conducted 11-competitor analysis to select high-impact, client-side-feasible tools
@@ -528,6 +543,17 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - Updated AGENTS.md counts: 84→99 pages, 62→77 tools across all categories
 - **Build**: 99 pages, 0 errors, ~9s. **Tests**: 7/7 passing.
 - **Deploy**: Committed to `main`, deployed to Cloudflare Pages
+
+### Phase 11 — Pre-HN Launch Preparation
+- **GA tag audit**: Confirmed all 5 key URLs have correct `G-KW0NXYM3MN` tag with `is:inline` and proper comment; GA4 `collect` returns 204
+- **Umami analytics removed**: Script tag in `Layout.astro` was throwing `POST https://gateway.umami.is/api/send → 404` console errors; removed entirely (redundant with GA4)
+- **Blog post fix**: Updated "60+ utilities" → "77 free tools" in blog post description and heading
+- **GitHub repo created**: `https://github.com/AnirudhMKumar/free-online-tools-nest` — README, MIT license, `.gitignore` (`.omo/`, `.agents/`)
+- **GitHub link added to footer**: `src/components/Footer.astro` — direct link with icon
+- **Cloudflare Pages auto-deploy**: Connected GitHub repo to Cloudflare Pages (build: `npm run build`, output: `dist/`, branch: `main`)
+- **Pre-HN site audit**: Checked homepage, JSON formatter, image compressor, PDF merger, blog, 404, dark mode, mobile/desktop rendering, sitemap, footer links — all clean
+- **HN comment draft updated**: `.omo/plans/show-hn-launch-draft.md` — updated tool count (77), added GitHub repo URL
+- **Codebase audit**: Complete AGENTS.md rewrite with full architecture discovery through background explore agents
 
 ---
 
@@ -539,8 +565,8 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - [ ] Chrome extension only lists 38 of 77 tools (not all)
 
 ### Technical Gaps
-- [ ] **No CI/CD pipeline** (manual deploy via `npm run deploy`)
 - [ ] **ESLint partial coverage** — `@typescript-eslint/parser` and `eslint-plugin-react` not configured; TS/JSX files produce 161 parsing errors
+- [ ] **`src/types/index.ts` is dead code** — defines a subset of Tool interface (missing `usageSteps`, `faq`, `additionalContent`), never imported anywhere. All consumers import from `src/data/tools.ts` directly
 - [ ] Password tools categorized under "design-tools" (should be their own or under developer-tools)
 - [ ] Image compressor uses Canvas API — can't match server-side compression ratios (noted in blog post)
 - [ ] 37 pre-existing TypeScript errors in complex tool components (all inherited)
@@ -575,7 +601,7 @@ For maximum context with minimum tokens, read in this order:
 5. **`astro.config.mjs`** — Build config, sitemap, plugins
 6. **`src/i18n/ui.ts`** — English-only translation dictionary (~255 lines, was 1717)
 7. **`src/styles.css`** — Design tokens and dark mode
-8. **`src/types/index.ts`** — TypeScript interfaces (but tools.ts has its own superset)
+8. **`src/types/index.ts`** — TypeScript interfaces (but tools.ts has its own superset; this file is dead code — never imported)
 9. **`package.json`** — Dependencies and scripts
 10. **`public/_headers`** — Security and indexing headers
 11. **`DESIGN.md`** — Vercel-inspired design system reference (if working on UI/UX)
