@@ -76,7 +76,7 @@ function render() {
   list.innerHTML = filtered
     .map(
       (t) =>
-        `<a href="https://freeonlinetoolsnest.com/tools/${t.slug}/" target="_blank" class="tool-item">
+        `<a href="https://freeonlinetoolsnest.com/tools/${t.slug}/" target="_blank" rel="noopener noreferrer" class="tool-item">
           <span class="tool-icon">${t.icon}</span>
           <div>
             <div class="tool-name">${t.name}</div>

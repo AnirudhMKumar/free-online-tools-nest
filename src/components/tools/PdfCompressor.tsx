@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
-import { formatBytes } from "../../helpers/utils";
+import { fileSizeLimitMessage, formatBytes, MAX_PDF_FILE_SIZE_BYTES } from "../../helpers/utils";
 
 type CompressionLevel = "low" | "medium" | "high";
 
@@ -24,6 +24,11 @@ export default function PdfCompressor() {
     if (!f) return;
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) {
       setError("Please upload a valid PDF file.");
+      return;
+    }
+    const sizeError = fileSizeLimitMessage(f, MAX_PDF_FILE_SIZE_BYTES, "PDF");
+    if (sizeError) {
+      setError(sizeError);
       return;
     }
     setError("");

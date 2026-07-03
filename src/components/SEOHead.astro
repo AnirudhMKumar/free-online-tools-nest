@@ -66,6 +66,7 @@ const safeDescription = description.length <= 160 ? description : description.sl
 <!-- JSON-LD Structured Data -->
 {jsonLd && (
   <script
+    is:inline
     type="application/ld+json"
     set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd)}
   />

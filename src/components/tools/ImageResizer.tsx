@@ -167,7 +167,6 @@ export default function ImageResizer() {
       if (imageSrc) URL.revokeObjectURL(imageSrc);
       if (resizedSrcRef.current) URL.revokeObjectURL(resizedSrcRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

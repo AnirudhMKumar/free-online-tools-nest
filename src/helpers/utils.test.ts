@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formatBytes, escapeHtml } from "./utils";
+import { createSearchResultStatusText, escapeHtml, formatBytes, sanitizeHtml } from "./utils";
 
 describe("formatBytes", () => {
   it("should format zero bytes correctly", () => {
@@ -19,6 +19,10 @@ describe("formatBytes", () => {
     expect(formatBytes(1024 * 1024)).toBe("1 MB");
     expect(formatBytes(1024 * 1024 * 2.5)).toBe("2.5 MB");
   });
+
+  it("should format gigabytes correctly", () => {
+    expect(formatBytes(1024 * 1024 * 1024)).toBe("1 GB");
+  });
 });
 
 describe("escapeHtml", () => {
@@ -33,5 +37,28 @@ describe("escapeHtml", () => {
 
   it("should pass normal strings unchanged", () => {
     expect(escapeHtml("hello world 123")).toBe("hello world 123");
+  });
+
+  it("should escape quotes for attribute contexts", () => {
+    expect(escapeHtml(`"quoted" 'value'`)).toBe("&quot;quoted&quot; &#39;value&#39;");
+  });
+});
+
+describe("sanitizeHtml", () => {
+  it("should remove active tags and event handlers", () => {
+    const dirty = `<h1 onclick="alert(1)">Hi</h1><script>alert(1)</script><img src="x" onerror="alert(1)">`;
+    expect(sanitizeHtml(dirty)).toBe(`<h1>Hi</h1><img src="x">`);
+  });
+
+  it("should remove unsafe URL protocols", () => {
+    expect(sanitizeHtml(`<a href="javascript:alert(1)">bad</a>`)).toBe(`<a>bad</a>`);
+    expect(sanitizeHtml(`<img src='data:text/html,<svg onload=alert(1)>'>`)).toBe(`<img>`);
+  });
+});
+
+describe("createSearchResultStatusText", () => {
+  it("should keep user text as text, not HTML markup", () => {
+    const query = `<img src=x onerror=alert(1)>`;
+    expect(createSearchResultStatusText(query)).toBe(`Search results for "${query}"`);
   });
 });

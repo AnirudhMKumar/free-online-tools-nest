@@ -1,4 +1,5 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
+import { fileSizeLimitMessage, MAX_IMAGE_FILE_SIZE_BYTES } from "../../helpers/utils";
 
 export default function ImageToBase64() {
   const [imageSrc, setImageSrc] = useState<string>("");
@@ -7,12 +8,15 @@ export default function ImageToBase64() {
   const [copied, setCopied] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
   const processFile = useCallback(
     (file: File) => {
       if (!file.type.startsWith("image/")) {
         setError("Please upload a valid image file.");
+        return;
+      }
+      const sizeError = fileSizeLimitMessage(file, MAX_IMAGE_FILE_SIZE_BYTES, "Images");
+      if (sizeError) {
+        setError(sizeError);
         return;
       }
       setError("");
@@ -52,15 +56,10 @@ export default function ImageToBase64() {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
+      setError("");
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback
-      if (textareaRef.current) {
-        textareaRef.current.select();
-        document.execCommand("copy");
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }
+      setError("Copy failed. Select the output text and copy it manually.");
     }
   };
 
@@ -160,7 +159,6 @@ export default function ImageToBase64() {
               </span>
             </div>
             <textarea
-              ref={textareaRef}
               readOnly
               value={getDisplayBase64()}
               rows={8}

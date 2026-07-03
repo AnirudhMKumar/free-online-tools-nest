@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { marked } from "marked";
 import { useCopyToClipboard } from "../../hooks/useCopyToClipboard";
+import { sanitizeHtml } from "../../helpers/utils";
 import ErrorBanner from "../ErrorBanner";
 
 export default function MarkdownToHtml() {
@@ -20,17 +21,17 @@ export default function MarkdownToHtml() {
       return;
     }
     try {
-      // Configure marked to break lines and be safe
+      // Configure marked to break lines; sanitize the generated HTML before previewing it.
       const parsed = marked.parse(input, {
         gfm: true,
         breaks: true,
       });
       // Resolve potential Promise (marked.parse can return string or Promise depending on options/async plugins)
       if (typeof parsed === "string") {
-        setOutputHtml(parsed);
+        setOutputHtml(sanitizeHtml(parsed));
         setError("");
       } else {
-        parsed.then((res) => { setOutputHtml(res); setError(""); }).catch(() => {
+        parsed.then((res) => { setOutputHtml(sanitizeHtml(res)); setError(""); }).catch(() => {
           setOutputHtml("");
           setError("Error parsing markdown content.");
         });

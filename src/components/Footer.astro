@@ -25,12 +25,18 @@ const t = useTranslations(lang);
       </div>
       <div class="w-full md:w-auto">
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
+          <label for="newsletter-email" class="sr-only">
+            {t('newsletter.placeholder')}
+          </label>
           <input
             type="email"
             id="newsletter-email"
+            name="email"
+            autocomplete="email"
             placeholder={t('newsletter.placeholder')}
+            aria-describedby="newsletter-success"
             required
-            class="px-4 py-2.5 text-sm rounded-lg border border-hairline focus:border-link outline-none bg-canvas text-ink transition-colors sm:w-80"
+            class="px-4 py-2.5 text-sm rounded-lg border border-hairline focus:border-link bg-canvas text-ink transition-colors sm:w-80"
           />
           <button
             type="submit"
@@ -39,7 +45,7 @@ const t = useTranslations(lang);
             {t('newsletter.button')}
           </button>
         </form>
-        <div id="newsletter-success" class="hidden text-sm text-success mt-2 font-medium">
+        <div id="newsletter-success" class="hidden text-sm text-success mt-2 font-medium" role="status" aria-live="polite">
           {t('newsletter.success')}
         </div>
       </div>
@@ -113,8 +119,8 @@ const t = useTranslations(lang);
 
         <!-- LaunchBuff badge - switches image source based on dark/light mode -->
         <a href="https://launchbuff.com" target="_blank" rel="noopener noreferrer" title="Featured on LaunchBuff">
-          <img src="https://launchbuff.com/badge-featured-light.svg" alt="Featured on LaunchBuff" width="256" height="80" class="badge-light" />
-          <img src="https://launchbuff.com/badge-featured-dark.svg" alt="Featured on LaunchBuff" width="256" height="80" class="badge-dark" />
+          <img src="https://launchbuff.com/badge-featured-light.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-light" />
+          <img src="https://launchbuff.com/badge-featured-dark.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-dark" />
         </a>
 
         <span class="text-xs text-mute">
@@ -148,10 +154,6 @@ const t = useTranslations(lang);
 </style>
 
 <script>
-  /**
-   * Language switcher — detects current locale from URL and navigates
-   * on selection change. All locales have a URL prefix (/en/, /es/, etc.).
-   */
   document.addEventListener("DOMContentLoaded", () => {
     // Newsletter form submission mock
     const form = document.getElementById("newsletter-form") as HTMLFormElement | null;

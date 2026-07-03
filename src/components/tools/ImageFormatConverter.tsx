@@ -132,7 +132,6 @@ export default function ImageFormatConverter() {
       if (imageSrc) URL.revokeObjectURL(imageSrc);
       if (convertedSrcRef.current) URL.revokeObjectURL(convertedSrcRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

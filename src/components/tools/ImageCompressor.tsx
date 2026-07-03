@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
-import { formatBytes } from "../../helpers/utils";
+import { fileSizeLimitMessage, formatBytes, MAX_IMAGE_FILE_SIZE_BYTES } from "../../helpers/utils";
 
 interface ImageStats {
   name: string;
@@ -119,6 +119,12 @@ export default function ImageCompressor() {
   const processFile = (file: File) => {
     if (!file.type.startsWith("image/")) {
       setError("Please upload a valid image file.");
+      return;
+    }
+
+    const sizeError = fileSizeLimitMessage(file, MAX_IMAGE_FILE_SIZE_BYTES, "Image");
+    if (sizeError) {
+      setError(sizeError);
       return;
     }
 

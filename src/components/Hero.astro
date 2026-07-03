@@ -1,38 +1,40 @@
 ---
 /**
- * Hero — homepage hero section with mesh gradient backdrop.
- * The multi-stop gradient (develop → preview → ship) is the single
- * decorative chrome element per DESIGN.md.
+ * Hero - compact utility-first homepage hero.
  */
 import { SITE } from "../data/tools";
 import { useTranslations, getLangFromUrl } from "../i18n/utils";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
+
+const quickTasks = [
+  { label: "Text", href: "/categories/text-tools/", accent: "#007cf0" },
+  { label: "Code", href: "/categories/developer-tools/", accent: "#7928ca" },
+  { label: "Images", href: "/tools/image-compressor/", accent: "#00a78e" },
+  { label: "PDF", href: "/categories/pdf-tools/", accent: "#ee0000" },
+  { label: "SEO", href: "/categories/seo-tools/", accent: "#f5a623" },
+  { label: "Calculators", href: "/categories/calculators/", accent: "#0070f3" },
+];
 ---
 
 <section class="relative overflow-hidden" id="hero">
-  <!-- Mesh gradient backdrop -->
   <div class="hero-gradient absolute inset-0 opacity-30 dark:opacity-20 pointer-events-none" aria-hidden="true"></div>
 
-  <div class="container-page relative z-10 py-24 md:py-32 lg:py-40 text-center">
-    <!-- Eyebrow badge per DESIGN.md badge-secondary -->
-    <div class="w-fit mx-auto flex items-center gap-2 mb-8 px-4 py-1.5 bg-canvas-soft rounded-full shadow-card text-xs font-mono text-body">
+  <div class="container-page relative z-10 py-16 md:py-24 lg:py-28 text-center">
+    <div class="w-fit mx-auto flex items-center gap-2 mb-6 px-4 py-1.5 bg-canvas-soft rounded-full shadow-card text-xs font-mono text-body">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-success motion-safe:animate-pulse" aria-hidden="true"></span>
       {t('hero.badge')}
     </div>
 
-    <!-- Headline -->
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-ink max-w-3xl mx-auto" style="letter-spacing: -2.4px; line-height: 1;">
-      Free Online Tools — Text, Code, Math, SEO &amp;&nbsp;More
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-ink max-w-3xl mx-auto" style="line-height: 1;">
+      Free Online Tools - Text, Code, Math, SEO &amp;&nbsp;More
     </h1>
 
-    <!-- Sub-headline -->
-    <p class="mt-6 text-lg text-body max-w-xl mx-auto leading-relaxed">
+    <p class="mt-5 text-base md:text-lg text-body max-w-2xl mx-auto leading-relaxed">
       {SITE.description}
     </p>
 
-    <!-- Search bar -->
-    <div class="mt-10 max-w-lg mx-auto">
+    <div class="mt-8 max-w-2xl mx-auto">
       <div class="relative">
         <svg
           class="absolute left-4 top-1/2 -translate-y-1/2 text-mute pointer-events-none"
@@ -54,16 +56,25 @@ const t = useTranslations(getLangFromUrl(Astro.url));
           type="search"
           placeholder={t('hero.searchPlaceholder')}
           autocomplete="off"
-          class="w-full h-12 pl-12 pr-4 bg-canvas border border-hairline rounded-xl text-base text-ink placeholder:text-mute shadow-card focus:shadow-elevated focus:border-link transition-all duration-200 outline-none"
+          class="w-full h-12 pl-12 pr-4 bg-canvas border border-hairline rounded-xl text-base text-ink placeholder:text-mute shadow-card focus:shadow-elevated focus:border-link transition-all duration-200"
           aria-label={t('hero.searchLabel')}
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="hero-search-results"
+          aria-autocomplete="list"
         />
       </div>
-      <!-- Search results dropdown -->
       <div id="hero-search-results" class="hidden mt-2 bg-canvas rounded-lg shadow-modal border border-hairline overflow-hidden text-left" role="listbox"></div>
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-2" aria-label="Quick tool categories">
+        {quickTasks.map((task) => (
+          <a href={task.href} class="quick-task" style={`--task-accent: ${task.accent}`}>
+            {task.label}
+          </a>
+        ))}
+      </div>
     </div>
 
-    <!-- CTA buttons -->
-    <div class="mt-8 flex items-center justify-center gap-3 flex-wrap">
+    <div class="mt-7 flex items-center justify-center gap-3 flex-wrap">
       <a href="/tools/" class="btn-primary">
         {t('hero.cta')}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -89,70 +100,152 @@ const t = useTranslations(getLangFromUrl(Astro.url));
     filter: blur(60px);
   }
 
+  .quick-task {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--task-accent) 8%, var(--color-canvas));
+    color: var(--color-ink);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .quick-task:hover {
+    border-color: var(--task-accent);
+    transform: translateY(-1px);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-gradient {
       animation: none;
+    }
+
+    .quick-task:hover {
+      transform: none;
     }
   }
 </style>
 
 <script>
-  // Hero search — client-side instant search
   import { TOOLS } from "../data/tools";
+  import { createSearchResultStatusText } from "../helpers/utils";
 
   const input = document.getElementById("hero-search") as HTMLInputElement;
   const results = document.getElementById("hero-search-results");
+  let activeIndex = -1;
+  let activeLinks: HTMLAnchorElement[] = [];
+
+  function clearResults() {
+    if (!results) return;
+    results.replaceChildren();
+    results.classList.add("hidden");
+    input?.setAttribute("aria-expanded", "false");
+    input?.removeAttribute("aria-activedescendant");
+    activeIndex = -1;
+    activeLinks = [];
+  }
+
+  function setActiveIndex(index: number) {
+    activeLinks.forEach((link, i) => {
+      const isActive = i === index;
+      link.setAttribute("aria-selected", String(isActive));
+      link.classList.toggle("bg-canvas-soft-2", isActive);
+    });
+    activeIndex = index;
+    if (activeLinks[index]) {
+      input?.setAttribute("aria-activedescendant", activeLinks[index].id);
+    } else {
+      input?.removeAttribute("aria-activedescendant");
+    }
+  }
 
   function renderResults(query: string) {
     if (!results) return;
     const q = query.toLowerCase().trim();
     if (!q) {
-      results.classList.add("hidden");
+      clearResults();
       return;
     }
 
     const matches = TOOLS.filter(
-      (t) =>
-        t.name.toLowerCase().includes(q) ||
-        t.description.toLowerCase().includes(q) ||
-        t.keywords.some((k) => k.includes(q))
+      (tool) =>
+        tool.name.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q) ||
+        tool.keywords.some((keyword) => keyword.includes(q))
     ).slice(0, 5);
 
+    results.replaceChildren();
+
     if (matches.length === 0) {
-      results.innerHTML = `<div class="px-4 py-3 text-sm text-mute">Search results for \u201C${q}\u201D</div>`;
+      const empty = document.createElement("div");
+      empty.className = "px-4 py-3 text-sm text-mute";
+      empty.textContent = createSearchResultStatusText(q);
+      results.append(empty);
+      activeLinks = [];
     } else {
-      results.innerHTML = matches
-        .map(
-          (t) =>
-            `<a href="/tools/${t.slug}/" role="option" class="flex items-center gap-3 px-4 py-3 hover:bg-canvas-soft-2 transition-colors duration-100 no-underline">
-              <span class="text-lg shrink-0">${t.icon}</span>
-              <div>
-                <div class="text-sm font-medium text-ink">${t.name}</div>
-                <div class="text-xs text-mute line-clamp-1">${t.description}</div>
-              </div>
-            </a>`
-        )
-        .join("");
+      activeLinks = matches.map((tool, index) => {
+        const link = document.createElement("a");
+        link.href = `/tools/${tool.slug}/`;
+        link.id = `hero-search-option-${index}`;
+        link.role = "option";
+        link.setAttribute("aria-selected", "false");
+        link.className = "flex items-center gap-3 px-4 py-3 hover:bg-canvas-soft-2 transition-colors duration-100 no-underline";
+
+        const icon = document.createElement("span");
+        icon.className = "text-lg shrink-0";
+        icon.textContent = tool.icon;
+
+        const body = document.createElement("div");
+        const name = document.createElement("div");
+        name.className = "text-sm font-medium text-ink";
+        name.textContent = tool.name;
+        const description = document.createElement("div");
+        description.className = "text-xs text-mute line-clamp-1";
+        description.textContent = tool.description;
+
+        body.append(name, description);
+        link.append(icon, body);
+        return link;
+      });
+      results.append(...activeLinks);
     }
+
     results.classList.remove("hidden");
+    input?.setAttribute("aria-expanded", "true");
+    setActiveIndex(activeLinks.length > 0 ? 0 : -1);
   }
 
-  input?.addEventListener("input", (e) => {
-    renderResults((e.target as HTMLInputElement).value);
+  input?.addEventListener("input", (event) => {
+    renderResults((event.target as HTMLInputElement).value);
   });
 
-  // Close on click outside
-  document.addEventListener("click", (e) => {
-    if (!input?.contains(e.target as Node) && !results?.contains(e.target as Node)) {
-      results?.classList.add("hidden");
+  document.addEventListener("click", (event) => {
+    if (!input?.contains(event.target as Node) && !results?.contains(event.target as Node)) {
+      clearResults();
     }
   });
 
-  // Close on escape
-  input?.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      results?.classList.add("hidden");
+  input?.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      clearResults();
       input.blur();
+      return;
+    }
+    if (results?.classList.contains("hidden") || activeLinks.length === 0) return;
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((activeIndex + 1) % activeLinks.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((activeIndex - 1 + activeLinks.length) % activeLinks.length);
+    } else if (event.key === "Enter" && activeIndex >= 0) {
+      event.preventDefault();
+      activeLinks[activeIndex].click();
     }
   });
 </script>

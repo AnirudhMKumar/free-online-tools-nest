@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
-import { formatBytes } from "../../helpers/utils";
+import { fileSizeLimitMessage, formatBytes, MAX_PDF_FILE_SIZE_BYTES } from "../../helpers/utils";
 
 interface PdfFileItem {
   id: string;
@@ -16,18 +16,32 @@ export default function PdfMerger() {
 
   const addFiles = useCallback((newFiles: FileList | File[]) => {
     setError("");
-    const items: PdfFileItem[] = Array.from(newFiles)
-      .filter((f) => f.type === "application/pdf" || f.name.toLowerCase().endsWith(".pdf"))
-      .map((f) => ({
-        id: crypto.randomUUID(),
-        file: f,
-        size: f.size,
-      }));
-    if (items.length === 0) {
+    const pdfFiles = Array.from(newFiles).filter((f) => f.type === "application/pdf" || f.name.toLowerCase().endsWith(".pdf"));
+    if (pdfFiles.length === 0) {
       setError("Please upload valid PDF files.");
       return;
     }
-    setFiles((prev) => [...prev, ...items]);
+
+    const oversized = pdfFiles.map((f) => fileSizeLimitMessage(f, MAX_PDF_FILE_SIZE_BYTES, "PDF")).find(Boolean);
+    if (oversized) {
+      setError(oversized);
+      return;
+    }
+
+    const items: PdfFileItem[] = pdfFiles.map((f) => ({
+      id: crypto.randomUUID(),
+      file: f,
+      size: f.size,
+    }));
+
+    setFiles((prev) => {
+      const projectedTotal = [...prev, ...items].reduce((sum, item) => sum + item.size, 0);
+      if (projectedTotal > MAX_PDF_FILE_SIZE_BYTES) {
+        setError(`Combined PDFs are ${formatBytes(projectedTotal)}; keep the batch under ${formatBytes(MAX_PDF_FILE_SIZE_BYTES)} for safe in-browser merging.`);
+        return prev;
+      }
+      return [...prev, ...items];
+    });
   }, []);
 
   const removeFile = useCallback((id: string) => {

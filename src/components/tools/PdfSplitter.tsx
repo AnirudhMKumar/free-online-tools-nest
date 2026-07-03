@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
-import { formatBytes } from "../../helpers/utils";
+import { fileSizeLimitMessage, formatBytes, MAX_PDF_FILE_SIZE_BYTES, MAX_PDF_PAGE_COUNT } from "../../helpers/utils";
 
 type SplitMode = "all" | "range";
 
@@ -44,6 +44,11 @@ export default function PdfSplitter() {
       setError("Please upload a valid PDF file.");
       return;
     }
+    const sizeError = fileSizeLimitMessage(f, MAX_PDF_FILE_SIZE_BYTES, "PDF");
+    if (sizeError) {
+      setError(sizeError);
+      return;
+    }
     setError("");
     setLoading(true);
     setFile(f);
@@ -53,10 +58,18 @@ export default function PdfSplitter() {
 
     try {
       const arrayBuf = await f.arrayBuffer();
-      setPdfBytes(arrayBuf);
       const { PDFDocument } = await import("pdf-lib");
       const pdf = await PDFDocument.load(arrayBuf, { ignoreEncryption: true });
-      setPageCount(pdf.getPageCount());
+      const pages = pdf.getPageCount();
+      if (pages > MAX_PDF_PAGE_COUNT) {
+        setError(`This PDF has ${pages} pages. For browser stability, split files with ${MAX_PDF_PAGE_COUNT} pages or fewer.`);
+        setFile(null);
+        setPageCount(0);
+        setPdfBytes(null);
+        return;
+      }
+      setPdfBytes(arrayBuf);
+      setPageCount(pages);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Failed to read PDF.");
       setFile(null);

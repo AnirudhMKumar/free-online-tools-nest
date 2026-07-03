@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import ErrorBanner from "../ErrorBanner";
-import { formatBytes } from "../../helpers/utils";
+import { fileSizeLimitMessage, formatBytes, MAX_PDF_FILE_SIZE_BYTES, MAX_PDF_PAGE_COUNT } from "../../helpers/utils";
 
 let pdfjsLibPromise: Promise<typeof import("pdfjs-dist")> | null = null;
 
@@ -31,6 +31,11 @@ export default function PdfToText() {
       setError("Please upload a valid PDF file.");
       return;
     }
+    const sizeError = fileSizeLimitMessage(f, MAX_PDF_FILE_SIZE_BYTES, "PDF");
+    if (sizeError) {
+      setError(sizeError);
+      return;
+    }
     setError("");
     setFile(f);
     setExtractedText("");
@@ -57,6 +62,10 @@ export default function PdfToText() {
       const pdfjsLib = await getPdfjs();
       const pdfDoc = await pdfjsLib.getDocument({ data }).promise;
       const totalPages = pdfDoc.numPages;
+      if (totalPages > MAX_PDF_PAGE_COUNT) {
+        setError(`This PDF has ${totalPages} pages. For browser stability, extract text from files with ${MAX_PDF_PAGE_COUNT} pages or fewer.`);
+        return;
+      }
       const pagesText: string[] = [];
 
       for (let i = 1; i <= totalPages; i++) {

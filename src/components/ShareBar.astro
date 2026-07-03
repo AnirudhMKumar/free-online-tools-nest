@@ -35,8 +35,6 @@ const shareLinks = [
   },
 ];
 
-const shareUrl = url;
-const shareTitle = title;
 ---
 
 <div class="flex items-center gap-2 mt-6 pt-6 border-t" style="border-color: var(--color-hairline);">
@@ -60,6 +58,8 @@ const shareTitle = title;
     class="share-btn"
     aria-label="Share via system share"
     title="Share via system"
+    data-share-title={title}
+    data-share-url={url}
     style="display: none;"
   >
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -76,8 +76,8 @@ const shareTitle = title;
     nativeBtn.style.display = "";
     nativeBtn.addEventListener("click", function() {
       navigator.share({
-        title: '${shareTitle}',
-        url: '${shareUrl}',
+        title: nativeBtn.dataset.shareTitle || document.title,
+        url: nativeBtn.dataset.shareUrl || location.href,
       }).catch(function() {});
     });
   }
