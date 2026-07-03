@@ -23,7 +23,7 @@ const webPageJsonLd = {
     url: "https://freeonlinetoolsnest.com/about/",
   },
   datePublished: "2026-01-15",
-  dateModified: "2026-06-01",
+  dateModified: "2026-07-03",
 };
 ---
 
@@ -37,7 +37,7 @@ const webPageJsonLd = {
     <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-3" style="letter-spacing: -1.28px;">
       {t("privacy.title")}
     </h1>
-    <p class="text-sm text-mute mb-10">{t("privacy.lastUpdated").replace("{date}", "June 2026")}</p>
+    <p class="text-sm text-mute mb-10">{t("privacy.lastUpdated").replace("{date}", "July 3, 2026")}</p>
 
     <article class="space-y-6 text-body leading-relaxed">
       <section>
@@ -76,9 +76,19 @@ const webPageJsonLd = {
       </section>
 
       <section>
+        <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.localStorageTitle")}</h2>
+        <p>
+          {t("privacy.localStorageP1")}
+        </p>
+      </section>
+
+      <section>
         <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">{t("privacy.thirdPartyTitle")}</h2>
         <p>
           {t("privacy.thirdPartyP1")}
+        </p>
+        <p class="mt-3">
+          {t("privacy.thirdPartyP2")}
         </p>
       </section>
 
