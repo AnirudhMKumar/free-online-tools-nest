@@ -1,7 +1,7 @@
 ---
 /**
  * ToolLayout — layout for individual tool pages.
- * Extends Layout with breadcrumbs, tool description, related tools sidebar.
+ * Extends Layout with breadcrumbs, app panel, tool description, related tools sidebar.
  */
 interface Props {
   title: string;
@@ -44,7 +44,6 @@ const breadcrumbs = [
   { label: title },
 ];
 
-// WebApplication JSON-LD for the tool
 const toolJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -87,117 +86,132 @@ const ogImage = `/og/${categorySlug}.png`;
   ogImage={ogImage}
   jsonLd={combinedJsonLd}
 >
-  <div class="container-page py-8 md:py-12">
+  <div class="container-page py-8 md:py-10">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 lg:gap-12">
-      <!-- Main tool area -->
-      <div>
-        <header class="mb-8">
-          <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
-            {title}
-          </h1>
-          <p class="mt-3 text-body text-lg leading-relaxed max-w-2xl">
-            {longDescription}
-          </p>
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-10">
+      <div class="min-w-0">
+        <header class="app-panel overflow-hidden p-5 sm:p-7 md:p-8 mb-6">
+          <div class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div class="max-w-3xl">
+              <div class="mb-4 flex flex-wrap gap-2">
+                <a href={`/categories/${categorySlug}/`} class="metadata-badge no-underline">
+                  {category?.icon && <span aria-hidden="true">{category.icon}</span>} {categoryName}
+                </a>
+                <span class="metadata-badge">No uploads</span>
+                <span class="metadata-badge">Runs in your browser</span>
+              </div>
+              <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
+                {title}
+              </h1>
+              <p class="mt-3 text-body text-base md:text-lg leading-relaxed max-w-3xl text-pretty">
+                {longDescription}
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 flex-wrap xl:justify-end">
+              <FavoriteButton client:load toolSlug={toolSlug} />
+              <ShareBar title={title} url={`${SITE.url}/tools/${toolSlug}/`} />
+            </div>
+          </div>
         </header>
 
-        <!-- Tool component slot -->
-        <div class="card p-4 sm:p-6 md:p-8">
-          <slot />
-        </div>
+        <section class="app-panel overflow-hidden" aria-label={`${title} tool`}>
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-hairline px-4 py-3 sm:px-6">
+            <div>
+              <p class="text-sm font-medium text-ink">Workspace</p>
+              <p class="text-xs text-mute">Use the tool below. Your inputs stay local when the tool supports browser-only processing.</p>
+            </div>
+            <a href="/tools/" class="pill-control">All tools</a>
+          </div>
+          <div class="p-4 sm:p-6 md:p-8">
+            <slot />
+          </div>
+        </section>
 
-        <!-- Favorite + Share -->
-        <div class="mt-4 flex items-center gap-3 flex-wrap">
-          <FavoriteButton client:load toolSlug={toolSlug} />
-          <ShareBar title={title} url={`${SITE.url}/tools/${toolSlug}/`} />
-        </div>
-
-        <!-- Keywords for SEO -->
         {keywords.length > 0 && (
-          <div class="mt-6 flex flex-wrap gap-2">
+          <div class="mt-5 flex flex-wrap gap-2" aria-label="Tool keywords">
             {keywords.map((kw) => (
-              <span class="text-xs text-mute bg-canvas-soft-2 px-2.5 py-1 rounded-full">
-                {kw}
-              </span>
+              <span class="metadata-badge">{kw}</span>
             ))}
           </div>
         )}
 
-        <!-- How to Use section -->
         {tool?.usageSteps && tool.usageSteps.length > 0 && (
-          <section class="mt-12 border-t border-hairline pt-10">
-            <h2 class="text-xl font-semibold text-ink mb-6" style="letter-spacing: -0.6px;">
-              How to use the {title}
-            </h2>
-            <div class="space-y-6">
+          <section class="mt-10 border-t border-hairline pt-8">
+            <div class="section-heading">
+              <div>
+                <p class="section-eyebrow">Workflow</p>
+                <h2 class="section-title">How to use the {title}</h2>
+              </div>
+            </div>
+            <div class="grid gap-4 md:grid-cols-3">
               {tool.usageSteps.map((step, i) => (
-                <div class="flex gap-4">
-                  <span class="flex-shrink-0 w-8 h-8 rounded-full bg-ink text-canvas flex items-center justify-center text-sm font-semibold">
+                <article class="card p-5">
+                  <span class="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-on-primary">
                     {i + 1}
                   </span>
-                  <div>
-                    <h3 class="text-base font-medium text-ink mb-1">{step.title}</h3>
-                    <p class="text-sm text-body leading-relaxed">{step.content}</p>
-                  </div>
-                </div>
+                  <h3 class="text-base font-semibold text-ink mb-2">{step.title}</h3>
+                  <p class="text-sm text-body leading-relaxed">{step.content}</p>
+                </article>
               ))}
             </div>
           </section>
         )}
 
-        <!-- Additional contextual content -->
         {tool?.additionalContent && tool.additionalContent.length > 0 && (
-          <section class="mt-12 border-t border-hairline pt-10">
-            {tool.additionalContent.map((block) => (
-              <div class="mb-8 last:mb-0">
-                <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: -0.6px;">
-                  {block.heading}
-                </h2>
-                <p class="text-sm text-body leading-relaxed">{block.content}</p>
-              </div>
-            ))}
+          <section class="mt-10 border-t border-hairline pt-8">
+            <div class="grid gap-5 md:grid-cols-3">
+              {tool.additionalContent.map((block) => (
+                <article class="rounded-lg border border-hairline bg-canvas p-5">
+                  <h2 class="text-lg font-semibold text-ink mb-3" style="letter-spacing: 0;">
+                    {block.heading}
+                  </h2>
+                  <p class="text-sm text-body leading-relaxed">{block.content}</p>
+                </article>
+              ))}
+            </div>
           </section>
         )}
       </div>
 
-      <!-- Sidebar -->
-      <aside class="mt-12 lg:mt-0 lg:block">
-        <div class="sticky top-20">
-          <h2 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">
-            Related tools
-          </h2>
-          <div class="space-y-3">
-            {relatedTools.map((tool) => (
-              <ToolCard
-                slug={tool.slug}
-                name={tool.name}
-                description={tool.description}
-                icon={tool.icon}
-                categorySlug={tool.categorySlug}
-              />
-            ))}
-          </div>
+      <aside class="mt-4 lg:mt-0 lg:block">
+        <div class="sticky top-24 space-y-5">
+          <section class="app-panel p-4">
+            <div class="mb-4 flex items-center justify-between gap-3">
+              <h2 class="text-xs font-mono font-normal text-mute">
+                Related tools
+              </h2>
+              {category && (
+                <a href={`/categories/${categorySlug}/`} class="text-xs font-medium text-link hover:text-link-deep transition-colors duration-150">
+                  View all
+                </a>
+              )}
+            </div>
+            <div class="space-y-3">
+              {relatedTools.map((tool) => (
+                <ToolCard
+                  slug={tool.slug}
+                  name={tool.name}
+                  description={tool.description}
+                  icon={tool.icon}
+                  categorySlug={tool.categorySlug}
+                  variant="compact"
+                />
+              ))}
+            </div>
+          </section>
 
-          {category && (
-            <a
-              href={`/categories/${categorySlug}/`}
-              class="inline-flex items-center gap-1 mt-6 text-sm text-link hover:text-link-deep transition-colors duration-150"
-            >
-              View all {categoryName}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </a>
-          )}
+          <section class="rounded-lg border border-hairline bg-canvas-soft p-4">
+            <p class="text-sm font-medium text-ink">Private by design</p>
+            <p class="mt-1 text-xs leading-relaxed text-body">Free Online Tools Nest prioritizes browser-based workflows, no signups, and clean utility pages without ad clutter.</p>
+          </section>
         </div>
       </aside>
     </div>
 
-    <!-- Tool-specific FAQ -->
     {tool?.faq && tool.faq.length > 0 && (
       <FAQSection items={tool.faq} title={`${title} — Frequently Asked Questions`} />
     )}
   </div>
 </Layout>
-

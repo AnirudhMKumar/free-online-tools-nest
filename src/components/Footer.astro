@@ -1,7 +1,6 @@
 ---
 /**
- * Footer — 4-column footer with links to all site sections.
- * Matches DESIGN.md footer component: body-sm text, caption-mono eyebrows.
+ * Footer — compact footer with newsletter, links, social proof, and legal navigation.
  */
 import { CATEGORIES, TOOLS, SITE } from "../data/tools";
 import { useTranslations, getLangFromUrl } from "../i18n/utils";
@@ -11,19 +10,19 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<footer class="bg-canvas border-t border-hairline mt-24">
-  <div class="container-page py-16">
-    <!-- Newsletter Section -->
-    <div class="mb-12 pb-12 border-b border-hairline flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+<footer class="bg-canvas border-t border-hairline mt-16">
+  <div class="container-page py-10 md:py-12">
+    <section class="mb-10 rounded-xl border border-hairline bg-canvas-soft p-5 sm:p-6 md:flex md:items-center md:justify-between md:gap-8">
       <div class="max-w-md">
-        <h3 class="text-lg font-semibold text-ink mb-2">
+        <p class="section-eyebrow mb-2">Updates</p>
+        <h2 class="text-lg font-semibold text-ink mb-2">
           {t('newsletter.title')}
-        </h3>
+        </h2>
         <p class="text-sm text-body leading-relaxed">
           {t('newsletter.desc')}
         </p>
       </div>
-      <div class="w-full md:w-auto">
+      <div class="mt-5 w-full md:mt-0 md:w-auto">
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
           <label for="newsletter-email" class="sr-only">
             {t('newsletter.placeholder')}
@@ -33,15 +32,13 @@ const t = useTranslations(lang);
             id="newsletter-email"
             name="email"
             autocomplete="email"
+            spellcheck="false"
             placeholder={t('newsletter.placeholder')}
             aria-describedby="newsletter-success"
             required
-            class="px-4 py-2.5 text-sm rounded-lg border border-hairline focus:border-link bg-canvas text-ink transition-colors sm:w-80"
+            class="h-10 rounded-lg border border-hairline bg-canvas px-4 text-sm text-ink placeholder:text-mute transition-colors duration-150 focus:border-link sm:w-80"
           />
-          <button
-            type="submit"
-            class="btn-primary btn-sm flex items-center justify-center font-medium cursor-pointer"
-          >
+          <button type="submit" class="btn-primary btn-sm flex items-center justify-center font-medium cursor-pointer">
             {t('newsletter.button')}
           </button>
         </form>
@@ -49,40 +46,30 @@ const t = useTranslations(lang);
           {t('newsletter.success')}
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Footer columns -->
-    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
-      <!-- Tools column -->
+    <div class="grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4 lg:gap-x-12">
       <div>
-        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.tools')}</h3>
+        <h2 class="footer-heading">{t('footer.tools')}</h2>
         <ul class="space-y-2">
-          <li>
-            <a href="/tools/" class="footer-link">{t('footer.allTools')}</a>
-          </li>
+          <li><a href="/tools/" class="footer-link">{t('footer.allTools')}</a></li>
           {TOOLS.slice(0, 6).map((tool) => (
-            <li>
-              <a href={`/tools/${tool.slug}/`} class="footer-link">{tool.name}</a>
-            </li>
+            <li><a href={`/tools/${tool.slug}/`} class="footer-link">{tool.name}</a></li>
           ))}
         </ul>
       </div>
 
-      <!-- Categories column -->
       <div>
-        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.categories')}</h3>
+        <h2 class="footer-heading">{t('footer.categories')}</h2>
         <ul class="space-y-2">
           {CATEGORIES.map((cat) => (
-            <li>
-              <a href={`/categories/${cat.slug}/`} class="footer-link">{cat.name}</a>
-            </li>
+            <li><a href={`/categories/${cat.slug}/`} class="footer-link">{cat.name}</a></li>
           ))}
         </ul>
       </div>
 
-      <!-- Company column -->
       <div>
-        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.company')}</h3>
+        <h2 class="footer-heading">{t('footer.company')}</h2>
         <ul class="space-y-2">
           <li><a href="/about/" class="footer-link">{t('footer.about')}</a></li>
           <li><a href="/blog/" class="footer-link">{t('footer.blog')}</a></li>
@@ -92,9 +79,8 @@ const t = useTranslations(lang);
         </ul>
       </div>
 
-      <!-- Legal column -->
       <div>
-        <h3 class="text-xs font-mono font-normal uppercase tracking-wider text-mute mb-4">{t('footer.legal')}</h3>
+        <h2 class="footer-heading">{t('footer.legal')}</h2>
         <ul class="space-y-2">
           <li><a href="/privacy-policy/" class="footer-link">{t('footer.privacy')}</a></li>
           <li><a href="/terms-and-conditions/" class="footer-link">{t('footer.terms')}</a></li>
@@ -102,60 +88,87 @@ const t = useTranslations(lang);
       </div>
     </div>
 
-    <!-- Bottom bar -->
-    <div class="mt-12 pt-8 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-mute">
-        &copy; {currentYear} {SITE.name}. All rights reserved.
-      </p>
-      <div class="flex items-center gap-4">
-        <!-- Social links -->
-        <a href="https://x.com/openProj3ct" target="_blank" rel="noopener noreferrer" class="text-mute hover:text-ink transition-colors duration-150" aria-label={t('footer.twitter')}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
+    <div class="mt-10 border-t border-hairline pt-6">
+      <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <p class="text-xs text-mute">
+            &copy; {currentYear} {SITE.name}. All rights reserved.
+          </p>
+          <p class="mt-1 text-xs text-mute">{t('footer.tagline')}</p>
+        </div>
 
-        <a href="https://github.com/AnirudhMKumar/free-online-tools-nest" target="_blank" rel="noopener noreferrer" class="text-mute hover:text-ink transition-colors duration-150" aria-label="GitHub">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-
-        <!-- LaunchBuff badge - switches image source based on dark/light mode -->
-        <a href="https://launchbuff.com" target="_blank" rel="noopener noreferrer" title="Featured on LaunchBuff">
-          <img src="https://launchbuff.com/badge-featured-light.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-light" />
-          <img src="https://launchbuff.com/badge-featured-dark.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-dark" />
-        </a>
-
-        <span class="text-xs text-mute">
-          {t('footer.tagline')}
-        </span>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="https://x.com/openProj3ct" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label={t('footer.twitter')}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://github.com/AnirudhMKumar/free-online-tools-nest" target="_blank" rel="noopener noreferrer" class="footer-icon-link" aria-label="GitHub">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://launchbuff.com" target="_blank" rel="noopener noreferrer" title="Featured on LaunchBuff" class="launchbuff-link">
+            <img src="https://launchbuff.com/badge-featured-light.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-light" />
+            <img src="https://launchbuff.com/badge-featured-dark.svg" alt="Featured on LaunchBuff" width="256" height="80" loading="lazy" class="badge-dark" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </footer>
 
 <style>
+  .footer-heading {
+    margin-bottom: 12px;
+    color: var(--color-mute);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
   .footer-link {
+    display: inline-flex;
+    min-height: 24px;
+    align-items: center;
+    color: var(--color-body);
     font-size: 14px;
     line-height: 20px;
-    letter-spacing: -0.28px;
-    color: var(--color-body);
     text-decoration: none;
     transition: color 0.15s ease;
   }
   .footer-link:hover {
     color: var(--color-ink);
   }
-
-  /* LaunchBuff badge — show light by default, dark when .dark class on html */
+  .footer-icon-link {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-full);
+    color: var(--color-mute);
+    background: var(--color-canvas);
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .footer-icon-link:hover {
+    color: var(--color-ink);
+    border-color: var(--color-hairline-strong);
+    background: var(--color-canvas-soft-2);
+  }
+  .launchbuff-link {
+    display: inline-flex;
+    max-width: 152px;
+  }
+  .launchbuff-link img {
+    width: 152px;
+    height: auto;
+  }
   .badge-dark { display: none; }
   .badge-light { display: inline-block; }
   :global(.dark) .badge-dark { display: inline-block; }
   :global(.dark) .badge-light { display: none; }
-
-
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Newsletter form submission mock
     const form = document.getElementById("newsletter-form") as HTMLFormElement | null;
     const successMsg = document.getElementById("newsletter-success");
     if (form && successMsg) {
@@ -164,7 +177,6 @@ const t = useTranslations(lang);
         const emailInput = document.getElementById("newsletter-email") as HTMLInputElement | null;
         if (!emailInput || !emailInput.value) return;
 
-        // Mock saving the email to local storage for demonstration
         const email = emailInput.value;
         const subscribers = JSON.parse(localStorage.getItem("newsletter_subscribers") || "[]");
         if (!subscribers.includes(email)) {

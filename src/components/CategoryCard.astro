@@ -1,7 +1,7 @@
 ---
 /**
  * CategoryCard — card linking to a category page.
- * Used on the homepage in a 4-up grid.
+ * Used on the homepage and category directory.
  */
 interface Props {
   slug: string;
@@ -10,31 +10,36 @@ interface Props {
   icon: string;
   color: string;
   toolCount: number;
+  topTools?: string[];
 }
 
-const { slug, name, description, icon, color, toolCount } = Astro.props;
+const { slug, name, description, icon, color, toolCount, topTools = [] } = Astro.props;
 ---
 
 <a
   href={`/categories/${slug}/`}
-  class="block card p-4 sm:p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 no-underline group relative overflow-hidden"
+  class="category-card group"
   id={`category-${slug}`}
+  style={`--category-accent: ${color};`}
 >
-  <!-- Subtle accent line at top -->
-  <div class="absolute top-0 left-0 right-0 h-0.5" style={`background: ${color};`} aria-hidden="true"></div>
-
-  <div class="flex items-start gap-4">
-    <span class="text-3xl shrink-0" aria-hidden="true">{icon}</span>
-    <div class="min-w-0">
-      <h3 class="text-base font-semibold text-ink group-hover:text-link transition-colors duration-150">
-        {name}
-      </h3>
-      <p class="mt-1 text-sm text-body leading-relaxed line-clamp-2">
-        {description}
-      </p>
-      <span class="inline-block mt-3 text-xs text-mute">
-        {toolCount} {toolCount === 1 ? "tool" : "tools"}
-      </span>
-    </div>
-  </div>
+  <span class="category-card-accent" aria-hidden="true"></span>
+  <span class="category-card-head">
+    <span class="category-card-icon" aria-hidden="true">{icon}</span>
+    <span class="metadata-badge">{toolCount} {toolCount === 1 ? "tool" : "tools"}</span>
+  </span>
+  <span class="category-card-title-row">
+    <span class="category-card-title">{name}</span>
+    <svg class="tool-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 12h14"></path>
+      <path d="m12 5 7 7-7 7"></path>
+    </svg>
+  </span>
+  <span class="category-card-description">{description}</span>
+  {topTools.length > 0 && (
+    <span class="category-card-tools" aria-label={`Popular ${name}`}>
+      {topTools.slice(0, 3).map((toolName) => (
+        <span>{toolName}</span>
+      ))}
+    </span>
+  )}
 </a>

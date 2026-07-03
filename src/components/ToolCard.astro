@@ -1,7 +1,7 @@
 ---
 /**
- * ToolCard — card linking to a tool page.
- * Used in grids on the homepage, directory, and category pages.
+ * ToolCard — dense, premium card linking to a tool page.
+ * Used in grids on the homepage, directory, category, favorites, and related tools surfaces.
  */
 interface Props {
   slug: string;
@@ -9,33 +9,30 @@ interface Props {
   description: string;
   icon: string;
   categorySlug: string;
+  variant?: "default" | "compact";
 }
 
 import { getCategoryBySlug } from "../data/tools";
 
-const { slug, name, description, icon, categorySlug } = Astro.props;
+const { slug, name, description, icon, categorySlug, variant = "default" } = Astro.props;
 const category = getCategoryBySlug(categorySlug);
+const isCompact = variant === "compact";
+const cardClass = isCompact ? "tool-card tool-card-compact group" : "tool-card group";
 ---
 
-<a
-  href={`/tools/${slug}/`}
-  class="block card p-4 sm:p-6 hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200 no-underline group"
-  id={`tool-${slug}`}
->
-  <div class="flex items-start gap-4">
-    <span class="text-2xl shrink-0 mt-0.5" aria-hidden="true">{icon}</span>
-    <div class="min-w-0">
-      <h3 class="text-base font-medium text-ink group-hover:text-link transition-colors duration-150" style="letter-spacing: -0.28px;">
-        {name}
-      </h3>
-      <p class="mt-1 text-sm text-body leading-relaxed line-clamp-2">
-        {description}
-      </p>
-      {category && (
-        <span class="inline-block mt-3 text-xs text-mute bg-canvas-soft-2 px-2 py-0.5 rounded-full">
-          {category.name}
-        </span>
-      )}
-    </div>
-  </div>
+<a href={`/tools/${slug}/`} class={cardClass} id={`tool-${slug}`}>
+  <span class="tool-card-icon" aria-hidden="true">{icon}</span>
+  <span class="tool-card-body">
+    <span class="tool-card-title-row">
+      <span class="tool-card-title">{name}</span>
+      <svg class="tool-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </span>
+    <span class="tool-card-description">{description}</span>
+    {category && !isCompact && (
+      <span class="metadata-badge mt-auto w-fit">{category.name}</span>
+    )}
+  </span>
 </a>

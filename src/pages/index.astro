@@ -12,7 +12,25 @@ import { useTranslations } from "../i18n/utils";
 
 const t = useTranslations("en");
 
-const featured = getFeaturedTools();
+const featuredPrioritySlugs = [
+  "image-compressor",
+  "json-formatter",
+  "pdf-compressor",
+  "pdf-merger",
+  "word-counter",
+  "qr-code-generator",
+  "jwt-decoder",
+  "epoch-converter",
+  "word-cloud-generator",
+  "grammar-checker",
+  "random-number-generator",
+  "color-palette-generator",
+];
+const featuredBySlug = new Map(getFeaturedTools().map((tool) => [tool.slug, tool]));
+const featured = featuredPrioritySlugs
+  .map((slug) => featuredBySlug.get(slug))
+  .filter((tool) => tool !== undefined);
+
 
 const homeFaqs = Array.from({ length: 7 }, (_, i) => {
   const n = i + 1;
@@ -65,16 +83,55 @@ const websiteJsonLd = {
   <!-- Hero -->
   <Hero />
 
-  <!-- Categories -->
-  <section class="py-16 md:py-24" id="categories">
+
+  <!-- Popular Workflows -->
+  <section class="py-8 md:py-10 border-y border-hairline bg-canvas" aria-labelledby="popular-workflows-heading">
     <div class="container-page">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
-          {t("home.browseByCategory")}
-        </h2>
-        <p class="mt-3 text-body max-w-lg mx-auto">
-          {t("home.browseByCategoryDesc").replace("{count}", String(CATEGORIES.length))}
-        </p>
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">Start fast</p>
+          <h2 id="popular-workflows-heading" class="section-title">Popular workflows</h2>
+          <p class="section-description">Jump into the tool clusters people use most for everyday browser-based work.</p>
+        </div>
+        <a href="/tools/" class="pill-control">View all tools</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <a href="/tools/image-compressor/" class="workflow-card group">
+          <span class="workflow-card-label">Images</span>
+          <span class="workflow-card-desc">Compress, crop, resize, and convert image files.</span>
+          <span class="workflow-card-tools"><span>Image Compressor</span><span>Image Cropper</span><span>Image Resizer</span></span>
+        </a>
+        <a href="/tools/pdf-compressor/" class="workflow-card group">
+          <span class="workflow-card-label">PDF</span>
+          <span class="workflow-card-desc">Merge, split, compress, and extract PDF content.</span>
+          <span class="workflow-card-tools"><span>PDF Compressor</span><span>PDF Merger</span><span>PDF to Text</span></span>
+        </a>
+        <a href="/tools/json-formatter/" class="workflow-card group">
+          <span class="workflow-card-label">Code</span>
+          <span class="workflow-card-desc">Format JSON, decode JWTs, test regex, and convert data.</span>
+          <span class="workflow-card-tools"><span>JSON Formatter</span><span>JWT Decoder</span><span>Regex Tester</span></span>
+        </a>
+        <a href="/tools/word-counter/" class="workflow-card group">
+          <span class="workflow-card-label">Writing</span>
+          <span class="workflow-card-desc">Count, clean, compare, and polish text drafts.</span>
+          <span class="workflow-card-tools"><span>Word Counter</span><span>Grammar Checker</span><span>Text Similarity</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-12 md:py-16" id="categories">
+    <div class="container-page">
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">7 categories</p>
+          <h2 class="section-title">{t("home.browseByCategory")}</h2>
+          <p class="section-description">
+            {t("home.browseByCategoryDesc").replace("{count}", String(CATEGORIES.length))}
+          </p>
+        </div>
+        <a href="/categories/" class="pill-control">Browse categories</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {CATEGORIES.map((cat) => (
@@ -92,15 +149,15 @@ const websiteJsonLd = {
   </section>
 
   <!-- Featured Tools -->
-  <section class="py-16 md:py-24 bg-canvas" id="featured-tools">
+  <section class="py-12 md:py-16 bg-canvas" id="featured-tools">
     <div class="container-page">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
-          {t("home.popularTools")}
-        </h2>
-        <p class="mt-3 text-body max-w-lg mx-auto">
-          {t("home.popularToolsDesc")}
-        </p>
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">High-traffic tools</p>
+          <h2 class="section-title">{t("home.popularTools")}</h2>
+          <p class="section-description">{t("home.popularToolsDesc")}</p>
+        </div>
+        <a href="/tools/" class="pill-control">All 77 tools</a>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {featured.map((tool) => (
@@ -127,12 +184,13 @@ const websiteJsonLd = {
 
 
   <!-- Why Choose Us -->
-  <section class="py-16 md:py-24" id="why-us">
+  <section class="py-12 md:py-16" id="why-us">
     <div class="container-page">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl md:text-3xl font-semibold text-ink" style="letter-spacing: -0.96px;">
-          {t("home.whyChoose")}
-        </h2>
+      <div class="section-heading">
+        <div>
+          <p class="section-eyebrow">Built for focus</p>
+          <h2 class="section-title">{t("home.whyChoose")}</h2>
+        </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
@@ -152,7 +210,7 @@ const websiteJsonLd = {
             desc: t("home.why3Desc"),
           },
         ].map((item) => (
-          <div class="card p-6 text-center">
+          <div class="card p-6 text-center min-h-[180px]">
             <span class="text-3xl mb-4 block" aria-hidden="true">{item.icon}</span>
             <h3 class="text-lg font-semibold text-ink mb-2">{item.title}</h3>
             <p class="text-sm text-body leading-relaxed">{item.desc}</p>
@@ -166,7 +224,7 @@ const websiteJsonLd = {
   <FAQSection items={homeFaqs} />
 
   <!-- SEO Content -->
-  <section class="py-16 md:py-24 bg-canvas" id="about-section">
+  <section class="py-12 md:py-16 bg-canvas" id="about-section">
     <div class="container-narrow">
       <article class="prose-like">
         <h2 class="text-2xl md:text-3xl font-semibold text-ink mb-6" style="letter-spacing: -0.96px;">

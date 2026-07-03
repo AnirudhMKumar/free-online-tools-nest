@@ -43,7 +43,7 @@ export default function FavoriteButton({ toolSlug }: Props) {
       type="button"
       onClick={toggle}
       aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full border transition-all duration-150 cursor-pointer"
+      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 text-sm font-medium transition-colors duration-150 cursor-pointer"
       style={{
         backgroundColor: isFav ? "var(--color-canvas-soft-2)" : "var(--color-canvas)",
         borderColor: isFav ? "var(--color-highlight-pink)" : "var(--color-hairline)",

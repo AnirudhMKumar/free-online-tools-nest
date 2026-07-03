@@ -1,6 +1,6 @@
 ---
 /**
- * Categories Directory — all 7 categories in a grid.
+ * Categories Directory — all 7 categories in a polished grid.
  */
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
@@ -29,16 +29,22 @@ const categoriesJsonLd = {
   ogImage="/og-default.png"
   jsonLd={categoriesJsonLd}
 >
-  <div class="container-page py-8 md:py-12">
+  <div class="container-page py-8 md:py-10">
     <Breadcrumbs items={[{ label: "Categories" }]} />
 
-    <header class="mb-10">
-      <h1 class="text-3xl md:text-4xl font-semibold text-ink" style="letter-spacing: -1.28px;">
-        Browse Tools by Category
-      </h1>
-      <p class="mt-3 text-body text-lg max-w-xl">
-        {CATEGORIES.length} categories — find the right tool for any task.
-      </p>
+    <header class="app-panel p-5 sm:p-7 md:p-8 mb-8">
+      <div class="section-heading mb-0">
+        <div>
+          <p class="section-eyebrow">{CATEGORIES.length} utility groups</p>
+          <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
+            Browse Tools by Category
+          </h1>
+          <p class="section-description">
+            Find the right browser-based utility for writing, coding, PDFs, images, SEO, math, and design work.
+          </p>
+        </div>
+        <a href="/tools/" class="pill-control">All 77 tools</a>
+      </div>
     </header>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -50,6 +56,7 @@ const categoriesJsonLd = {
           icon={cat.icon}
           color={cat.color}
           toolCount={getToolsByCategory(cat.slug).length}
+          topTools={getToolsByCategory(cat.slug).slice(0, 3).map((tool) => tool.name)}
         />
       ))}
     </div>

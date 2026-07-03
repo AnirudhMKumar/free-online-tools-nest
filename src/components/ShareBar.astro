@@ -37,7 +37,7 @@ const shareLinks = [
 
 ---
 
-<div class="flex items-center gap-2 mt-6 pt-6 border-t" style="border-color: var(--color-hairline);">
+<div class="flex items-center gap-2">
   <span class="text-xs font-mono uppercase tracking-wider mr-1" style="color: var(--color-mute);">
     Share
   </span>
@@ -93,11 +93,13 @@ const shareLinks = [
     height: 32px;
     border-radius: 50%;
     color: var(--color-mute);
-    transition: color 0.15s, background-color 0.15s;
+    border: 1px solid var(--color-hairline);
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
     text-decoration: none;
   }
   .share-btn:hover {
     color: var(--color-ink);
     background-color: var(--color-canvas-soft-2);
+    border-color: var(--color-hairline-strong);
   }
 </style>
