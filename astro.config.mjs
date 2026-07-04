@@ -5,9 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  integrations: [react(), sitemap({
-    lastmod: new Date(),
-  })],
+  integrations: [react(), sitemap()],
   site: "https://freeonlinetoolsnest.com",
   trailingSlash: "always",
   build: {
