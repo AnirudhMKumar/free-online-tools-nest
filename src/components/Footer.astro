@@ -2,12 +2,22 @@
 /**
  * Footer — compact footer with newsletter, links, social proof, and legal navigation.
  */
-import { CATEGORIES, TOOLS, SITE } from "../data/tools";
-import { useTranslations, getLangFromUrl } from "../i18n/utils";
+import { SITE } from "../data/tools";
+import { getLocalizedCategories, getLocalizedTools } from "../data/localized";
+import { useTranslations, getLangFromUrl, localizePath } from "../i18n/utils";
+import { languages, type Lang } from "../i18n/ui";
 
 const currentYear = new Date().getFullYear();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const categories = getLocalizedCategories(lang);
+const tools = getLocalizedTools(lang);
+const lh = (path: string) => localizePath(path, lang);
+const languageLinks = (Object.entries(languages) as [Lang, string][]).map(([code, label]) => ({
+  code,
+  label,
+  href: localizePath("/", code),
+}));
 ---
 
 <footer class="bg-canvas border-t border-hairline mt-16">
@@ -52,9 +62,9 @@ const t = useTranslations(lang);
       <div>
         <h2 class="footer-heading">{t('footer.tools')}</h2>
         <ul class="space-y-2">
-          <li><a href="/tools/" class="footer-link">{t('footer.allTools')}</a></li>
-          {TOOLS.slice(0, 6).map((tool) => (
-            <li><a href={`/tools/${tool.slug}/`} class="footer-link">{tool.name}</a></li>
+          <li><a href={lh("/tools/")} class="footer-link">{t('footer.allTools')}</a></li>
+          {tools.slice(0, 6).map((tool) => (
+            <li><a href={lh(`/tools/${tool.slug}/`)} class="footer-link">{tool.name}</a></li>
           ))}
         </ul>
       </div>
@@ -62,8 +72,8 @@ const t = useTranslations(lang);
       <div>
         <h2 class="footer-heading">{t('footer.categories')}</h2>
         <ul class="space-y-2">
-          {CATEGORIES.map((cat) => (
-            <li><a href={`/categories/${cat.slug}/`} class="footer-link">{cat.name}</a></li>
+          {categories.map((cat) => (
+            <li><a href={lh(`/categories/${cat.slug}/`)} class="footer-link">{cat.name}</a></li>
           ))}
         </ul>
       </div>
@@ -71,10 +81,10 @@ const t = useTranslations(lang);
       <div>
         <h2 class="footer-heading">{t('footer.company')}</h2>
         <ul class="space-y-2">
-          <li><a href="/about/" class="footer-link">{t('footer.about')}</a></li>
+          <li><a href={lh("/about/")} class="footer-link">{t('footer.about')}</a></li>
           <li><a href="/blog/" class="footer-link">{t('footer.blog')}</a></li>
-          <li><a href="/contact/" class="footer-link">{t('footer.contact')}</a></li>
-          <li><a href="/faq/" class="footer-link">{t('footer.faq')}</a></li>
+          <li><a href={lh("/contact/")} class="footer-link">{t('footer.contact')}</a></li>
+          <li><a href={lh("/faq/")} class="footer-link">{t('footer.faq')}</a></li>
           <li><a href="/favorites/" class="footer-link">{t('footer.favorites')}</a></li>
         </ul>
       </div>
@@ -82,13 +92,20 @@ const t = useTranslations(lang);
       <div>
         <h2 class="footer-heading">{t('footer.legal')}</h2>
         <ul class="space-y-2">
-          <li><a href="/privacy-policy/" class="footer-link">{t('footer.privacy')}</a></li>
-          <li><a href="/terms-and-conditions/" class="footer-link">{t('footer.terms')}</a></li>
+          <li><a href={lh("/privacy-policy/")} class="footer-link">{t('footer.privacy')}</a></li>
+          <li><a href={lh("/terms-and-conditions/")} class="footer-link">{t('footer.terms')}</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="mt-10 border-t border-hairline pt-6">
+    <div class="mt-10 flex flex-wrap items-center gap-2 border-t border-hairline pt-6" aria-label={t('footer.language')}>
+      <span class="text-xs text-mute">{t('footer.language')}</span>
+      {languageLinks.map((item) => (
+        <a href={item.href} class:list={["footer-link rounded-full border border-hairline px-3", item.code === lang && "text-ink"]} aria-current={item.code === lang ? "page" : undefined}>{item.label}</a>
+      ))}
+    </div>
+
+    <div class="mt-6 border-t border-hairline pt-6">
       <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p class="text-xs text-mute">

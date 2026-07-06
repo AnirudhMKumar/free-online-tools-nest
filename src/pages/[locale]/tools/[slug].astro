@@ -1,0 +1,86 @@
+---
+import ToolLayout from "../../../layouts/ToolLayout.astro";
+import ImageCompressor from "../../../components/tools/ImageCompressor";
+import JsonFormatter from "../../../components/tools/JsonFormatter";
+import PdfCompressor from "../../../components/tools/PdfCompressor";
+import PdfMerger from "../../../components/tools/PdfMerger";
+import WordCounter from "../../../components/tools/WordCounter";
+import QrCodeGenerator from "../../../components/tools/QrCodeGenerator";
+import JwtDecoder from "../../../components/tools/JwtDecoder";
+import EpochConverter from "../../../components/tools/EpochConverter";
+import WordCloudGenerator from "../../../components/tools/WordCloudGenerator";
+import GrammarChecker from "../../../components/tools/GrammarChecker";
+import CsvToJson from "../../../components/tools/CsvToJson";
+import JsonToCsv from "../../../components/tools/JsonToCsv";
+import UnitConverter from "../../../components/tools/UnitConverter";
+import ColorContrastChecker from "../../../components/tools/ColorContrastChecker";
+import CharacterCounter from "../../../components/tools/CharacterCounter";
+import ImageResizer from "../../../components/tools/ImageResizer";
+import ImageCropper from "../../../components/tools/ImageCropper";
+import MarkdownToHtml from "../../../components/tools/MarkdownToHtml";
+import PasswordGenerator from "../../../components/tools/PasswordGenerator";
+import RegexTester from "../../../components/tools/RegexTester";
+import { getLocalizedCategory, getLocalizedTool, hasLocalizedTool, LOCALIZED_TOOL_SLUGS, PUBLISHED_LOCALES } from "../../../data/localized";
+import type { Lang } from "../../../i18n/ui";
+
+
+export function getStaticPaths() {
+  return PUBLISHED_LOCALES.flatMap((locale) =>
+    LOCALIZED_TOOL_SLUGS.map((slug) => ({ params: { locale, slug } }))
+  );
+}
+
+const lang = Astro.params.locale as Lang;
+const slug = Astro.params.slug!;
+const tool = getLocalizedTool(lang, slug)!;
+const category = getLocalizedCategory(lang, tool.categorySlug)!;
+const canonicalPath = `/${lang}/tools/${slug}/`;
+const alternatePaths: Record<string, string> = {
+  en: `/tools/${slug}/`,
+  "x-default": `/tools/${slug}/`,
+};
+PUBLISHED_LOCALES.forEach((locale) => {
+  if (hasLocalizedTool(locale, slug)) alternatePaths[locale] = `/${locale}/tools/${slug}/`;
+});
+---
+
+<ToolLayout
+  title={tool.name}
+  description={tool.description}
+  toolSlug={tool.slug}
+  categorySlug={tool.categorySlug}
+  categoryName={category.name}
+  longDescription={tool.longDescription}
+  keywords={tool.keywords}
+  metaTitle={tool.metaTitle}
+  metaDescription={tool.metaDescription}
+  usageSteps={tool.usageSteps}
+  faq={tool.faq}
+  additionalContent={tool.additionalContent}
+  locale={lang}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+>
+  {slug === "image-compressor" && <ImageCompressor client:load />}
+  {slug === "json-formatter" && <JsonFormatter client:load />}
+  {slug === "pdf-compressor" && <PdfCompressor client:load />}
+  {slug === "pdf-merger" && <PdfMerger client:load />}
+  {slug === "word-counter" && <WordCounter client:load />}
+  {slug === "qr-code-generator" && <QrCodeGenerator client:load />}
+  {slug === "jwt-decoder" && <JwtDecoder client:load />}
+  {slug === "epoch-converter" && <EpochConverter client:load />}
+  {slug === "word-cloud-generator" && <WordCloudGenerator client:load />}
+  {slug === "grammar-checker" && <GrammarChecker client:load />}
+  {slug === "csv-to-json" && <CsvToJson client:load />}
+  {slug === "json-to-csv" && <JsonToCsv client:load />}
+  {slug === "unit-converter" && <UnitConverter client:load />}
+  {slug === "color-contrast-checker" && <ColorContrastChecker client:load />}
+  {slug === "character-counter" && <CharacterCounter client:load />}
+  {slug === "image-resizer" && <ImageResizer client:load />}
+  {slug === "image-cropper" && <ImageCropper client:load />}
+  {slug === "markdown-to-html" && <MarkdownToHtml client:load />}
+  {slug === "password-generator" && <PasswordGenerator client:load />}
+  {slug === "regex-tester" && <RegexTester client:load />}
+</ToolLayout>
+
+

@@ -1,0 +1,77 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import ToolCard from "../../../components/ToolCard.astro";
+import { SITE } from "../../../data/tools";
+import { getLocalizedCategories, getLocalizedTools, PUBLISHED_LOCALES } from "../../../data/localized";
+import { getDefaultAlternates, useTranslations } from "../../../i18n/utils";
+import type { Lang } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+  return PUBLISHED_LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const lang = Astro.params.locale as Lang;
+const t = useTranslations(lang);
+const tools = getLocalizedTools(lang);
+const categories = getLocalizedCategories(lang);
+const canonicalPath = `/${lang}/tools/`;
+const alternatePaths = getDefaultAlternates("/tools/");
+
+const toolsCollectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE.url}${canonicalPath}`,
+  name: t("home.viewAllTools"),
+  description: t("home.metaDesc"),
+  url: `${SITE.url}${canonicalPath}`,
+  isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+};
+---
+
+<Layout
+  title={t("home.viewAllTools")}
+  description={t("home.metaDesc")}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+  ogImage="/og-default.png"
+  jsonLd={toolsCollectionJsonLd}
+  lang={lang}
+>
+  <div class="container-page py-8 md:py-10">
+    <Breadcrumbs items={[{ label: t("nav.tools") }]} />
+
+    <header class="app-panel p-5 sm:p-7 md:p-8 mb-8">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-3xl">
+          <div class="mb-4 flex flex-wrap gap-2">
+            <span class="metadata-badge">{tools.length} localized tools</span>
+            <span class="metadata-badge">No uploads</span>
+            <span class="metadata-badge">No signup</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
+            {t("home.viewAllTools")}
+          </h1>
+          <p class="mt-3 text-body text-base md:text-lg max-w-2xl leading-relaxed text-pretty">
+            {t("home.popularToolsDesc")}
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label={t("footer.categories")}>
+      <a href={`/${lang}/tools/`} class="pill-control" aria-current="page">{t("footer.allTools")}</a>
+      {categories.map((cat) => (
+        <a href={`/${lang}/categories/${cat.slug}/`} class="pill-control">
+          <span aria-hidden="true">{cat.icon}</span> {cat.name}
+        </a>
+      ))}
+    </nav>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map((tool) => (
+        <ToolCard slug={tool.slug} href={`/${lang}/tools/${tool.slug}/`} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} />
+      ))}
+    </div>
+  </div>
+</Layout>

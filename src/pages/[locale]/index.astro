@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ToolCard from "../../components/ToolCard.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import { SITE } from "../../data/tools";
+import { getLocalizedCategories, getLocalizedTools, getLocalizedToolsByCategory, PUBLISHED_LOCALES } from "../../data/localized";
+import { getDefaultAlternates, useTranslations } from "../../i18n/utils";
+import type { Lang } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return PUBLISHED_LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const lang = Astro.params.locale as Lang;
+const t = useTranslations(lang);
+const tools = getLocalizedTools(lang);
+const categories = getLocalizedCategories(lang);
+const canonicalPath = `/${lang}/`;
+const alternatePaths = getDefaultAlternates("/");
+const faqItems = Array.from({ length: 7 }, (_, i) => {
+  const n = i + 1;
+  return {
+    question: t(`home.faq.q${n}`),
+    answer: t(`home.faq.a${n}`).replace("{name}", SITE.name),
+  };
+});
+---
+
+<Layout
+  title={t("home.metaTitle")}
+  description={t("home.metaDesc")}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+  lang={lang}
+>
+  <section class="container-page py-10 md:py-14">
+    <div class="app-panel overflow-hidden p-5 sm:p-7 md:p-8">
+      <div class="max-w-3xl">
+        <div class="mb-4 flex flex-wrap gap-2">
+          <span class="metadata-badge">{t("hero.badge")}</span>
+          <span class="metadata-badge">{tools.length} localized tools</span>
+          <span class="metadata-badge">No uploads</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.04;">
+          {t("home.metaTitle")}
+        </h1>
+        <p class="mt-4 text-body text-lg leading-relaxed max-w-2xl text-pretty">
+          {t("home.metaDesc")}
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href={`/${lang}/tools/`} class="btn-primary no-underline">{t("home.viewAllTools")}</a>
+          <a href={`/${lang}/categories/`} class="pill-control">{t("home.browseByCategory")}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-page pb-12">
+    <div class="section-heading">
+      <div>
+        <p class="section-eyebrow">{tools.length} tools</p>
+        <h2 class="section-title">{t("home.popularTools")}</h2>
+        <p class="section-description">{t("home.popularToolsDesc")}</p>
+      </div>
+      <a href={`/${lang}/tools/`} class="pill-control">{t("home.viewAllTools")}</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.slice(0, 12).map((tool) => (
+        <ToolCard slug={tool.slug} href={`/${lang}/tools/${tool.slug}/`} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} />
+      ))}
+    </div>
+  </section>
+
+  <section class="container-page pb-12">
+    <div class="section-heading">
+      <div>
+        <p class="section-eyebrow">{categories.length} groups</p>
+        <h2 class="section-title">{t("home.browseByCategory")}</h2>
+        <p class="section-description">{t("home.browseByCategoryDesc").replace("{count}", String(categories.length))}</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {categories.map((cat) => (
+        <CategoryCard
+          slug={cat.slug}
+          href={`/${lang}/categories/${cat.slug}/`}
+          name={cat.name}
+          description={cat.description}
+          icon={cat.icon}
+          color={cat.color}
+          toolCount={getLocalizedToolsByCategory(lang, cat.slug).length}
+          topTools={getLocalizedToolsByCategory(lang, cat.slug).slice(0, 3).map((tool) => tool.name)}
+        />
+      ))}
+    </div>
+  </section>
+
+  <FAQSection items={faqItems} title={t("home.whyChoose")} />
+</Layout>

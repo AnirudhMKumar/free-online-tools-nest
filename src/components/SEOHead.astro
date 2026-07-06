@@ -11,6 +11,10 @@ interface Props {
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  lang?: string;
+  ogLocale?: string;
+  contentLanguage?: string;
+  alternatePaths?: Record<string, string>;
 }
 
 import { SITE } from "../data/tools";
@@ -23,6 +27,10 @@ const {
   ogType = "website",
   jsonLd,
   noindex = false,
+  lang = "en",
+  ogLocale = "en_US",
+  contentLanguage = lang,
+  alternatePaths,
 } = Astro.props;
 
 const canonicalURL = `${SITE.url}${canonicalPath}`;
@@ -36,7 +44,11 @@ const safeDescription = description.length <= 160 ? description : description.sl
 
 <title>{safeTitle}</title>
 <meta name="description" content={safeDescription} />
+<meta http-equiv="content-language" content={contentLanguage} />
 <link rel="canonical" href={canonicalURL} />
+{alternatePaths && Object.entries(alternatePaths).map(([hrefLang, path]) => (
+  <link rel="alternate" hreflang={hrefLang} href={`${SITE.url}${path}`} />
+))}
 
 {noindex ? (
   <meta name="robots" content="noindex, nofollow" />
@@ -54,7 +66,7 @@ const safeDescription = description.length <= 160 ? description : description.sl
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:site_name" content={SITE.name} />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={ogLocale} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />

@@ -3,6 +3,7 @@
  * Categories Directory — all 7 categories in a polished grid.
  */
 import Layout from "../../layouts/Layout.astro";
+import { getDefaultAlternates } from "../../i18n/utils";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import CategoryCard from "../../components/CategoryCard.astro";
 import { CATEGORIES, getToolsByCategory, SITE } from "../../data/tools";
@@ -26,6 +27,7 @@ const categoriesJsonLd = {
   title="All Tool Categories — Browse Free Online Tools by Category"
   description={`Browse all ${CATEGORIES.length} categories of free online tools. Find text tools, developer utilities, calculators, converters, PDF tools, SEO tools, and design tools.`}
   canonicalPath="/categories/"
+  alternatePaths={getDefaultAlternates("/categories/")}
   ogImage="/og-default.png"
   jsonLd={categoriesJsonLd}
 >

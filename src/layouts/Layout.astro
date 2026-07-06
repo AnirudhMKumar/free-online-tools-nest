@@ -11,6 +11,8 @@ interface Props {
   ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  lang?: Lang;
+  alternatePaths?: Record<string, string>;
 }
 
 import Nav from "../components/Nav.astro";
@@ -18,9 +20,11 @@ import Footer from "../components/Footer.astro";
 import SEOHead from "../components/SEOHead.astro";
 import CmdKSearch from "../components/CmdKSearch";
 import { getLangFromUrl } from "../i18n/utils";
+import { localeMeta } from "../i18n/ui";
+import type { Lang } from "../i18n/ui";
 import "../styles.css";
 
-const lang = getLangFromUrl(Astro.url);
+const detectedLang = getLangFromUrl(Astro.url);
 
 const {
   title,
@@ -30,11 +34,14 @@ const {
   ogType,
   jsonLd,
   noindex,
+  lang = detectedLang,
+  alternatePaths,
 } = Astro.props;
+const meta = localeMeta[lang];
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={meta.htmlLang}>
   <head>
     <!-- Google tag (gtag.js) -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KW0NXYM3MN"></script>
@@ -73,6 +80,10 @@ const {
       ogType={ogType}
       jsonLd={jsonLd}
       noindex={noindex}
+      lang={meta.htmlLang}
+      ogLocale={meta.ogLocale}
+      contentLanguage={meta.contentLanguage}
+      alternatePaths={alternatePaths}
     />
 
     <!-- Dark mode: prevent flash of wrong theme -->

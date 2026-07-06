@@ -8,7 +8,7 @@ import CategoryCard from "../components/CategoryCard.astro";
 import ToolCard from "../components/ToolCard.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { CATEGORIES, getFeaturedTools, getToolsByCategory, SITE } from "../data/tools";
-import { useTranslations } from "../i18n/utils";
+import { useTranslations, getDefaultAlternates } from "../i18n/utils";
 
 const t = useTranslations("en");
 
@@ -78,6 +78,7 @@ const websiteJsonLd = {
   title={t("home.metaTitle")}
   description={t("home.metaDesc")}
   canonicalPath="/"
+  alternatePaths={getDefaultAlternates("/")}
   jsonLd={[websiteJsonLd, organizationJsonLd]}
 >
   <!-- Hero -->

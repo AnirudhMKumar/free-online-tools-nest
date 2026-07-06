@@ -13,7 +13,8 @@
     "astro": "astro",
     "test": "vitest run",
     "lint": "eslint .",
-    "check": "astro check"
+    "check": "astro check",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.7",

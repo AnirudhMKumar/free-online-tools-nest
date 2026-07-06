@@ -1,0 +1,197 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { SITE } from "../../data/tools";
+import { PUBLISHED_LOCALES } from "../../data/localized";
+import { getDefaultAlternates } from "../../i18n/utils";
+import type { Lang } from "../../i18n/ui";
+
+const staticPages = ["about", "contact", "faq", "privacy-policy", "terms-and-conditions"] as const;
+type StaticPage = (typeof staticPages)[number];
+
+type PageCopy = {
+  title: string;
+  description: string;
+  heading: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+  cta?: { label: string; href: string };
+};
+
+const copies: Record<Exclude<Lang, "en">, Record<StaticPage, PageCopy>> = {
+  es: {
+    about: {
+      title: "Acerca de Free Online Tools Nest",
+      description: "Conoce Free Online Tools Nest, una colección de herramientas online gratis, rápidas y privadas.",
+      heading: "Acerca de Free Online Tools Nest",
+      intro: "Creamos herramientas online gratis para tareas de texto, código, PDF, imágenes, SEO y productividad. La prioridad es que sean rápidas, claras y privadas.",
+      sections: [
+        { heading: "Privacidad primero", body: "Siempre que una herramienta puede ejecutarse en el navegador, tus datos se procesan localmente y no se suben a un servidor." },
+        { heading: "Para trabajo real", body: "La colección está pensada para escritores, desarrolladores, estudiantes y equipos que necesitan resolver tareas pequeñas sin instalar software." },
+      ],
+      cta: { label: "Contactar", href: "/es/contact/" },
+    },
+    contact: {
+      title: "Contacto — Free Online Tools Nest",
+      description: "Envía feedback, sugerencias de herramientas o reportes de errores.",
+      heading: "Contacto",
+      intro: "¿Tienes una sugerencia, encontraste un error o quieres pedir una herramienta nueva? Escríbenos.",
+      sections: [
+        { heading: "Email", body: "Puedes contactar al equipo en openprojects50@gmail.com. Incluye el nombre de la herramienta, tu navegador y una descripción clara del problema o sugerencia." },
+        { heading: "Tiempo de respuesta", body: "Normalmente respondemos en 1-2 días laborables cuando el mensaje incluye suficiente contexto." },
+      ],
+      cta: { label: "Enviar email", href: "mailto:openprojects50@gmail.com?subject=Feedback%20for%20Free%20Online%20Tools%20Nest" },
+    },
+    faq: {
+      title: "Preguntas frecuentes — herramientas privadas online",
+      description: "Respuestas sobre privacidad, uso gratuito y herramientas online en el navegador.",
+      heading: "Preguntas frecuentes",
+      intro: "Estas respuestas explican cómo funcionan las herramientas localizadas y cómo protegemos tus datos.",
+      sections: [
+        { heading: "¿Son gratis?", body: "Sí. Las herramientas son gratuitas y no requieren cuenta ni tarjeta." },
+        { heading: "¿Mis datos se suben?", body: "Las herramientas están diseñadas para trabajar en el navegador cuando es posible. No tenemos un backend que reciba tus archivos o entradas de herramienta." },
+        { heading: "¿Por qué no están todas las herramientas traducidas?", body: "La internacionalización se está lanzando por fases para mantener calidad y evitar páginas traducidas de forma incompleta." },
+      ],
+      cta: { label: "Ver herramientas", href: "/es/tools/" },
+    },
+    "privacy-policy": {
+      title: "Política de privacidad — Free Online Tools Nest",
+      description: "Resumen de privacidad para las herramientas localizadas de Free Online Tools Nest.",
+      heading: "Política de privacidad",
+      intro: "Esta página resume cómo tratamos la privacidad en las páginas localizadas. La versión inglesa principal contiene la política completa.",
+      sections: [
+        { heading: "Datos de herramientas", body: "Los textos, archivos, contraseñas, imágenes y PDFs que usas en las herramientas permanecen en tu navegador cuando la herramienta funciona localmente." },
+        { heading: "Analítica y servicios externos", body: "Usamos Google Analytics para medir uso agregado del sitio, Google Fonts para tipografía y servicios externos cuando haces clic en enlaces externos." },
+        { heading: "Contacto", body: "Para preguntas de privacidad, escribe a openprojects50@gmail.com." },
+      ],
+      cta: { label: "Política completa en inglés", href: "/privacy-policy/" },
+    },
+    "terms-and-conditions": {
+      title: "Términos y condiciones — Free Online Tools Nest",
+      description: "Resumen de términos para usar las herramientas localizadas de Free Online Tools Nest.",
+      heading: "Términos y condiciones",
+      intro: "Este resumen localizado explica el uso básico del sitio. La versión inglesa principal contiene los términos completos.",
+      sections: [
+        { heading: "Uso permitido", body: "Puedes usar las herramientas gratis para fines personales o comerciales, siempre que el uso sea legal." },
+        { heading: "Sin garantía profesional", body: "Las herramientas se ofrecen tal cual y no reemplazan asesoría legal, financiera, médica, fiscal o profesional." },
+        { heading: "Responsabilidad", body: "Eres responsable de revisar los resultados antes de depender de ellos." },
+      ],
+      cta: { label: "Términos completos en inglés", href: "/terms-and-conditions/" },
+    },
+  },
+  hi: {
+    about: {
+      title: "Free Online Tools Nest के बारे में",
+      description: "Free Online Tools Nest के बारे में जानें: मुफ्त, तेज और निजी online tools.",
+      heading: "Free Online Tools Nest के बारे में",
+      intro: "हम text, code, PDF, images, SEO और productivity tasks के लिए मुफ्त online tools बनाते हैं. Focus speed, clarity और privacy पर है.",
+      sections: [
+        { heading: "Privacy first", body: "जहां tool browser में चल सकता है, आपका data local process होता है और server पर upload नहीं होता." },
+        { heading: "Real work के लिए", body: "Collection writers, developers, students और teams के लिए है जिन्हें छोटे काम बिना software install किए करने हैं." },
+      ],
+      cta: { label: "संपर्क करें", href: "/hi/contact/" },
+    },
+    contact: {
+      title: "संपर्क — Free Online Tools Nest",
+      description: "Feedback, tool suggestions या bug reports भेजें.",
+      heading: "संपर्क",
+      intro: "Suggestion, bug report या new tool idea है? हमें लिखें.",
+      sections: [
+        { heading: "Email", body: "Team को openprojects50@gmail.com पर email करें. Tool name, browser और clear description शामिल करें." },
+        { heading: "Response time", body: "पर्याप्त context मिलने पर हम आम तौर पर 1-2 business days में जवाब देते हैं." },
+      ],
+      cta: { label: "Email भेजें", href: "mailto:openprojects50@gmail.com?subject=Feedback%20for%20Free%20Online%20Tools%20Nest" },
+    },
+    faq: {
+      title: "FAQ — निजी ऑनलाइन टूल्स",
+      description: "Privacy, free usage और browser-based tools के बारे में जवाब.",
+      heading: "सामान्य प्रश्न",
+      intro: "ये जवाब localized tools और data privacy को समझाते हैं.",
+      sections: [
+        { heading: "क्या tools free हैं?", body: "हाँ. Tools free हैं और account या card की जरूरत नहीं है." },
+        { heading: "क्या मेरा data upload होता है?", body: "Tools browser-first बनाए गए हैं जहां possible हो. Tool input receive करने के लिए कोई backend नहीं है." },
+        { heading: "सभी tools translated क्यों नहीं हैं?", body: "Localization phased rollout है ताकि pages incomplete translation के साथ publish न हों." },
+      ],
+      cta: { label: "Tools देखें", href: "/hi/tools/" },
+    },
+    "privacy-policy": {
+      title: "गोपनीयता नीति — Free Online Tools Nest",
+      description: "Free Online Tools Nest localized pages के लिए privacy summary.",
+      heading: "गोपनीयता नीति",
+      intro: "यह localized privacy summary है. Complete policy English page पर उपलब्ध है.",
+      sections: [
+        { heading: "Tool data", body: "Text, files, passwords, images और PDFs browser में रहते हैं जब tool local processing support करता है." },
+        { heading: "Analytics और external services", body: "हम aggregate usage measurement के लिए Google Analytics, typography के लिए Google Fonts और clicked external links पर third-party services use करते हैं." },
+        { heading: "Contact", body: "Privacy questions के लिए openprojects50@gmail.com पर लिखें." },
+      ],
+      cta: { label: "English full policy", href: "/privacy-policy/" },
+    },
+    "terms-and-conditions": {
+      title: "नियम और शर्तें — Free Online Tools Nest",
+      description: "Free Online Tools Nest localized tools use करने के terms का summary.",
+      heading: "नियम और शर्तें",
+      intro: "यह localized terms summary है. Complete English terms main page पर उपलब्ध हैं.",
+      sections: [
+        { heading: "Allowed use", body: "Tools personal या commercial work के लिए free use कर सकते हैं, जब तक use legal है." },
+        { heading: "Professional advice नहीं", body: "Tools as-is दिए जाते हैं और legal, financial, medical, tax या professional advice नहीं हैं." },
+        { heading: "Responsibility", body: "Outputs पर rely करने से पहले उन्हें review करना आपकी responsibility है." },
+      ],
+      cta: { label: "English full terms", href: "/terms-and-conditions/" },
+    },
+  },
+};
+
+export function getStaticPaths() {
+  const paths = ["about", "contact", "faq", "privacy-policy", "terms-and-conditions"] as const;
+  return PUBLISHED_LOCALES.flatMap((locale) =>
+    paths.map((staticPage) => ({ params: { locale, staticPage } }))
+  );
+}
+
+const lang = Astro.params.locale as Exclude<Lang, "en">;
+const staticPage = Astro.params.staticPage as StaticPage;
+const copy = copies[lang][staticPage];
+const rootPath = `/${staticPage}/`;
+const canonicalPath = `/${lang}${rootPath}`;
+const alternatePaths = getDefaultAlternates(rootPath);
+const webPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE.url}${canonicalPath}`,
+  name: copy.title,
+  description: copy.description,
+  url: `${SITE.url}${canonicalPath}`,
+  isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+};
+---
+
+<Layout
+  title={copy.title}
+  description={copy.description}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+  jsonLd={webPageJsonLd}
+  lang={lang}
+>
+  <div class="container-narrow py-12 md:py-20">
+    <h1 class="text-3xl md:text-4xl font-semibold text-ink mb-4" style="letter-spacing: 0;">
+      {copy.heading}
+    </h1>
+    <p class="text-body text-lg leading-relaxed mb-10">{copy.intro}</p>
+
+    <article class="space-y-6 text-body leading-relaxed">
+      {copy.sections.map((section) => (
+        <section>
+          <h2 class="text-xl font-semibold text-ink mb-3" style="letter-spacing: 0;">{section.heading}</h2>
+          <p>{section.body}</p>
+        </section>
+      ))}
+    </article>
+
+    {copy.cta && (
+      <a href={copy.cta.href} class="btn-primary inline-flex mt-10 no-underline">
+        {copy.cta.label}
+      </a>
+    )}
+  </div>
+</Layout>
+

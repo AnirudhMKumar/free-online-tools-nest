@@ -8,11 +8,19 @@
 
 export const languages = {
   en: "English",
+  es: "Español",
+  hi: "हिन्दी",
 } as const;
 
 export type Lang = keyof typeof languages;
 
 export const defaultLang = "en" as const;
+
+export const localeMeta: Record<Lang, { label: string; htmlLang: string; ogLocale: string; contentLanguage: string }> = {
+  en: { label: "English", htmlLang: "en", ogLocale: "en_US", contentLanguage: "en" },
+  es: { label: "Español", htmlLang: "es", ogLocale: "es_ES", contentLanguage: "es" },
+  hi: { label: "हिन्दी", htmlLang: "hi", ogLocale: "hi_IN", contentLanguage: "hi" },
+};
 
 export const ui = {
   en: {

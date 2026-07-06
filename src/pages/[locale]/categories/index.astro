@@ -1,0 +1,70 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import CategoryCard from "../../../components/CategoryCard.astro";
+import { SITE } from "../../../data/tools";
+import { getLocalizedCategories, getLocalizedToolsByCategory, PUBLISHED_LOCALES } from "../../../data/localized";
+import { getDefaultAlternates, useTranslations } from "../../../i18n/utils";
+import type { Lang } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+  return PUBLISHED_LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const lang = Astro.params.locale as Lang;
+const t = useTranslations(lang);
+const categories = getLocalizedCategories(lang);
+const canonicalPath = `/${lang}/categories/`;
+const alternatePaths = getDefaultAlternates("/categories/");
+const categoriesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${SITE.url}${canonicalPath}`,
+  name: t("home.browseByCategory"),
+  description: t("home.browseByCategoryDesc").replace("{count}", String(categories.length)),
+  url: `${SITE.url}${canonicalPath}`,
+  isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+};
+---
+
+<Layout
+  title={t("home.browseByCategory")}
+  description={t("home.browseByCategoryDesc").replace("{count}", String(categories.length))}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+  ogImage="/og-default.png"
+  jsonLd={categoriesJsonLd}
+  lang={lang}
+>
+  <div class="container-page py-8 md:py-10">
+    <Breadcrumbs items={[{ label: t("footer.categories") }]} />
+
+    <header class="app-panel p-5 sm:p-7 md:p-8 mb-8">
+      <div class="section-heading mb-0">
+        <div>
+          <p class="section-eyebrow">{categories.length} groups</p>
+          <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
+            {t("home.browseByCategory")}
+          </h1>
+          <p class="section-description">{t("home.browseByCategoryDesc").replace("{count}", String(categories.length))}</p>
+        </div>
+        <a href={`/${lang}/tools/`} class="pill-control">{t("footer.allTools")}</a>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {categories.map((cat) => (
+        <CategoryCard
+          slug={cat.slug}
+          href={`/${lang}/categories/${cat.slug}/`}
+          name={cat.name}
+          description={cat.description}
+          icon={cat.icon}
+          color={cat.color}
+          toolCount={getLocalizedToolsByCategory(lang, cat.slug).length}
+          topTools={getLocalizedToolsByCategory(lang, cat.slug).slice(0, 3).map((tool) => tool.name)}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>

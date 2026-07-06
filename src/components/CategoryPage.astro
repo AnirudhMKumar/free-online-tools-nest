@@ -5,6 +5,9 @@
 interface Props {
   categorySlug: string;
   heading: string;
+  locale?: Lang;
+  canonicalPath?: string;
+  alternatePaths?: Record<string, string>;
 }
 
 import Layout from "../layouts/Layout.astro";
@@ -12,20 +15,31 @@ import Breadcrumbs from "./Breadcrumbs.astro";
 import ToolCard from "./ToolCard.astro";
 import CategoryCard from "./CategoryCard.astro";
 import { getToolsByCategory, getCategoryBySlug, CATEGORIES, SITE } from "../data/tools";
+import { getLocalizedCategories, getLocalizedCategory, getLocalizedToolsByCategory, PUBLISHED_LOCALES } from "../data/localized";
+import { defaultLang } from "../i18n/ui";
+import type { Lang } from "../i18n/ui";
 
-const { categorySlug, heading } = Astro.props;
-const category = getCategoryBySlug(categorySlug)!;
-const tools = getToolsByCategory(categorySlug);
-const otherCategories = CATEGORIES.filter((c) => c.slug !== categorySlug);
+const { categorySlug, heading, locale = defaultLang, canonicalPath = `/categories/${categorySlug}/`, alternatePaths } = Astro.props;
+const localePrefix = locale === defaultLang ? "" : `/${locale}`;
+const category = getLocalizedCategory(locale, categorySlug) ?? getCategoryBySlug(categorySlug)!;
+const tools = locale === defaultLang ? getToolsByCategory(categorySlug) : getLocalizedToolsByCategory(locale, categorySlug);
+const localizedCategories = locale === defaultLang ? CATEGORIES : getLocalizedCategories(locale);
+const otherCategories = localizedCategories.filter((c) => c.slug !== categorySlug);
 const pageId = `category-${categorySlug}`;
+const pageHeading = heading || category.name;
+const finalAlternatePaths = alternatePaths || {
+  en: `/categories/${categorySlug}/`,
+  ...Object.fromEntries(PUBLISHED_LOCALES.map((lang) => [lang, `/${lang}/categories/${categorySlug}/`])),
+  "x-default": `/categories/${categorySlug}/`,
+};
 
 const collectionJsonLd = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": `${SITE.url}/categories/${category.slug}/`,
+  "@id": `${SITE.url}${canonicalPath}`,
   name: category.name,
   description: category.description,
-  url: `${SITE.url}/categories/${category.slug}/`,
+  url: `${SITE.url}${canonicalPath}`,
   isPartOf: {
     "@type": "WebSite",
     name: SITE.name,
@@ -44,12 +58,14 @@ const collectionJsonLd = {
 <Layout
   title={category.metaTitle || `${category.name} — Free Online ${category.name}`}
   description={category.metaDescription || category.description}
-  canonicalPath={`/categories/${category.slug}/`}
+  canonicalPath={canonicalPath}
   ogImage={`/og/${category.slug}.png`}
   jsonLd={collectionJsonLd}
+  lang={locale}
+  alternatePaths={finalAlternatePaths}
 >
   <div class="container-page py-8 md:py-10" data-category-page={pageId}>
-    <Breadcrumbs items={[{ label: "Categories", href: "/categories/" }, { label: category.name }]} />
+    <Breadcrumbs items={[{ label: "Categories", href: `${localePrefix}/categories/` }, { label: category.name }]} />
 
     <header class="app-panel overflow-hidden p-5 sm:p-7 md:p-8 mb-8">
       <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -59,7 +75,7 @@ const collectionJsonLd = {
             <span class="metadata-badge">Private browser utilities</span>
           </div>
           <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
-            {heading}
+            {pageHeading}
           </h1>
           <p class="mt-3 text-body text-base md:text-lg max-w-2xl leading-relaxed text-pretty">
             {category.description}
@@ -90,9 +106,9 @@ const collectionJsonLd = {
     </header>
 
     <nav class="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label="Browse categories">
-      <a href="/tools/" class="pill-control">All tools</a>
-      {CATEGORIES.map((cat) => (
-        <a href={`/categories/${cat.slug}/`} class="pill-control" aria-current={cat.slug === categorySlug ? "page" : undefined}>
+      <a href={`${localePrefix}/tools/`} class="pill-control">All tools</a>
+      {localizedCategories.map((cat) => (
+        <a href={`${localePrefix}/categories/${cat.slug}/`} class="pill-control" aria-current={cat.slug === categorySlug ? "page" : undefined}>
           <span aria-hidden="true">{cat.icon}</span> {cat.name}
         </a>
       ))}
@@ -101,7 +117,7 @@ const collectionJsonLd = {
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14" data-category-grid>
       {tools.map((tool) => (
         <div data-category-tool data-tool-name={tool.name.toLowerCase()} data-tool-desc={tool.description.toLowerCase()} data-tool-keywords={tool.keywords.join(" ").toLowerCase()}>
-          <ToolCard slug={tool.slug} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} />
+          <ToolCard slug={tool.slug} href={`${localePrefix}/tools/${tool.slug}/`} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} categoryName={category.name} />
         </div>
       ))}
     </div>
@@ -122,12 +138,13 @@ const collectionJsonLd = {
         {otherCategories.map((cat) => (
           <CategoryCard
             slug={cat.slug}
+            href={`${localePrefix}/categories/${cat.slug}/`}
             name={cat.name}
             description={cat.description}
             icon={cat.icon}
             color={cat.color}
-            toolCount={getToolsByCategory(cat.slug).length}
-            topTools={getToolsByCategory(cat.slug).slice(0, 3).map((tool) => tool.name)}
+            toolCount={locale === defaultLang ? getToolsByCategory(cat.slug).length : getLocalizedToolsByCategory(locale, cat.slug).length}
+            topTools={(locale === defaultLang ? getToolsByCategory(cat.slug) : getLocalizedToolsByCategory(locale, cat.slug)).slice(0, 3).map((tool) => tool.name)}
           />
         ))}
       </div>

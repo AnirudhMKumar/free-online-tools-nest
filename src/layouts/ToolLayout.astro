@@ -11,6 +11,14 @@ interface Props {
   categoryName: string;
   longDescription: string;
   keywords?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  usageSteps?: UsageStep[];
+  faq?: FAQPair[];
+  additionalContent?: ContentSection[];
+  locale?: Lang;
+  canonicalPath?: string;
+  alternatePaths?: Record<string, string>;
 }
 
 import Layout from "./Layout.astro";
@@ -20,6 +28,10 @@ import FAQSection from "../components/FAQSection.astro";
 import FavoriteButton from "../components/FavoriteButton";
 import ShareBar from "../components/ShareBar.astro";
 import { getRelatedTools, getCategoryBySlug, getToolBySlug, SITE } from "../data/tools";
+import type { ContentSection, FAQPair, UsageStep } from "../data/tools";
+import { getLocalizedRelatedTools, hasLocalizedTool, PUBLISHED_LOCALES } from "../data/localized";
+import { defaultLang } from "../i18n/ui";
+import type { Lang } from "../i18n/ui";
 
 const {
   title,
@@ -29,18 +41,39 @@ const {
   categoryName,
   longDescription,
   keywords = [],
+  metaTitle,
+  metaDescription,
+  usageSteps,
+  faq,
+  additionalContent,
+  locale = defaultLang,
+  canonicalPath = `/tools/${toolSlug}/`,
+  alternatePaths,
 } = Astro.props;
 
-const relatedTools = getRelatedTools(toolSlug, 4);
+const localePrefix = locale === defaultLang ? "" : `/${locale}`;
+const toolsPath = `${localePrefix}/tools/`;
+const categoryPath = `${localePrefix}/categories/${categorySlug}/`;
+const relatedTools = locale === defaultLang ? getRelatedTools(toolSlug, 4) : getLocalizedRelatedTools(locale, toolSlug, 4);
 const category = getCategoryBySlug(categorySlug);
 const tool = getToolBySlug(toolSlug);
 
-const finalMetaTitle = tool?.metaTitle || `${title} Online — Free ${categoryName} Tool`;
-const finalMetaDescription = tool?.metaDescription || description;
+const finalMetaTitle = metaTitle || tool?.metaTitle || `${title} Online — Free ${categoryName} Tool`;
+const finalMetaDescription = metaDescription || tool?.metaDescription || description;
+const finalUsageSteps = usageSteps || tool?.usageSteps;
+const finalFaq = faq || tool?.faq;
+const finalAdditionalContent = additionalContent || tool?.additionalContent;
+const finalAlternatePaths = alternatePaths || (locale === defaultLang && PUBLISHED_LOCALES.some((lang) => hasLocalizedTool(lang, toolSlug))
+  ? {
+      en: canonicalPath,
+      ...Object.fromEntries(PUBLISHED_LOCALES.filter((lang) => hasLocalizedTool(lang, toolSlug)).map((lang) => [lang, `/${lang}${canonicalPath}`])),
+      "x-default": canonicalPath,
+    }
+  : alternatePaths);
 
 const breadcrumbs = [
-  { label: "Tools", href: "/tools/" },
-  { label: categoryName, href: `/categories/${categorySlug}/` },
+  { label: "Tools", href: toolsPath },
+  { label: categoryName, href: categoryPath },
   { label: title },
 ];
 
@@ -49,7 +82,7 @@ const toolJsonLd = {
   "@type": "WebApplication",
   name: title,
   description: finalMetaDescription,
-  url: `${SITE.url}/tools/${toolSlug}/`,
+  url: `${SITE.url}${canonicalPath}`,
   applicationCategory: "UtilityApplication",
   operatingSystem: "Any",
   browserRequirements: "Requires JavaScript",
@@ -65,7 +98,7 @@ const toolJsonLd = {
     price: "0",
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
-    url: `${SITE.url}/tools/${toolSlug}/`,
+    url: `${SITE.url}${canonicalPath}`,
     priceValidUntil: "2030-12-31",
   },
   about: {
@@ -82,9 +115,11 @@ const ogImage = `/og/${categorySlug}.png`;
 <Layout
   title={finalMetaTitle}
   description={finalMetaDescription}
-  canonicalPath={`/tools/${toolSlug}/`}
+  canonicalPath={canonicalPath}
   ogImage={ogImage}
   jsonLd={combinedJsonLd}
+  lang={locale}
+  alternatePaths={finalAlternatePaths}
 >
   <div class="container-page py-8 md:py-10">
     <Breadcrumbs items={breadcrumbs} />
@@ -95,7 +130,7 @@ const ogImage = `/og/${categorySlug}.png`;
           <div class="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
             <div class="max-w-3xl">
               <div class="mb-4 flex flex-wrap gap-2">
-                <a href={`/categories/${categorySlug}/`} class="metadata-badge no-underline">
+                <a href={categoryPath} class="metadata-badge no-underline">
                   {category?.icon && <span aria-hidden="true">{category.icon}</span>} {categoryName}
                 </a>
                 <span class="metadata-badge">No uploads</span>
@@ -111,7 +146,7 @@ const ogImage = `/og/${categorySlug}.png`;
 
             <div class="flex items-center gap-3 flex-wrap xl:justify-end">
               <FavoriteButton client:load toolSlug={toolSlug} />
-              <ShareBar title={title} url={`${SITE.url}/tools/${toolSlug}/`} />
+              <ShareBar title={title} url={`${SITE.url}${canonicalPath}`} />
             </div>
           </div>
         </header>
@@ -122,7 +157,7 @@ const ogImage = `/og/${categorySlug}.png`;
               <p class="text-sm font-medium text-ink">Workspace</p>
               <p class="text-xs text-mute">Use the tool below. Your inputs stay local when the tool supports browser-only processing.</p>
             </div>
-            <a href="/tools/" class="pill-control">All tools</a>
+            <a href={toolsPath} class="pill-control">All tools</a>
           </div>
           <div class="p-4 sm:p-6 md:p-8">
             <slot />
@@ -137,7 +172,7 @@ const ogImage = `/og/${categorySlug}.png`;
           </div>
         )}
 
-        {tool?.usageSteps && tool.usageSteps.length > 0 && (
+        {finalUsageSteps && finalUsageSteps.length > 0 && (
           <section class="mt-10 border-t border-hairline pt-8">
             <div class="section-heading">
               <div>
@@ -146,7 +181,7 @@ const ogImage = `/og/${categorySlug}.png`;
               </div>
             </div>
             <div class="grid gap-4 md:grid-cols-3">
-              {tool.usageSteps.map((step, i) => (
+              {finalUsageSteps.map((step, i) => (
                 <article class="card p-5">
                   <span class="mb-4 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-on-primary">
                     {i + 1}
@@ -159,10 +194,10 @@ const ogImage = `/og/${categorySlug}.png`;
           </section>
         )}
 
-        {tool?.additionalContent && tool.additionalContent.length > 0 && (
+        {finalAdditionalContent && finalAdditionalContent.length > 0 && (
           <section class="mt-10 border-t border-hairline pt-8">
             <div class="grid gap-5 md:grid-cols-3">
-              {tool.additionalContent.map((block) => (
+              {finalAdditionalContent.map((block) => (
                 <article class="rounded-lg border border-hairline bg-canvas p-5">
                   <h2 class="text-lg font-semibold text-ink mb-3" style="letter-spacing: 0;">
                     {block.heading}
@@ -183,7 +218,7 @@ const ogImage = `/og/${categorySlug}.png`;
                 Related tools
               </h2>
               {category && (
-                <a href={`/categories/${categorySlug}/`} class="text-xs font-medium text-link hover:text-link-deep transition-colors duration-150">
+                <a href={categoryPath} class="text-xs font-medium text-link hover:text-link-deep transition-colors duration-150">
                   View all
                 </a>
               )}
@@ -192,6 +227,7 @@ const ogImage = `/og/${categorySlug}.png`;
               {relatedTools.map((tool) => (
                 <ToolCard
                   slug={tool.slug}
+                  href={`${localePrefix}/tools/${tool.slug}/`}
                   name={tool.name}
                   description={tool.description}
                   icon={tool.icon}
@@ -210,8 +246,8 @@ const ogImage = `/og/${categorySlug}.png`;
       </aside>
     </div>
 
-    {tool?.faq && tool.faq.length > 0 && (
-      <FAQSection items={tool.faq} title={`${title} — Frequently Asked Questions`} />
+    {finalFaq && finalFaq.length > 0 && (
+      <FAQSection items={finalFaq} title={`${title} — Frequently Asked Questions`} />
     )}
   </div>
 </Layout>

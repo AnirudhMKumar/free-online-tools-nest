@@ -1,0 +1,26 @@
+---
+import CategoryPage from "../../../components/CategoryPage.astro";
+import { CATEGORIES } from "../../../data/tools";
+import { PUBLISHED_LOCALES } from "../../../data/localized";
+import { getDefaultAlternates } from "../../../i18n/utils";
+import type { Lang } from "../../../i18n/ui";
+
+export function getStaticPaths() {
+  return PUBLISHED_LOCALES.flatMap((locale) =>
+    CATEGORIES.map((category) => ({ params: { locale, slug: category.slug } }))
+  );
+}
+
+const lang = Astro.params.locale as Lang;
+const slug = Astro.params.slug!;
+const canonicalPath = `/${lang}/categories/${slug}/`;
+const alternatePaths = getDefaultAlternates(`/categories/${slug}/`);
+---
+
+<CategoryPage
+  categorySlug={slug}
+  heading=""
+  locale={lang}
+  canonicalPath={canonicalPath}
+  alternatePaths={alternatePaths}
+/>

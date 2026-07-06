@@ -1,7 +1,7 @@
 # Free Online Tools Nest — Project Knowledge Base
 
 > This file is a comprehensive knowledge base designed to give any AI model full context about this project without needing to explore the codebase. It saves tokens by consolidating architecture, data models, patterns, completed work, and known issues in one place.
-> **Last audited**: 2026-07-04
+> **Last audited**: 2026-07-06
 > **Commit**: `0e75bd7` (main; AGENTS.md update follows this audit)
 > **GitHub**: https://github.com/AnirudhMKumar/free-online-tools-nest
 
@@ -14,7 +14,7 @@
 **Domain**: `https://freeonlinetoolsnest.com`  
 **GitHub**: `https://github.com/AnirudhMKumar/free-online-tools-nest`  
 **Deployed on**: Cloudflare Pages (auto-deploy from `main` branch)  
-**Build**: 99 static pages, ~9s build time, 0 errors  
+**Build**: 169 static pages, ~20s build time, 0 errors
 **Codebase**: ~229 project files under `src/`, `public/`, and `extension/`; ~37k lines — Astro + React 19 + Tailwind CSS v4
 
 ---
@@ -28,7 +28,7 @@
 | **CSS** | Tailwind CSS v4 | via `@tailwindcss/vite`, custom design tokens |
 | **Build** | Vite (Astro built-in) | esbuild for JSX |
 | **Sitemap** | `@astrojs/sitemap` | Auto-generated; no synthetic build-time `lastmod` |
-| **i18n** | Custom (no library) | English-only (was 8 locales, removed in Phase 9) |
+| **i18n** | Custom (no library) | English canonical + Spanish/Hindi pilot routes under `/es/` and `/hi/` |
 | **PDF** | `pdf-lib` + `pdfjs-dist` | Client-side PDF processing |
 | **QR** | `qrcode` | Client-side QR generation |
 | **Markdown** | `marked` + custom sanitizer | Client-side MD→HTML rendering with sanitized preview output |
@@ -94,8 +94,8 @@ freeonlinetoolsnest.com/
 │   ├── hooks/
 │   │   └── useCopyToClipboard.ts # Shared clipboard copy hook with feedback state
 │   ├── i18n/
-│   │   ├── ui.ts                 # English-only translation dictionary (~255 lines, was 1717)
-│   │   └── utils.ts              # getLangFromUrl(), useTranslations()
+│   │   ├── ui.ts                 # Locale registry + shared base UI strings
+│   │   ├── overrides.ts          # Spanish/Hindi UI and static-page copy overrides`n│   │   └── utils.ts              # Locale routing, alternates, and translations
 │   ├── layouts/
 │   │   ├── Layout.astro          # Base layout (HTML shell, SEOHead, Nav, Footer, favicon links, PWA manifest, dark mode flash prevention)
 │   │   ├── ToolLayout.astro      # Tool page layout (breadcrumbs, sidebar, FAQ, JSON-LD)
@@ -109,14 +109,15 @@ freeonlinetoolsnest.com/
 │   │   ├── about.astro           # English about page (was redirect stub → real content)
 │   │   ├── contact.astro         # English contact page (was redirect stub → real content)
 │   │   ├── faq.astro             # English FAQ page (was redirect stub → real content)
-│   │   ├── privacy-policy.astro  # English privacy policy (was redirect stub → real content)
-│   │   ├── terms-and-conditions.astro # English terms (was redirect stub → real content)
+│   │   ├── privacy-policy.astro  # English privacy policy
+│   │   ├── terms-and-conditions.astro # English terms
+│   │   ├── [locale]/             # Spanish/Hindi localized static pages, categories, and 20 tool pages
 │   │   ├── favorites/            # Favorites page
 │   │   └── index.astro           # Real English homepage (was redirect to /en/)
 │   ├── styles.css                # Tailwind v4 config + custom CSS
 │   └── types/
 │       └── index.ts              # TypeScript interfaces (Tool, Category, etc.)
-├── astro.config.mjs              # Astro config (sitemap, tailwind — i18n config removed in Phase 9)
+├── astro.config.mjs              # Astro config (sitemap, tailwind, static output)
 ├── DESIGN.md                     # Vercel-inspired design system reference (736 lines)
 ├── eslint.config.js              # ESLint flat config (Astro only, partial coverage)
 ├── vitest.config.ts              # Vitest configuration (node env, globals)
@@ -299,8 +300,8 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 
 ### Homepage
 
-- `/` → Real English homepage with Hero, Featured Tools grid, Category cards, Blog list, FAQ, JSON-LD
-- No locale-prefixed homepages (`/en/`, `/es/`, etc. — all removed)
+- `/` → English homepage with Hero, Featured Tools grid, Category cards, Blog list, FAQ, JSON-LD
+- `/es/` and `/hi/` → localized pilot homepages for Spanish and Hindi
 
 ---
 
@@ -309,9 +310,9 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 ### Per-Page SEO
 - **Custom metaTitle/metaDescription** on every tool (overrides auto-generated defaults)
 - **Canonical URLs** on every page
-- **OG tags** (title, description, image, type, locale, site_name) — `og:locale` hardcoded to `en_US`
+- **OG tags** (title, description, image, type, locale, site_name) — `og:locale` is locale-aware for `en`, `es`, and `hi`
 - **Twitter Card** (summary_large_image)
-- **Hreflang tags** removed (Phase 9 — English-only, no alternate locales)
+- **Hreflang tags** are enabled for reciprocal `en`, `es`, `hi`, and `x-default` alternates where localized routes exist
 
 ### Structured Data (JSON-LD)
 - **WebApplication** on every tool page
@@ -322,7 +323,7 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 - **WebSite** + **SearchAction** on homepage (site search)
 
 ### Technical SEO
-- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 99 pages; synthetic build-time `lastmod` removed so unchanged pages are not marked fresh on every deploy
+- **Sitemap**: Auto-generated by `@astrojs/sitemap`, includes all 169 published pages; synthetic build-time `lastmod` removed so unchanged pages are not marked fresh on every deploy
 - **robots.txt**: Proper crawl directives
 - **_headers**: Security headers + noindex for preview domains
 - **OG images**: Per-category OG images in `public/og/`
@@ -341,23 +342,34 @@ const category = getCategoryBySlug(tool.categorySlug)!;
 ## 8. i18n System
 
 ### Current State
-English-only. Phase 9 removed all 7 non-English locales (Spanish, Portuguese, French, German, Hindi, Japanese, Arabic).
+English remains canonical at root URLs. Spanish (`/es/`) and Hindi (`/hi/`) are relaunched as a quality-controlled localization pilot, not a full machine-translation dump.
 
-### What Remains
-- `src/i18n/ui.ts` — English-only translation dictionary (~255 lines, was 1717)
-- `src/i18n/utils.ts` — `getLangFromUrl()` and `useTranslations()` still exist, but always resolve to `"en"`
-- `useTranslations("en")` used on homepage, about, contact, faq, privacy, terms pages
-- 404/500 pages use hardcoded English strings (no i18n dependency)
-- `og:locale` hardcoded to `en_US`
+### Locale Routing
+- Root English pages stay unchanged (`/`, `/tools/`, `/categories/`, `/tools/json-formatter/`).
+- Spanish and Hindi pages live under subdirectories (`/es/`, `/hi/`).
+- Localized route generation is static and limited to published locale content.
+- `public/_redirects` no longer redirects `/es/*` or `/hi/*`; unrelaunched locales (`/pt/*`, `/fr/*`, `/de/*`, `/ja/*`, `/ar/*`, `/en/*`) still redirect to root equivalents.
 
-### What Was Removed
-- `src/pages/[locale]/` folder (6 files, 48 generated pages removed from build)
-- hreflang tags from SEOHead.astro
-- Language switcher from Footer.astro
-- i18n config block from `astro.config.mjs`
-- `localePaths`/`xDefaultPath` from Layout.astro props
+### Locale Data
+- `src/i18n/ui.ts` defines language metadata and shared base strings.
+- `src/i18n/overrides.ts` provides Spanish/Hindi UI and static-page copy.
+- `src/i18n/utils.ts` handles locale detection, localized paths, default alternates, and translations.
+- `src/data/tools.ts` stays the English canonical tool source.
+- `src/data/localized.ts` contains Spanish/Hindi category translations and 20 published localized tool records.
 
-> **Tool content is NOT translated** — all 77 tools, usage steps, FAQ, meta are English only.
+### SEO Signals
+- `<html lang>`, `og:locale`, and `content-language` are locale-aware.
+- Localized pages use self-canonical URLs.
+- English, Spanish, and Hindi pages use reciprocal `hreflang` alternates plus `x-default` when a localized equivalent exists.
+- Untranslated localized tool pages are not generated.
+
+### Published Localized Tool Pilot
+20 tools are localized for both Spanish and Hindi: image-compressor, json-formatter, pdf-compressor, pdf-merger, word-counter, qr-code-generator, jwt-decoder, epoch-converter, word-cloud-generator, grammar-checker, csv-to-json, json-to-csv, unit-converter, color-contrast-checker, character-counter, image-resizer, image-cropper, markdown-to-html, password-generator, regex-tester.
+
+### Still English-Only
+- Blog posts are English-only.
+- Favorites, 404, and 500 remain English-only.
+- The remaining 57 tool pages are English-only until translated and added to `LOCALIZED_TOOL_SLUGS`.
 
 ---
 
@@ -367,7 +379,7 @@ English-only. Phase 9 removed all 7 non-English locales (Spanish, Portuguese, Fr
 
 | Component | Type | Purpose |
 |-----------|------|---------|
-| **SEOHead.astro** | Astro | Injects `<title>`, meta, OG, Twitter, canonical, JSON-LD (hreflang removed in Phase 9) |
+| **SEOHead.astro** | Astro | Injects `<title>`, meta, OG, Twitter, canonical, hreflang, content-language, JSON-LD |
 | **Nav.astro** | Astro | Sticky header with logo, category links, dark mode toggle, CmdK search trigger, hamburger on mobile |
 | **Footer.astro** | Astro | 4-column: Tools (first 6), Categories (all 7), Company (About/Blog/Contact/Faq), Legal (Privacy/Terms) + newsletter signup section |
 | **FAQSection.astro** | Astro | Accordion FAQ + auto-generates FAQPage JSON-LD |
@@ -428,8 +440,8 @@ Each is a self-contained React client component with its own state and logic. Th
 - **Auto-deploy**: Connected to GitHub repo — every `main` push auto-deploys via Cloudflare Pages
 
 ### Build Stats
-- **99 pages** generated (77 tools + 1 categories index + 7 categories + 4 blog + 404 + 500 + tools index + favorites + about + contact + faq + privacy-policy + terms-and-conditions + homepage)
-- **~9s build time**
+- **169 pages** generated (99 English pages + 70 localized Spanish/Hindi pilot pages)
+- **~20s build time**
 - **0 build errors**
 
 ### Testing
@@ -585,12 +597,20 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - Disclosed Google Analytics/Tag Manager, Google Fonts, LaunchBuff badge assets, localStorage usage, client-side processing, and email contact flow.
 - Added clearer professional-advice, user-content, acceptable-use, and limitation-of-liability language while keeping the documents readable.
 
+### Phase 16 — Internationalization Pilot + Bing Indexing Recovery
+- Relaunched Spanish (`/es/`) and Hindi (`/hi/`) as static subdirectory locales while keeping English canonical at root URLs.
+- Added locale metadata, self-canonical localized pages, reciprocal `hreflang` alternates, locale-aware `og:locale`, and `content-language` signals.
+- Added localized homepage, tools directory, category index, all 7 category pages, static company/legal pages, and 20 high-opportunity localized tool pages per locale.
+- Added `src/data/localized.ts` so localized tool pages are generated only when reviewed translated data exists; untranslated locale tool URLs are not built.
+- Updated `public/_redirects` so `/es/*` and `/hi/*` no longer redirect away, while unrelaunched locale prefixes still collapse to canonical root equivalents.
+- Added IndexNow support with a hosted key file and `npm run indexnow:submit` for Bing/Yandex-style URL notification after deployment.
+
 ---
 
 ## 13. Known Issues & Gaps
 
 ### Content Gaps
-- [ ] Tool content (names, descriptions, longDescriptions, usageSteps, faq) is **English only** — no translations exist for tool-level content
+- [ ] Only 20 of 77 tools are localized for Spanish/Hindi; the remaining 57 tools need reviewed translations before publication
 - [ ] Launch copy exists for Reddit/Hacker News, but sustained social promotion and backlink outreach are still early
 - [ ] Chrome extension only lists 38 of 77 tools (not all)
 
@@ -614,9 +634,9 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - [ ] Some heavy PDF/image tools still need richer progress/loading states beyond shared shell polish
 
 ### i18n Gaps
-- [ ] Tool content is English-only (77 tools × titles, descriptions, keywords, meta, usageSteps, faq) — no translations exist for tool-level content
+- [ ] Only 20 of 77 tools are localized for Spanish/Hindi; the other 57 tool pages remain English-only
 - [ ] Blog posts are English-only
-- [ ] 404/500 pages hardcoded to English (static fallback limitation)
+- [ ] Favorites, 404, and 500 pages remain English-only
 
 ---
 
@@ -629,7 +649,7 @@ For maximum context with minimum tokens, read in this order:
 3. **`src/components/FAQSection.astro`** — FAQ with JSON-LD (reused on every tool page)
 4. **`src/components/SEOHead.astro`** — All meta/OG/JSON-LD injection
 5. **`astro.config.mjs`** — Build config, sitemap, plugins
-6. **`src/i18n/ui.ts`** — English-only translation dictionary (~255 lines, was 1717)
+6. **`src/i18n/ui.ts` + `src/i18n/utils.ts` + `src/data/localized.ts`** — Locale metadata, route helpers, and localized tool/category data
 7. **`src/styles.css`** — Design tokens and dark mode
 8. **`src/types/index.ts`** — TypeScript interfaces (but tools.ts has its own superset; this file is dead code — never imported)
 9. **`package.json`** — Dependencies and scripts
@@ -668,26 +688,21 @@ Sitemap:         https://freeonlinetoolsnest.com/sitemap-index.xml
 Any tool page:   https://freeonlinetoolsnest.com/tools/{slug}/
 ```
 
-### Build Output (99 pages)
+### Build Output (169 pages)
 ```
-77 tool pages + 1 tools index
-1 categories index + 7 category pages
-4 blog (index + 3 posts)
-1 homepage
-5 root content pages (about, contact, faq, privacy-policy, terms-and-conditions)
-2 error pages (404 + 500)
-1 favorites page
-= 99 total
+English: 77 tool pages + 1 tools index + 1 categories index + 7 category pages + 4 blog pages + homepage + favorites + 5 root content pages + 2 error pages = 99
+Localized pilot: Spanish and Hindi each generate 1 homepage + 1 tools index + 20 tool pages + 1 categories index + 7 category pages + 5 static pages = 35 each
+= 169 total
 ```
 
 ### Page Count Breakdown (verified by build)
 | Section | Count | Details |
 |---------|-------|---------|
-| Tools | 78 | 77 tools + 1 `/tools/index.html` |
-| Categories | 8 | 1 categories index + 7 category listing pages |
+| Tools | 120 | 77 English tool pages + English tools index + 40 localized tool pages + 2 localized tools indexes |
+| Categories | 24 | 8 English category pages + 16 localized category pages |
 | Blog | 4 | Index + 3 posts |
-| Homepage | 1 | `/index.html` (real content, not redirect) |
-| Root content pages | 5 | about, contact, faq, privacy-policy, terms-and-conditions |
+| Homepage | 3 | English root homepage + `/es/` + `/hi/` |
+| Static content pages | 15 | English, Spanish, and Hindi versions of about, contact, faq, privacy-policy, terms-and-conditions |
 | Error pages | 2 | 404, 500 |
 | Favorites | 1 | `/favorites/index.html` |
-| **Total** | **99** | |
+| **Total** | **169** | |

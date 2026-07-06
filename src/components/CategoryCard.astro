@@ -11,13 +11,15 @@ interface Props {
   color: string;
   toolCount: number;
   topTools?: string[];
+  href?: string;
 }
 
-const { slug, name, description, icon, color, toolCount, topTools = [] } = Astro.props;
+const { slug, name, description, icon, color, toolCount, topTools = [], href } = Astro.props;
+const categoryHref = href || `/categories/${slug}/`;
 ---
 
 <a
-  href={`/categories/${slug}/`}
+  href={categoryHref}
   class="category-card group"
   id={`category-${slug}`}
   style={`--category-accent: ${color};`}

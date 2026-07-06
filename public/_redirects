@@ -1,13 +1,36 @@
-# Locale prefix redirects (old i18n URLs removed in English-only conversion June 2026)
-# Redirect all old locale-prefixed paths (/en/..., /es/..., etc.) to new canonical URLs
+# Locale prefix redirects for locales not yet relaunched
 /en/*  /:splat  301
-/es/*  /:splat  301
 /pt/*  /:splat  301
 /fr/*  /:splat  301
 /de/*  /:splat  301
-/hi/*  /:splat  301
 /ja/*  /:splat  301
 /ar/*  /:splat  301
+
+# Localized pages - trailing slash redirects
+/es  /es/  301
+/hi  /hi/  301
+/es/tools  /es/tools/  301
+/hi/tools  /hi/tools/  301
+/es/categories  /es/categories/  301
+/hi/categories  /hi/categories/  301
+/es/about  /es/about/  301
+/hi/about  /hi/about/  301
+/es/contact  /es/contact/  301
+/hi/contact  /hi/contact/  301
+/es/faq  /es/faq/  301
+/hi/faq  /hi/faq/  301
+/es/privacy-policy  /es/privacy-policy/  301
+/hi/privacy-policy  /hi/privacy-policy/  301
+/es/terms-and-conditions  /es/terms-and-conditions/  301
+/hi/terms-and-conditions  /hi/terms-and-conditions/  301
+/es/tools/*/  /es/tools/:splat/  200
+/hi/tools/*/  /hi/tools/:splat/  200
+/es/categories/*/  /es/categories/:splat/  200
+/hi/categories/*/  /hi/categories/:splat/  200
+/es/tools/*  /es/tools/:splat/  301
+/hi/tools/*  /hi/tools/:splat/  301
+/es/categories/*  /es/categories/:splat/  301
+/hi/categories/*  /hi/categories/:splat/  301
 
 # Passthrough for already-correct trailing-slash URLs (first-match wins)
 /tools/*/  /tools/:splat/ 200

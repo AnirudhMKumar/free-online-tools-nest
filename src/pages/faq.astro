@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { SITE } from "../data/tools";
-import { useTranslations } from "../i18n/utils";
+import { useTranslations, getDefaultAlternates } from "../i18n/utils";
 
 const t = useTranslations("en");
 
@@ -41,6 +41,7 @@ const faqJsonLd = {
   title={t("faq.metaTitle")}
   description={t("faq.metaDesc")}
   canonicalPath="/faq/"
+  alternatePaths={getDefaultAlternates("/faq/")}
   jsonLd={faqJsonLd}
 >
   <div class="py-4 md:py-8">

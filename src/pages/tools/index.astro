@@ -3,6 +3,7 @@
  * Tools Directory — all tools in a filterable grid.
  */
 import Layout from "../../layouts/Layout.astro";
+import { getDefaultAlternates } from "../../i18n/utils";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ToolCard from "../../components/ToolCard.astro";
 import { TOOLS, CATEGORIES, SITE, getToolsByCategory } from "../../data/tools";
@@ -26,6 +27,7 @@ const toolsCollectionJsonLd = {
   title="All Free Online Tools — Directory & Utilities"
   description={`Explore our comprehensive web tools collection of ${TOOLS.length} free online tools. Access browser-based utilities for text formatting, developer tasks, math, and converters.`}
   canonicalPath="/tools/"
+  alternatePaths={getDefaultAlternates("/tools/")}
   ogImage="/og-default.png"
   jsonLd={toolsCollectionJsonLd}
 >
