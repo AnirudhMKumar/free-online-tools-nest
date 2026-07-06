@@ -17,10 +17,13 @@ import CategoryCard from "./CategoryCard.astro";
 import { getToolsByCategory, getCategoryBySlug, CATEGORIES, SITE } from "../data/tools";
 import { getLocalizedCategories, getLocalizedCategory, getLocalizedToolsByCategory, PUBLISHED_LOCALES } from "../data/localized";
 import { defaultLang } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
 import type { Lang } from "../i18n/ui";
 
 const { categorySlug, heading, locale = defaultLang, canonicalPath = `/categories/${categorySlug}/`, alternatePaths } = Astro.props;
 const localePrefix = locale === defaultLang ? "" : `/${locale}`;
+const t = useTranslations(locale);
+const toolCountLabel = (count: number) => `${count} ${count === 1 ? t("common.toolSingular") : t("common.toolPlural")}`;
 const category = getLocalizedCategory(locale, categorySlug) ?? getCategoryBySlug(categorySlug)!;
 const tools = locale === defaultLang ? getToolsByCategory(categorySlug) : getLocalizedToolsByCategory(locale, categorySlug);
 const localizedCategories = locale === defaultLang ? CATEGORIES : getLocalizedCategories(locale);
@@ -64,15 +67,21 @@ const collectionJsonLd = {
   lang={locale}
   alternatePaths={finalAlternatePaths}
 >
-  <div class="container-page py-8 md:py-10" data-category-page={pageId}>
-    <Breadcrumbs items={[{ label: "Categories", href: `${localePrefix}/categories/` }, { label: category.name }]} />
+  <div
+    class="container-page py-8 md:py-10"
+    data-category-page={pageId}
+    data-showing-count-template={t("category.showingCount")}
+    data-tool-singular={t("common.toolSingular")}
+    data-tool-plural={t("common.toolPlural")}
+  >
+    <Breadcrumbs items={[{ label: t("footer.categories"), href: `${localePrefix}/categories/` }, { label: category.name }]} />
 
     <header class="app-panel overflow-hidden p-5 sm:p-7 md:p-8 mb-8">
       <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div class="max-w-3xl">
           <div class="mb-4 flex flex-wrap items-center gap-2">
-            <span class="metadata-badge"><span aria-hidden="true">{category.icon}</span>{tools.length} tools</span>
-            <span class="metadata-badge">Private browser utilities</span>
+            <span class="metadata-badge"><span aria-hidden="true">{category.icon}</span>{toolCountLabel(tools.length)}</span>
+            <span class="metadata-badge">{t("category.privateUtilities")}</span>
           </div>
           <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
             {pageHeading}
@@ -82,31 +91,33 @@ const collectionJsonLd = {
           </p>
         </div>
 
-        <div class="control-shell w-full lg:w-[360px] p-3">
-          <label for={`${pageId}-search`} class="sr-only">Filter {category.name}</label>
-          <div class="relative">
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-mute pointer-events-none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
-            <input
-              id={`${pageId}-search`}
-              type="search"
-              name="category-search"
-              autocomplete="off"
-              placeholder={`Search ${category.name.toLowerCase()}…`}
-              class="w-full h-11 pl-10 pr-4 rounded-lg border border-hairline bg-canvas text-sm text-ink placeholder:text-mute focus:border-link transition-colors duration-150"
-              data-category-search
-            />
+        {tools.length > 0 && (
+          <div class="control-shell w-full lg:w-[360px] p-3">
+            <label for={`${pageId}-search`} class="sr-only">{t("category.searchPlaceholder").replace("{category}", category.name)}</label>
+            <div class="relative">
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-mute pointer-events-none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input
+                id={`${pageId}-search`}
+                type="search"
+                name="category-search"
+                autocomplete="off"
+                placeholder={t("category.searchPlaceholder").replace("{category}", category.name.toLowerCase())}
+                class="w-full h-11 pl-10 pr-4 rounded-lg border border-hairline bg-canvas text-sm text-ink placeholder:text-mute focus:border-link transition-colors duration-150"
+                data-category-search
+              />
+            </div>
+            <p class="mt-2 text-xs text-mute" aria-live="polite" data-category-count>
+              {t("category.showingCount").replace("{count}", String(tools.length)).replace("{label}", tools.length === 1 ? t("common.toolSingular") : t("common.toolPlural"))}
+            </p>
           </div>
-          <p class="mt-2 text-xs text-mute" aria-live="polite" data-category-count>
-            Showing {tools.length} {tools.length === 1 ? "tool" : "tools"}
-          </p>
-        </div>
+        )}
       </div>
     </header>
 
-    <nav class="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label="Browse categories">
-      <a href={`${localePrefix}/tools/`} class="pill-control">All tools</a>
+    <nav class="mb-8 flex gap-2 overflow-x-auto pb-2" aria-label={t("category.browseCategories")}>
+      <a href={`${localePrefix}/tools/`} class="pill-control">{t("footer.allTools")}</a>
       {localizedCategories.map((cat) => (
         <a href={`${localePrefix}/categories/${cat.slug}/`} class="pill-control" aria-current={cat.slug === categorySlug ? "page" : undefined}>
           <span aria-hidden="true">{cat.icon}</span> {cat.name}
@@ -114,24 +125,37 @@ const collectionJsonLd = {
       ))}
     </nav>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14" data-category-grid>
-      {tools.map((tool) => (
-        <div data-category-tool data-tool-name={tool.name.toLowerCase()} data-tool-desc={tool.description.toLowerCase()} data-tool-keywords={tool.keywords.join(" ").toLowerCase()}>
-          <ToolCard slug={tool.slug} href={`${localePrefix}/tools/${tool.slug}/`} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} categoryName={category.name} />
+    {tools.length > 0 ? (
+      <>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14" data-category-grid>
+          {tools.map((tool) => (
+            <div data-category-tool data-tool-name={tool.name.toLowerCase()} data-tool-desc={tool.description.toLowerCase()} data-tool-keywords={tool.keywords.join(" ").toLowerCase()}>
+              <ToolCard slug={tool.slug} href={`${localePrefix}/tools/${tool.slug}/`} name={tool.name} description={tool.description} icon={tool.icon} categorySlug={tool.categorySlug} categoryName={category.name} />
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
 
-    <div class="hidden rounded-lg border border-hairline bg-canvas p-8 text-center mb-14" data-category-empty>
-      <p class="text-base font-medium text-ink">No tools match that search.</p>
-      <p class="mt-1 text-sm text-body">Try a shorter term or browse another category.</p>
-    </div>
+        <div class="hidden rounded-lg border border-hairline bg-canvas p-8 text-center mb-14" data-category-empty>
+          <p class="text-base font-medium text-ink">{t("category.noToolsSearchTitle")}</p>
+          <p class="mt-1 text-sm text-body">{t("category.noToolsSearchDesc")}</p>
+        </div>
+      </>
+    ) : (
+      <div class="rounded-lg border border-hairline bg-canvas p-8 text-center mb-14">
+        <p class="text-base font-medium text-ink">{t("category.emptyTitle")}</p>
+        <p class="mx-auto mt-2 max-w-xl text-sm text-body">{t("category.emptyDesc")}</p>
+        <div class="mt-5 flex flex-wrap justify-center gap-3">
+          <a href={`${localePrefix}/tools/`} class="btn-primary no-underline">{t("category.viewLocalizedTools")}</a>
+          <a href={`/categories/${category.slug}/`} class="pill-control">{t("category.viewEnglishCategory")}</a>
+        </div>
+      </div>
+    )}
 
     <section class="mb-14">
       <div class="section-heading">
         <div>
-          <p class="section-eyebrow">More utility groups</p>
-          <h2 class="section-title">Explore other categories</h2>
+          <p class="section-eyebrow">{t("category.moreGroups")}</p>
+          <h2 class="section-title">{t("category.exploreOther")}</h2>
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -144,6 +168,7 @@ const collectionJsonLd = {
             icon={cat.icon}
             color={cat.color}
             toolCount={locale === defaultLang ? getToolsByCategory(cat.slug).length : getLocalizedToolsByCategory(locale, cat.slug).length}
+            countLabel={toolCountLabel(locale === defaultLang ? getToolsByCategory(cat.slug).length : getLocalizedToolsByCategory(locale, cat.slug).length)}
             topTools={(locale === defaultLang ? getToolsByCategory(cat.slug) : getLocalizedToolsByCategory(locale, cat.slug)).slice(0, 3).map((tool) => tool.name)}
           />
         ))}
@@ -153,9 +178,9 @@ const collectionJsonLd = {
     {category.seoContent && (
       <section class="mt-14 border-t border-hairline pt-10">
         <div class="prose-like max-w-3xl">
-          <p class="section-eyebrow">Category guide</p>
+          <p class="section-eyebrow">{t("category.guide")}</p>
           <h2 class="text-xl font-semibold text-ink mb-4" style="letter-spacing: 0;">
-            About our {category.name}
+            {t("category.about").replace("{category}", category.name)}
           </h2>
           <p class="text-body leading-relaxed">{category.seoContent}</p>
         </div>
@@ -181,7 +206,9 @@ const collectionJsonLd = {
         item.hidden = !show;
         if (show) visible++;
       });
-      if (count) count.textContent = `Showing ${visible} ${visible === 1 ? "tool" : "tools"}`;
+      const template = page.dataset.showingCountTemplate || "Showing {count} {label}";
+      const label = visible === 1 ? (page.dataset.toolSingular || "tool") : (page.dataset.toolPlural || "tools");
+      if (count) count.textContent = template.replace("{count}", String(visible)).replace("{label}", label);
       empty?.classList.toggle("hidden", visible > 0);
     }
 

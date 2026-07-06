@@ -100,7 +100,7 @@ const meta = localeMeta[lang];
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <Nav />
-    <CmdKSearch client:load />
+    <CmdKSearch lang={lang} client:load />
 
     <main id="main-content" class="flex-1">
       <slot />

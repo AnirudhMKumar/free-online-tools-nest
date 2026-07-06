@@ -12,9 +12,10 @@ interface Props {
   toolCount: number;
   topTools?: string[];
   href?: string;
+  countLabel?: string;
 }
 
-const { slug, name, description, icon, color, toolCount, topTools = [], href } = Astro.props;
+const { slug, name, description, icon, color, toolCount, topTools = [], href, countLabel } = Astro.props;
 const categoryHref = href || `/categories/${slug}/`;
 ---
 
@@ -27,7 +28,7 @@ const categoryHref = href || `/categories/${slug}/`;
   <span class="category-card-accent" aria-hidden="true"></span>
   <span class="category-card-head">
     <span class="category-card-icon" aria-hidden="true">{icon}</span>
-    <span class="metadata-badge">{toolCount} {toolCount === 1 ? "tool" : "tools"}</span>
+    <span class="metadata-badge">{countLabel || `${toolCount} ${toolCount === 1 ? "tool" : "tools"}`}</span>
   </span>
   <span class="category-card-title-row">
     <span class="category-card-title">{name}</span>

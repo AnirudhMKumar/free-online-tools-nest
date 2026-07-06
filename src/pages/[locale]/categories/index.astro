@@ -42,7 +42,7 @@ const categoriesJsonLd = {
     <header class="app-panel p-5 sm:p-7 md:p-8 mb-8">
       <div class="section-heading mb-0">
         <div>
-          <p class="section-eyebrow">{categories.length} groups</p>
+          <p class="section-eyebrow">{categories.length} {categories.length === 1 ? t("common.groupSingular") : t("common.groupPlural")}</p>
           <h1 class="text-3xl md:text-4xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.08;">
             {t("home.browseByCategory")}
           </h1>
@@ -62,6 +62,7 @@ const categoriesJsonLd = {
           icon={cat.icon}
           color={cat.color}
           toolCount={getLocalizedToolsByCategory(lang, cat.slug).length}
+          countLabel={`${getLocalizedToolsByCategory(lang, cat.slug).length} ${getLocalizedToolsByCategory(lang, cat.slug).length === 1 ? t("common.toolSingular") : t("common.toolPlural")}`}
           topTools={getLocalizedToolsByCategory(lang, cat.slug).slice(0, 3).map((tool) => tool.name)}
         />
       ))}

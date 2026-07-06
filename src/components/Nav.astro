@@ -5,7 +5,7 @@
  * Mobile: compact command-sheet menu.
  */
 import { SITE, getToolsByCategory, getToolBySlug } from "../data/tools";
-import { getLocalizedCategories, getLocalizedTool, getLocalizedToolsByCategory, hasLocalizedTool } from "../data/localized";
+import { getLocalizedCategories, getLocalizedTool, getLocalizedTools, getLocalizedToolsByCategory, hasLocalizedTool } from "../data/localized";
 import { useTranslations, getLangFromUrl } from "../i18n/utils";
 import { defaultLang } from "../i18n/ui";
 
@@ -19,6 +19,10 @@ const lh = (path: string) => `${localePrefix}${path}`;
 const toolHref = (slug: string) => lang === defaultLang || hasLocalizedTool(lang, slug) ? lh(`/tools/${slug}/`) : `/tools/${slug}/`;
 const isActive = (href: string) => href === "/" ? activePath === "/" : activePath.startsWith(href);
 
+const localizedToolCount = getLocalizedTools(lang).length;
+const searchCountLabel = (lang === defaultLang ? t("nav.searchAllToolsCount") : t("nav.searchToolsCount")).replace("{count}", String(localizedToolCount));
+const toolCountLabel = (count: number) => `${count} ${count === 1 ? t("common.toolSingular") : t("common.toolPlural")}`;
+
 const categoryNav = getLocalizedCategories(lang).map((cat) => ({
   ...cat,
   count: lang === defaultLang ? getToolsByCategory(cat.slug).length : getLocalizedToolsByCategory(lang, cat.slug).length,
@@ -27,38 +31,38 @@ const categoryNav = getLocalizedCategories(lang).map((cat) => ({
 const workflowGroups = [
   {
     label: "PDF",
-    description: "Compress, merge, split, and extract files.",
+    description: t("workflow.pdf.desc"),
     slugs: ["pdf-compressor", "pdf-merger", "pdf-to-images"],
   },
   {
-    label: "Images",
-    description: "Resize, crop, convert, and optimize locally.",
+    label: t("workflow.images.label"),
+    description: t("workflow.images.desc"),
     slugs: ["image-compressor", "image-resizer", "image-cropper"],
   },
   {
-    label: "Code",
-    description: "Format, decode, test, and inspect developer data.",
+    label: t("workflow.code.label"),
+    description: t("workflow.code.desc"),
     slugs: ["json-formatter", "jwt-decoder", "regex-tester"],
   },
   {
-    label: "Text",
-    description: "Count, rewrite, compare, and clean writing.",
+    label: t("workflow.text.label"),
+    description: t("workflow.text.desc"),
     slugs: ["word-counter", "character-counter", "grammar-checker"],
   },
   {
     label: "SEO",
-    description: "Preview, validate, and prepare page metadata.",
+    description: t("workflow.seo.desc"),
     slugs: ["meta-tag-generator", "serp-preview-generator", "schema-markup-generator"],
   },
   {
-    label: "Calculators",
-    description: "Quick math for everyday decisions.",
+    label: t("workflow.calculators.label"),
+    description: t("workflow.calculators.desc"),
     slugs: ["percentage-calculator", "tip-calculator", "age-calculator"],
   },
 ].map((group) => ({
   ...group,
-  tools: group.slugs.map((slug) => getLocalizedTool(lang, slug) ?? getToolBySlug(slug)).filter(Boolean),
-}));
+  tools: group.slugs.map((slug) => (lang === defaultLang ? getToolBySlug(slug) : getLocalizedTool(lang, slug))).filter(Boolean),
+})).filter((group) => group.tools.length > 0);
 ---
 
 <header
@@ -82,20 +86,20 @@ const workflowGroups = [
           aria-expanded="false"
           aria-controls="desktop-tools-menu"
         >
-          Tools
+          {t("nav.tools")}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6" />
           </svg>
         </button>
         <div id="desktop-tools-menu" class="nav-dropdown nav-mega hidden" data-menu-panel role="menu" aria-labelledby="desktop-tools-trigger">
           <div class="mega-sidebar" aria-label="Tool categories">
-            <p class="nav-menu-label">Categories</p>
+            <p class="nav-menu-label">{t("nav.toolCategories")}</p>
             {categoryNav.map((cat) => (
               <a href={lh(`/categories/${cat.slug}/`)} class="mega-category-link" role="menuitem">
                 <span class="mega-category-icon" aria-hidden="true">{cat.icon}</span>
                 <span class="min-w-0 flex-1">
                   <span class="mega-category-name">{cat.name}</span>
-                  <span class="mega-category-meta">{cat.count} tools</span>
+                  <span class="mega-category-meta">{toolCountLabel(cat.count)}</span>
                 </span>
               </a>
             ))}
@@ -104,10 +108,10 @@ const workflowGroups = [
           <div class="mega-main">
             <div class="mega-heading-row">
               <div>
-                <p class="nav-menu-label">Popular workflows</p>
-                <p class="mega-title">Jump straight into the tools people use most.</p>
+                <p class="nav-menu-label">{t("nav.popularWorkflows")}</p>
+                <p class="mega-title">{t("nav.popularWorkflowsDesc")}</p>
               </div>
-              <a href={lh("/tools/")} class="mega-all-link" role="menuitem">View all tools</a>
+              <a href={lh("/tools/")} class="mega-all-link" role="menuitem">{t("nav.viewAllTools")}</a>
             </div>
 
             <div class="workflow-grid">
@@ -130,8 +134,8 @@ const workflowGroups = [
             </div>
 
             <div class="mega-footer-row">
-              <span>No uploads. Runs in your browser.</span>
-              <a href={lh("/privacy-policy/")} role="menuitem">Privacy promise</a>
+              <span>{t("nav.noUploads")}</span>
+              <a href={lh("/privacy-policy/")} role="menuitem">{t("nav.privacyPromise")}</a>
             </div>
           </div>
         </div>
@@ -145,7 +149,7 @@ const workflowGroups = [
           aria-expanded="false"
           aria-controls="desktop-categories-menu"
         >
-          Categories
+          {t("nav.categories")}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="m6 9 6 6 6-6" />
           </svg>
@@ -163,7 +167,7 @@ const workflowGroups = [
               </a>
             ))}
           </div>
-          <a href={lh("/categories/")} class="category-menu-all" role="menuitem">Browse all categories</a>
+          <a href={lh("/categories/")} class="category-menu-all" role="menuitem">{t("nav.browseAllCategories")}</a>
         </div>
       </div>
 
@@ -181,7 +185,7 @@ const workflowGroups = [
           <circle cx="11" cy="11" r="8"/>
           <path d="m21 21-4.35-4.35"/>
         </svg>
-        <span class="hidden md:inline">Search 77 tools</span>
+        <span class="hidden md:inline">{searchCountLabel}</span>
         <kbd class="hidden md:inline-flex" aria-hidden="true">⌘ K</kbd>
       </button>
 
@@ -236,8 +240,8 @@ const workflowGroups = [
   <div class="mx-auto flex h-full max-w-md flex-col overflow-y-auto rounded-xl border border-hairline bg-canvas p-4 shadow-modal mobile-menu-panel">
     <div class="mb-4 flex items-center justify-between gap-4">
       <div>
-        <p class="section-eyebrow mb-1">Navigation</p>
-        <p class="text-lg font-semibold text-ink">Find a Tool</p>
+        <p class="section-eyebrow mb-1">{t("nav.navigation")}</p>
+        <p class="text-lg font-semibold text-ink">{t("nav.menuTitle")}</p>
       </div>
       <button
         id="mobile-menu-close"
@@ -255,14 +259,14 @@ const workflowGroups = [
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <span>Search all 77 tools</span>
+      <span>{searchCountLabel}</span>
       <kbd aria-hidden="true">⌘ K</kbd>
     </button>
 
     <nav class="mt-5 flex flex-col gap-1" aria-label={t('nav.mobileNav')}>
       <a href={lh("/tools/")} class:list={["mobile-nav-link", isActive("/tools/") && "active"]}>{t('nav.tools')}</a>
       <a href="/blog/" class:list={["mobile-nav-link", isActive("/blog/") && "active"]}>{t('nav.blog')}</a>
-      <p class="mt-4 px-3 text-xs font-mono text-mute">Categories</p>
+      <p class="mt-4 px-3 text-xs font-mono text-mute">{t("nav.categories")}</p>
       {categoryNav.map((cat) => (
         <a href={lh(`/categories/${cat.slug}/`)} class:list={["mobile-nav-link", isActive(`/categories/${cat.slug}/`) && "active"]}>
           <span class="mr-2" aria-hidden="true">{cat.icon}</span> {cat.name}

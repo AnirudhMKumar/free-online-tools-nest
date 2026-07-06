@@ -39,8 +39,8 @@ const faqItems = Array.from({ length: 7 }, (_, i) => {
       <div class="max-w-3xl">
         <div class="mb-4 flex flex-wrap gap-2">
           <span class="metadata-badge">{t("hero.badge")}</span>
-          <span class="metadata-badge">{tools.length} localized tools</span>
-          <span class="metadata-badge">No uploads</span>
+          <span class="metadata-badge">{tools.length} {t("common.localizedTools")}</span>
+          <span class="metadata-badge">{t("nav.noUploads")}</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-semibold text-ink text-balance" style="letter-spacing: 0; line-height: 1.04;">
           {t("home.metaTitle")}
@@ -59,7 +59,7 @@ const faqItems = Array.from({ length: 7 }, (_, i) => {
   <section class="container-page pb-12">
     <div class="section-heading">
       <div>
-        <p class="section-eyebrow">{tools.length} tools</p>
+        <p class="section-eyebrow">{tools.length} {t("common.localizedTools")}</p>
         <h2 class="section-title">{t("home.popularTools")}</h2>
         <p class="section-description">{t("home.popularToolsDesc")}</p>
       </div>
@@ -75,7 +75,7 @@ const faqItems = Array.from({ length: 7 }, (_, i) => {
   <section class="container-page pb-12">
     <div class="section-heading">
       <div>
-        <p class="section-eyebrow">{categories.length} groups</p>
+        <p class="section-eyebrow">{categories.length} {categories.length === 1 ? t("common.groupSingular") : t("common.groupPlural")}</p>
         <h2 class="section-title">{t("home.browseByCategory")}</h2>
         <p class="section-description">{t("home.browseByCategoryDesc").replace("{count}", String(categories.length))}</p>
       </div>
@@ -90,6 +90,7 @@ const faqItems = Array.from({ length: 7 }, (_, i) => {
           icon={cat.icon}
           color={cat.color}
           toolCount={getLocalizedToolsByCategory(lang, cat.slug).length}
+          countLabel={`${getLocalizedToolsByCategory(lang, cat.slug).length} ${getLocalizedToolsByCategory(lang, cat.slug).length === 1 ? t("common.toolSingular") : t("common.toolPlural")}`}
           topTools={getLocalizedToolsByCategory(lang, cat.slug).slice(0, 3).map((tool) => tool.name)}
         />
       ))}
