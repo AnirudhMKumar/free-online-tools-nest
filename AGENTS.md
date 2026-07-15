@@ -2,7 +2,7 @@
 
 > This file is a comprehensive knowledge base designed to give any AI model full context about this project without needing to explore the codebase. It saves tokens by consolidating architecture, data models, patterns, completed work, and known issues in one place.
 > **Last audited**: 2026-07-07
-> **Commit**: `002f80f` (main; sitemap pruning + AGENTS.md update)
+> **Commit**: `ec86444` (main; Phase 4 sitemap expansion to 65 URLs)
 > **GitHub**: https://github.com/AnirudhMKumar/free-online-tools-nest
 
 ---
@@ -483,9 +483,9 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 | Phase | Action | Status |
 |-------|--------|--------|
 | **1** | Prune sitemap to ~30 Tier 1 URLs (structural pages, categories, blog, content-rich tools only) | ✅ Done (2026-07-07) |
-| **2** | Manual indexing requests via Google Search Console URL Inspection for all 30 Tier 1 URLs (prioritize by value) | 🔄 In progress |
-| **3** | Wait 1-2 weeks for crawl patterns; resubmit sitemap; check which URLs get indexed | ⏳ Pending |
-| **4** | Once Tier 1 is indexed, gradually expand sitemap to ~50-60 tools (remaining featured + popular tools) | ⏳ Pending |
+| **2** | Manual indexing requests via Google Search Console URL Inspection for all 30 Tier 1 URLs (prioritize by value) | ✅ Done (2026-07-07) |
+| **3** | Wait 1-2 weeks for crawl patterns; resubmit sitemap; check which URLs get indexed | ✅ Done — all 30 indexed |
+| **4** | Expand sitemap to ~50-65 tools (remaining featured + popular tools from all categories) | ✅ Done (2026-07-07) |
 | **5** | Once Tier 1-2 is healthy, expand to full 77+ English tools and add localized pages back | ⏳ Pending |
 
 ### Why Sitemap Pruning (Phase 1)
@@ -494,23 +494,14 @@ freeonlinetoolsnest.com/* → X-Content-Type-Options: nosniff, X-Frame-Options: 
 - By pruning to 30 best URLs, we tell Google: "these are the important ones, ignore the rest"
 - Once these get indexed, trust builds and we can expand incrementally
 
-### Tier 1 URLs in Current Sitemap (30 total)
+### Tier 1-2 URLs in Current Sitemap (65 total)
 ```
 Structural (5):   /, /about/, /tools/, /categories/, /blog/
-Categories (7):   /categories/text-tools/, /categories/developer-tools/,
-                  /categories/calculators/, /categories/converters/,
-                  /categories/pdf-tools/, /categories/seo-tools/,
-                  /categories/design-tools/
-Blog posts (3):   /blog/10-free-online-tools-2026/,
-                  /blog/free-online-tools-guide-2026/,
-                  /blog/image-compressor-browser-only/
-Content-rich tools (11 — have additionalContent sections):
-                  word-counter, json-formatter, qr-code-generator,
-                  color-converter, image-compressor, pdf-merger,
-                  pdf-compressor, grammar-checker, word-cloud-generator,
-                  jwt-decoder, epoch-converter
-Popular tools (4): character-counter, password-generator,
-                   unit-converter, csv-to-json
+Categories (7):   all 7 category pages
+Blog posts (3):   all 3 blog posts
+Tools (50):       all 11 content-rich tools (additionalContent)
+                  + 4 original popular tools
+                  + 35 additional tools across all 7 categories
 ```
 
 ### Sitemap Filter Implementation
@@ -518,7 +509,7 @@ Popular tools (4): character-counter, password-generator,
 - Filter function receives full URL, parses pathname, matches against allow-listed slugs
 - `/es/` and `/hi/` localized pages intentionally excluded (would waste crawl budget on a 2-week-old site)
 - `/favorites/` already has `noindex` meta tag
-- When adding Tier 2 tool pages later, add slugs to the `popularSlugs` or `contentRichSlugs` arrays
+- When adding more tool pages, add slugs to the `contentRichSlugs` or `tier2Slugs` arrays
 - **Do NOT re-add `/es/` or `/hi/` sitemap entries until the user explicitly requests it** (after English site is fully indexed)
 
 ---
@@ -664,7 +655,9 @@ Popular tools (4): character-counter, password-generator,
 - Built 5-phase indexation rescue strategy (see full §12 above)
 - Phase 1 executed: pruned sitemap from 169 to 30 Tier 1 URLs via `filter` in `astro.config.mjs`
 - Pushed to `main` → Cloudflare Pages auto-deployed
-- Phase 2 (manual indexing requests via Search Console) is the next action
+- Phase 2 (manual indexing requests via Search Console) executed — all 30 URLs requested
+- Phase 3 (wait and verify) complete — all 30 Tier 1 URLs successfully indexed
+- Phase 4 (expand sitemap) executed — sitemap expanded from 30 to 65 URLs (50 tools + 15 structural/category/blog pages)
 
 ---
 
