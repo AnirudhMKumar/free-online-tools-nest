@@ -43,16 +43,58 @@ export default defineConfig({
           "epoch-converter",
         ];
 
-        // Popular high-traffic-potential tools
-        const popularSlugs = [
+        // Tier 2 — remaining high-value tools
+        const tier2Slugs = [
           "character-counter",
           "unit-converter",
           "csv-to-json",
           "password-generator",
+          // Text tools
+          "case-converter",
+          "text-analyzer",
+          "text-diff",
+          "text-humanizer",
+          "plagiarism-checker",
+          "readability-score",
+          "lorem-ipsum-generator",
+          // Developer tools
+          "url-encoder-decoder",
+          "base64-encoder-decoder",
+          "html-formatter",
+          "regex-tester",
+          "html-to-markdown",
+          "sql-formatter",
+          "css-minifier",
+          "uuid-generator",
+          // Converters
+          "markdown-to-html",
+          "image-resizer",
+          "image-cropper",
+          "json-to-csv",
+          "temperature-converter",
+          // Calculators
+          "percentage-calculator",
+          "age-calculator",
+          "bmi-calculator",
+          "discount-calculator",
+          "loan-calculator",
+          // SEO tools
+          "meta-tag-generator",
+          "sitemap-generator",
+          "keyword-density-checker",
+          "serp-preview-generator",
+          "schema-markup-generator",
+          // PDF tools
+          "pdf-splitter",
+          "pdf-to-text",
+          // Design tools
+          "color-contrast-checker",
+          "gradient-generator",
+          "color-palette-generator",
         ];
 
         const toolSlug = path.match(/^\/tools\/([\w-]+)\/$/)?.[1];
-        if (toolSlug && (contentRichSlugs.includes(toolSlug) || popularSlugs.includes(toolSlug)))
+        if (toolSlug && (contentRichSlugs.includes(toolSlug) || tier2Slugs.includes(toolSlug)))
           return true;
 
         return false;
